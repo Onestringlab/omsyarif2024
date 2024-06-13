@@ -1,0 +1,134 @@
+[18-Jul-2023 12:53:46 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 12:53:46 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 12:53:46 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 12:53:46 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 12:53:46 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 12:53:46 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 12:53:46 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 12:53:46 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 12:54:04 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 12:54:04 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 12:54:04 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 12:54:04 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 12:54:04 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 12:54:04 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 12:54:04 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 12:54:04 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 12:54:20 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 12:54:20 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 12:54:20 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 12:54:20 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 12:54:20 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 12:54:20 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 12:54:20 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 12:54:20 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 12:55:12 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 12:55:12 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 12:55:12 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 12:55:12 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 12:55:12 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 12:55:12 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 12:55:12 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 12:55:12 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 12:56:57 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 12:56:57 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 12:56:57 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 12:56:57 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 12:56:57 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 12:56:57 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 12:56:57 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 12:56:57 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 12:57:54 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/lav8lite.php on line 2
+[18-Jul-2023 12:57:54 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/lav8lite.php on line 3
+[18-Jul-2023 12:57:54 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/lav8lite.php on line 4
+[18-Jul-2023 12:57:54 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[HY000] [14] unable to open database file in /home/omsyarif/public_html/public/codeGen/lav8lite.php:6
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/lav8lite.php(6): PDO->__construct()
+#1 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/lav8lite.php on line 6
+[18-Jul-2023 12:59:27 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 12:59:27 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 12:59:27 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 12:59:27 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 12:59:27 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 12:59:27 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 12:59:27 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 12:59:27 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 13:16:05 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 13:16:05 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 13:16:05 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 13:16:05 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
+[18-Jul-2023 13:16:05 UTC] PHP Warning:  Undefined array key "p_table" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 2
+[18-Jul-2023 13:16:05 UTC] PHP Warning:  Undefined array key "p_db" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 3
+[18-Jul-2023 13:16:05 UTC] PHP Warning:  Undefined array key "p_controller" in /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php on line 4
+[18-Jul-2023 13:16:05 UTC] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in /home/omsyarif/public_html/public/codeGen/connectSQLI.php:7
+Stack trace:
+#0 /home/omsyarif/public_html/public/codeGen/connectSQLI.php(7): mysqli_connect()
+#1 /home/omsyarif/public_html/public/codeGen/testTableLaraBS4.php(6): require_once('/home/omsyarif/...')
+#2 {main}
+  thrown in /home/omsyarif/public_html/public/codeGen/connectSQLI.php on line 7
