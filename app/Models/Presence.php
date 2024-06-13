@@ -15,5 +15,6 @@ class Presence extends Model
 	function months()
 	{
 		return $this->belongsTo('App\Models\Months', 'month_id');
+		// ddf
 	}
 }
