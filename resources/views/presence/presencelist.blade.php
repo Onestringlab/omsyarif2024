@@ -22,57 +22,16 @@ Data Presence 
 			<div class="table-responsive">
 				<table class="table table-striped table-hover ">
 					<thead class="thead-dark">
-						<tr class="align-middle text-center table-primary">
+						<tr class="table-primary">
 							<th width="30">No</th>
-							<!-- <th>Month_id</th> -->
 							<th width="180">NIP</th>
 							<th width="300">Nama</th>
-							<!-- <th>Jabatan</th> -->
-							<!-- <th>Vd</th>
-							<th>Tkd</th>
-							<th>Tl1</th>
-							<th>Tl2</th>
-							<th>Tl3</th>
-							<th>Tl4</th>
-							<th>Thm</th>
-							<th>Vp</th>
-							<th>Ik</th>
-							<th>Psw1</th>
-							<th>Psw2</th>
-							<th>Psw3</th>
-							<th>Psw4</th>
-							<th>Thp</th>
-							<th>I</th>
-							<th>Dls</th>
-							<th>Ct</th>
-							<th>Clt</th>
-							<th>Cpp</th>
-							<th>Ctl</th>
-							<th>Tb</th>
-							<th>Ld</th>
-							<th>Ib</th>
-							<th>Tmk</th>
-							<th>Cs1</th>
-							<th>Cs14</th>
-							<th>Cm1</th>
-							<th>Cm2</th>
-							<th>Cm3</th>
-							<th>Cm41</th>
-							<th>Cm42</th>
-							<th>Cm43</th>
-							<th>Cap1</th>
-							<th>Cap10</th>
-							<th>Cb1</th>
-							<th>Cb2</th>
-							<th>Cb3</th> -->
 							<th width="60">TK</th>
 							<th width="60">PTK</th>
 							<th width="60">KUM</th>
 							<th width="60">KUT</th>
 							<th width="120">Status</th>
 							<th>Alasan</th>
-							<!-- <th>Created_at</th>
-							<th>Updated_at</th> -->
 							<th class="text-end" width="150">
 								<a class="btn btn-primary" href="{{asset('/')}}presence/create/{{ $month->id }}">
 									<i class="fas fa-plus"></i></a>
@@ -88,55 +47,14 @@ Data Presence 
 						@foreach ($rows as $row)
 						<tr>
 							<td>{{ $no++ }}.</td>
-							<!-- <td>{{ $row['month_id'] }}</td> -->
 							<td>{{ $row['nip'] }}</td>
 							<td>{{ $row['nama'] }}</td>
-							<!-- <td>{{ $row['jabatan'] }}</td> -->
-							<!-- <td>{{ $row['vd'] }}</td>
-							<td>{{ $row['tkd'] }}</td>
-							<td>{{ $row['tl1'] }}</td>
-							<td>{{ $row['tl2'] }}</td>
-							<td>{{ $row['tl3'] }}</td>
-							<td>{{ $row['tl4'] }}</td>
-							<td>{{ $row['thm'] }}</td>
-							<td>{{ $row['vp'] }}</td>
-							<td>{{ $row['ik'] }}</td>
-							<td>{{ $row['psw1'] }}</td>
-							<td>{{ $row['psw2'] }}</td>
-							<td>{{ $row['psw3'] }}</td>
-							<td>{{ $row['psw4'] }}</td>
-							<td>{{ $row['thp'] }}</td>
-							<td>{{ $row['i'] }}</td>
-							<td>{{ $row['dls'] }}</td>
-							<td>{{ $row['ct'] }}</td>
-							<td>{{ $row['clt'] }}</td>
-							<td>{{ $row['cpp'] }}</td>
-							<td>{{ $row['ctl'] }}</td>
-							<td>{{ $row['tb'] }}</td>
-							<td>{{ $row['ld'] }}</td>
-							<td>{{ $row['ib'] }}</td>
-							<td>{{ $row['tmk'] }}</td>
-							<td>{{ $row['cs1'] }}</td>
-							<td>{{ $row['cs14'] }}</td>
-							<td>{{ $row['cm1'] }}</td>
-							<td>{{ $row['cm2'] }}</td>
-							<td>{{ $row['cm3'] }}</td>
-							<td>{{ $row['cm41'] }}</td>
-							<td>{{ $row['cm42'] }}</td>
-							<td>{{ $row['cm43'] }}</td>
-							<td>{{ $row['cap1'] }}</td>
-							<td>{{ $row['cap10'] }}</td>
-							<td>{{ $row['cb1'] }}</td>
-							<td>{{ $row['cb2'] }}</td>
-							<td>{{ $row['cb3'] }}</td> -->
 							<td class="text-center">{{ $row['tk'] }}</td>
 							<td class="text-center">{{ $row['ptk'] }}%</td>
 							<td class="text-center">{{ $row['kum'] }}</td>
 							<td class="text-center">{{ $row['kut'] }}</td>
 							<td class="text-center">{{ $row['status'] }}</td>
 							<td>{{ $row['alasan'] }}</td>
-							<!-- <td>{{ $row['created_at'] }}</td>
-							<td>{{ $row['updated_at'] }}</td> -->
 							<td class="text-end">
 								<a class="btn btn-success" href="{{asset('/')}}presence/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-info-circle"></i></i></a>
 								<a class="btn btn-secondary" href="{{asset('/')}}presence/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>

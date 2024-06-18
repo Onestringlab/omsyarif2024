@@ -73,10 +73,6 @@ class PresenceController extends Controller
 		$presence->ptk = $request->ptk;
 		$presence->kum = $request->kum;
 		$presence->kut = $request->kut;
-		// $presence->status = $request->status;
-		// $presence->alasan = $request->alasan;
-		// $presence->created_at = $request->created_at;
-		// $presence->updated_at = $request->updated_at;
 		$presence->save();
 		return redirect('/presence');
 	}
@@ -145,8 +141,6 @@ class PresenceController extends Controller
 		$presence->kut = $request->kut;
 		$presence->status = $request->status;
 		$presence->alasan = $request->alasan;
-		// $presence->created_at = $request->created_at;
-		// $presence->updated_at = $request->updated_at;
 		$presence->save();
 		return redirect('/presence/data/' . $presence->month_id);
 	}
@@ -166,7 +160,9 @@ class PresenceController extends Controller
 
 	public function data($month_id)
 	{
-		$rows = Presence::where('month_id', $month_id)->orderBy('nama', 'ASC')->get();
+		$rows = Presence::where('month_id', $month_id)
+							->orderBy('nama', 'ASC')
+							->get();
 		$month = Months::where('id', $month_id)->first();
 		return view('presence/presencelist', ['rows' => $rows, 'month' => $month]);
 	}
@@ -198,13 +194,21 @@ class PresenceController extends Controller
 	{
 
 		$nip = Auth::user()->nip;
-		$rows = Presence::where("nip", $nip)->orderBy('month_id', 'DESC')->get();
+    $satker = Auth::user()->satker;
+		$rows = Presence::where("nip", $nip)
+							->select('presences.*')
+							->join('months','presences.month_id','months.id')
+							->where('months.satker',$satker)
+							->orderBy('month_id', 'DESC')
+							->get();
 		return view('presence/presensilist', ['rows' => $rows]);
 	}
 
 	public function presensi($id)
 	{
-		$row = Presence::where("id", $id)->where('nip', Auth::user()->nip)->first();
+		$row = Presence::where("id", $id)
+							->where('nip', Auth::user()->nip)
+							->first();
 		return view('presence/presensi', ['row' => $row]);
 	}
 

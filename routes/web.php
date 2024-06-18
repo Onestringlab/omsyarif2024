@@ -3,35 +3,54 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GrandController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\MonthsController;
+use App\Http\Controllers\SatkerController;
+use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\SalariesController;
 use App\Http\Controllers\AllowancesController;
-use App\Http\Controllers\PresenceController;
-use App\Http\Controllers\GrandController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
 Auth::routes(['register' => false, 'reset' => false]);
 // Auth::routes(['register' => true]);
-Route::middleware(['auth', 'checkrole:user,admin'])->group(
+
+
+Route::middleware(['auth', 'checkrole:user,admin,superadmin'])->group(
 	function () {
 		Route::get('/', function () {
 			return view('/home');
-		});
-		Route::get('/home', [HomeController::class, 'index'])->name('home');
+		})->middleware(['auth']);
+		
+		Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(['auth']);
+
 		Route::get('/password/{id}', [UsersController::class, 'password']);
 		Route::post('/passwordupdate', [UsersController::class, 'passwordupdate']);
+	}
+);
 
+Route::middleware(['auth', 'checkrole:user,superadmin'])->group(
+	function () {
+		Route::resource('users', UsersController::class);
+		Route::get('/users/{idusers}/delete', [UsersController::class, 'delete']);
+	}
+);
+
+Route::middleware(['auth', 'checkrole:admin,superadmin'])->group(
+	function () {
+		Route::resource('users', UsersController::class);
+		Route::get('/users/{idusers}/delete', [UsersController::class, 'delete']);
+	}
+);
+
+Route::middleware(['auth', 'checkrole:superadmin'])->group(
+	function () {
+		Route::resource('satker', SatkerController::class);
+		Route::get('/satker/{idsatker}/delete', [SatkerController::class,'delete']);
+	}
+);
+
+Route::middleware(['auth', 'checkrole:user'])->group(
+	function () {
 		Route::controller(SalariesController::class)->group(function () {
 			Route::get('/dibayarkanlist', 'dibayarkanlist')->name('dibayarkanlist');
 			Route::get('/dibayarkan/{id}', 'dibayarkan')->name('dibayarkan');
@@ -62,12 +81,6 @@ Route::middleware(['auth', 'checkrole:user,admin'])->group(
 
 Route::middleware(['auth', 'checkrole:admin'])->group(
 	function () {
-		Route::get('/unggahgaji', [HomeController::class, 'unggahgaji'])->name('unggahgaji');
-
-		Route::resource('users', UsersController::class);
-		Route::get('/users/{idusers}/delete', [UsersController::class, 'delete']);
-		Route::get('/passwordhash', [UsersController::class, 'passwordhash']);
-
 		Route::resource('months', MonthsController::class);
 		Route::get('/months/{idmonths}/delete', [MonthsController::class, 'delete']);
 

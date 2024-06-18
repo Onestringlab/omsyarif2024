@@ -16,14 +16,10 @@ Tunjangan Kinerja
       <div class="table-responsive">
         <table class="table table-striped table-hover ">
           <thead class="thead-dark">
-            <tr class="align-middle text-center table-primary">
-              <!-- <th width="40">No</th> -->
+            <tr class="table-primary">
               <th>Bulan</th>
-              <!-- <th width="150">Tunjangan</th> -->
-              <!-- <th width="150">Tunjangan Setelah Potongan</th> -->
               <th>Netto</th>
               <th>Status</th>
-              <!-- <th>Alasan</th> -->
               <th width="90"></th>
             </tr>
           </thead>
@@ -31,13 +27,9 @@ Tunjangan Kinerja
             @php ($no = 1)
             @foreach ($rows as $row)
             <tr>
-              <!-- <td class="text-center">{{ $no++ }}.</td> -->
-              <td class="text-center">{{ $row->months->month }} {{ $row->months->year }}</td>
-              <!-- <td class="text-end">{{ toCurrency($row['tunjangan']) }}</td> -->
-              <!-- <td class="text-end">{{ toCurrency($row['jumtunjsetpot']) }}</td> -->
-              <td class="text-end">{{ toCurrency($row['netto']) }}</td>
-              <td class="text-center">{{ $row['status'] }}</td>
-              <!-- <td>{{ $row['alasan'] }}</td> -->
+              <td>{{ $row->months->month }} {{ $row->months->year }}</td>
+              <td>{{ toCurrency($row['netto']) }}</td>
+              <td>{{ $row['status'] }}</td>
               <td>
                 <a class="btn text-light btn-info btn-sm" href=" {{asset('/')}}tungkin/{{ $row->id }}">
                   <i class="fa-solid fa-calendar-check"></i>

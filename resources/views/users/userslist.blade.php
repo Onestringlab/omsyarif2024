@@ -17,11 +17,6 @@ Data Users 
               <th>Nama</th>
               <th class="text-center">NIP</th>
               <th class="text-center">Email</th>
-              <!-- <th>Email_verified_at</th> -->
-              <!-- <th>Role</th> -->
-              <!-- <th>Password</th> -->
-              <!-- <th>Remember_token</th> -->
-              <!-- <th>Created_at</th> -->
               <th class="text-center">Waktu</th>
               <th class="text-center">
                 <a class="btn btn-primary" href="{{asset('/')}}users/create">
@@ -38,11 +33,6 @@ Data Users 
               <td>{{ $row['name'] }}</td>
               <td class="text-center">{{ $row['nip'] }}</td>
               <td>{{ $row['email'] }}</td>
-              <!-- <td>{{ $row['email_verified_at'] }}</td> -->
-              <!-- <td>{{ $row['role'] }}</td> -->
-              <!-- <td>{{ $row['password'] }}</td> -->
-              <!-- <td>{{ $row['remember_token'] }}</td> -->
-              <!-- <td>{{ $row['created_at'] }}</td> -->
               <td class="text-center">{{ $row['updated_at'] }}</td>
               <td class="text-center">
                 <a class="btn btn-success" href="{{asset('/')}}users/{{ $row->id }}">

@@ -20,27 +20,13 @@ Data Grand 
           <thead class="thead-dark">
             <tr class="align-middle">
               <th width="30" class="text-center">No</th>
-              <!-- <th>Month_id</th> -->
               <th width="180" class="text-center">NIP</th>
               <th width="250" class="text-center">Nama</th>
-              <!-- <th>Npwp</th> -->
-              <!-- <th>Panggol</th> -->
-              <!-- <th>Jabatan</th> -->
-              <!-- <th>Grad</th> -->
-              <!-- <th>Maxmedmin</th> -->
               <th width="100" class="text-center">Tunjangan</th>
-              <!-- <th>Potabs</th> -->
-              <!-- <th>Potkim</th> -->
-              <!-- <th>Jumlahpot</th> -->
               <th width="150" class="text-center">Tunjangan Setelah Potongan</th>
-              <!-- <th>Tunjpph</th> -->
-              <!-- <th>Bruto</th> -->
-              <!-- <th>Potpph</th> -->
               <th width="100" class="text-center">Netto</th>
               <th width="120" class="text-center">Status</th>
               <th class="text-center">Alasan</th>
-              <!-- <th>Created_at</th> -->
-              <!-- <th>Updated_at</th> -->
               <th class="text-center" width="150">
                 <a class=" btn btn-primary" href="{{asset('/')}}grand/create/{{ $month->id }}">
                   <i class="fas fa-plus"></i></a>
@@ -56,27 +42,13 @@ Data Grand 
             @foreach ($rows as $row)
             <tr>
               <td>{{ $no++ }}.</td>
-              <!-- <td>{{ $row['month_id'] }}</td> -->
               <td>{{ $row['nip'] }}</td>
               <td>{{ $row['nama'] }}</td>
-              <!-- <td>{{ $row['npwp'] }}</td> -->
-              <!-- <td>{{ $row['panggol'] }}</td> -->
-              <!-- <td>{{ $row['jabatan'] }}</td> -->
-              <!-- <td>{{ $row['grad'] }}</td> -->
-              <!-- <td>{{ $row['maxmedmin'] }}</td> -->
               <td class="text-end">{{ toCurrency($row['tunjangan']) }}</td>
-              <!-- <td>{{ $row['potabs'] }}</td> -->
-              <!-- <td>{{ $row['potkim'] }}</td> -->
-              <!-- <td>{{ $row['jumlahpot'] }}</td> -->
               <td class="text-end">{{ toCurrency($row['jumtunjsetpot']) }}</td>
-              <!-- <td>{{ $row['tunjpph'] }}</td> -->
-              <!-- <td>{{ $row['bruto'] }}</td> -->
-              <!-- <td>{{ $row['potpph'] }}</td> -->
               <td class="text-end">{{ toCurrency($row['netto']) }}</td>
               <td class="text-center">{{ $row['status'] }}</td>
               <td>{{ $row['alasan'] }}</td>
-              <!-- <td>{{ $row['created_at'] }}</td> -->
-              <!-- <td>{{ $row['updated_at'] }}</td> -->
               <td class=" text-center">
                 <a class="btn btn-success" href="{{asset('/')}}grand/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-info-circle"></i></a>
                 <a class="btn btn-secondary" href="{{asset('/')}}grand/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>

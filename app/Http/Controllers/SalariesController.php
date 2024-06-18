@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Months;
 use App\Models\Salaries;
+use App\Models\Satker;
 use App\Imports\SalaryModel;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -29,7 +30,6 @@ class SalariesController extends Controller
   public function store(Request $request)
   {
     $salaries = new Salaries;
-    // $salaries->id = $request->id;
     $salaries->month_id = $request->month_id;
     $salaries->name = $request->name;
     $salaries->nip = $request->nip;
@@ -54,8 +54,6 @@ class SalariesController extends Controller
     $salaries->p15 = $request->p15;
     $salaries->point = $request->point;
     $salaries->bayar = $request->bayar;
-    // $salaries->created_at = $request->created_at;
-    // $salaries->updated_at = $request->updated_at;
     $salaries->save();
     return redirect('/salaries/data/' . $salaries->month_id);
   }
@@ -75,7 +73,6 @@ class SalariesController extends Controller
   public function update(Request $request)
   {
     $salaries = Salaries::find($request->id);
-    // $salaries->id = $request->id;
     $salaries->month_id = $request->month_id;
     $salaries->name = $request->name;
     $salaries->nip = $request->nip;
@@ -100,8 +97,6 @@ class SalariesController extends Controller
     $salaries->p15 = $request->p15;
     $salaries->point = $request->point;
     $salaries->bayar = $request->bayar;
-    // $salaries->created_at = $request->created_at;
-    // $salaries->updated_at = $request->updated_at;
     $salaries->save();
     return redirect('/salaries/data/' . $salaries->month_id);
   }
@@ -130,7 +125,13 @@ class SalariesController extends Controller
   public function dibayarkanlist()
   {
     $nip = Auth::user()->nip;
-    $rows = Salaries::where('nip', $nip)->orderBy('month_id', 'DESC')->get();
+    $satker = Auth::user()->satker;
+    $rows = Salaries::select('salaries.*')
+              ->join('months','months.id', '=', 'salaries.month_id')
+              ->where('months.satker',$satker)
+              ->where('nip', $nip)
+              ->orderBy('month_id', 'DESC')
+              ->get();
     return view('salaries/dibayarkanlist', ['rows' => $rows]);
   }
 
@@ -143,8 +144,8 @@ class SalariesController extends Controller
   public function dibayarkanpdf($id)
   {
     $row = Salaries::where('id', $id)->where('nip', Auth::user()->nip)->first();
-    $pdf = PDF::loadview('salaries/dibayarkanpdf', ['row' => $row])->setPaper('a5');
-    // return $pdf->download('dibayarkan_dibayarkan' . generate_uuid() . '.pdf');
+    $satker = Satker::where('kode',Auth::user()->satker)->first();
+    $pdf = PDF::loadview('salaries/dibayarkanpdf', ['row' => $row, 'satker' => $satker])->setPaper('a5');
     return $pdf->stream('dibayarkan_dibayarkan' . generate_uuid_4());
   }
 

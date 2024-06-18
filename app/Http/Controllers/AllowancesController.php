@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\AllowanceModel;
 use App\Models\Months;
+use App\Models\Satker;
 use App\Models\Allowances;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -61,8 +62,6 @@ class AllowancesController extends Controller
     $allowances->bpjs2 = $request->bpjs2;
     $allowances->totpot = $request->totpot;
     $allowances->bersih = $request->bersih;
-    // $allowances->created_at = $request->created_at;
-    // $allowances->updated_at = $request->updated_at;
     $allowances->save();
     return redirect('/allowances/data/' . $allowances->month_id);
   }
@@ -116,8 +115,6 @@ class AllowancesController extends Controller
     $allowances->bpjs2 = $request->bpjs2;
     $allowances->totpot = $request->totpot;
     $allowances->bersih = $request->bersih;
-    // $allowances->created_at = $request->created_at;
-    // $allowances->updated_at = $request->updated_at;
     $allowances->save();
     return redirect('/allowances/data/' . $allowances->month_id);
   }
@@ -146,7 +143,13 @@ class AllowancesController extends Controller
   {
 
     $nip = Auth::user()->nip;
-    $rows = Allowances::where("nip", $nip)->orderBy('month_id', 'DESC')->get();
+    $satker = Auth::user()->satker;
+    $rows = Allowances::select('allowances.*')
+              ->where('nip', $nip) 
+              ->join('months','months.id', '=', 'allowances.month_id')
+              ->where('months.satker',$satker)
+              ->orderBy('month_id', 'DESC')
+              ->get();
     return view('allowances/bersihlist', ['rows' => $rows]);
   }
 
@@ -182,9 +185,11 @@ class AllowancesController extends Controller
 
   public function bersihpdf($id)
   {
-    $row = Allowances::where('id', $id)->where('nip', Auth::user()->nip)->first();
-    $pdf = PDF::loadview('allowances/bersihpdf', ['row' => $row])->setPaper('a5');
-    // return $pdf->download('slip_bersih_' . generate_uuid() . '.pdf');
+    $row = Allowances::where('id', $id)
+            ->where('nip', Auth::user()->nip)
+            ->first();
+    $satker = Satker::where('kode',Auth::user()->satker)->first();
+    $pdf = PDF::loadview('allowances/bersihpdf', ['row' => $row, 'satker' => $satker])->setPaper('a5');
     return $pdf->stream('slip_bersih_' . generate_uuid_4());
   }
 }

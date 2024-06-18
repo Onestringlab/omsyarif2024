@@ -8,13 +8,19 @@ use App\Models\Presence;
 use App\Models\Grand;
 use App\Models\Allowances;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class MonthsController extends Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth');
+  }
 
   public function index()
   {
-    $rows = Months::orderBy('created_at', 'DESC')->get();
+    $satker = Auth::user()->satker;
+    $rows = Months::orderBy('created_at', 'DESC')->where('satker',$satker)->get();
     return view('months/monthslist', ['rows' => $rows]);
   }
 
@@ -30,11 +36,9 @@ class MonthsController extends Controller
       'year' => 'required',
     ]);
     $months = new Months;
-    // $months->id = $request->id;
     $months->month = $request->month;
     $months->year = $request->year;
-    // $months->created_at = $request->created_at;
-    // $months->updated_at = $request->updated_at;
+    $months->satker = Auth::user()->satker;
     $months->save();
     return redirect('/months');
   }
@@ -57,8 +61,6 @@ class MonthsController extends Controller
     // $months->id = $request->id;
     $months->month = $request->month;
     $months->year = $request->year;
-    // $months->created_at = $request->created_at;
-    // $months->updated_at = $request->updated_at;
     $months->save();
     return redirect('/months');
   }

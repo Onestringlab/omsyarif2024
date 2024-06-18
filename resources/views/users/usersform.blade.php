@@ -22,12 +22,19 @@ Data Users 
     <div class="card-body">
       @if($action == 'insert')
       <form class="form-horizontal" action="{{ asset('/') }}users" method="post">
-        <!-- <div class="mb-3 row">
-          <label for="id" class="col-sm-2 col-form-label">Id</label>
+        <div class="mb-3 row">
+          <label for="nip" class="col-sm-2 col-form-label">Satuan Kerja</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" name="id" value="">
+            @error('satker')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <select name="satker" class="form-control">
+              @foreach ($satker as $data )
+                <option value="{{ $data->kode }}">{{ $data->kode }}-{{ $data->nama }}</option>
+              @endforeach
+            </select>
           </div>
-        </div> -->
+        </div>
         <div class="mb-3 row">
           <label for="nip" class="col-sm-2 col-form-label">NIP</label>
           <div class="col-sm-10">
@@ -55,18 +62,6 @@ Data Users 
             <input class="form-control" type="text" name="email" value="{{ old('email') }}">
           </div>
         </div>
-        <!-- <div class="mb-3 row">
-          <label for="email_verified_at" class="col-sm-2 col-form-label">Email_verified_at</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="email_verified_at" value="">
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="role" class="col-sm-2 col-form-label">Role</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="role" value="">
-          </div>
-        </div> -->
         <div class="mb-3 row">
           <label for="password" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
@@ -82,24 +77,6 @@ Data Users 
             <input class="form-control" type="password" name="confirmed" value="">
           </div>
         </div>
-        <!-- <div class="mb-3 row">
-          <label for="remember_token" class="col-sm-2 col-form-label">Remember_token</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="remember_token" value="">
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="created_at" class="col-sm-2 col-form-label">Created_at</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="created_at" value="">
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="updated_at" class="col-sm-2 col-form-label">Updated_at</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="updated_at" value="">
-          </div>
-        </div> -->
         <div class="mb-3">
           <div class="offset-sm-2 col-sm-10">
             <input type="hidden" name="action" value="{{ $action }}">
@@ -110,18 +87,21 @@ Data Users 
         {{ csrf_field() }}
       </form>
       @elseif($action == 'update')
-      <!-- @if ($errors->any())
-      @foreach ($errors->all() as $error)
-      <div>{{$error}}</div>
-      @endforeach
-      @endif -->
       <form class="form-horizontal" action="{{ asset('/') }}users/{{ $row->id }}" method="post">
-        <!-- <div class="mb-3 row">
-          <label for="id" class="col-sm-2 col-form-label">Id</label>
+        <div class="mb-3 row">
+          <label for="nip" class="col-sm-2 col-form-label">Satuan Kerja</label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" name="id" value="{{ $row->id }}">
+            @error('satker')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <select name="satker" class="form-control">
+              @foreach ($satker as $data )
+                <option value="{{ $data->kode }}" {{ $row->satker == $data->kode ? 'selected' : ''}}
+                >{{ $data->kode }}-{{ $data->nama }}</option>
+              @endforeach
+            </select>
           </div>
-        </div> -->
+        </div>
         <div class="mb-3 row">
           <label for="nip" class="col-sm-2 col-form-label">NIP</label>
           <div class="col-sm-10">
@@ -140,18 +120,6 @@ Data Users 
             <input class="form-control" type="text" name="email" value="{{ $row->email }}">
           </div>
         </div>
-        <!-- <div class="mb-3 row">
-          <label for="email_verified_at" class="col-sm-2 col-form-label">Email_verified_at</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="email_verified_at" value="{{ $row->email_verified_at }}">
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="role" class="col-sm-2 col-form-label">Role</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="role" value="{{ $row->role }}">
-          </div>
-        </div> -->
         <div class="mb-3 row">
           <label for="password" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
@@ -169,24 +137,6 @@ Data Users 
             Kosongkan! Jika tidak ubah password.
           </div>
         </div>
-        <!-- <div class="mb-3 row">
-          <label for="remember_token" class="col-sm-2 col-form-label">Remember_token</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="remember_token" value="{{ $row->remember_token }}">
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="created_at" class="col-sm-2 col-form-label">Created_at</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="created_at" value="{{ $row->created_at }}">
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="updated_at" class="col-sm-2 col-form-label">Updated_at</label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="updated_at" value="{{ $row->updated_at }}">
-          </div>
-        </div> -->
         <div class="mb-3">
           <div class="offset-sm-2 col-sm-10">
             @method("PATCH")
@@ -200,12 +150,6 @@ Data Users 
       </form>
       @elseif($action == 'delete')
       <form class="form-horizontal" action="{{ asset('/') }}users/{{ $row->id }}" method="post">
-        <!-- <div class="mb-3 row">
-          <label for="id" class="col-sm-2 control-label">Id</label>
-          <div class="col-sm-10">
-            {{ $row->id }}
-          </div>
-        </div> -->
         <div class="mb-3 row">
           <label for="nip" class="col-sm-2 control-label">NIP</label>
           <div class="col-sm-10">
@@ -224,42 +168,6 @@ Data Users 
             {{ $row->email }}
           </div>
         </div>
-        <!-- <div class="mb-3 row">
-          <label for="email_verified_at" class="col-sm-2 control-label">Email_verified_at</label>
-          <div class="col-sm-10">
-            {{ $row->email_verified_at }}
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="role" class="col-sm-2 control-label">Role</label>
-          <div class="col-sm-10">
-            {{ $row->role }}
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="password" class="col-sm-2 control-label">Password</label>
-          <div class="col-sm-10">
-            {{ $row->password }}
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="remember_token" class="col-sm-2 control-label">Remember_token</label>
-          <div class="col-sm-10">
-            {{ $row->remember_token }}
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="created_at" class="col-sm-2 control-label">Created_at</label>
-          <div class="col-sm-10">
-            {{ $row->created_at }}
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="updated_at" class="col-sm-2 control-label">Updated_at</label>
-          <div class="col-sm-10">
-            {{ $row->updated_at }}
-          </div>
-        </div> -->
         <div class="mb-3">
           <div class="offset-sm-2 col-sm-10">
             @method("DELETE")
@@ -272,12 +180,6 @@ Data Users 
         {{ csrf_field() }}
       </form>
       @elseif($action == 'detail')
-      <!-- <div class="mb-3 row">
-        <label for="id" class="col-sm-2 control-label">Id</label>
-        <div class="col-sm-10">
-          {{ $row->id }}
-        </div>
-      </div> -->
       <div class="mb-3 row">
         <label for="nip" class="col-sm-2 control-label">NIP</label>
         <div class="col-sm-10">
@@ -296,42 +198,6 @@ Data Users 
           {{ $row->email }}
         </div>
       </div>
-      <!-- <div class="mb-3 row">
-        <label for="email_verified_at" class="col-sm-2 control-label">Email_verified_at</label>
-        <div class="col-sm-10">
-          {{ $row->email_verified_at }}
-        </div>
-      </div> -->
-      <!-- <div class="mb-3 row">
-        <label for="role" class="col-sm-2 control-label">Role</label>
-        <div class="col-sm-10">
-          {{ $row->role }}
-        </div>
-      </div> -->
-      <!-- <div class="mb-3 row">
-        <label for="password" class="col-sm-2 control-label">Password</label>
-        <div class="col-sm-10">
-          {{ $row->password }}
-        </div>
-      </div> -->
-      <!-- <div class="mb-3 row">
-        <label for="remember_token" class="col-sm-2 control-label">Remember_token</label>
-        <div class="col-sm-10">
-          {{ $row->remember_token }}
-        </div>
-      </div> -->
-      <!-- <div class="mb-3 row">
-        <label for="created_at" class="col-sm-2 control-label">Created_at</label>
-        <div class="col-sm-10">
-          {{ $row->created_at }}
-        </div>
-      </div> -->
-      <!-- <div class="mb-3 row">
-        <label for="updated_at" class="col-sm-2 control-label">Updated_at</label>
-        <div class="col-sm-10">
-          {{ $row->updated_at }}
-        </div>
-      </div> -->
       <div class="mb-3">
         <div class="offset-sm-2 col-sm-10">
           <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>

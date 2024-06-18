@@ -23,7 +23,7 @@
   <h3>
     <center>SLIP GAJI DIBAYARKAN</center>
   </h3>
-  <strong>PENGADILAN TINGGI PONTIANAK</strong></br>
+  <strong>{{ strtoupper($satker->nama) }}</strong></br>
   <table style="width: 100%;">
     <tr>
       <td>Pembayaran</td>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Users;
+use App\Models\Satker;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -17,13 +18,20 @@ class UsersController extends Controller
 
   public function index()
   {
-    $rows = Users::orderBy('name', 'ASC')->get();
+    $satker = Auth::user()->satker;
+    if(Auth::user()->role==="superadmin"){
+      $rows = Users::orderBy('name', 'ASC')->get();
+    }
+    else{
+      $rows = Users::orderBy('name', 'ASC')->where("satker",$satker)->get();
+    }
     return view('users/userslist', ['rows' => $rows]);
   }
 
   public function create()
   {
-    return view('users/usersform', ['action' => 'insert']);
+    $satker = Satker::orderBy('nama', 'ASC')->get();
+    return view('users/usersform', ['action' => 'insert', 'satker' => $satker]);
   }
 
   public function store(Request $request)
@@ -37,31 +45,30 @@ class UsersController extends Controller
       'confirmed' => 'required|string|min:8',
     ]);
 
-    $users = new Users;
-    // $users->id = $request->id;
-    $users->name = $request->name;
-    $users->nip = $request->nip;
-    $users->email = $request->email;
-    // $users->email_verified_at = $request->email_verified_at;
-    // $users->role = $request->role;
-    $users->password = Hash::make($request->password);
-    // $users->remember_token = $request->remember_token;
-    // $users->created_at = $request->created_at;
-    // $users->updated_at = $request->updated_at;
-    $users->save();
+    $user = new Users;
+    $user->name = $request->name;
+    $user->nip = $request->nip;
+    $user->email = $request->email;
+    if(Auth::user()->role === "superadmin"){
+      $user->satker = $request->satker;
+      $user->role = "admin";
+    }
+    $user->password = Hash::make($request->password);
+    $user->save();
     return redirect('/users');
   }
 
   public function show($id)
   {
-    $users = Users::find($id);
-    return view('users/usersform', ['row' => $users, 'action' => 'detail']);
+    $user = Users::find($id);
+    return view('users/usersform', ['row' => $user, 'action' => 'detail']);
   }
 
   public function edit($id)
   {
-    $users = Users::find($id);
-    return view('users/usersform', ['row' => $users, 'action' => 'update']);
+    $satker = Satker::orderBy('nama', 'ASC')->get();
+    $user = Users::find($id);
+    return view('users/usersform', ['row' => $user, 'action' => 'update', 'satker' => $satker]);
   }
 
   public function update(Request $request)
@@ -73,39 +80,34 @@ class UsersController extends Controller
       'password' => 'same:confirmed',
     ]);
 
-    $users = Users::find($request->id);
-    // $users->id = $request->id;
-    $users->name = $request->name;
-    $users->nip = $request->nip;
-    $users->email = $request->email;
-    // $users->email_verified_at = $request->email_verified_at;
-    // $users->role = $request->role;
+    $user = Users::find($request->id);
+    $user->name = $request->name;
+    $user->nip = $request->nip;
+    $user->email = $request->email;
+    $user->satker = $request->satker;
     if (isset($request->password))
-      $users->password = Hash::make($request->password);
-    // $users->remember_token = $request->remember_token;
-    // $users->created_at = $request->created_at;
-    // $users->updated_at = $request->updated_at;
-    $users->save();
+      $user->password = Hash::make($request->password);
+    $user->save();
     return redirect('/users');
   }
 
   public function delete($id)
   {
-    $users = Users::find($id);
-    return view('users/usersform', ['row' => $users, 'action' => 'delete']);
+    $user = Users::find($id);
+    return view('users/usersform', ['row' => $user, 'action' => 'delete']);
   }
 
   public function destroy($id)
   {
-    $users = Users::find($id);
-    $users->delete();
+    $user = Users::find($id);
+    $user->delete();
     return redirect('/users');
   }
 
   public function password($id)
   {
-    $users = Users::where('id', $id)->where('nip', Auth::user()->nip)->first();
-    return view('users/passwordform', ['row' => $users]);
+    $user = Users::where('id', $id)->where('nip', Auth::user()->nip)->first();
+    return view('users/passwordform', ['row' => $user]);
   }
 
   public function passwordupdate(Request $request)
@@ -113,15 +115,14 @@ class UsersController extends Controller
     $this->validate($request, [
       'password' => 'required|string|min:8|same:confirmed',
     ]);
-    $users = Users::where('id', $request->id)->first();
+    $user = Users::where('id', $request->id)->first();
     if (isset($request->password)) {
-      $users->password = Hash::make($request->password);
-      $users->save();
+      $user->password = Hash::make($request->password);
+      $user->save();
       $message = "Password berhasil diubah!";
     } else {
       $message = "Password tidak berubah!";
     }
-    // return view('users/passwordform', ['row' => $users, 'message' => $message]);
     return redirect('/password' . '/' . $request->id)->with(['message' => $message]);
   }
 
@@ -132,6 +133,5 @@ class UsersController extends Controller
       $row->password = Hash::make($row->nip);;
       $row->save();
     }
-    dd('passwordhash');
   }
 }

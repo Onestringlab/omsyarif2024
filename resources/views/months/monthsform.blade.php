@@ -47,6 +47,9 @@ Data Months 
               <option value="Oktober">Oktober</option>
               <option value="November">November</option>
               <option value="Desember">Desember</option>
+              <option value="THR">THR</option>
+              <option value="Ke-13">Ke-13</option>
+
             </select>
           </div>
         </div>
@@ -106,7 +109,10 @@ Data Months 
               <option value="September" {{ $row->month === "September" ? "selected" : ""}}>September</option>
               <option value="Oktober" {{ $row->month === "Oktober" ? "selected" : ""}}>Oktober</option>
               <option value="November" {{ $row->month === "November" ? "selected" : ""}}>November</option>
-              <option value="Desember" {{ $row->month === "Desemeber" ? "selected" : ""}}>Desember</option>
+              <option value="Desember" {{ $row->month === "Desember" ? "selected" : ""}}>Desember</option>
+              <option value="THR" {{ $row->month === "THR" ? "selected" : ""}}>THR</option>
+              <option value="Ke-13" {{ $row->month === "Ke-13" ? "selected" : ""}}>Ke-13</option>
+
             </select>
           </div>
         </div>

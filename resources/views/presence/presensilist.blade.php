@@ -16,15 +16,10 @@ Presensi
       <div class="table-responsive">
         <table class="table table-striped table-hover ">
           <thead class="thead-dark">
-            <tr class="align-middle text-center table-primary">
-              <!-- <th width="30">No</th> -->
+            <tr class="table-primary">
               <th>Bulan</th>
               <th>Hadir</th>
-              <!-- <th width="140">PENGURANGAN TUNJANGAN KINERJA</th> -->
-              <!-- <th width="140">KEHADIRAN UNTUK UANG MAKAN</th> -->
-              <!-- <th width="140">KEHADIRAN UNTUK UANG TRANSPORT</th> -->
               <th width="90">Status</th>
-              <!-- <th>Alasan</th> -->
               <th width="90"></th>
             </tr>
           </thead>
@@ -32,14 +27,9 @@ Presensi
             @php ($no = 1)
             @foreach ($rows as $row)
             <tr>
-              <!-- <td class="text-center">{{ $no++ }}.</td> -->
-              <td class="text-center">{{ $row->months->month }} {{ $row->months->year }}</td>
-              <td class="text-center">{{ $row['tk'] }} Hari</td>
-              <!-- <td class="text-center">{{ $row['ptk'] }}%</td> -->
-              <!-- <td class="text-center">{{ $row['kum'] }}</td> -->
-              <!-- <td class="text-center">{{ $row['kut'] }}</td> -->
-              <td class="text-center">{{ $row['status'] }}</td>
-              <!-- <td>{{ $row['alasan'] }}</td> -->
+              <td>{{ $row->months->month }} {{ $row->months->year }}</td>
+              <td>{{ $row['tk'] }} Hari</td>
+              <td>{{ $row['status'] }}</td>
               <td>
                 <a class="btn text-light btn-info btn-sm" href="{{asset('/')}}presensi/{{ $row->id }}">
                   <i class="fa-solid fa-calendar-check"></i>

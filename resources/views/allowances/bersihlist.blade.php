@@ -16,8 +16,7 @@ Slip Gaji Dibayarkan
       <div class="table-responsive">
         <table class="table table-striped table-hover ">
           <thead class="thead-dark">
-            <tr>
-              <!-- <th width="40">No</th> -->
+            <tr class="table-primary">
               <th>Bulan</th>
               <th>Gaji</th>
               <th width="90"></th>
@@ -27,7 +26,6 @@ Slip Gaji Dibayarkan
             @php ($no = 1)
             @foreach ($rows as $row)
             <tr>
-              <!-- <td class="text-center">{{ $no++ }}.</td> -->
               <td>{{ $row->months->month }} {{ $row->months->year }}</td>
               <td>{{toCurrency($row['bersih']) }}</td>
               <td>

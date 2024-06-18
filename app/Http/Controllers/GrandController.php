@@ -140,7 +140,13 @@ class GrandController extends Controller
 	public function tungkinlist()
 	{
 		$nip = Auth::user()->nip;
-		$rows = Grand::where("nip", $nip)->orderBy('created_at', 'DESC')->get();
+    $satker = Auth::user()->satker;
+		$rows = Grand::select('grands.*')
+							->where("nip", $nip)
+							->join('months','months.id', '=', 'grands.month_id')
+							->where('months.satker',$satker)
+							->orderBy('created_at', 'DESC')
+							->get();
 		return view('grand/tungkinlist', ['rows' => $rows]);
 	}
 

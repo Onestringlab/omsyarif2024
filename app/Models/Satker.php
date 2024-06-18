@@ -5,7 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class presence extends Model
+class Satker extends Model
 {
     use HasFactory;
+    protected $table = 'satker';
+
+    protected $fillable = [
+    'kode', 'nama', 'alamat'
+    ];
 }
