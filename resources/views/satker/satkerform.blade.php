@@ -12,8 +12,8 @@ Data Satker 
         }
 
     </script>
-    <div class="card">
-        <h5 class="card-header"> Data Satker</h5>
+    <div class="card border-success">
+        <h5 class="card-header text-bg-success"> Data Satuan Kerja</h5>
         <div class="card-body">
             @if($action == 'insert')
                 <form class="form-horizontal" action="{{ asset('/') }}satker" method="post">

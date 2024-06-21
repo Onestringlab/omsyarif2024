@@ -6,20 +6,20 @@ Data Satker 
 
 @section('content')
 <div class="container">
-    <div class="card">
-        <h5 class="card-header"> Data Satker</h5>
+    <div class="card border-success">
+        <h5 class="card-header text-bg-success"> Data Satuan Kerja</h5>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped table-hover ">
                     <thead class="thead-dark">
                         <tr>
-                            <th>No</th>
-                            <th>Kode</th>
-                            <th>Nama</th>
-                            <th>Alamat</th>
-                            <!-- <th>Created_at</th> -->
-                            <th>Updated at</th>
-                            <th><a href="{{ asset('/') }}satker/create">
+                            <th class="text-center">No</th>
+                            <th class="text-center">Kode</th>
+                            <th class="text-center">Nama</th>
+                            <th class="text-center">Alamat</th>
+                            <!-- <th class="text-center">Created_at</th> -->
+                            <th class="text-center">Updated at</th>
+                            <th class="text-center"><a class="btn btn-primary" href="{{ asset('/') }}satker/create">
                                     <i class="fas fa-plus"></i>
                                 </a>
                             </th>
@@ -36,11 +36,11 @@ Data Satker 
                                     <!-- <td>{{ $row['created_at'] }}</td> -->
                                     <td>{{ $row['updated_at'] }}</td>
                                     <td align="center">
-                                        <a href="{{ asset('/') }}satker/{{ $row->id }}"><i
+                                        <a class="btn btn-success" href="{{ asset('/') }}satker/{{ $row->id }}"><i
                                                 class="fas fa-info-circle"></i></a>
-                                        <a href="{{ asset('/') }}satker/{{ $row->id }}/edit"><i
+                                        <a class="btn btn-secondary" href="{{ asset('/') }}satker/{{ $row->id }}/edit"><i
                                                 class="far fa-edit"></i></a>
-                                        <a href="{{ asset('/') }}satker/{{ $row->id }}/delete"><i
+                                        <a class="btn btn-danger" href="{{ asset('/') }}satker/{{ $row->id }}/delete"><i
                                                 class="far fa-trash-alt"></i></a>
                                     </td>
                                 </tr>
