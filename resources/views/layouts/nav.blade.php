@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <!-- {{ config('app.name', 'Laravel') }} -->
-            <img src="{{asset('/images/OM-SYARIF-LOGO-SMALL.png')}}" height="50">
+            <!-- {{ config('app.name', 'Slip Web Id') }} -->
+            <img src="{{asset('/images/slip-web-id.png')}}" height="50">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
