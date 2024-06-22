@@ -23,6 +23,7 @@ Data Users 
       @if($action == 'insert')
       <form class="form-horizontal" action="{{ asset('/') }}users" method="post">
         <div class="mb-3 row">
+          @if(in_array(Auth::user()->role, ['superadmin']))
           <label for="nip" class="col-sm-2 col-form-label">Satuan Kerja</label>
           <div class="col-sm-10">
             @error('satker')
@@ -34,6 +35,7 @@ Data Users 
               @endforeach
             </select>
           </div>
+          @endif
         </div>
         <div class="mb-3 row">
           <label for="nip" class="col-sm-2 col-form-label">NIP</label>
@@ -89,6 +91,7 @@ Data Users 
       @elseif($action == 'update')
       <form class="form-horizontal" action="{{ asset('/') }}users/{{ $row->id }}" method="post">
         <div class="mb-3 row">
+          @if(in_array(Auth::user()->role, ['superadmin']))
           <label for="nip" class="col-sm-2 col-form-label">Satuan Kerja</label>
           <div class="col-sm-10">
             @error('satker')
@@ -101,6 +104,7 @@ Data Users 
               @endforeach
             </select>
           </div>
+          @endif
         </div>
         <div class="mb-3 row">
           <label for="nip" class="col-sm-2 col-form-label">NIP</label>
