@@ -53,6 +53,10 @@ class UsersController extends Controller
       $user->satker = $request->satker;
       $user->role = "admin";
     }
+    if(Auth::user()->role === "admin"){
+      $user->satker = Auth::user()->satker;
+      $user->role = "user";
+    }
     $user->password = Hash::make($request->password);
     $user->save();
     return redirect('/users');
