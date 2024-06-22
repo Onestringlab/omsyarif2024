@@ -35,7 +35,7 @@ class GrandsImport implements ToModel, WithStartRow
 				'month_id'	=> $this->month_id,
 				'nama' => $row[1],
 				'nip' => $row[2],
-				'npwp' => $row[3],
+				'npwp' => '', //$row[3],
 				'panggol' => $row[4],
 				'jabatan' => $row[5],
 				'grad' => $row[6],
