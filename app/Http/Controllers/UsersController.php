@@ -64,14 +64,14 @@ class UsersController extends Controller
 
   public function show($id)
   {
-    $user = Users::find($id);
+    $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
     return view('users/usersform', ['row' => $user, 'action' => 'detail']);
   }
 
   public function edit($id)
   {
+    $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
     $satker = Satker::orderBy('nama', 'ASC')->get();
-    $user = Users::find($id);
     return view('users/usersform', ['row' => $user, 'action' => 'update', 'satker' => $satker]);
   }
 
@@ -99,7 +99,7 @@ class UsersController extends Controller
 
   public function delete($id)
   {
-    $user = Users::find($id);
+    $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
     return view('users/usersform', ['row' => $user, 'action' => 'delete']);
   }
 
