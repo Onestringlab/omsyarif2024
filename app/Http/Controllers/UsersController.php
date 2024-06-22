@@ -88,7 +88,9 @@ class UsersController extends Controller
     $user->name = $request->name;
     $user->nip = $request->nip;
     $user->email = $request->email;
-    $user->satker = $request->satker;
+    if(Auth::user()->role === "superadmin"){
+      $user->satker = $request->satker;
+    }
     if (isset($request->password))
       $user->password = Hash::make($request->password);
     $user->save();
