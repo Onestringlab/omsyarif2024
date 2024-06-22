@@ -134,8 +134,9 @@ class AllowancesController extends Controller
 
   public function data($month_id)
   {
+    $satker = Auth::user()->satker;
+    $month = Months::where('id', $month_id)->where('months.satker',$satker)->first();
     $rows = Allowances::where('month_id', $month_id)->orderBy('nmpeg', 'ASC')->get();
-    $month = Months::where('id', $month_id)->first();
     return view('allowances/allowanceslist', ['rows' => $rows, 'month' => $month]);
   }
 

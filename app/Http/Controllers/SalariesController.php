@@ -117,8 +117,9 @@ class SalariesController extends Controller
 
   public function data($month_id)
   {
+    $satker = Auth::user()->satker;
+    $month = Months::where('id', $month_id)->where('months.satker',$satker)->first();
     $rows = Salaries::where('month_id', $month_id)->orderBy('name', 'ASC')->get();
-    $month = Months::where('id', $month_id)->first();
     return view('salaries/salarieslist', ['rows' => $rows, 'month' => $month]);
   }
 

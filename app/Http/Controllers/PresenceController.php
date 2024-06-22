@@ -160,10 +160,11 @@ class PresenceController extends Controller
 
 	public function data($month_id)
 	{
+		$satker = Auth::user()->satker;
+    $month = Months::where('id', $month_id)->where('months.satker',$satker)->first();
 		$rows = Presence::where('month_id', $month_id)
 							->orderBy('nama', 'ASC')
 							->get();
-		$month = Months::where('id', $month_id)->first();
 		return view('presence/presencelist', ['rows' => $rows, 'month' => $month]);
 	}
 

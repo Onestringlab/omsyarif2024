@@ -108,8 +108,9 @@ class GrandController extends Controller
 
 	public function data($month_id)
 	{
+		$satker = Auth::user()->satker;
+    $month = Months::where('id', $month_id)->where('months.satker',$satker)->first();
 		$rows = Grand::where('month_id', $month_id)->orderBy('nama', 'ASC')->get();
-		$month = Months::where('id', $month_id)->first();
 		return view('grand/grandlist', ['rows' => $rows, 'month' => $month]);
 	}
 
