@@ -19,8 +19,7 @@ class MonthsController extends Controller
 
   public function index()
   {
-    $satker = Auth::user()->satker;
-    $rows = Months::orderBy('created_at', 'DESC')->where('satker',$satker)->get();
+    $rows = Months::orderBy('created_at', 'DESC')->where('satker',Auth::user()->satker)->get();
     return view('months/monthslist', ['rows' => $rows]);
   }
 
@@ -45,13 +44,13 @@ class MonthsController extends Controller
 
   public function show($id)
   {
-    $months = Months::find($id);
+    $months = Months::where('id',$id)->where('satker',Auth::user()->satker)->first();
     return view('months/monthsform', ['row' => $months, 'action' => 'detail']);
   }
 
   public function edit($id)
   {
-    $months = Months::find($id);
+    $months = Months::where('id',$id)->where('satker',Auth::user()->satker)->first();
     return view('months/monthsform', ['row' => $months, 'action' => 'update']);
   }
 
@@ -67,7 +66,7 @@ class MonthsController extends Controller
 
   public function delete($id)
   {
-    $months = Months::find($id);
+    $months = Months::where('id',$id)->where('satker',Auth::user()->satker)->first();
     return view('months/monthsform', ['row' => $months, 'action' => 'delete']);
   }
 

@@ -22,7 +22,8 @@ class AllowancesController extends Controller
 
   public function create($month_id)
   {
-    return view('allowances/allowancesform', ['action' => 'insert', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    return view('allowances/allowancesform', ['action' => 'insert', 'month_id' => $month->id]);
   }
 
   public function store(Request $request)
@@ -69,13 +70,15 @@ class AllowancesController extends Controller
   public function show($month_id, $id)
   {
     $allowances = Allowances::find($id);
-    return view('allowances/allowancesform', ['row' => $allowances, 'action' => 'detail', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    return view('allowances/allowancesform', ['row' => $allowances, 'action' => 'detail', 'month_id' => $month->id]);
   }
 
   public function edit($month_id, $id)
   {
     $allowances = Allowances::find($id);
-    return view('allowances/allowancesform', ['row' => $allowances, 'action' => 'update', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    return view('allowances/allowancesform', ['row' => $allowances, 'action' => 'update', 'month_id' => $month->id]);
   }
 
   public function update(Request $request)
@@ -122,7 +125,8 @@ class AllowancesController extends Controller
   public function delete($month_id, $id)
   {
     $allowances = Allowances::find($id);
-    return view('allowances/allowancesform', ['row' => $allowances, 'action' => 'delete', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    return view('allowances/allowancesform', ['row' => $allowances, 'action' => 'delete', 'month_id' => $month->id]);
   }
 
   public function destroy($id)
@@ -134,8 +138,7 @@ class AllowancesController extends Controller
 
   public function data($month_id)
   {
-    $satker = Auth::user()->satker;
-    $month = Months::where('id', $month_id)->where('months.satker',$satker)->first();
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
     $rows = Allowances::where('month_id', $month_id)->orderBy('nmpeg', 'ASC')->get();
     return view('allowances/allowanceslist', ['rows' => $rows, 'month' => $month]);
   }

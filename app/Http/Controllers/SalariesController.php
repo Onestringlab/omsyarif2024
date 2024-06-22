@@ -24,7 +24,8 @@ class SalariesController extends Controller
 
   public function create($month_id)
   {
-    return view('salaries/salariesform', ['action' => 'insert', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    return view('salaries/salariesform', ['action' => 'insert', 'month_id' => $month->id]);
   }
 
   public function store(Request $request)
@@ -61,13 +62,15 @@ class SalariesController extends Controller
   public function show($month_id, $id)
   {
     $salaries = Salaries::find($id);
-    return view('salaries/salariesform', ['row' => $salaries, 'action' => 'detail', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    return view('salaries/salariesform', ['row' => $salaries, 'action' => 'detail', 'month_id' => $month->id]);
   }
 
   public function edit($month_id, $id)
   {
     $salaries = Salaries::find($id);
-    return view('salaries/salariesform', ['row' => $salaries, 'action' => 'update', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    return view('salaries/salariesform', ['row' => $salaries, 'action' => 'update', 'month_id' => $month->id]);
   }
 
   public function update(Request $request)
@@ -104,7 +107,8 @@ class SalariesController extends Controller
   public function delete($month_id, $id)
   {
     $salaries = Salaries::find($id);
-    return view('salaries/salariesform', ['row' => $salaries, 'action' => 'delete', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    return view('salaries/salariesform', ['row' => $salaries, 'action' => 'delete', 'month_id' => $month->id]);
   }
 
   public function destroy($id)
@@ -117,8 +121,7 @@ class SalariesController extends Controller
 
   public function data($month_id)
   {
-    $satker = Auth::user()->satker;
-    $month = Months::where('id', $month_id)->where('months.satker',$satker)->first();
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
     $rows = Salaries::where('month_id', $month_id)->orderBy('name', 'ASC')->get();
     return view('salaries/salarieslist', ['rows' => $rows, 'month' => $month]);
   }

@@ -20,7 +20,8 @@ class GrandController extends Controller
 
 	public function create($month_id)
 	{
-		return view('grand/grandform', ['action' => 'insert', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+		return view('grand/grandform', ['action' => 'insert', 'month_id' => $month->id]);
 	}
 
 	public function store(Request $request)
@@ -55,13 +56,15 @@ class GrandController extends Controller
 	public function show($month_id, $id)
 	{
 		$grand = Grand::find($id);
-		return view('grand/grandform', ['row' => $grand, 'action' => 'detail', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+		return view('grand/grandform', ['row' => $grand, 'action' => 'detail', 'month_id' => $month->id]);
 	}
 
 	public function edit($month_id, $id)
 	{
 		$grand = Grand::find($id);
-		return view('grand/grandform', ['row' => $grand, 'action' => 'update', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+		return view('grand/grandform', ['row' => $grand, 'action' => 'update', 'month_id' => $month->id]);
 	}
 
 	public function update(Request $request)
@@ -96,7 +99,8 @@ class GrandController extends Controller
 	public function delete($month_id, $id)
 	{
 		$grand = Grand::find($id);
-		return view('grand/grandform', ['row' => $grand, 'action' => 'delete', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+		return view('grand/grandform', ['row' => $grand, 'action' => 'delete', 'month_id' => $month->id]);
 	}
 
 	public function destroy($id)
@@ -108,8 +112,7 @@ class GrandController extends Controller
 
 	public function data($month_id)
 	{
-		$satker = Auth::user()->satker;
-    $month = Months::where('id', $month_id)->where('months.satker',$satker)->first();
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
 		$rows = Grand::where('month_id', $month_id)->orderBy('nama', 'ASC')->get();
 		return view('grand/grandlist', ['rows' => $rows, 'month' => $month]);
 	}

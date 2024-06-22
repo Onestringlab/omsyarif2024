@@ -20,7 +20,8 @@ class PresenceController extends Controller
 
 	public function create($month_id)
 	{
-		return view('presence/presenceform', ['action' => 'insert', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+		return view('presence/presenceform', ['action' => 'insert', 'month_id' => $month->id]);
 	}
 
 	public function store(Request $request)
@@ -80,13 +81,15 @@ class PresenceController extends Controller
 	public function show($month_id, $id)
 	{
 		$presences = Presence::find($id);
-		return view('presence/presenceform', ['row' => $presences, 'action' => 'detail', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+		return view('presence/presenceform', ['row' => $presences, 'action' => 'detail', 'month_id' => $month->id]);
 	}
 
 	public function edit($month_id, $id)
 	{
 		$presence = Presence::find($id);
-		return view('presence/presenceform', ['row' => $presence, 'action' => 'update', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+		return view('presence/presenceform', ['row' => $presence, 'action' => 'update', 'month_id' => $month->id]);
 	}
 
 	public function update(Request $request)
@@ -148,7 +151,8 @@ class PresenceController extends Controller
 	public function delete($month_id, $id)
 	{
 		$presence = Presence::find($id);
-		return view('presence/presenceform', ['row' => $presence, 'action' => 'delete', 'month_id' => $month_id]);
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+		return view('presence/presenceform', ['row' => $presence, 'action' => 'delete', 'month_id' => $month->id]);
 	}
 
 	public function destroy($id)
@@ -160,8 +164,7 @@ class PresenceController extends Controller
 
 	public function data($month_id)
 	{
-		$satker = Auth::user()->satker;
-    $month = Months::where('id', $month_id)->where('months.satker',$satker)->first();
+    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
 		$rows = Presence::where('month_id', $month_id)
 							->orderBy('nama', 'ASC')
 							->get();
