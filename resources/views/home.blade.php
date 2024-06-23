@@ -6,7 +6,7 @@
 		<div class="col-md-12">
 			<div class="card border-success ">
 				<h5 class="card-header text-bg-success">SLIP.WEB.ID</h5>
-				<img src="{{ asset('/images/banner/pexels-obsahovka-obsahovka-1947041-3570240.jpg') }}" alt="Card image cap">
+				<img src="{{ asset('/images/banner/pexels-burst-374720.jpg') }}" alt="Card image cap">
 				<div class="card-body">
 					<p class="card-text">SLIP.web.id adalah aplikasi berbasis website yang berguna bagi ASN Pusat untuk memonitor informasi dan mencetak slip penghasilan yang terdiri dari gaji, tunjangan dan uang makan dengan mudah dan aman, di mana saja serta kapan saja.</p>
 				</div>

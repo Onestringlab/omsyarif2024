@@ -6,7 +6,7 @@
 		<div class="col-md-8">
 			<div class="card border-success">
 				<div class="card-header text-bg-success">{{ __('Login') }}</div>
-
+				<img src="{{ asset('/images/banner/pexels-pixabay-461064.jpg') }}" alt="Card image cap">
 				<div class="card-body">
 					<form method="POST" action="{{ route('login') }}">
 						@csrf
