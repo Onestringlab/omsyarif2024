@@ -20,19 +20,19 @@ Data Satker 
                     <div class="mb-3 row">
                         <label for="kode" class="col-sm-2 col-form-label">Kode</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="kode" value="">
+                            <input class="form-control" type="text" name="kode" value="" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="nama" value="">
+                            <input class="form-control" type="text" name="nama" value="" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="alamat" value="">
+                            <input class="form-control" type="text" name="alamat" value="" required>
                         </div>
                     </div>
                     <div class="mb-3">
@@ -50,19 +50,19 @@ Data Satker 
                     <div class="mb-3 row">
                         <label for="kode" class="col-sm-2 col-form-label">Kode</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="kode" value="{{ $row->kode }}">
+                            <input class="form-control" type="text" name="kode" value="{{ $row->kode }}" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="nama" value="{{ $row->nama }}">
+                            <input class="form-control" type="text" name="nama" value="{{ $row->nama }}" required>
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">
-                            <input class="form-control" type="text" name="alamat" value="{{ $row->alamat }}">
+                            <input class="form-control" type="text" name="alamat" value="{{ $row->alamat }}" required>
                         </div>
                     </div>
                     <div class="mb-3 row">

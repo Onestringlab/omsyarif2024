@@ -27,7 +27,6 @@ class PresenceController extends Controller
 	public function store(Request $request)
 	{
 		$presence = new Presence;
-		// $presence->id = $request->id;
 		$presence->month_id = $request->month_id;
 		$presence->nama = $request->nama;
 		$presence->nip = $request->nip;
@@ -75,7 +74,7 @@ class PresenceController extends Controller
 		$presence->kum = $request->kum;
 		$presence->kut = $request->kut;
 		$presence->save();
-		return redirect('/presence');
+		return redirect('/presence/data/' . $presence->month_id);
 	}
 
 	public function show($month_id, $id)

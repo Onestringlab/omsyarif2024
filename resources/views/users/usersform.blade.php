@@ -43,7 +43,7 @@ Data Users 
             @error('nip')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            <input class="form-control" type="text" name="nip" value="{{ old('nip') }}">
+            <input class="form-control" type="text" name="nip" value="{{ old('nip') }}" required>
           </div>
         </div>
         <div class="mb-3 row">
@@ -52,7 +52,7 @@ Data Users 
             @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            <input class="form-control" type="text" name="name" value="{{ old('name') }}">
+            <input class="form-control" type="text" name="name" value="{{ old('name') }}" required>
           </div>
         </div>
         <div class="mb-3 row">
@@ -61,7 +61,7 @@ Data Users 
             @error('email')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            <input class="form-control" type="text" name="email" value="{{ old('email') }}">
+            <input class="form-control" type="text" name="email" value="{{ old('email') }}" required>
           </div>
         </div>
         <div class="mb-3 row">
@@ -70,13 +70,13 @@ Data Users 
             @error('password')
             <div class="alert alert-danger">{{ $message }}</div>
             @enderror
-            <input class="form-control" type="password" name="password" value="">
+            <input class="form-control" type="password" name="password" value="" required>
           </div>
         </div>
         <div class="mb-3 row">
           <label for="password" class="col-sm-2 col-form-label">Confirm Password</label>
           <div class="col-sm-10">
-            <input class="form-control" type="password" name="confirmed" value="">
+            <input class="form-control" type="password" name="confirmed" value="" required>
           </div>
         </div>
         <div class="mb-3">

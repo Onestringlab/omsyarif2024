@@ -35,15 +35,15 @@ Data Grand 
           </div>
         </div> -->
           <div class="mb-3 row">
-            <label for="nama" class="col-sm-2 col-form-label"><strong>Nama</strong></label>
+            <label for="nip" class="col-sm-2 col-form-label"><strong>Nip</strong></label>
             <div class="col-sm-10">
-              <input class="form-control" type="text" name="nama" value="">
+              <input class="form-control" type="text" name="nip" value="" required>
             </div>
           </div>
           <div class="mb-3 row">
-            <label for="nip" class="col-sm-2 col-form-label"><strong>Nip</strong></label>
+            <label for="nama" class="col-sm-2 col-form-label"><strong>Nama</strong></label>
             <div class="col-sm-10">
-              <input class="form-control" type="text" name="nip" value="">
+              <input class="form-control" type="text" name="nama" value="" required>
             </div>
           </div>
           <div class="mb-3 row">
@@ -145,18 +145,6 @@ Data Grand 
               <input class="form-control" type="text" name="alasan" value="">
             </div>
           </div>
-          <!-- <div class="mb-3 row">
-          <label for="created_at" class="col-sm-2 col-form-label"><strong>Created_at</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="created_at" value="">
-          </div>
-        </div> -->
-          <!-- <div class="mb-3 row">
-          <label for="updated_at" class="col-sm-2 col-form-label"><strong>Updated_at</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="updated_at" value="">
-          </div>
-        </div> -->
           <div class="mb-3">
             <div class="offset-sm-2 col-sm-10">
               <input type="hidden" name="action" value="{{ $action }}">
@@ -169,28 +157,16 @@ Data Grand 
         </form>
         @elseif($action == 'update')
         <form class="form-horizontal" action="{{ asset('/') }}grand/{{ $row->id }}" method="post">
-          <!-- <div class="mb-3 row">
-          <label for="id" class="col-sm-2 col-form-label"><strong>Id</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="id" value="{{ $row->id }}">
-          </div>
-        </div> -->
-          <!-- <div class="mb-3 row">
-          <label for="month_id" class="col-sm-2 col-form-label"><strong>Month_id</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="month_id" value="{{ $row->month_id }}">
-          </div>
-        </div> -->
-          <div class="mb-3 row">
-            <label for="nama" class="col-sm-2 col-form-label"><strong>Nama</strong></label>
-            <div class="col-sm-10">
-              <input class="form-control" type="text" name="nama" value="{{ $row->nama }}">
-            </div>
-          </div>
           <div class="mb-3 row">
             <label for="nip" class="col-sm-2 col-form-label"><strong>Nip</strong></label>
             <div class="col-sm-10">
-              <input class="form-control" type="text" name="nip" value="{{ $row->nip }}">
+              <input class="form-control" type="text" name="nip" value="{{ $row->nip }}" required>
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="nama" class="col-sm-2 col-form-label"><strong>Nama</strong></label>
+            <div class="col-sm-10">
+              <input class="form-control" type="text" name="nama" value="{{ $row->nama }}" required>
             </div>
           </div>
           <div class="mb-3 row">
@@ -292,18 +268,6 @@ Data Grand 
               <input class="form-control" type="text" name="alasan" value="{{ $row->alasan }}">
             </div>
           </div>
-          <!-- <div class="mb-3 row">
-          <label for="created_at" class="col-sm-2 col-form-label"><strong>Created_at</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="created_at" value="{{ $row->created_at }}">
-          </div>
-        </div> -->
-          <!-- <div class="mb-3 row">
-          <label for="updated_at" class="col-sm-2 col-form-label"><strong>Updated_at</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="updated_at" value="{{ $row->updated_at }}">
-          </div>
-        </div> -->
           <div class="mb-3 row">
             <div class="offset-sm-2 col-sm-10">
               @method("PATCH")
@@ -318,28 +282,16 @@ Data Grand 
         </form>
         @elseif($action == 'delete')
         <form class="form-horizontal" action="{{ asset('/') }}grand/{{ $row->id }}" method="post">
-          <!-- <div class="mb-3 row">
-          <label for="id" class="col-sm-2 control-label"><strong>Id</strong></label>
-          <div class="col-sm-10">
-            {{ $row->id }}
-          </div>
-        </div> -->
-          <!-- <div class="mb-3 row">
-          <label for="month_id" class="col-sm-2 control-label"><strong>Month_id</strong></label>
-          <div class="col-sm-10">
-            {{ $row->month_id }}
-          </div>
-        </div> -->
-          <div class="mb-3 row">
-            <label for="nama" class="col-sm-2 control-label"><strong>Nama</strong></label>
-            <div class="col-sm-10">
-              {{ $row->nama }}
-            </div>
-          </div>
           <div class="mb-3 row">
             <label for="nip" class="col-sm-2 control-label"><strong>Nip</strong></label>
             <div class="col-sm-10">
               {{ $row->nip }}
+            </div>
+          </div>
+          <div class="mb-3 row">
+            <label for="nama" class="col-sm-2 control-label"><strong>Nama</strong></label>
+            <div class="col-sm-10">
+              {{ $row->nama }}
             </div>
           </div>
           <div class="mb-3 row">
@@ -463,28 +415,16 @@ Data Grand 
           {{ csrf_field() }}
         </form>
         @elseif($action == 'detail')
-        <!-- <div class="mb-3 row">
-          <label for="id" class="col-sm-2 control-label"><strong>Id</strong></label>
-          <div class="col-sm-10">
-            {{ $row->id }}
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="month_id" class="col-sm-2 control-label"><strong>Month_id</strong></label>
-          <div class="col-sm-10">
-            {{ $row->month_id }}
-          </div>
-        </div> -->
-        <div class="mb-3 row">
-          <label for="nama" class="col-sm-2 control-label"><strong>Nama</strong></label>
-          <div class="col-sm-10">
-            {{ $row->nama }}
-          </div>
-        </div>
         <div class="mb-3 row">
           <label for="nip" class="col-sm-2 control-label"><strong>Nip</strong></label>
           <div class="col-sm-10">
             {{ $row->nip }}
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label for="nama" class="col-sm-2 control-label"><strong>Nama</strong></label>
+          <div class="col-sm-10">
+            {{ $row->nama }}
           </div>
         </div>
         <div class="mb-3 row">
@@ -583,18 +523,6 @@ Data Grand 
             {{ $row->alasan }}
           </div>
         </div>
-        <!-- <div class="mb-3 row">
-          <label for="created_at" class="col-sm-2 control-label"><strong>Created_at</strong></label>
-          <div class="col-sm-10">
-            {{ $row->created_at }}
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="updated_at" class="col-sm-2 control-label"><strong>Updated_at</strong></label>
-          <div class="col-sm-10">
-            {{ $row->updated_at }}
-          </div>
-        </div> -->
         <div class="mb-3 row">
           <div class="offset-sm-2 col-sm-10">
             <button type="button" class="btn btn-secondary" onclick="button_cancel()">Back</button>

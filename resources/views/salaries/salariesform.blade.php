@@ -23,28 +23,16 @@ Data Gaji Dibayarkan
     <div class="card-body">
       @if($action == 'insert')
       <form class="form-horizontal" action="{{ asset('/') }}salaries" method="post">
-        <!-- <div class="mb-3 row">
-          <label for="id" class="col-sm-2 col-form-label"><strong>Id</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="id" value="">
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="month_id" class="col-sm-2 col-form-label"><strong>Bulan</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="month_id" value="">
-          </div>
-        </div> -->
         <div class="mb-3 row">
           <label for="nip" class="col-sm-2 col-form-label"><strong>NIP</strong></label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" name="nip" value="">
+            <input class="form-control" type="text" name="nip" value="" required>
           </div>
         </div>
         <div class="mb-3 row">
           <label for="name" class="col-sm-2 col-form-label"><strong>Nama</strong></label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" name="name" value="">
+            <input class="form-control" type="text" name="name" value="" required>
           </div>
         </div>
         <div class="mb-3 row">
@@ -173,18 +161,6 @@ Data Gaji Dibayarkan
             <input class="form-control" type="text" name="bayar" value="0">
           </div>
         </div>
-        <!-- <div class="mb-3 row">
-          <label for="created_at" class="col-sm-2 col-form-label"><strong>Created_at</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="created_at" value="">
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="updated_at" class="col-sm-2 col-form-label"><strong>Updated_at</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="updated_at" value="">
-          </div>
-        </div> -->
         <div class="mb-3">
           <div class="offset-sm-2 col-sm-10">
             <input type="hidden" name="action" value="{{ $action }}">
@@ -197,28 +173,16 @@ Data Gaji Dibayarkan
       </form>
       @elseif($action == 'update')
       <form class="form-horizontal" action="{{ asset('/') }}salaries/{{ $row->id }}" method="post">
-        <!-- <div class="mb-3 row">
-          <label for="id" class="col-sm-2 col-form-label"><strong>Id</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="id" value="{{ $row->id }}">
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="month_id" class="col-sm-2 col-form-label"><strong>Bulan</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="month_id" value="{{ $row->month_id }}">
-          </div>
-        </div> -->
         <div class="mb-3 row">
           <label for="nip" class="col-sm-2 col-form-label"><strong>NIP</strong></label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" name="nip" value="{{ $row->nip }}">
+            <input class="form-control" type="text" name="nip" value="{{ $row->nip }}" required>
           </div>
         </div>
         <div class="mb-3 row">
           <label for="name" class="col-sm-2 col-form-label"><strong>Name</strong></label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" name="name" value="{{ $row->name }}">
+            <input class="form-control" type="text" name="name" value="{{ $row->name }}" required>
           </div>
         </div>
         <div class="mb-3 row">

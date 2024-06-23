@@ -23,28 +23,16 @@ Data Gaji Bersih
     <div class="card-body">
       @if($action == 'insert')
       <form class="form-horizontal" action="{{ asset('/') }}allowances" method="post">
-        <!-- <div class="mb-3 row">
-          <label for="id" class="col-sm-2 col-form-label"><strong>Id</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="id" value="">
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="month_id" class="col-sm-2 col-form-label"><strong>Month_id</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="month_id" value="">
-          </div>
-        </div> -->
         <div class="mb-3 row">
           <label for="nip" class="col-sm-2 col-form-label"><strong>nip</strong></label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" name="nip" value="">
+            <input class="form-control" type="text" name="nip" value="" required>
           </div>
         </div>
         <div class="mb-3 row">
           <label for="nmpeg" class="col-sm-2 col-form-label"><strong>nmpeg</strong></label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" name="nmpeg" value="">
+            <input class="form-control" type="text" name="nmpeg" value="" required>
           </div>
         </div>
         <div class="mb-3 row">
@@ -227,18 +215,6 @@ Data Gaji Bersih
             <input class="form-control" type="text" name="bersih" value="0">
           </div>
         </div>
-        <!-- <div class="mb-3 row">
-          <label for="created_at" class="col-sm-2 col-form-label"><strong>Created_at</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="created_at" value="">
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="updated_at" class="col-sm-2 col-form-label"><strong>Updated_at</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="updated_at" value="">
-          </div>
-        </div> -->
         <div class="mb-3">
           <div class="offset-sm-2 col-sm-10">
             <input type="hidden" name="action" value="{{ $action }}">
@@ -251,28 +227,16 @@ Data Gaji Bersih
       </form>
       @elseif($action == 'update')
       <form class="form-horizontal" action="{{ asset('/') }}allowances/{{ $row->id }}" method="post">
-        <!-- <div class="mb-3 row">
-          <label for="id" class="col-sm-2 col-form-label"><strong>Id</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="id" value="{{ $row->id }}">
-          </div>
-        </div> -->
-        <!-- <div class="mb-3 row">
-          <label for="month_id" class="col-sm-2 col-form-label"><strong>Month_id</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="month_id" value="{{ $row->month_id }}">
-          </div>
-        </div> -->
         <div class="mb-3 row">
           <label for="nip" class="col-sm-2 col-form-label"><strong>nip</strong></label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" name="nip" value="{{ $row->nip }}">
+            <input class="form-control" type="text" name="nip" value="{{ $row->nip }}" required>
           </div>
         </div>
         <div class="mb-3 row">
           <label for="nmpeg" class="col-sm-2 col-form-label"><strong>nmpeg</strong></label>
           <div class="col-sm-10">
-            <input class="form-control" type="text" name="nmpeg" value="{{ $row->nmpeg }}">
+            <input class="form-control" type="text" name="nmpeg" value="{{ $row->nmpeg }}" required>
           </div>
         </div>
         <div class="mb-3 row">

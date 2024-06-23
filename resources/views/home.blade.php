@@ -7,7 +7,7 @@
 			<div class="card border-success ">
 				<div class="card-header text-bg-success ">ONLINE MONITORING OF SALARY AND REMUNERATION INFORMATION</div>
 				<div class="card-body">
-					<div>OM-SYARIF adalah aplikasi online internal satuan kerja yang berguna bagi pegawai untuk memonitor informasi gaji dan tunjangan dengan mudah dan aman, di mana saja dan kapan saja.</div>
+					<div>SLIP.web.id adalah aplikasi berbasis website yang berguna bagi ASN Pusat untuk memonitor informasi dan mencetak slip penghasilan yang terdiri dari gaji, tunjangan dan uang makan dengan mudah dan aman, di mana saja serta kapan saja.</div>
 				</div>
 			</div>
 		</div>

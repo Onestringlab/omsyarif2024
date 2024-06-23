@@ -27,7 +27,6 @@ class GrandController extends Controller
 	public function store(Request $request)
 	{
 		$grand = new Grand;
-		$grand->id = $request->id;
 		$grand->month_id = $request->month_id;
 		$grand->nama = $request->nama;
 		$grand->nip = $request->nip;
@@ -50,7 +49,7 @@ class GrandController extends Controller
 		$grand->created_at = $request->created_at;
 		$grand->updated_at = $request->updated_at;
 		$grand->save();
-		return redirect('/grand');
+		return redirect('/grand/data/'.$grand->month_id);
 	}
 
 	public function show($month_id, $id)
