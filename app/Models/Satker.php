@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Satker extends Model
 {
@@ -13,4 +13,9 @@ class Satker extends Model
     protected $fillable = [
     'kode', 'nama', 'alamat'
     ];
+
+    public function users()
+    {
+        return $this->hasMany(User::class, 'satker', 'kode');
+    }
 }

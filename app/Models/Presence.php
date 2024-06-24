@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Presence extends Model
 {
@@ -15,6 +15,5 @@ class Presence extends Model
 	function months()
 	{
 		return $this->belongsTo('App\Models\Months', 'month_id');
-		// ddf
 	}
 }

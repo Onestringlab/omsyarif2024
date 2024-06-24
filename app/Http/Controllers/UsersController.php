@@ -20,7 +20,7 @@ class UsersController extends Controller
   {
     $satker = Auth::user()->satker;
     if(Auth::user()->role==="superadmin"){
-      $rows = Users::orderBy('name', 'ASC')->get();
+      $rows = Users::where('role','!=','superadmin')->orderBy('name', 'ASC')->get();
     }
     else{
       $rows = Users::orderBy('name', 'ASC')->where("satker",$satker)->get();
@@ -64,13 +64,23 @@ class UsersController extends Controller
 
   public function show($id)
   {
-    $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
+    if(Auth::user()->role === "superadmin"){
+      $user = Users::where('id', $id)->first();
+    }
+    else{
+      $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
+    }
     return view('users/usersform', ['row' => $user, 'action' => 'detail']);
   }
 
   public function edit($id)
   {
-    $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
+    if(Auth::user()->role === "superadmin"){
+      $user = Users::where('id', $id)->first();
+    }
+    else{
+      $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
+    }
     $satker = Satker::orderBy('nama', 'ASC')->get();
     return view('users/usersform', ['row' => $user, 'action' => 'update', 'satker' => $satker]);
   }
@@ -99,7 +109,12 @@ class UsersController extends Controller
 
   public function delete($id)
   {
-    $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
+    if(Auth::user()->role === "superadmin"){
+      $user = Users::find($id);
+    }
+    else{
+      $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
+    }
     return view('users/usersform', ['row' => $user, 'action' => 'delete']);
   }
 

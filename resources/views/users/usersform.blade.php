@@ -155,6 +155,12 @@ Data Users 
       @elseif($action == 'delete')
       <form class="form-horizontal" action="{{ asset('/') }}users/{{ $row->id }}" method="post">
         <div class="mb-3 row">
+          <label for="nip" class="col-sm-2 control-label">Satuan Kerja</label>
+          <div class="col-sm-10">
+            {{ $row->satuankerja->nama }}
+          </div>
+        </div>
+        <div class="mb-3 row">
           <label for="nip" class="col-sm-2 control-label">NIP</label>
           <div class="col-sm-10">
             {{ $row->nip }}
@@ -184,6 +190,12 @@ Data Users 
         {{ csrf_field() }}
       </form>
       @elseif($action == 'detail')
+      <div class="mb-3 row">
+        <label for="nip" class="col-sm-2 control-label">Satuan Kerja</label>
+        <div class="col-sm-10">
+          {{ $row->satuankerja->nama }}
+        </div>
+      </div>
       <div class="mb-3 row">
         <label for="nip" class="col-sm-2 control-label">NIP</label>
         <div class="col-sm-10">
