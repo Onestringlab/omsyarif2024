@@ -110,7 +110,7 @@ class UsersController extends Controller
   public function delete($id)
   {
     if(Auth::user()->role === "superadmin"){
-      $user = Users::find($id);
+      $user = Users::where('id', $id)->first();
     }
     else{
       $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
