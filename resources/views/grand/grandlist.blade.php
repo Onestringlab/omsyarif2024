@@ -15,6 +15,7 @@ Data Grand 
   <div class="card">
     <h5 class="card-header text-bg-success"> Data Tunjangan Kinerja</h5>
     <div class="card-body">
+      <h5 class="card-title">{{$month->month}} {{$month->year}}</h5>
       <div class="table-responsive">
         <table class="table table-striped table-hover ">
           <thead class="thead-dark">
