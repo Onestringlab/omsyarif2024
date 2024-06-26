@@ -27,7 +27,7 @@ Presensi Pegawai
     </h5>
     <div class="card-body">
       <form class="form-horizontal" action="{{ asset('/') }}presensiedit" method="post">
-        <div class="mb-3 row">
+        <!-- <div class="mb-3 row">
           <label for="nip" class="col-sm-2 control-label"><strong>NIP</strong></label>
           <div class="col-sm-10">
             {{ $row->nip }}
@@ -290,7 +290,7 @@ Presensi Pegawai
           <div class="col-sm-10">
             {{ $row->kut }}
           </div>
-        </div>
+        </div> -->
         <div class="mb-3 row">
           <label for="status" class="col-sm-2 col-form-label"><strong>Status</strong></label>
           <div class="col-sm-10">
