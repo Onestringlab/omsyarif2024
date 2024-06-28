@@ -27,7 +27,7 @@ Tunjangan Kinerja
     </h5>
     <div class="card-body">
       <form class="form-horizontal" action="{{ asset('/') }}tungkinedit" method="post">
-        <div class="mb-3 row">
+        <!-- <div class="mb-3 row">
           <label for="nama" class="col-sm-2 control-label"><strong>Nama</strong></label>
           <div class="col-sm-10">
             {{ $row->nama }}
@@ -122,7 +122,7 @@ Tunjangan Kinerja
           <div class="col-sm-10">
             {{ toCurrency($row->netto) }}
           </div>
-        </div>
+        </div> -->
         <div class="mb-3 row">
           <label for="status" class="col-sm-2 col-form-label"><strong>Status</strong></label>
           <div class="col-sm-10">
