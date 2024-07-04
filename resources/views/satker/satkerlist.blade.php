@@ -29,7 +29,7 @@ Data Satker 
                         @php($no = 1)
                             @foreach($rows as $row)
                                 <tr>
-                                    <td>{{ $row['id'] }}.</td>
+                                    <td>{{ $no++ }}.</td>
                                     <td>{{ $row['kode'] }}</td>
                                     <td>{{ $row['nama'] }}</td>
                                     <td>{{ $row['alamat'] }}</td>
