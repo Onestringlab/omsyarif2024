@@ -20,8 +20,8 @@ Data Months 
               <th width="150">Gaji Dibayarkan</th>
               <th width="150">Presensi</th>
               <th width="180">Tunjangan Kinerja</th>
-              <!-- <th>Created_at</th> -->
-              <th width="180">Waktu</th>
+              <th width="180">Uang Makan</th>
+              <!-- <th width="180">Waktu</th> -->
               <th class="text-center"><a class="btn btn-primary" href="{{asset('/')}}months/create"><i class="fas fa-plus"></i></a></th>
             </tr>
           </thead>
@@ -36,8 +36,10 @@ Data Months 
               <td><a class="btn btn-success" href="{{asset('/')}}salaries/data/{{ $row->id }}"><i class="fa-regular fa-file-lines"></i></a></td>
               <td><a class="btn text-light btn-info" href="{{asset('/')}}presence/data/{{ $row->id }}"><i class="fa-solid fa-calendar-check"></i></a></td>
               <td><a class="btn text-light btn-primary" href="{{asset('/')}}grand/data/{{ $row->id }}"><i class="fa-solid fa-money-bill"></i></a></td>
-              <!-- <td>{{ $row['created_at'] }}</td> -->
-              <td>{{ $row['updated_at'] }}</td>
+              <td><a class="btn text-light btn-secondary"
+                      href="{{ asset('/') }}meals/data/{{ $row->id }}"><i
+                          class="fas fa-utensils"></i></a></td>
+              <!-- <td>{{ $row['updated_at'] }}</td> -->
               <td class="text-center">
                 <a class="btn btn-success" href="{{asset('/')}}months/{{ $row->id }}"><i class="fas fa-info-circle"></i></a>
                 <a class="btn btn-secondary" href="{{asset('/')}}months/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
