@@ -21,6 +21,7 @@ Uang Makan 
             @if(Session::get('message') != '')
                 <div class="alert alert-danger">{{ Session::get('message') }}</div>
             @endif
+            <h5 class="card-title">{{ $month->month }} {{ $month->year }}</h5>
             <div class="table-responsive">
                 <table class="table table-striped table-hover ">
                     <thead class="thead-dark">
