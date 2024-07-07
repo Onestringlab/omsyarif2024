@@ -18,7 +18,7 @@ Uang Makan 
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ asset('/months') }}">Data</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Gaji Bersih</li>
+            <li class="breadcrumb-item active" aria-current="page">Uang Makan</li>
         </ol>
     </nav>
     <div class="card">
