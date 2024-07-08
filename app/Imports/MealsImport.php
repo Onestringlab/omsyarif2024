@@ -57,5 +57,6 @@ class MealsImport implements ToModel, WithStartRow
 			'potongan' => $row[18],
 			'bersih' => $row[19]
 		]);
+		}
 	}
 }
