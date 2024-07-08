@@ -3,6 +3,7 @@
 namespace App\Imports;
 
 use App\Models\Meal;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -32,7 +33,7 @@ class MealsImport implements ToModel, WithStartRow
 	{
 		return new Meal([
 			'month_id' => $this->month_id,
-			'kdsatker' => $row[0],
+			'kdsatker' => Auth::user()->satker,
 			'bln' => $row[1],
 			'tahun' => $row[2],
 			'tanggal' =>$row[3],
