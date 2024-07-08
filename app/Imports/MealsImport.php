@@ -31,6 +31,9 @@ class MealsImport implements ToModel, WithStartRow
 
 	public function model(array $row)
 	{
+		if ($row[1] === null || $row[2] === null) {
+		return null;
+		} else {
 		return new Meal([
 			'month_id' => $this->month_id,
 			'kdsatker' => Auth::user()->satker,

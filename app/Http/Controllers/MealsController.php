@@ -103,7 +103,6 @@ class MealsController extends Controller {
         try {
             Excel::import(new MealsImport($request->month_id), $file);
         } catch (\Exception $e) {
-            dd($e);
             $message = 'File yang diunggah tidak cocok!';
             return back()->with(['message' => $message]);
         }
