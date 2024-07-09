@@ -100,11 +100,6 @@
             <td>Jumlah Bersih</td>
             <td class="text-right"><strong>{{ toCurrency($row->bersih) }}</strong></td>
         </tr>
-        <tr>
-            <td colspan=2>
-                <hr>
-            </td>
-        </tr>
     </table>
 
 </body>
