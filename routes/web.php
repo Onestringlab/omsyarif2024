@@ -77,6 +77,12 @@ Route::middleware(['auth', 'checkrole:user'])->group(
 			Route::get('/tungkinform/{id}', 'tungkinform')->name('tungkinform');
 			Route::post('/tungkinedit', 'tungkinedit')->name('tungkinedit');
 		});
+
+		Route::controller(MealsController::class)->group(function () {
+			Route::get('/makanlist', 'makanlist')->name('makanlist');
+			Route::get('/makan/{id}', 'makan')->name('makan');
+			Route::get('/makanpdf/{id}', 'makanpdf')->name('makanpdf');
+		});
 	}
 );
 

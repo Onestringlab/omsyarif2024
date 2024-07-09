@@ -3,8 +3,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Meal;
 use App\Models\Months;
+use App\Models\Satker;
 use App\Imports\MealsImport;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -83,6 +85,28 @@ class MealsController extends Controller {
         $meals = Meal::find($id);
         $meals -> delete();
         return redirect('/meals/data/'.$meals->month_id);
+    }
+
+    public function makanlist()
+    {
+        $rows = Meal::where('nip', Auth::user()->nip)->get();
+        return view('meals/makanlist', ['rows' => $rows]);
+    }
+
+    public function makan($id)
+    {
+        $row = Meal::where("id", $id)->where('nip', Auth::user()->nip)->first();
+        return view('meals/makan', ['row' => $row]);
+    }
+
+    public function makanpdf($id)
+    {
+        $row = Meal::where('id', $id)
+                ->where('nip', Auth::user()->nip)
+                ->first();
+        $satker = Satker::where('kode',Auth::user()->satker)->first();
+        $pdf = PDF::loadview('meals/makanpdf', ['row' => $row, 'satker' => $satker])->setPaper('a5');
+        return $pdf->stream('slip_makan_' . generate_uuid_4());
     }
 
     // Admin Role 
