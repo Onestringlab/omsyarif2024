@@ -69,12 +69,17 @@
             <td class="text-right">(x) {{ toCurrency($row->tarif) }}</td>
         </tr>
         <tr>
+            <td colspan=2>
+                <hr>
+            </td>
+        </tr>
+        <tr>
             <td>Jumlah Kotor</td>
             <td class="text-right">{{ toCurrency($row->kotor) }}</td>
         </tr>
         <tr>
             <td colspan=2>
-                <hr>
+                &nbsp;
             </td>
         </tr>
         <tr>
@@ -85,6 +90,11 @@
         <tr>
             <td>Pajak Penghasilan</td>
             <td class="text-right">(-) {{ toCurrency($row->potongan) }}</td>
+        </tr>
+        <tr>
+            <td colspan=2>
+                <hr>
+            </td>
         </tr>
         <tr>
             <td>Jumlah Bersih</td>
