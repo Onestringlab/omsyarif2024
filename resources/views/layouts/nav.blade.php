@@ -43,11 +43,11 @@
                             <a class="nav-link" href="{{ route('presensilist') }}">Presensi</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('tungkinlist') }}">Tunjangan
-                                Kinerja</a>
+                            <a class="nav-link" href="{{ route('makanlist') }}">Uang Makan</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('makanlist') }}">Uang Makan</a>
+                            <a class="nav-link" href="{{ route('tungkinlist') }}">Tunjangan
+                                Kinerja</a>
                         </li>
                     @endif
                     @if(in_array(Auth::user()->role, ['admin']))

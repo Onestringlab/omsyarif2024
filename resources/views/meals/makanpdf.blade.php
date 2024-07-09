@@ -35,7 +35,7 @@
         <tr>
             <td>Pembayaran</td>
             <td>:</td>
-            <td>Gaji Induk {{ $row->months->month }} {{ $row->months->year }}</td>
+            <td>Uang Makan {{ $row->months->month }} {{ $row->months->year }}</td>
         </tr>
         <tr>
             <td>NIP</td>
