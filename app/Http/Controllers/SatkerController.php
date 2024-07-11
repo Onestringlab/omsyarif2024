@@ -20,6 +20,7 @@ class SatkerController extends Controller {
 		'kode' => 'required|numeric',
 		'nama' => 'required|max:255',
 		'alamat' => 'required',
+		'keterangan' => 'required',
 		]);
 
 		Satker::create($validatedData);
@@ -42,6 +43,8 @@ class SatkerController extends Controller {
 			'kode' => 'required|numeric',
 			'nama' => 'required|max:255',
 			'alamat' => 'required',
+			'keterangan' => 'required',
+
 		]);
 
 		Satker::whereId($request -> id)->update($validatedData);

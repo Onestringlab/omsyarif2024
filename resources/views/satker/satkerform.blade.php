@@ -35,6 +35,12 @@ Data Satker 
                             <input class="form-control" type="text" name="alamat" value="" required>
                         </div>
                     </div>
+                    <div class="mb-3 row">
+                        <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="keterangan" value="" required>
+                        </div>
+                    </div>
                     <div class="mb-3">
                         <div class="offset-sm-2 col-sm-10">
                             <input type="hidden" name="action" value="{{ $action }}">
@@ -63,6 +69,13 @@ Data Satker 
                         <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="alamat" value="{{ $row->alamat }}" required>
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
+                        <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" type="text" name="keterangan" value="{{ $row->keterangan }}"
+                                required>
                         </div>
                     </div>
                     <div class="mb-3 row">
@@ -98,6 +111,12 @@ Data Satker 
                         </div>
                     </div>
                     <div class="mb-3 row">
+                        <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
+                        <div class="col-sm-10">
+                            {{ $row->keterangan }}
+                        </div>
+                    </div>
+                    <div class="mb-3 row">
                         <div class="offset-sm-2 col-sm-10">
                             @method("DELETE")
                             <input type="hidden" name="action" value="{{ $action }}">
@@ -125,6 +144,12 @@ Data Satker 
                     <label for="alamat" class="col-sm-2 control-label">Alamat</label>
                     <div class="col-sm-10">
                         {{ $row->alamat }}
+                    </div>
+                </div>
+                <div class="mb-3 row">
+                    <label for="keterangan" class="col-sm-2 control-label">Keterangan</label>
+                    <div class="col-sm-10">
+                        {{ $row->keterangan }}
                     </div>
                 </div>
                 <div class="mb-3 row">
