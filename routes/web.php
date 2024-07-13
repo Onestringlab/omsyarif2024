@@ -18,10 +18,8 @@ Auth::routes(['register' => false, 'reset' => false]);
 
 Route::middleware(['auth', 'checkrole:user,admin,superadmin'])->group(
 	function () {
-		Route::get('/', function () {
-			return view('/home');
-		})->middleware(['auth']);
-		
+	
+		Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(['auth']);
 		Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(['auth']);
 
 		Route::get('/password/{id}', [UsersController::class, 'password']);

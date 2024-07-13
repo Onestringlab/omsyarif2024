@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Satker;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -23,7 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $satker = Satker::where('kode', Auth::user()->satker)->first();
+        if($satker!=null){
+            $satuankerja = $satker->nama;
+        }
+        else{
+            $satuankerja = "SLIP.web.id";
+        }
+        return view('home', ['satuankerja' => $satuankerja]);
     }
 
     public function unggahgaji()
