@@ -78,7 +78,7 @@ Data Months 
           <div class="offset-sm-2 col-sm-10">
             <input type="hidden" name="action" value="{{ $action }}">
             <button type="submit" class="btn btn-primary">Tambah</button>
-            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Batal</button>
+            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
           </div>
         </div>
         {{ csrf_field() }}
@@ -139,8 +139,8 @@ Data Months 
             @method("PATCH")
             <input type="hidden" name="action" value="{{ $action }}">
             <input type="hidden" name="id" value="{{ $row->id }}">
-            <button type="submit" class="btn btn-warning">Edit</button>
-            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Batal</button>
+            <button type="submit" class="btn btn-warning">Simpan</button>
+            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
           </div>
         </div>
         {{ csrf_field() }}
@@ -185,7 +185,7 @@ Data Months 
             <input type="hidden" name="action" value="{{ $action }}">
             <input type="hidden" name="id" value="{{ $row->id }}">
             <button type="submit" class="btn btn-danger">Hapus</button>
-            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Batal</button>
+            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
           </div>
         </div>
         {{ csrf_field() }}
