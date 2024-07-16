@@ -12,7 +12,7 @@ Data Users 
     }
   </script>
   <div class="card border-success">
-    <h5 class="card-header text-bg-success">Ubah Password</h5>
+    <h5 class="card-header text-bg-success">Ubah Sandi</h5>
     <div class="card-body">
       @if(Session::get('message') != '')
       <div class="alert alert-danger">{{ Session::get('message') }}</div>
