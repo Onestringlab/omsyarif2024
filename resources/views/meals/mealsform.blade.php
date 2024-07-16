@@ -88,8 +88,8 @@ Data Meals 
                         <div class="offset-sm-2 col-sm-10">
                             <input type="hidden" name="action" value="{{ $action }}">
                             <input type="hidden" name="month_id" value="{{ $month_id }}">
-                            <button type="submit" class="btn btn-primary">Insert</button>
-                            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Cancel</button>
+                            <button type="submit" class="btn btn-primary">Tambah</button>
+                            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
                         </div>
                     </div>
                     {{ csrf_field() }}
@@ -164,7 +164,7 @@ Data Meals 
                             <input type="hidden" name="id" value="{{ $row->id }}">
                             <input type="hidden" name="month_id" value="{{ $month_id }}">
                             <button type="submit" class="btn btn-warning">Update</button>
-                            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Cancel</button>
+                            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
                         </div>
                     </div>
                     {{ csrf_field() }}
@@ -244,7 +244,7 @@ Data Meals 
                             <input type="hidden" name="action" value="{{ $action }}">
                             <input type="hidden" name="id" value="{{ $row->id }}">
                             <button type="submit" class="btn btn-danger">Delete</button>
-                            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Cancel</button>
+                            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
                         </div>
                     </div>
                     {{ csrf_field() }}
@@ -318,7 +318,7 @@ Data Meals 
                 </div>
                 <div class="mb-3 row">
                     <div class="offset-sm-2 col-sm-10">
-                        <button type="button" class="btn btn-secondary" onclick="button_cancel()">Back</button>
+                        <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
                     </div>
                 </div>
             @endif
