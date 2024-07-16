@@ -46,7 +46,7 @@ Tunjangan Kinerja
                     <div class="offset-sm-2 col-sm-10">
                     <input type="hidden" name="id" value="{{ $row->id }}">
                     <input type="hidden" name="month_id" value="{{ $row->month_id }}">
-                    <button type="submit" class="btn btn-warning">Edit</button>
+                    <button type="submit" class="btn btn-warning">Simpan</button>
                     <button type="button" class="btn btn-secondary" onclick="button_cancel()">Batal</button>
                     </div>
                 </div>
