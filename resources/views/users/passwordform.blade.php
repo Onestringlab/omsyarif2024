@@ -19,7 +19,7 @@ Data Users 
       @endif
       <form class="form-horizontal" action="{{ asset('/passwordupdate') }}" method="post">
         <div class="mb-3 row">
-          <label for="password" class="col-sm-2 col-form-label">Password Baru</label>
+          <label for="password" class="col-sm-2 col-form-label">Sandi Baru</label>
           <div class="col-sm-10">
             @error('password')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -28,7 +28,7 @@ Data Users 
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="password" class="col-sm-2 col-form-label">Konfirmasi Password</label>
+          <label for="password" class="col-sm-2 col-form-label">Konfirmasi Sandi</label>
           <div class="col-sm-10">
             <input class="form-control" type="password" name="confirmed" value="">
           </div>
