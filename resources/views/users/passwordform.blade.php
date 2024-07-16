@@ -37,7 +37,7 @@ Data Users 
           <div class="offset-sm-2 col-sm-10">
             <input type="hidden" name="id" value="{{ $row->id }}">
             <button type="submit" class="btn btn-primary">Simpan</button>
-            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Batal</button>
+            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
           </div>
         </div>
         {{ csrf_field() }}
