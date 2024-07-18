@@ -7,7 +7,7 @@ Data Users 
 @section('content')
 <div class="container">
   <div class="card border-success">
-    <h5 class="card-header text-bg-success"> Data Users</h5>
+    <h5 class="card-header text-bg-success"> Data Pengguna</h5>
     <div class="card-body">
       <div class="table-responsive">
         <table class="table table-striped table-hover ">

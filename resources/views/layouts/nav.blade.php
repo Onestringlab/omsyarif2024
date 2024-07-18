@@ -46,6 +46,9 @@
                             <a class="nav-link" href="{{ route('makanlist') }}">Uang Makan</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="#">Uang Transportasi</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('tungkinlist') }}">Tunjangan
                                 Kinerja</a>
                         </li>
