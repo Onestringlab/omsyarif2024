@@ -7,7 +7,7 @@ Tunjangan Kinerja
 @section('content')
 <div class="container">
   <div class="card border-success">
-    <h5 class="card-header text-bg-success"> Tunjangan Kinerja </h5>
+    <h5 class="card-header text-bg-success">Slip Tunjangan Kinerja </h5>
     <div class="card-body">
       <h5 class="card-title">
         {{Auth::user()->name}}<br>
