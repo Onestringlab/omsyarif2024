@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Grand;
 use App\Models\Months;
+use App\Models\Satker;
 use Illuminate\Http\Request;
 use App\Imports\GrandsImport;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
@@ -143,7 +145,7 @@ class GrandController extends Controller
 	public function tungkinlist()
 	{
 		$nip = Auth::user()->nip;
-    $satker = Auth::user()->satker;
+		$satker = Auth::user()->satker;
 		$rows = Grand::select('grands.*')
 							->where("nip", $nip)
 							->join('months','months.id', '=', 'grands.month_id')
@@ -173,4 +175,14 @@ class GrandController extends Controller
 		$grand->save();
 		return redirect('/tungkinlist');
 	}
+
+	public function tungkinpdf($id)
+    {
+        $row = Grand::where('id', $id)
+                ->where('nip', Auth::user()->nip)
+                ->first();
+        $satker = Satker::where('kode',Auth::user()->satker)->first();
+        $pdf = PDF::loadview('grand/tungkinpdf', ['row' => $row, 'satker' => $satker])->setPaper('a5');
+        return $pdf->stream('slip_tungkin_' . generate_uuid_4());
+    }
 }

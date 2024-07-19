@@ -74,6 +74,7 @@ Route::middleware(['auth', 'checkrole:user'])->group(
 			Route::get('/tungkin/{id}', 'tungkin')->name('tungkin');
 			Route::get('/tungkinform/{id}', 'tungkinform')->name('tungkinform');
 			Route::post('/tungkinedit', 'tungkinedit')->name('tungkinedit');
+			Route::get('/tungkinpdf/{id}', 'tungkinpdf')->name('tungkinpdf');
 		});
 
 		Route::controller(MealsController::class)->group(function () {
