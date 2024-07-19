@@ -88,8 +88,8 @@ Data Presence 
 					</div>
 					<div class="modal-footer">
 						<input type="hidden" name="month_id" value="{{ $month->id }}">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-						<button type="Submit" class="btn btn-primary">Upload</button>
+						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+						<button type="Submit" class="btn btn-primary">Unggah</button>
 					</div>
 				</form>
 			</div>
@@ -115,8 +115,8 @@ Data Presence 
 				</div>
 				<div class="modal-footer">
 					<input type="hidden" name="month_id" value="{{ $month->id }}">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<a class="btn btn-danger" href="{{asset('/')}}presence/remove/{{ $month->id }}">Delete</a>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+					<a class="btn btn-danger" href="{{asset('/')}}presence/remove/{{ $month->id }}">Hapus</a>
 				</div>
 			</div>
 		</div>

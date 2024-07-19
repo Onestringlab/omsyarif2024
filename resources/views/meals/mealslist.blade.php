@@ -105,8 +105,8 @@ Uang Makan 
                     </div>
                     <div class="modal-footer">
                         <input type="hidden" name="month_id" value="{{ $month->id }}">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="Submit" class="btn btn-primary">Upload</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="Submit" class="btn btn-primary">Unggah</button>
                     </div>
                 </form>
             </div>
@@ -132,9 +132,9 @@ Uang Makan 
                 </div>
                 <div class="modal-footer">
                     <input type="hidden" name="month_id" value="{{ $month->id }}">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                     <a class="btn btn-danger"
-                        href="{{ asset('/') }}meals/remove/{{ $month->id }}">Delete</a>
+                        href="{{ asset('/') }}meals/remove/{{ $month->id }}">Hapus</a>
                 </div>
             </div>
 

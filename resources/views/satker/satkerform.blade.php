@@ -45,7 +45,7 @@ Data Satker 
                         <div class="offset-sm-2 col-sm-10">
                             <input type="hidden" name="action" value="{{ $action }}">
                             <button type="submit" class="btn btn-primary">Insert</button>
-                            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Cancel</button>
+                            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
                         </div>
                     </div>
                     {{ csrf_field() }}
@@ -84,7 +84,7 @@ Data Satker 
                             <input type="hidden" name="action" value="{{ $action }}">
                             <input type="hidden" name="id" value="{{ $row->id }}">
                             <button type="submit" class="btn btn-warning">Update</button>
-                            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Cancel</button>
+                            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
                         </div>
                     </div>
                     {{ csrf_field() }}
@@ -121,8 +121,8 @@ Data Satker 
                             @method("DELETE")
                             <input type="hidden" name="action" value="{{ $action }}">
                             <input type="hidden" name="id" value="{{ $row->id }}">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Cancel</button>
+                            <button type="submit" class="btn btn-danger">Hapus</button>
+                            <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
                         </div>
                     </div>
                     {{ csrf_field() }}

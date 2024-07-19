@@ -46,6 +46,9 @@
                             <a class="nav-link" href="{{ route('makanlist') }}">Uang Makan</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="#">Uang Transportasi</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="{{ route('tungkinlist') }}">Tunjangan
                                 Kinerja</a>
                         </li>
@@ -89,7 +92,7 @@
                         </a>
                         <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item"
-                                href="{{ asset('/password') }}/{{ Auth::user()->id }}">{{ __('Ubah Password') }}</a>
+                                href="{{ asset('/password') }}/{{ Auth::user()->id }}">{{ __('Ubah Sandi') }}</a>
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
