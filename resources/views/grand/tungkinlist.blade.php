@@ -20,7 +20,7 @@ Tunjangan Kinerja
               <th>Bulan</th>
               <th>Netto</th>
               <th>Status</th>
-              <th width="90"></th>
+              <th width="120"></th>
             </tr>
           </thead>
           <tbody>
@@ -36,6 +36,11 @@ Tunjangan Kinerja
                 </a>
                 <a class="btn btn-secondary btn-sm" href="{{asset('/')}}tungkinform/{{ $row->id }}">
                   <i class="far fa-edit"></i>
+                </a>
+                <a class="btn btn-danger btn-sm"
+                    href=" {{ asset('/') }}tungkinpdf/{{ $row->id }}"
+                    target="_blank">
+                    <i class="fa-regular fa-file-pdf"></i>
                 </a>
               </td>
             </tr>

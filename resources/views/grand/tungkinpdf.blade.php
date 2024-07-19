@@ -56,8 +56,8 @@
 
     <table style="width:100%">
         <tr>
-            <td>Tunjangan Kinerja</td>
-            <td class="text-right">{{ toCurrency($row->tunjangan) }}</td>
+            <td><strong>Tunjangan Kinerja</strong></td>
+            <td class="text-right"><strong>{{ toCurrency($row->tunjangan) }}</strong></td>
         </tr>
         <tr>
             <td>Potongan</td>
