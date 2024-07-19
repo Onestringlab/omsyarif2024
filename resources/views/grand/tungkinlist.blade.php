@@ -18,7 +18,7 @@ Tunjangan Kinerja
           <thead class="thead-dark">
             <tr class="table-primary">
               <th>Bulan</th>
-              <th>Netto</th>
+              <th>Bersih</th>
               <th>Status</th>
               <th width="120"></th>
             </tr>
