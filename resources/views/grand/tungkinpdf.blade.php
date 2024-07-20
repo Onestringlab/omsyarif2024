@@ -61,7 +61,7 @@
         </tr>
         <tr>
             <td>Potongan</td>
-            <td class="text-right">(-) {{ toCurrency($row->potpph) }}</td>
+            <td class="text-right">(-) {{ toCurrency($row->jumlahpot) }}</td>
         </tr>
         <tr>
             <td colspan=2>
