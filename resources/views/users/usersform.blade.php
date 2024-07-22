@@ -47,7 +47,7 @@ Data Users 
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="name" class="col-sm-2 col-form-label">Name</label>
+          <label for="name" class="col-sm-2 col-form-label">Nama</label>
           <div class="col-sm-10">
             @error('name')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -65,7 +65,7 @@ Data Users 
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="password" class="col-sm-2 col-form-label">Password</label>
+          <label for="password" class="col-sm-2 col-form-label">Sandi</label>
           <div class="col-sm-10">
             @error('password')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -74,7 +74,7 @@ Data Users 
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="password" class="col-sm-2 col-form-label">Confirm Password</label>
+          <label for="password" class="col-sm-2 col-form-label">Konfirmasi Sandi</label>
           <div class="col-sm-10">
             <input class="form-control" type="password" name="confirmed" value="" required>
           </div>
@@ -113,7 +113,7 @@ Data Users 
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="name" class="col-sm-2 col-form-label">Name</label>
+          <label for="name" class="col-sm-2 col-form-label">Nama</label>
           <div class="col-sm-10">
             <input class="form-control" type="text" name="name" value="{{ $row->name }}">
           </div>
@@ -125,7 +125,7 @@ Data Users 
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="password" class="col-sm-2 col-form-label">Password</label>
+          <label for="password" class="col-sm-2 col-form-label">Sandi</label>
           <div class="col-sm-10">
             @error('password')
             <div class="alert alert-danger">{{ $message }}</div>
@@ -135,7 +135,7 @@ Data Users 
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="password" class="col-sm-2 col-form-label">Confirm Password</label>
+          <label for="password" class="col-sm-2 col-form-label">Konfirmasi Sandi</label>
           <div class="col-sm-10">
             <input class="form-control" type="password" name="confirmed" value="">
             Kosongkan! Jika tidak ubah password.
@@ -167,7 +167,7 @@ Data Users 
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="name" class="col-sm-2 control-label">Name</label>
+          <label for="name" class="col-sm-2 control-label">Nama</label>
           <div class="col-sm-10">
             {{ $row->name }}
           </div>
@@ -203,7 +203,7 @@ Data Users 
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="name" class="col-sm-2 control-label">Name</label>
+        <label for="name" class="col-sm-2 control-label">Nama</label>
         <div class="col-sm-10">
           {{ $row->name }}
         </div>

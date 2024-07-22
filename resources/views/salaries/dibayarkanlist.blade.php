@@ -18,6 +18,7 @@ Slip Gaji Dibayarkan
 			<thead class="thead-dark">
 				<tr class="table-primary">
 				<th>Bulan</th>
+				<th>Potongan</th>
 				<th>Dibayarkan</th>
 				<th width="90"></th>
 				</tr>
@@ -27,6 +28,7 @@ Slip Gaji Dibayarkan
 				@foreach ($rows as $row)
 				<tr>
 				<td>{{ $row->months->month }} {{ $row->months->year }}</td>
+				<td>{{ toCurrency($row['point']) }}</td>
 				<td>{{ toCurrency($row['bayar']) }}</td>
 				<td>
 					<a class="btn btn-primary btn-sm" href=" {{asset('/')}}dibayarkan/{{ $row->id }}">
