@@ -9,11 +9,11 @@ Data Salaries 
   <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ asset('/months') }}">Data</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Gaji Dibayarkan</li>
+      <li class="breadcrumb-item active" aria-current="page">Potongan</li>
     </ol>
   </nav>
   <div class="card border-success">
-    <h5 class="card-header text-bg-success"> Data Gaji Dibayarkan </h5>
+    <h5 class="card-header text-bg-success"> Data Potongan </h5>
     <div class="card-body">
       @if(Session::get('message') != '')
       <div class="alert alert-danger">{{ Session::get('message') }}</div>
@@ -106,7 +106,7 @@ Data Salaries 
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="uploadSalariesLabel">Mengunggah File Gaji Dibayarkan</h1>
+        <h1 class="modal-title fs-5" id="uploadSalariesLabel">Mengunggah File Potongan</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -135,14 +135,14 @@ Data Salaries 
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="removeSalariesLabel">Menghapus Data Gaji Dibayarkan</h1>
+        <h1 class="modal-title fs-5" id="removeSalariesLabel">Menghapus Data Potongan</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="mb-3 row">
           <div class="col-sm-12">
             PERINGATAN!!!<br>
-            SEMUA data gaji dibayarkan pada bulan ini akan DIHAPUS!!!
+            SEMUA data potongan pada bulan ini akan DIHAPUS!!!
           </div>
         </div>
         <div class="modal-footer">

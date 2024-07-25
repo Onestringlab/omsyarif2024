@@ -17,7 +17,7 @@ Data Months 
               <th width="90">Tahun</th>
               <th width="90">Bulan</th>
               <th width="150">Gaji Bersih</th>
-              <th width="150">Gaji Dibayarkan</th>
+              <th width="150">Potongan</th>
               <th width="150">Presensi</th>
               <th width="180">Tunjangan Kinerja</th>
               <th width="180">Uang Makan</th>

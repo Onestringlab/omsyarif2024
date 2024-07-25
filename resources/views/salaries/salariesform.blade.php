@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Data Gaji Dibayarkan
+Data Potongan
 @endsection
 
 @section('content')
@@ -15,13 +15,12 @@ Data Gaji Dibayarkan
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ asset('/months') }}">Data</a></li>
-            <li class="breadcrumb-item"><a href="{{ asset('/') }}salaries/data/{{ $month_id }}">Gaji
-                    Dibayarkan</a></li>
+            <li class="breadcrumb-item"><a href="{{ asset('/') }}salaries/data/{{ $month_id }}">Potongan</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($action) }}</li>
         </ol>
     </nav>
     <div class="card border-success">
-        <h5 class="card-header text-bg-success"> Data Slip Gaji</h5>
+        <h5 class="card-header text-bg-success"> Data Potongan</h5>
         <div class="card-body">
             @if($action == 'insert')
                 <form class="form-horizontal" action="{{ asset('/') }}salaries" method="post">
@@ -98,19 +97,19 @@ Data Gaji Dibayarkan
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="p7" class="col-sm-2 col-form-label"><strong>DYK A</strong></label>
+                        <label for="p7" class="col-sm-2 col-form-label"><strong>Iuran DYK</strong></label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="p7" value="0">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="p8" class="col-sm-2 col-form-label"><strong>DYK B</strong></label>
+                        <label for="p8" class="col-sm-2 col-form-label"><strong>Arisan DYK</strong></label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="p8" value="0">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="p9" class="col-sm-2 col-form-label"><strong>DYK C</strong></label>
+                        <label for="p9" class="col-sm-2 col-form-label"><strong>DYK Lainnya</strong></label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="p9" value="0">
                         </div>
@@ -249,19 +248,19 @@ Data Gaji Dibayarkan
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="p7" class="col-sm-2 col-form-label"><strong>DYK A</strong></label>
+                        <label for="p7" class="col-sm-2 col-form-label"><strong>Iuran DYK</strong></label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="p7" value="{{ $row->p7 }}">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="p8" class="col-sm-2 col-form-label"><strong>DYK B</strong></label>
+                        <label for="p8" class="col-sm-2 col-form-label"><strong>Arisan DYK</strong></label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="p8" value="{{ $row->p8 }}">
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="p9" class="col-sm-2 col-form-label"><strong>DYK C</strong></label>
+                        <label for="p9" class="col-sm-2 col-form-label"><strong>DYK Lainnya</strong></label>
                         <div class="col-sm-10">
                             <input class="form-control" type="text" name="p9" value="{{ $row->p9 }}">
                         </div>
@@ -314,25 +313,13 @@ Data Gaji Dibayarkan
                             <input class="form-control" type="text" name="bayar" value="{{ $row->bayar }}">
                         </div>
                     </div>
-                    <!-- <div class="mb-3 row">
-          <label for="created_at" class="col-sm-2 col-form-label"><strong>Created_at</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="created_at" value="{{ $row->created_at }}">
-          </div>
-        </div> -->
-                    <!-- <div class="mb-3 row">
-          <label for="updated_at" class="col-sm-2 col-form-label"><strong>Updated_at</strong></label>
-          <div class="col-sm-10">
-            <input class="form-control" type="text" name="updated_at" value="{{ $row->updated_at }}">
-          </div>
-        </div> -->
                     <div class="mb-3 row">
                         <div class="offset-sm-2 col-sm-10">
                             @method("PATCH")
                             <input type="hidden" name="action" value="{{ $action }}">
                             <input type="hidden" name="id" value="{{ $row->id }}">
                             <input type="hidden" name="month_id" value="{{ $month_id }}">
-                            <button type="submit" class="btn btn-warning">Update</button>
+                            <button type="submit" class="btn btn-warning">Simpan</button>
                             <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
                         </div>
                     </div>
@@ -426,19 +413,19 @@ Data Gaji Dibayarkan
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="p7" class="col-sm-2 control-label"><strong>DYK A</strong></label>
+                        <label for="p7" class="col-sm-2 control-label"><strong>Iuran DYK</strong></label>
                         <div class="col-sm-10">
                             {{ toCurrency($row->p7) }}
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="p8" class="col-sm-2 control-label"><strong>DYK B</strong></label>
+                        <label for="p8" class="col-sm-2 control-label"><strong>Arisan DYK</strong></label>
                         <div class="col-sm-10">
                             {{ toCurrency($row->p8) }}
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="p9" class="col-sm-2 control-label"><strong>DYK C</strong></label>
+                        <label for="p9" class="col-sm-2 control-label"><strong>DYK Lainnya</strong></label>
                         <div class="col-sm-10">
                             {{ toCurrency($row->p9) }}
                         </div>
@@ -491,18 +478,6 @@ Data Gaji Dibayarkan
                             {{ toCurrency($row->bayar) }}
                         </div>
                     </div>
-                    <!-- <div class="mb-3 row">
-          <label for="created_at" class="col-sm-2 control-label"><strong>Created_at</strong></label>
-          <div class="col-sm-10">
-            {{ $row->created_at }}
-          </div>
-        </div> -->
-                    <!-- <div class="mb-3 row">
-          <label for="updated_at" class="col-sm-2 control-label"><strong>Updated_at</strong></label>
-          <div class="col-sm-10">
-            {{ $row->updated_at }}
-          </div>
-        </div> -->
                     <div class="mb-3 row">
                         <div class="offset-sm-2 col-sm-10">
                             @method("DELETE")
@@ -515,12 +490,6 @@ Data Gaji Dibayarkan
                     {{ csrf_field() }}
                 </form>
             @elseif($action == 'detail')
-                <!-- <div class="mb-3 row">
-        <label for="id" class="col-sm-2 control-label"><strong>Id</strong></label>
-        <div class="col-sm-10">
-          {{ $row->id }}
-        </div>
-      </div> -->
                 <div class="mb-3 row">
                     <label for="month_id" class="col-sm-2 control-label"><strong>Bulan</strong></label>
                     <div class="col-sm-10">
@@ -600,19 +569,19 @@ Data Gaji Dibayarkan
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="p7" class="col-sm-2 control-label"><strong>DYK A</strong></label>
+                    <label for="p7" class="col-sm-2 control-label"><strong>Iuran DYK</strong></label>
                     <div class="col-sm-10">
                         {{ toCurrency($row->p7) }}
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="p8" class="col-sm-2 control-label"><strong>DYK B</strong></label>
+                    <label for="p8" class="col-sm-2 control-label"><strong>Arisan DYK</strong></label>
                     <div class="col-sm-10">
                         {{ toCurrency($row->p8) }}
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="p9" class="col-sm-2 control-label"><strong>DYK C</strong></label>
+                    <label for="p9" class="col-sm-2 control-label"><strong>DYK Lainnya</strong></label>
                     <div class="col-sm-10">
                         {{ toCurrency($row->p9) }}
                     </div>

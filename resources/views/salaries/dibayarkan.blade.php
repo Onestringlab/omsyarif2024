@@ -95,21 +95,21 @@ Slip Potongan
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="p7" class="col-sm-3 control-label"><strong>DYK A
+                <label for="p7" class="col-sm-3 control-label"><strong>Iuran DYK
                     </strong></label>
                 <div class="col-sm-9">
                     {{ toCurrency($row->p7) }}
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="p8" class="col-sm-3 control-label"><strong>DYK B
+                <label for="p8" class="col-sm-3 control-label"><strong>Arisan DYK
                     </strong></label>
                 <div class="col-sm-9">
                     {{ toCurrency($row->p8) }}
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="p9" class="col-sm-3 control-label"><strong>DYK C
+                <label for="p9" class="col-sm-3 control-label"><strong>DYK Lainnya
                     </strong></label>
                 <div class="col-sm-9">
                     {{ toCurrency($row->p9) }}
