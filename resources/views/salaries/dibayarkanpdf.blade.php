@@ -27,9 +27,9 @@
     <strong>{{ strtoupper($satker->nama) }}</strong></br>
     <table style="width: 100%;">
         <tr>
-            <td>Pembayaran</td>
+            <td>Pemotongan</td>
             <td>:</td>
-            <td>Potongan {{ $row->months->month }} {{ $row->months->year }}</td>
+            <td>Penghasilan {{ $row->months->month }} {{ $row->months->year }}</td>
         </tr>
         <tr>
             <td>NIP</td>
