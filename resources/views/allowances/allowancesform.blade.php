@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Data Gaji Bersih
+Data Gaji
 @endsection
 
 @section('content')
@@ -14,12 +14,12 @@ Data Gaji Bersih
   <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ asset('/months') }}">Data</a></li>
-      <li class="breadcrumb-item"><a href="{{asset('/')}}allowances/data/{{ $month_id }}">Gaji Bersih</a></li>
+      <li class="breadcrumb-item"><a href="{{asset('/')}}allowances/data/{{ $month_id }}">Gaji</a></li>
       <li class="breadcrumb-item active" aria-current="page">{{ ucfirst($action) }}</li>
     </ol>
   </nav>
   <div class="card border-success">
-    <h5 class="card-header text-bg-success"> Gaji Bersih</h5>
+    <h5 class="card-header text-bg-success"> Gaji</h5>
     <div class="card-body">
       @if($action == 'insert')
       <form class="form-horizontal" action="{{ asset('/') }}allowances" method="post">
@@ -877,18 +877,6 @@ Data Gaji Bersih
           {{ toCurrency($row->bersih) }}
         </div>
       </div>
-      <!-- <div class="mb-3 row">
-        <label for="created_at" class="col-sm-2 control-label"><strong>Created_at</strong></label>
-        <div class="col-sm-10">
-          {{ $row->created_at }}
-        </div>
-      </div> -->
-      <!-- <div class="mb-3 row">
-        <label for="updated_at" class="col-sm-2 control-label"><strong>Updated_at</strong></label>
-        <div class="col-sm-10">
-          {{ $row->updated_at }}
-        </div>
-      </div> -->
       <div class="mb-3 row">
         <div class="offset-sm-2 col-sm-10">
           <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>

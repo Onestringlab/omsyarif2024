@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Data Allowances 
+Data Gaji
 @endsection
 
 @section('content')
@@ -9,11 +9,11 @@ Data Allowances 
   <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ asset('/months') }}">Data</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Gaji Bersih</li>
+      <li class="breadcrumb-item active" aria-current="page">Gaji</li>
     </ol>
   </nav>
   <div class="card">
-    <h5 class="card-header text-bg-success"> Data Gaji Bersih</h5>
+    <h5 class="card-header text-bg-success"> Data Gaji</h5>
     <div class="card-body">
       @if(Session::get('message') != '')
       <div class="alert alert-danger">{{ Session::get('message') }}</div>
@@ -55,7 +55,7 @@ Data Allowances 
               <th>BPJS</th>
               <th>BPJS2</th> -->
               <th width="100">Potongan</th>
-              <th width="100">Bersih</th>
+              <th width="100">Gaji</th>
               <!-- <th>Created_at</th>
               <th>Updated_at</th> -->
               <th class="text-center" width="150">
@@ -126,7 +126,7 @@ Data Allowances 
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="uploadAllowancesLabel">Mengunggah File Gaji Bersih</h1>
+        <h1 class="modal-title fs-5" id="uploadAllowancesLabel">Mengunggah File Gaji</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -155,14 +155,14 @@ Data Allowances 
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h1 class="modal-title fs-5" id="removeSalariesLabel">Menghapus Data Gaji Bersih</h1>
+        <h1 class="modal-title fs-5" id="removeSalariesLabel">Menghapus Data Gaji</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <div class="mb-3 row">
           <div class="col-sm-12">
             PERINGATAN!!!<br>
-            SEMUA data gaji bersih pada bulan ini akan DIHAPUS!!!
+            SEMUA data gaji pada bulan ini akan DIHAPUS!!!
           </div>
         </div>
         <div class="modal-footer">
