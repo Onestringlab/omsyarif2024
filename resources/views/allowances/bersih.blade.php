@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Slip Gaji Dibayarkan
+Slip Gaji
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@ Slip Gaji Dibayarkan
   <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="{{ asset('/bersihlist') }}">Slip Gaji Bersih</a>
+        <a href="{{ asset('/bersihlist') }}">Slip Gaji</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">
         {{ $row->months->month }} {{ $row->months->year }}
@@ -22,22 +22,11 @@ Slip Gaji Dibayarkan
     </ol>
   </nav>
   <div class="card border-success">
-    <h5 class="card-header text-bg-success"> Slip Gaji Bersih
+    <h5 class="card-header text-bg-success"> Slip Gaji
       {{ $row->months->month }} {{ $row->months->year }}
     </h5>
     <div class="card-body">
-      <!-- <div class="mb-3 row">
-          <label for="id" class="col-sm-3 control-label"><strong>Id</strong></label>
-          <div class="col-sm-9">
-            {{ $row->id }}
-  </div>
-</div> -->
-      <!-- <div class="mb-3 row">
-          <label for="month_id" class="col-sm-3 control-label"><strong>Month_id</strong></label>
-          <div class="col-sm-9">
-            {{ $row->month_id }}
-          </div>
-        </div> -->
+
       <div class="mb-3 row">
         <label for="nip" class="col-sm-3 control-label"><strong>NIP</strong></label>
         <div class="col-sm-9">
@@ -50,24 +39,6 @@ Slip Gaji Dibayarkan
           {{Auth::user()->name}}
         </div>
       </div>
-      <!-- <div class="mb-3 row">
-        <label for="npwp" class="col-sm-3 control-label"><strong>NPWP</strong></label>
-        <div class="col-sm-9">
-          {{ $row->npwp }}
-        </div>
-      </div> -->
-      <!-- <div class="mb-3 row">
-        <label for="rekening" class="col-sm-3 control-label"><strong>Rekening</strong></label>
-        <div class="col-sm-9">
-          {{ $row->rekening }}
-        </div>
-      </div> -->
-      <!-- <div class="mb-3 row">
-        <label for="nmbankspan" class="col-sm-3 control-label"><strong>Nama Bank</strong></label>
-        <div class="col-sm-9">
-          {{ $row->nmbankspan }}
-        </div>
-      </div> -->
       <div class="mb-3 row">
         <label for="gjpokok" class="col-sm-3 control-label"><strong>Gaji Pokok</strong></label>
         <div class="col-sm-9">
@@ -219,23 +190,10 @@ Slip Gaji Dibayarkan
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="bersih" class="col-sm-3 control-label"><strong>Bersih</strong></label>
+        <label for="bersih" class="col-sm-3 control-label"><strong>Gaji</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->bersih) }}
         </div>
-      </div>
-      <!-- <div class="mb-3 row">
-          <label for="created_at" class="col-sm-3 control-label"><strong>Created_at</strong></label>
-          <div class="col-sm-9">
-            {{ $row->created_at }}
-          </div>
-        </div>
-        <div class="mb-3 row">
-          <label for="updated_at" class="col-sm-3 control-label"><strong>Updated_at</strong></label>
-          <div class="col-sm-9">
-            {{ $row->updated_at }}
-          </div>
-        </div> -->
       <div class="offset-sm-2 col-sm-9">
         <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
       </div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Slip Gaji Dibayarkan</title>
+    <title>Slip POTONGAN</title>
     <style>
         body {
             font-size: small;
@@ -22,14 +22,14 @@
 
 <body>
     <h3>
-        <center>SLIP GAJI DIBAYARKAN</center>
+        <center>SLIP POTONGAN</center>
     </h3>
     <strong>{{ strtoupper($satker->nama) }}</strong></br>
     <table style="width: 100%;">
         <tr>
             <td>Pembayaran</td>
             <td>:</td>
-            <td>Gaji Induk {{ $row->months->month }} {{ $row->months->year }}</td>
+            <td>Potongan {{ $row->months->month }} {{ $row->months->year }}</td>
         </tr>
         <tr>
             <td>NIP</td>
@@ -41,11 +41,6 @@
             <td>:</td>
             <td>{{ Auth::user()->name }}</td>
         </tr>
-        <!-- <tr>
-      <td>Nomor Rekening</td>
-      <td>:</td>
-      <td>{{ $row->rekening }}</td>
-    </tr> -->
         <tr>
             <td colspan="3">
                 <hr>
@@ -54,19 +49,9 @@
     </table>
     <table style="width:100%">
         <tr>
-            <td colspan=2 style="width:50%">
-                <strong>Gaji bersih</strong>
-            </td>
-            <td style="width:25%"></td>
-            <td style="width:25%" class="text-right">
-                <strong>{{ toCurrency($row->bersih) }}</strong>
-            </td>
-        </tr>
-        <tr>
             <td colspan="2">
                 <strong>Potongan</strong>
             </td>
-            <td></td>
             <td></td>
         </tr>
         <tr>
@@ -79,7 +64,6 @@
             <td class="text-right">
                 {{ toCurrency($row->p1) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right">
@@ -91,7 +75,6 @@
             <td class="text-right">
                 {{ toCurrency($row->p2) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right">
@@ -103,7 +86,6 @@
             <td class="text-right">
                 {{ toCurrency($row->p3) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right">
@@ -113,7 +95,6 @@
             <td class="text-right">
                 {{ toCurrency($row->p4) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right">
@@ -123,7 +104,6 @@
             <td class="text-right">
                 {{ toCurrency($row->p5) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right">
@@ -133,37 +113,33 @@
             <td class="text-right">
                 {{ toCurrency($row->p6) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right">
                 7.
             </td>
-            <td>DYK A</td>
+            <td>Iuran DYK</td>
             <td class="text-right">
                 {{ toCurrency($row->p7) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right">
                 8.
             </td>
-            <td>DYK B</td>
+            <td>Arisan DYK</td>
             <td class="text-right">
                 {{ toCurrency($row->p8) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right">
                 9.
             </td>
-            <td>DYK C</td>
+            <td>DYK Lainnya</td>
             <td class="text-right">
                 {{ toCurrency($row->p9) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right">
@@ -173,7 +149,6 @@
             <td class="text-right">
                 {{ toCurrency($row->p10) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right">
@@ -192,7 +167,6 @@
             <td class="text-right">
                 {{ toCurrency($row->p12) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right">
@@ -202,7 +176,6 @@
             <td class="text-right">
                 {{ toCurrency($row->p13) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right" style="width:5%">
@@ -212,7 +185,6 @@
             <td class="text-right">
                 {{ toCurrency($row->p14) }}
             </td>
-            <td></td>
         </tr>
         <tr>
             <td class="text-right" style="width:5%">
@@ -224,17 +196,12 @@
             </td>
         </tr>
         <tr>
-            <td class="text-right">
-            </td>
-            <td></td>
-            <td class="text-right">
+            <td class="text-right" colspan="3">
                 <hr>
             </td>
         </tr>
         <tr>
-            <td class="text-right">
-            </td>
-            <td></td>
+            <td class="text-right"></td>
             <td>
                 <strong>Jumlah Potongan</strong>
             </td>
@@ -243,31 +210,12 @@
             </td>
         </tr>
         <tr>
-            <td class="text-right"></td>
-            <td></td>
-            <td></td>
-            <td class="text-right">
-                <hr>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-right">
-            </td>
-            <td></td>
-            <td>
-                <strong>Gaji Dibayarkan</strong>
-            </td>
-            <td class="text-right">
-                <strong>{{ toCurrency($row->bayar) }}</strong>
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4">
+            <td colspan="3">
                 <strong>Keterangan:<strong>
             </td>
         </tr>
         <tr>
-            <td colspan="4">
+            <td colspan="3">
                 {{ $satker->keterangan }}
             </td>
         </tr>

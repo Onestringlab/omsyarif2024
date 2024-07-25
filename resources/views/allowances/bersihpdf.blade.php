@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slip Gaji Bersih</title>
+  <title>Slip Gaji</title>
   <style>
     body {
       font-size: small;
@@ -27,7 +27,7 @@
 
 <body>
   <h3>
-    <center>SLIP GAJI BERSIH</center>
+    <center>SLIP GAJI</center>
   </h3>
   <strong>{{ strtoupper($satker->nama) }}</strong></br>
   <table style="width: 100%;">

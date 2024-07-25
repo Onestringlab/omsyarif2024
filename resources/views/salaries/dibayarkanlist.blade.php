@@ -7,7 +7,7 @@ Slip Gaji Dibayarkan
 @section('content')
 <div class="container">
 	<div class="card border-success">
-		<h5 class="card-header text-bg-success"> Slip Gaji Dibayarkan</h5>
+		<h5 class="card-header text-bg-success"> Slip Potongan</h5>
 		<div class="card-body">
 		<h5 class="card-title">
 			{{Auth::user()->name}}<br>
@@ -19,7 +19,7 @@ Slip Gaji Dibayarkan
 				<tr class="table-primary">
 				<th>Bulan</th>
 				<th>Potongan</th>
-				<th>Dibayarkan</th>
+				{{-- <th>Dibayarkan</th> --}}
 				<th width="90"></th>
 				</tr>
 			</thead>
@@ -29,7 +29,7 @@ Slip Gaji Dibayarkan
 				<tr>
 				<td>{{ $row->months->month }} {{ $row->months->year }}</td>
 				<td>{{ toCurrency($row['point']) }}</td>
-				<td>{{ toCurrency($row['bayar']) }}</td>
+				{{-- <td>{{ toCurrency($row['bayar']) }}</td> --}}
 				<td>
 					<a class="btn btn-primary btn-sm" href=" {{asset('/')}}dibayarkan/{{ $row->id }}">
 					<i class="fas fa-receipt"></i>

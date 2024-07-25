@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('title')
-Slip Gaji Dibayarkan
+Slip Gaji
 @endsection
 
 @section('content')
 <div class="container">
 	<div class="card border-success">
-		<h5 class="card-header text-bg-success"> Slip Gaji Bersih</h5>
+		<h5 class="card-header text-bg-success"> Slip Gaji</h5>
 		<div class="card-body">
 		<h5 class="card-title">
 			{{Auth::user()->name}}<br>
@@ -18,7 +18,7 @@ Slip Gaji Dibayarkan
 			<thead class="thead-dark">
 				<tr class="table-primary">
 				<th>Bulan</th>
-				<th>Bersih</th>
+				<th>Gaji</th>
 				<th width="90"></th>
 				</tr>
 			</thead>
