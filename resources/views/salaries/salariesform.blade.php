@@ -328,12 +328,6 @@ Data Potongan
             @elseif($action == 'delete')
                 <form class="form-horizontal" action="{{ asset('/') }}salaries/{{ $row->id }}"
                     method="post">
-                    <!-- <div class="mb-3 row">
-          <label for="id" class="col-sm-2 control-label"><strong>Id</strong></label>
-          <div class="col-sm-10">
-            {{ $row->id }}
-          </div>
-        </div> -->
                     <div class="mb-3 row">
                         <label for="month_id" class="col-sm-2 control-label"><strong>Bulan</strong></label>
                         <div class="col-sm-10">
@@ -407,7 +401,7 @@ Data Potongan
                         </div>
                     </div>
                     <div class="mb-3 row">
-                        <label for="p6" class="col-sm-2 control-label"><strong>IPASPI</strong></label>
+                        <label for="p6" class="col-sm-2 control-label"><strong>PTWP</strong></label>
                         <div class="col-sm-10">
                             {{ toCurrency($row->p6) }}
                         </div>
