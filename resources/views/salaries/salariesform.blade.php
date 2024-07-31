@@ -557,7 +557,7 @@ Data Potongan
                     </div>
                 </div>
                 <div class="mb-3 row">
-                    <label for="p6" class="col-sm-2 control-label"><strong>IPASPI</strong></label>
+                    <label for="p6" class="col-sm-2 control-label"><strong>PTWP</strong></label>
                     <div class="col-sm-10">
                         {{ toCurrency($row->p6) }}
                     </div>
