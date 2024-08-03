@@ -19,7 +19,7 @@ Slip Uang Transportasi
                         <tr class="table-primary">
                             <th>Bulan</th>
                             <!-- <th>Hari</th> -->
-                            <th>Standar Biaya</th>
+                            <!-- <th>Standar Biaya</th> -->
                             <th>Fasilitas Uang Transportasi</th>
                             <th>Diterima</th>
                             <th width="90"></th>
@@ -30,7 +30,7 @@ Slip Uang Transportasi
                         @foreach($rows as $row)
                         <tr>
                             <td>{{ $row->months->month }} {{ $row->months->year }}</td>
-                            <td>{{ toCurrency($row['standar_biaya']) }}</td>
+                            <!-- <td>{{ toCurrency($row['standar_biaya']) }}</td> -->
                             <td>{{ toCurrency($row['fasilitas_uang_transportasi']) }} Hari</td>
                             <td>{{ toCurrency($row['jumlah_diterima']) }}</td>
                             <td>
