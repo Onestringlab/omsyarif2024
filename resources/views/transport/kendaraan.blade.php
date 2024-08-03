@@ -65,19 +65,19 @@ Slip Uang Transportasi
             <div class="mb-3 row">
                 <label for="total_kehadiran" class="col-sm-3 control-label">Total Kehadiran</label>
                 <div class="col-sm-9">
-                    {{ $row->total_kehadiran }}
+                    {{ $row->total_kehadiran }} Hari
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="fasilitas_kendaraan_dinas" class="col-sm-3 control-label">Fasilitas Kendaraan Dinas</label>
                 <div class="col-sm-9">
-                    {{ $row->fasilitas_kendaraan_dinas }}
+                    {{ $row->fasilitas_kendaraan_dinas }} Hari
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="fasilitas_uang_transportasi" class="col-sm-3 control-label">Fasilitas Uang Transportasi</label>
                 <div class="col-sm-9">
-                    {{ $row->fasilitas_uang_transportasi }}
+                    {{ $row->fasilitas_uang_transportasi }} Hari
                 </div>
             </div>
             <div class="mb-3 row">

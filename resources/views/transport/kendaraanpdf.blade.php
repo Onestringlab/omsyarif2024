@@ -56,15 +56,15 @@
     <table style="width:100%">
         <tr>
             <td>Jumlah Kehadiran</td>
-            <td class="text-right">{{ toCurrency($row->total_kehadiran) }} hari</td>
+            <td class="text-right">{{ toCurrency($row->total_kehadiran) }} Hari</td>
         </tr>
         <tr>
             <td>Fasilitas Kendaraan Dinas</td>
-            <td class="text-right">{{ toCurrency($row->fasilitas_kendaraan_dinas) }} hari</td>
+            <td class="text-right">(-) {{ toCurrency($row->fasilitas_kendaraan_dinas) }} Hari</td>
         </tr>
         <tr>
-            <td>Fasilitas Uang Tranportasi </td>
-            <td class="text-right">{{ toCurrency($row->fasilitas_uang_transportasi) }} hari</td>
+            <td>Fasilitas Uang Transportasi </td>
+            <td class="text-right">{{ toCurrency($row->fasilitas_uang_transportasi) }} Hari</td>
         </tr>
         <tr>
             <td>Standar Biaya</td>

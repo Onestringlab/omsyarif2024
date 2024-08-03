@@ -20,7 +20,7 @@ Slip Uang Transportasi
                             <th>Bulan</th>
                             <!-- <th>Hari</th> -->
                             <th>Standar Biaya</th>
-                            <th>Fasilitas Uang Tranportasi</th>
+                            <th>Fasilitas Uang Transportasi</th>
                             <th>Diterima</th>
                             <th width="90"></th>
                         </tr>
@@ -31,7 +31,7 @@ Slip Uang Transportasi
                         <tr>
                             <td>{{ $row->months->month }} {{ $row->months->year }}</td>
                             <td>{{ toCurrency($row['standar_biaya']) }}</td>
-                            <td>{{ toCurrency($row['fasilitas_uang_transportasi']) }}</td>
+                            <td>{{ toCurrency($row['fasilitas_uang_transportasi']) }} Hari</td>
                             <td>{{ toCurrency($row['jumlah_diterima']) }}</td>
                             <td>
                                 <a class="btn btn-primary btn-sm" href=" {{ asset('/') }}kendaraan/{{ $row->id }}">
