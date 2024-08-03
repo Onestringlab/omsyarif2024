@@ -54,30 +54,30 @@ Uang Makan 
                     </thead>
                     <tbody>
                         @php($no = 1)
-                            @foreach($rows as $row)
-                                <tr>
-                                    <td>{{ $no++ }}.</td>
-                                    <td>{{ $row['nip'] }}</td>
-                                    <td>{{ $row['nmpeg'] }}</td>
-                                    <td>{{ $row['jmlhari'] }}</td>
-                                    <td>{{ toCurrency($row['tarif']) }}</td>
-                                    <td>{{ $row['pph'] }}</td>
-                                    <td>{{ toCurrency($row['kotor']) }}</td>
-                                    <td>{{ toCurrency($row['potongan']) }}</td>
-                                    <td>{{ toCurrency($row['bersih']) }}</td>
-                                    <td align="center">
-                                        <a class="btn btn-success"
-                                            href="{{ asset('/') }}meals/show/{{ $month->id }}/{{ $row->id }}"><i
-                                                class="fas fa-info-circle"></i></a>
-                                        <a class="btn btn-secondary"
-                                            href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/edit"><i
-                                                class="far fa-edit"></i></a>
-                                        <a class="btn btn-danger"
-                                            href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/delete"><i
-                                                class="far fa-trash-alt"></i></a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @foreach($rows as $row)
+                            <tr>
+                                <td>{{ $no++ }}.</td>
+                                <td>{{ $row['nip'] }}</td>
+                                <td>{{ $row['nmpeg'] }}</td>
+                                <td>{{ $row['jmlhari'] }}</td>
+                                <td>{{ toCurrency($row['tarif']) }}</td>
+                                <td>{{ $row['pph'] }}</td>
+                                <td>{{ toCurrency($row['kotor']) }}</td>
+                                <td>{{ toCurrency($row['potongan']) }}</td>
+                                <td>{{ toCurrency($row['bersih']) }}</td>
+                                <td align="center">
+                                    <a class="btn btn-success"
+                                        href="{{ asset('/') }}meals/show/{{ $month->id }}/{{ $row->id }}"><i
+                                            class="fas fa-info-circle"></i></a>
+                                    <a class="btn btn-secondary"
+                                        href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/edit"><i
+                                            class="far fa-edit"></i></a>
+                                    <a class="btn btn-danger"
+                                        href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/delete"><i
+                                            class="far fa-trash-alt"></i></a>
+                                </td>
+                            </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

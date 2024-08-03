@@ -11,6 +11,7 @@ use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\SalariesController;
 use App\Http\Controllers\AllowancesController;
 use App\Http\Controllers\MealsController;
+use App\Http\Controllers\TransportController;
 
 Auth::routes(['register' => false, 'reset' => false]);
 // Auth::routes(['register' => true]);
@@ -144,5 +145,18 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 			Route::post('import', 'import');
 			Route::get('remove/{month_id}', 'remove');
 		});
+
+		Route::resource('transport', TransportController::class);
+		Route::controller(TransportController::class)->prefix('transport')->group(function () {
+			Route::get('create/{month_id}', 'create');
+			Route::get('show/{month_id}/{id}', 'show');
+			Route::get('{month_id}/{id}/edit', 'edit');
+			Route::get('{month_id}/{id}/delete', 'delete');
+			Route::get('data/{month_id}', 'data');
+			Route::post('import', 'import');
+			Route::get('remove/{month_id}', 'remove');
+		});
 	}
 );
+
+

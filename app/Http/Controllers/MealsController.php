@@ -112,9 +112,9 @@ class MealsController extends Controller {
     // Admin Role 
     public function data($month_id)
     {
-    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
-    $rows = Meal::where('month_id', $month_id)->orderBy('nmpeg', 'ASC')->get();
-    return view('meals/mealslist', ['rows' => $rows, 'month' => $month]);
+        $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+        $rows = Meal::where('month_id', $month_id)->orderBy('nmpeg', 'ASC')->get();
+        return view('meals/mealslist', ['rows' => $rows, 'month' => $month]);
     }
 
     public function import(Request $request)

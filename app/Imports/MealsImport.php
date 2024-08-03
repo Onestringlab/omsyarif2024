@@ -32,31 +32,31 @@ class MealsImport implements ToModel, WithStartRow
 	public function model(array $row)
 	{
 		if ($row[1] === null || $row[2] === null) {
-		return null;
+			return null;
 		} else {
-		return new Meal([
-			'month_id' => $this->month_id,
-			'kdsatker' => Auth::user()->satker,
-			'bln' => $row[1],
-			'tahun' => $row[2],
-			'tanggal' =>$row[3],
-			'nogaji' =>$row[4],
-			'nip' => $row[5],
-			'nmpeg' => $row[6],
-			'kdgol' => $row[7],
-			'npwp' => '',
-			'kdbankspan' =>'', 
-			'nmbankspan' => '', 
-			'norek' => '', 
-			'nmrek' => '', 
-			'nmcabbank' => '', 
-			'jmlhari' => $row[14],
-			'tarif' => $row[15],
-			'pph' => $row[16],
-			'kotor' => $row[17],
-			'potongan' => $row[18],
-			'bersih' => $row[19]
-		]);
+			return new Meal([
+				'month_id' => $this->month_id,
+				'kdsatker' => Auth::user()->satker,
+				'bln' => $row[1],
+				'tahun' => $row[2],
+				'tanggal' =>$row[3],
+				'nogaji' =>$row[4],
+				'nip' => $row[5],
+				'nmpeg' => $row[6],
+				'kdgol' => $row[7],
+				'npwp' => '',
+				'kdbankspan' =>'', 
+				'nmbankspan' => '', 
+				'norek' => '', 
+				'nmrek' => '', 
+				'nmcabbank' => '', 
+				'jmlhari' => $row[14],
+				'tarif' => $row[15],
+				'pph' => $row[16],
+				'kotor' => $row[17],
+				'potongan' => $row[18],
+				'bersih' => $row[19]
+			]);
 		}
 	}
 }
