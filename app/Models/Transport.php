@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Transport extends Model
 {
@@ -22,4 +22,9 @@ class Transport extends Model
         'fasilitas_uang_transportasi',
         'jumlah_diterima',
     ];
+
+    function months()
+    {
+        return $this->belongsTo('App\Models\Months', 'month_id');
+    }
 }

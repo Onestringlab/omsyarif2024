@@ -95,6 +95,28 @@ class TransportController extends Controller
         return redirect('/transport/data/' . $transport->month_id);
     }
 
+    public function kendaraanlist()
+    {
+        $rows = Transport::where('nip_nik', Auth::user()->nip)->orderby('month_id', 'desc')->get();
+        return view('transport/kendaraanlist', ['rows' => $rows]);
+    }
+
+    public function kendaraan($id)
+    {
+        $row = Transport::where("id", $id)->where('nip_nik', Auth::user()->nip)->first();
+        return view('transport/kendaraan', ['row' => $row]);
+    }
+
+    public function kendaraanpdf($id)
+    {
+        $row = Transport::where('id', $id)
+            ->where('nip_nik', Auth::user()->nip)
+            ->first();
+        $satker = Satker::where('kode', Auth::user()->satker)->first();
+        $pdf = PDF::loadview('transport/kendaraanpdf', ['row' => $row, 'satker' => $satker])->setPaper('a5');
+        return $pdf->stream('slip_transport_' . generate_uuid_4());
+    }
+
     // admin role
     public function data($month_id)
     {

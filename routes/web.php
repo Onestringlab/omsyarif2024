@@ -83,6 +83,12 @@ Route::middleware(['auth', 'checkrole:user'])->group(
 			Route::get('/makan/{id}', 'makan')->name('makan');
 			Route::get('/makanpdf/{id}', 'makanpdf')->name('makanpdf');
 		});
+
+		Route::controller(TransportController::class)->group(function () {
+			Route::get('/kendaraanlist', 'kendaraanlist')->name('kendaraanlist');
+			Route::get('/kendaraan/{id}', 'kendaraan')->name('kendaraan');
+			Route::get('/kendaraanpdf/{id}', 'kendaraanpdf')->name('kendaraanpdf');
+		});
 	}
 );
 
