@@ -20,7 +20,7 @@ Data Months 
 							<th width="120">Potongan</th>
 							<th width="120">Presensi</th>
 							<th width="140">Uang Makan</th>
-							<th width="140">Uang Transportasi</th>
+							<th width="160">Uang Transportasi</th>
 							<th width="160">Tunjangan Kinerja</th>
 							<th class="text-center"><a class="btn btn-primary" href="{{asset('/')}}months/create"><i class="fas fa-plus"></i></a></th>
 						</tr>
