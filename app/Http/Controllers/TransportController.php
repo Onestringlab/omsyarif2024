@@ -97,7 +97,14 @@ class TransportController extends Controller
 
     public function kendaraanlist()
     {
-        $rows = Transport::where('nip_nik', Auth::user()->nip)->orderby('month_id', 'desc')->get();
+        $nip = Auth::user()->nip;
+        $satker = Auth::user()->satker;
+        $rows = Transport::select('transports.*')
+                    ->join('months', 'months.id', '=', 'transports.month_id')
+                    ->where('months.satker', $satker)
+                        ->where('nip_nik', $nip)
+                        ->orderBy('month_id', 'DESC')
+                        ->get();
         return view('transport/kendaraanlist', ['rows' => $rows]);
     }
 

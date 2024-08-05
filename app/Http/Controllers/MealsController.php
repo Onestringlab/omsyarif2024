@@ -89,7 +89,14 @@ class MealsController extends Controller {
 
     public function makanlist()
     {
-        $rows = Meal::where('nip', Auth::user()->nip)->orderby('month_id','desc')->get();
+        $nip = Auth::user()->nip;
+        $satker = Auth::user()->satker;
+        $rows = Meal::select('meals.*')
+                    ->join('months', 'months.id', '=', 'meals.month_id')
+                    ->where('months.satker', $satker)
+                        ->where('nip', $nip)
+                        ->orderBy('month_id', 'DESC')
+                        ->get();
         return view('meals/makanlist', ['rows' => $rows]);
     }
 
