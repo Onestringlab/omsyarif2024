@@ -9,9 +9,11 @@ use App\Http\Controllers\MonthsController;
 use App\Http\Controllers\SatkerController;
 use App\Http\Controllers\PresenceController;
 use App\Http\Controllers\SalariesController;
+use App\Http\Controllers\PotonganController;
 use App\Http\Controllers\AllowancesController;
 use App\Http\Controllers\MealsController;
 use App\Http\Controllers\TransportController;
+use App\Http\Controllers\NomenklaturController;
 
 Auth::routes(['register' => false, 'reset' => false]);
 // Auth::routes(['register' => true]);
@@ -57,6 +59,12 @@ Route::middleware(['auth', 'checkrole:user'])->group(
 			Route::get('/dibayarkanpdf/{id}', 'dibayarkanpdf')->name('dibayarkanpdf');
 		});
 
+		Route::controller(PotonganController::class)->group(function () {
+			Route::get('/potongansslip', 'potongansslip')->name('potongansslip');
+			Route::get('/potongans/{id}', 'potongans')->name('potongans');
+			Route::get('/potonganspdf/{id}', 'potonganspdf')->name('potonganspdf');
+		});
+
 		Route::controller(AllowancesController::class)->group(function () {
 			Route::get('/bersihlist', 'bersihlist')->name('bersihlist');
 			Route::get('/bersih/{id}', 'bersih')->name('bersih');
@@ -99,6 +107,17 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 
 		Route::resource('salaries', SalariesController::class);
 		Route::controller(SalariesController::class)->prefix('salaries')->group(function () {
+			Route::get('create/{month_id}', 'create');
+			Route::get('show/{month_id}/{id}', 'show');
+			Route::get('{month_id}/{id}/edit', 'edit');
+			Route::get('{month_id}/{id}/delete', 'delete');
+			Route::get('data/{month_id}', 'data');
+			Route::post('import', 'import');
+			Route::get('remove/{month_id}', 'remove');
+		});
+
+		Route::resource('potongans', PotonganController::class);
+		Route::controller(PotonganController::class)->prefix('potongans')->group(function () {
 			Route::get('create/{month_id}', 'create');
 			Route::get('show/{month_id}/{id}', 'show');
 			Route::get('{month_id}/{id}/edit', 'edit');
@@ -162,6 +181,9 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 			Route::post('import', 'import');
 			Route::get('remove/{month_id}', 'remove');
 		});
+
+		Route::resource('nomenklatur', NomenklaturController::class);
+		Route::get('/nomenklatur/{idnomenklatur}/delete', [NomenklaturController::class, 'delete']);
 	}
 );
 
