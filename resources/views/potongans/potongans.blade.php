@@ -13,7 +13,7 @@ Slip Potongan
     </script>
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ asset('/potongansslip') }}">Slip Potongan</a></li>
+            <li class="breadcrumb-item"><a href="{{ asset('/potongansslip') }}">Slip Potongans</a></li>
             <li class="breadcrumb-item active" aria-current="page">
                 {{ $row->months->month }} {{ $row->months->year }}
             </li>
