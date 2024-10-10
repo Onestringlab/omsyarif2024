@@ -218,7 +218,7 @@ Data Nomenklatur 
                         @method("PATCH")
                         <input type="hidden" name="action" value="{{ $action }}">
                         <input type="hidden" name="id" value="{{ $row->id }}">
-                        <button type="submit" class="btn btn-warning">Edit</button>
+                        <button type="submit" class="btn btn-warning">Simpan</button>
                         <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
                     </div>
                 </div>

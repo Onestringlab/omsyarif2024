@@ -55,6 +55,9 @@
                     <a class="nav-link" href="{{ asset('/months') }}">Data</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ asset('/nomenklatur') }}">Nomenklatur</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ asset('/users') }}">Pengguna</a>
                 </li>
                 @endif

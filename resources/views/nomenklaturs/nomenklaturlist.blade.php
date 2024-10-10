@@ -7,7 +7,7 @@ Data Nomenklaturs
 @section('content')
 <div class="container">
     <div class="card border-success">
-        <h5 class="card-header text-bg-success"> Data Nomenklatur</h5>
+        <h5 class="card-header text-bg-success">Nomenklatur Potongan</h5>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-striped table-hover ">
