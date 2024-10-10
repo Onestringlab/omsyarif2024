@@ -153,7 +153,7 @@ Data Satker 
             </div>
             <div class="mb-3 row">
                 <div class="offset-sm-2 col-sm-10">
-                    <button type="button" class="btn btn-secondary" onclick="button_cancel()">Back</button>
+                    <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
                 </div>
             </div>
             @endif
