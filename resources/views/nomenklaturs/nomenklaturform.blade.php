@@ -13,12 +13,12 @@ Data Nomenklatur 
     </script>
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ asset('/nomenklatur') }}">Nomenklatur Potongan </a></li>
+            <li class="breadcrumb-item"><a href="{{ asset('/nomenklatur') }}">Nomenklatur Potongan</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ Auth::user()->satuankerja->nama }}</li>
         </ol>
     </nav>
     <div class="card border-success">
-        <h5 class="card-header text-bg-success"> Data Nomenklatur</h5>
+        <h5 class="card-header text-bg-success">Nomenklatur Potongan</h5>
         <div class="card-body">
             @if($action == 'insert')
             <form class="form-horizontal" action="{{ asset('/') }}nomenklatur" method="post">
