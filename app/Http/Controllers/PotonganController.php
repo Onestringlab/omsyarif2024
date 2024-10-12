@@ -118,8 +118,11 @@ class PotonganController extends Controller
     {
         $month = Months::where('id', $month_id)->where('satker', Auth::user()->satker)->first();
         $rows = Potongan::where('month_id', $month_id)->orderBy('nama', 'ASC')->get();
+        $nkt = Nomenklatur::where('kode_satker', Auth::user()->satker)->first();
+        if (is_null($nkt)) {
+            return redirect('/nomenklatur');
+        }
         return view('potongans/potonganslist', ['rows' => $rows, 'month' => $month]);
-
     }
 
     public function potongansslip()

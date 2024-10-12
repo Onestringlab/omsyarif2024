@@ -31,7 +31,7 @@
                     <a class="nav-link" href="{{ route('bersihlist') }}">{{ __('Gaji') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('dibayarkanlist') }}">{{ __('Potongan') }}</a>
+                    <a class="nav-link" href="{{ route('potongansslip') }}">{{ __('Potongan') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('presensilist') }}">Presensi</a>
