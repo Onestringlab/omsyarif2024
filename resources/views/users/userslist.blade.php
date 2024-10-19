@@ -17,8 +17,8 @@ Data Users 
               <th>Nama</th>
               <th class="text-center">NIP</th>
               <th class="text-center">Email</th>
-              <th class="text-center">Waktu</th>
-              <th class="text-center">
+              <th class="text-center" width="180px">Waktu</th>
+              <th class="text-center" width="150px">
                 <a class="btn btn-primary" href="{{asset('/')}}users/create">
                   <i class="fas fa-plus"></i>
                 </a>
