@@ -16,7 +16,6 @@
         .text-right {
             text-align: right;
         }
-
     </style>
 </head>
 
@@ -81,7 +80,7 @@
                 3.
             </td>
             <td>
-                {{ $nkt->p3 }}  
+                {{ $nkt->p3 }}
             </td>
             <td class="text-right">
                 {{ toCurrency($row->p3) }}
@@ -145,7 +144,7 @@
             <td class="text-right">
                 10.
             </td>
-            <td>{{ $nkt->p1 }}0</td>
+            <td>{{ $nkt->p10 }}</td>
             <td class="text-right">
                 {{ toCurrency($row->p10) }}
             </td>
