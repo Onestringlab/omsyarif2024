@@ -19,11 +19,10 @@ class UsersController extends Controller
   public function index()
   {
     $satker = Auth::user()->satker;
-    if(Auth::user()->role==="superadmin"){
-      $rows = Users::where('role','!=','superadmin')->orderBy('name', 'ASC')->get();
-    }
-    else{
-      $rows = Users::orderBy('name', 'ASC')->where("satker",$satker)->get();
+    if (Auth::user()->role === "superadmin") {
+      $rows = Users::where('role', '!=', 'superadmin')->orderBy('name', 'ASC')->get();
+    } else {
+      $rows = Users::orderBy('name', 'ASC')->where("satker", $satker)->get();
     }
     return view('users/userslist', ['rows' => $rows]);
   }
@@ -37,23 +36,29 @@ class UsersController extends Controller
   public function store(Request $request)
   {
 
-    $this->validate($request, [
-      'nip' => 'required|string|max:255|min:8',
-      'name' => 'required|string|max:255',
-      'email' => 'required|string|email|max:255|unique:users',
-      'password' => 'required|string|min:8|same:confirmed',
-      'confirmed' => 'required|string|min:8',
-    ]);
+    $this->validate(
+      $request,
+      [
+        'nip' => 'required|string|max:255|min:8|unique:users',
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'required|string|min:8|same:confirmed',
+        'confirmed' => 'required|string|min:8',
+      ],
+      [
+        'nip.unique' => 'NIP sudah terdaftar, silakan menghubungi Super Admin.',
+      ]
+    );
 
     $user = new Users;
     $user->name = $request->name;
     $user->nip = $request->nip;
     $user->email = $request->email;
-    if(Auth::user()->role === "superadmin"){
+    if (Auth::user()->role === "superadmin") {
       $user->satker = $request->satker;
       $user->role = "admin";
     }
-    if(Auth::user()->role === "admin"){
+    if (Auth::user()->role === "admin") {
       $user->satker = Auth::user()->satker;
       $user->role = "user";
     }
@@ -64,22 +69,20 @@ class UsersController extends Controller
 
   public function show($id)
   {
-    if(Auth::user()->role === "superadmin"){
+    if (Auth::user()->role === "superadmin") {
       $user = Users::where('id', $id)->first();
-    }
-    else{
-      $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
+    } else {
+      $user = Users::where('id', $id)->where('satker', Auth::user()->satker)->first();
     }
     return view('users/usersform', ['row' => $user, 'action' => 'detail']);
   }
 
   public function edit($id)
   {
-    if(Auth::user()->role === "superadmin"){
+    if (Auth::user()->role === "superadmin") {
       $user = Users::where('id', $id)->first();
-    }
-    else{
-      $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
+    } else {
+      $user = Users::where('id', $id)->where('satker', Auth::user()->satker)->first();
     }
     $satker = Satker::orderBy('nama', 'ASC')->get();
     return view('users/usersform', ['row' => $user, 'action' => 'update', 'satker' => $satker]);
@@ -87,18 +90,24 @@ class UsersController extends Controller
 
   public function update(Request $request)
   {
-    $this->validate($request, [
-      'nip' => 'required|string|max:255|min:8',
-      'name' => 'required|string|max:255',
-      'email' => 'required|string|email|max:255',
-      'password' => 'same:confirmed',
-    ]);
+    $this->validate(
+      $request,
+      [
+        'nip' => 'required|string|max:255|min:8|unique:users',
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|email|max:255|unique:users',
+        'password' => 'same:confirmed',
+      ],
+      [
+        'nip.unique' => 'NIP sudah terdaftar, silakan menghubungi Super Admin.',
+      ]
+    );
 
     $user = Users::find($request->id);
     $user->name = $request->name;
     $user->nip = $request->nip;
     $user->email = $request->email;
-    if(Auth::user()->role === "superadmin"){
+    if (Auth::user()->role === "superadmin") {
       $user->satker = $request->satker;
     }
     if (isset($request->password))
@@ -109,11 +118,10 @@ class UsersController extends Controller
 
   public function delete($id)
   {
-    if(Auth::user()->role === "superadmin"){
+    if (Auth::user()->role == "superadmin") {
       $user = Users::where('id', $id)->first();
-    }
-    else{
-      $user = Users::where('id', $id)->where('satker',Auth::user()->satker)->first();
+    } else {
+      $user = Users::where('id', $id)->where('satker', Auth::user()->satker)->first();
     }
     return view('users/usersform', ['row' => $user, 'action' => 'delete']);
   }

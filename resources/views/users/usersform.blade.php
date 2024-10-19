@@ -31,7 +31,7 @@ Data Users 
             @enderror
             <select name="satker" class="form-control">
               @foreach ($satker as $data )
-                <option value="{{ $data->kode }}">{{ $data->kode }}-{{ $data->nama }}</option>
+              <option value="{{ $data->kode }}">{{ $data->kode }}-{{ $data->nama }}</option>
               @endforeach
             </select>
           </div>
@@ -99,8 +99,7 @@ Data Users 
             @enderror
             <select name="satker" class="form-control">
               @foreach ($satker as $data )
-                <option value="{{ $data->kode }}" {{ $row->satker == $data->kode ? 'selected' : ''}}
-                >{{ $data->kode }}-{{ $data->nama }}</option>
+              <option value="{{ $data->kode }}" {{ $row->satker == $data->kode ? 'selected' : ''}}>{{ $data->kode }}-{{ $data->nama }}</option>
               @endforeach
             </select>
           </div>
