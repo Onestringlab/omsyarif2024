@@ -5,8 +5,10 @@ namespace App\Imports;
 use App\Models\Potongan;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
-class PotongansImport implements ToModel, WithHeadingRow
+class PotongansImport implements ToModel, WithHeadingRow, WithCalculatedFormulas, WithMultipleSheets
 {
   /**
    * @param array $row
@@ -19,6 +21,11 @@ class PotongansImport implements ToModel, WithHeadingRow
   public function  __construct($month_id)
   {
     $this->month_id = $month_id;
+  }
+
+  public function sheets(): array
+  {
+    return [0 => $this];
   }
 
   public function model(array $row)
