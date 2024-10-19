@@ -56,6 +56,7 @@ class NomenklaturController extends Controller
     public function edit($id)
     {
         $nomenklatur = Nomenklatur::find($id);
+        // dd($nomenklatur);
         return view('nomenklaturs/nomenklaturform', ['row' => $nomenklatur, 'action' => 'update']);
     }
 
