@@ -108,6 +108,9 @@ Data Users 
         <div class="mb-3 row">
           <label for="nip" class="col-sm-2 col-form-label">NIP</label>
           <div class="col-sm-10">
+            @error('nip')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <input class="form-control" type="text" name="nip" value="{{ $row->nip }}">
           </div>
         </div>
@@ -120,6 +123,9 @@ Data Users 
         <div class="mb-3 row">
           <label for="email" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
+            @error('email')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             <input class="form-control" type="text" name="email" value="{{ $row->email }}">
           </div>
         </div>

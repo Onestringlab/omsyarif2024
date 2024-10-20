@@ -93,13 +93,10 @@ class UsersController extends Controller
     $this->validate(
       $request,
       [
-        'nip' => 'required|string|max:255|min:8|unique:users',
+        'nip' => 'required|string|max:255|min:8',
         'name' => 'required|string|max:255',
-        'email' => 'required|string|email|max:255|unique:users',
+        'email' => 'required|string|email|max:255',
         'password' => 'same:confirmed',
-      ],
-      [
-        'nip.unique' => 'NIP sudah terdaftar, silakan menghubungi Super Admin.',
       ]
     );
 
