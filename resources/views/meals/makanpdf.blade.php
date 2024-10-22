@@ -22,7 +22,6 @@
             padding-right: 5px;
 
         }
-
     </style>
 </head>
 
@@ -97,7 +96,7 @@
             </td>
         </tr>
         <tr>
-            <td>Jumlah Bersih</td>
+            <td><strong>Jumlah Bersih</strong></td>
             <td class="text-right"><strong>{{ toCurrency($row->bersih) }}</strong></td>
         </tr>
     </table>
