@@ -14,51 +14,51 @@
                 @auth
                 @if(in_array(Auth::user()->role, ['superadmin']))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Beranda</a>
+                    <a class="nav-link" href="{{ route('home') }}"><i class="fa-solid fa-house"></i>Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ asset('satker') }}">Satuan Kerja</a>
+                    <a class="nav-link" href="{{ asset('satker') }}"><i class="fa-solid fa-building"></i> Satuan Kerja</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ asset('/users') }}">Pengguna</a>
+                    <a class="nav-link" href="{{ asset('/users') }}"><i class="fa-solid fa-user"></i> Pengguna</a>
                 </li>
                 @endif
                 @if(in_array(Auth::user()->role, ['user']))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Beranda</a>
+                    <a class="nav-link" href="{{ route('home') }}"><i class="fa-solid fa-house"></i> Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('bersihlist') }}">{{ __('Gaji') }}</a>
+                    <a class="nav-link" href="{{ route('bersihlist') }}"><i class="fa-solid fa-money-check"></i> {{ __('Gaji') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('potongansslip') }}">{{ __('Potongan') }}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('presensilist') }}">Presensi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('makanlist') }}">Uang Makan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('kendaraanlist') }}">Uang Transportasi</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('tungkinlist') }}">Tunjangan
+                    <a class="nav-link" href="{{ route('tungkinlist') }}"><i class="fa-solid fa-money-bill"></i> Tunjangan
                         Kinerja</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('makanlist') }}"><i class="fas fa-utensils"></i> Uang Makan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('kendaraanlist') }}"><i class="fas fa-car-side"></i> Uang Transportasi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('presensilist') }}"><i class="fa-solid fa-calendar-check"></i> Presensi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('potongansslip') }}"><i class="fa-regular fa-file-lines"></i> {{ __('Potongan') }}</a>
                 </li>
                 @endif
                 @if(in_array(Auth::user()->role, ['admin']))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}">Beranda</a>
+                    <a class="nav-link" href="{{ route('home') }}"><i class="fa-solid fa-house"></i> Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ asset('/months') }}">Data</a>
+                    <a class="nav-link" href="{{ asset('/months') }}"><i class="fa-solid fa-database"></i> Data</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ asset('/nomenklatur') }}">Nomenklatur</a>
+                    <a class="nav-link" href="{{ asset('/nomenklatur') }}"><i class="fa-solid fa-table-list"></i> Nomenklatur</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ asset('/users') }}">Pengguna</a>
+                    <a class="nav-link" href="{{ asset('/users') }}"><i class="fa-solid fa-user"></i> Pengguna</a>
                 </li>
                 @endif
                 @endauth
@@ -82,7 +82,7 @@
                 @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
+                        <i class="fa-solid fa-user-tie"></i> {{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ asset('/password') }}/{{ Auth::user()->id }}">{{ __('Ubah Sandi') }}</a>
