@@ -10,7 +10,6 @@ Slip Uang Makan
         function button_cancel() {
             location.replace("{{ asset('/') }}makanlist");
         }
-
     </script>
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -28,37 +27,25 @@ Slip Uang Makan
         </h5>
         <div class="card-body">
             <div class="mb-3 row">
-                <label for="tanggal" class="col-sm-2 control-label"><strong>Tanggal</strong></label>
-                <div class="col-sm-10">
-                    {{ $row->tanggal }}
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="nogaji" class="col-sm-2 control-label"><strong>Nogaji</strong></label>
-                <div class="col-sm-10">
-                    {{ $row->nogaji }}
-                </div>
-            </div>
-            <div class="mb-3 row">
-                <label for="nip" class="col-sm-2 control-label"><strong>Nip</strong></label>
+                <label for="nip" class="col-sm-2 control-label"><strong>NIP</strong></label>
                 <div class="col-sm-10">
                     {{ $row->nip }}
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="nmpeg" class="col-sm-2 control-label"><strong>Nmpeg</strong></label>
+                <label for="nmpeg" class="col-sm-2 control-label"><strong>Nama Pegawai</strong></label>
                 <div class="col-sm-10">
                     {{ $row->nmpeg }}
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="kdgol" class="col-sm-2 control-label"><strong>Kdgol</strong></label>
+                <label for="kdgol" class="col-sm-2 control-label"><strong>Kode Golongan</strong></label>
                 <div class="col-sm-10">
                     {{ $row->kdgol }}
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="jmlhari" class="col-sm-2 control-label"><strong>Jmlhari</strong></label>
+                <label for="jmlhari" class="col-sm-2 control-label"><strong>Jumlah Hari</strong></label>
                 <div class="col-sm-10">
                     {{ $row->jmlhari }}
                 </div>

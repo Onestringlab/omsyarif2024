@@ -46,7 +46,7 @@ Tunjangan Kinerja
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="panggol" class="col-sm-2 control-label"><strong>Pangkat/Gol.</strong></label>
+          <label for="panggol" class="col-sm-2 control-label"><strong>Pangkat/Golongan</strong></label>
           <div class="col-sm-10">
             {{ $row->panggol }}
           </div>
@@ -76,31 +76,31 @@ Tunjangan Kinerja
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="potabs" class="col-sm-2 control-label"><strong>Pot. Abs.</strong></label>
+          <label for="potabs" class="col-sm-2 control-label"><strong>Potongan Absensi</strong></label>
           <div class="col-sm-10">
             {{ $row->potabs }}
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="potkim" class="col-sm-2 control-label"><strong>Pot. Kin.</strong></label>
+          <label for="potkim" class="col-sm-2 control-label"><strong>Potongan Kinerja</strong></label>
           <div class="col-sm-10">
             {{ $row->potkim }}
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="jumlahpot" class="col-sm-2 control-label"><strong>Jumlah Pot.</strong></label>
+          <label for="jumlahpot" class="col-sm-2 control-label"><strong>Jumlah Potongan</strong></label>
           <div class="col-sm-10">
             {{ toCurrency($row->jumlahpot) }}
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="jumtunjsetpot" class="col-sm-2 control-label"><strong>Jumlah Tunjangan Setelah Pot.</strong></label>
+          <label for="jumtunjsetpot" class="col-sm-2 control-label"><strong>Jumlah Tunjangan Setelah Potongan</strong></label>
           <div class="col-sm-10">
             {{ toCurrency($row->jumtunjsetpot) }}
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="tunjpph" class="col-sm-2 control-label"><strong>Tunj. PPH</strong></label>
+          <label for="tunjpph" class="col-sm-2 control-label"><strong>Tunjangan PPH</strong></label>
           <div class="col-sm-10">
             {{ toCurrency($row->tunjpph) }}
           </div>
@@ -112,7 +112,7 @@ Tunjangan Kinerja
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="potpph" class="col-sm-2 control-label"><strong>Pot.PPH</strong></label>
+          <label for="potpph" class="col-sm-2 control-label"><strong>Potongan PPH</strong></label>
           <div class="col-sm-10">
             {{ toCurrency($row->potpph) }}
           </div>

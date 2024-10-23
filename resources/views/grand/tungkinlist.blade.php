@@ -18,7 +18,7 @@ Tunjangan Kinerja
           <thead class="thead-dark">
             <tr class="table-primary">
               <th>Bulan</th>
-              <th>Bersih</th>
+              <th>Jumlah Bersih</th>
               <th>Status</th>
               <th width="120"></th>
             </tr>
@@ -38,9 +38,9 @@ Tunjangan Kinerja
                   <i class="far fa-edit"></i>
                 </a>
                 <a class="btn btn-danger btn-sm"
-                    href=" {{ asset('/') }}tungkinpdf/{{ $row->id }}"
-                    target="_blank">
-                    <i class="fa-regular fa-file-pdf"></i>
+                  href=" {{ asset('/') }}tungkinpdf/{{ $row->id }}"
+                  target="_blank">
+                  <i class="fa-regular fa-file-pdf"></i>
                 </a>
               </td>
             </tr>

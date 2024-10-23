@@ -17,6 +17,10 @@
             text-align: right;
         }
 
+        table {
+            margin-left: 20px;
+        }
+
         td {
             padding-left: 5px;
             padding-right: 5px;
@@ -29,11 +33,13 @@
     <h3>
         <center>SLIP UANG MAKAN</center>
     </h3>
-    <strong>{{ strtoupper($satker->nama) }}</strong></br>
-    <table style="width: 100%;">
+    <table style="width: 90%;">
         <tr>
-            <td>Pembayaran</td>
-            <td>:</td>
+            <td colspan="3"> <strong>{{ strtoupper($satker->nama) }}</strong></td>
+        </tr>
+        <tr>
+            <td width="80px">Pembayaran</td>
+            <td width="10px">:</td>
             <td>Uang Makan {{ $row->months->month }} {{ $row->months->year }}</td>
         </tr>
         <tr>
@@ -53,7 +59,7 @@
         </tr>
     </table>
 
-    <table style="width:100%">
+    <table style="width:90%">
         <tr>
             <td colspan=2>
                 <strong>Penghasilan</strong>

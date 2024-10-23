@@ -46,73 +46,73 @@ Slip Gaji
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjistri" class="col-sm-3 control-label"><strong>Tj. Istri/Suami</strong></label>
+        <label for="tjistri" class="col-sm-3 control-label"><strong>Tunjangan Istri/Suami</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjistri) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjanak" class="col-sm-3 control-label"><strong>Tj. Anak</strong></label>
+        <label for="tjanak" class="col-sm-3 control-label"><strong>Tunjangan Anak</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjanak) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjupns" class="col-sm-3 control-label"><strong>Tj. Umum</strong></label>
+        <label for="tjupns" class="col-sm-3 control-label"><strong>Tunjangan Umum</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjupns) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjlain" class="col-sm-3 control-label"><strong>Tj. Ta. Umum</strong></label>
+        <label for="tjlain" class="col-sm-3 control-label"><strong>Tunjangan Ta. Umum</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjlain) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjpencil" class="col-sm-3 control-label"><strong>Tj. Papua</strong></label>
+        <label for="tjpencil" class="col-sm-3 control-label"><strong>Tunjangan Papua</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjpencil) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjdaerah" class="col-sm-3 control-label"><strong>Tj. Terpencil</strong></label>
+        <label for="tjdaerah" class="col-sm-3 control-label"><strong>Tunjangan Terpencil</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjdaerah) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjstruk" class="col-sm-3 control-label"><strong>Tj. Struktur</strong></label>
+        <label for="tjstruk" class="col-sm-3 control-label"><strong>Tunjangan Struktur</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjstruk) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjfungs" class="col-sm-3 control-label"><strong>Tj. Fungsi </strong></label>
+        <label for="tjfungs" class="col-sm-3 control-label"><strong>Tunjangan Fungsi </strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjfungs) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjkompen" class="col-sm-3 control-label"><strong>Tj. Lain</strong></label>
+        <label for="tjkompen" class="col-sm-3 control-label"><strong>Tunjangan Lain</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjkompen) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="pembul" class="col-sm-3 control-label"><strong>Tj. Bulat</strong></label>
+        <label for="pembul" class="col-sm-3 control-label"><strong>Tunjangan Bulat</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->pembul) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjberas" class="col-sm-3 control-label"><strong>Tj. Beras</strong></label>
+        <label for="tjberas" class="col-sm-3 control-label"><strong>Tunjangan Beras</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjberas) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjpph" class="col-sm-3 control-label"><strong>Tj. Pajak</strong></label>
+        <label for="tjpph" class="col-sm-3 control-label"><strong>Tunjangan Pajak</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjpph) }}
         </div>
@@ -124,7 +124,7 @@ Slip Gaji
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="potpfkbul" class="col-sm-3 control-label"><strong>Pot. Beras</strong></label>
+        <label for="potpfkbul" class="col-sm-3 control-label"><strong>Potongan Beras</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->potpfkbul) }}
         </div>
@@ -148,13 +148,13 @@ Slip Gaji
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="potpph" class="col-sm-3 control-label"><strong>Pot. PPh</strong></label>
+        <label for="potpph" class="col-sm-3 control-label"><strong>Potongan PPh</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->potpph) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="potswrum" class="col-sm-3 control-label"><strong>Pot. Sewa Rumah</strong></label>
+        <label for="potswrum" class="col-sm-3 control-label"><strong>Potongan Sewa Rumah</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->potswrum) }}
         </div>
@@ -172,7 +172,7 @@ Slip Gaji
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="potlain" class="col-sm-3 control-label"><strong>Pot.Lain</strong></label>
+        <label for="potlain" class="col-sm-3 control-label"><strong>PotonganLain</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->potlain) }}
         </div>
@@ -194,10 +194,10 @@ Slip Gaji
         <div class="col-sm-9">
           {{ toCurrency($row->bersih) }}
         </div>
-      <div class="offset-sm-2 col-sm-9">
-        <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
+        <div class="offset-sm-2 col-sm-9">
+          <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
-@endsection
+  @endsection

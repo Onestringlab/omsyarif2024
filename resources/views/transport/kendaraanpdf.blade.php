@@ -17,6 +17,11 @@
             text-align: right;
         }
 
+        table {
+            margin-left: 20px;
+            width: 90%;
+        }
+
         td {
             padding-left: 5px;
             padding-right: 5px;

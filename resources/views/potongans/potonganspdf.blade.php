@@ -16,6 +16,15 @@
         .text-right {
             text-align: right;
         }
+
+        .table-bordered {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        .table-border-bottom {
+            border-bottom: 1px solid black;
+        }
     </style>
 </head>
 
@@ -46,14 +55,14 @@
             </td>
         </tr>
     </table>
-    <table style="width:100%">
-        <tr>
-            <td colspan="2">
+    <table style="width:100%" class="table-bordered">
+        <tr class="table-border-bottom">
+            <td colspan=" 2">
                 <strong>Potongan</strong>
             </td>
             <td></td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right" style="width:5%">
                 1.
             </td>
@@ -64,7 +73,7 @@
                 {{ toCurrency($row->p1) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right">
                 2.
             </td>
@@ -75,7 +84,7 @@
                 {{ toCurrency($row->p2) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right">
                 3.
             </td>
@@ -86,7 +95,7 @@
                 {{ toCurrency($row->p3) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right">
                 4.
             </td>
@@ -95,7 +104,7 @@
                 {{ toCurrency($row->p4) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right">
                 5.
             </td>
@@ -104,7 +113,7 @@
                 {{ toCurrency($row->p5) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right">
                 6.
             </td>
@@ -113,7 +122,7 @@
                 {{ toCurrency($row->p6) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right">
                 7.
             </td>
@@ -122,7 +131,7 @@
                 {{ toCurrency($row->p7) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right">
                 8.
             </td>
@@ -131,7 +140,7 @@
                 {{ toCurrency($row->p8) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right">
                 9.
             </td>
@@ -140,7 +149,7 @@
                 {{ toCurrency($row->p9) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right">
                 10.
             </td>
@@ -149,7 +158,7 @@
                 {{ toCurrency($row->p10) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right">
                 11.
             </td>
@@ -158,7 +167,7 @@
                 {{ toCurrency($row->p11) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right">
                 12.
             </td>
@@ -167,7 +176,7 @@
                 {{ toCurrency($row->p12) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right">
                 13.
             </td>
@@ -176,7 +185,7 @@
                 {{ toCurrency($row->p13) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right" style="width:5%">
                 14.
             </td>
@@ -185,7 +194,7 @@
                 {{ toCurrency($row->p14) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right" style="width:5%">
                 15.
             </td>
@@ -195,17 +204,17 @@
             </td>
         </tr>
         <tr>
-            <td class="text-right" colspan="3">
-                <hr>
-            </td>
-        </tr>
-        <tr>
             <td class="text-right"></td>
             <td>
                 <strong>Jumlah</strong>
             </td>
             <td class="text-right">
                 <strong>{{ toCurrency($row->jumlah) }}</strong>
+            </td>
+        </tr>
+        <tr>
+            <td class="text-right" colspan="3">
+                <hr>
             </td>
         </tr>
     </table>
