@@ -29,11 +29,13 @@
   <h3>
     <center>SLIP GAJI</center>
   </h3>
-  <strong>{{ strtoupper($satker->nama) }}</strong></br>
   <table style="width: 100%;">
     <tr>
-      <td>Pembayaran</td>
-      <td>:</td>
+      <td colspan="3"> <strong>{{ strtoupper($satker->nama) }}</strong></td>
+    </tr>
+    <tr>
+      <td width="80px">Pembayaran</td>
+      <td width="10px">:</td>
       <td>Gaji Induk {{ $row->months->month }} {{ $row->months->year }}</td>
     </tr>
     <tr>
