@@ -34,11 +34,13 @@
     <h3>
         <center>SLIP UANG TRANSPORTASI</center>
     </h3>
-    <strong>{{ strtoupper($satker->nama) }}</strong></br>
-    <table style="width: 100%;">
+    <table>
         <tr>
-            <td>Pembayaran</td>
-            <td>:</td>
+            <td colspan="3"> <strong>{{ strtoupper($satker->nama) }}</strong></td>
+        </tr>
+        <tr>
+            <td width="80px">Pembayaran</td>
+            <td width="10px">:</td>
             <td>Uang Transportasi {{ $row->months->month }} {{ $row->months->year }}</td>
         </tr>
         <tr>

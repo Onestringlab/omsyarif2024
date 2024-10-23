@@ -39,8 +39,8 @@
             <td colspan="3"><strong>{{ strtoupper($satker->nama) }}</strong></td>
         </tr>
         <tr>
-            <td>Pembayaran</td>
-            <td>:</td>
+            <td width="80px">Pembayaran</td>
+            <td width="10px">:</td>
             <td>Tunjangan Kinerja {{ $row->months->month }} {{ $row->months->year }}</td>
         </tr>
         <tr>

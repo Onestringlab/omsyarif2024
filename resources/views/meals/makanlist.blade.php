@@ -19,30 +19,30 @@ Slip Uang Makan
                         <tr class="table-primary">
                             <th>Bulan</th>
                             <th>Hari</th>
-                            <th>Bersih</th>
+                            <th>Jumlah Bersih</th>
                             <th width="90"></th>
                         </tr>
                     </thead>
                     <tbody>
                         @php($no = 1)
-                            @foreach($rows as $row)
-                                <tr>
-                                    <td>{{ $row->months->month }} {{ $row->months->year }}</td>
-                                    <td>{{ toCurrency($row['jmlhari']) }}</td>
-                                    <td>{{ toCurrency($row['bersih']) }}</td>
-                                    <td>
-                                        <a class="btn btn-primary btn-sm"
-                                            href=" {{ asset('/') }}makan/{{ $row->id }}">
-                                            <i class="fas fa-receipt"></i>
-                                        </a>
-                                        <a class="btn btn-danger btn-sm"
-                                            href=" {{ asset('/') }}makanpdf/{{ $row->id }}"
-                                            target="_blank">
-                                            <i class="fa-regular fa-file-pdf"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
+                        @foreach($rows as $row)
+                        <tr>
+                            <td>{{ $row->months->month }} {{ $row->months->year }}</td>
+                            <td>{{ toCurrency($row['jmlhari']) }}</td>
+                            <td>{{ toCurrency($row['bersih']) }}</td>
+                            <td>
+                                <a class="btn btn-primary btn-sm"
+                                    href=" {{ asset('/') }}makan/{{ $row->id }}">
+                                    <i class="fas fa-receipt"></i>
+                                </a>
+                                <a class="btn btn-danger btn-sm"
+                                    href=" {{ asset('/') }}makanpdf/{{ $row->id }}"
+                                    target="_blank">
+                                    <i class="fa-regular fa-file-pdf"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

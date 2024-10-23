@@ -9,9 +9,10 @@
                 <img src="{{ asset('/images/banner/pexels-burst-374720.jpg') }}"
                     alt="Card image cap">
                 <div class="card-body">
-                    <p class="card-text">SLIP.web.id adalah aplikasi berbasis website yang berguna bagi ASN Pusat untuk
+                    <!-- <p class="card-text">SLIP.web.id adalah aplikasi berbasis website yang berguna bagi ASN Pusat untuk
                         memonitor informasi dan mencetak slip penghasilan yang terdiri dari gaji, tunjangan dan uang
-                        makan dengan mudah dan aman, di mana saja serta kapan saja.</p>
+                        makan dengan mudah dan aman, di mana saja serta kapan saja.</p> -->
+                    <p class="card-text">Hak Cipta Pengadilan Tinggi Pontianak © 2024</p>
                 </div>
             </div>
         </div>

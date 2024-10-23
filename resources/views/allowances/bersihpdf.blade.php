@@ -70,78 +70,78 @@
     <tr>
       <td>Gaji Pokok</td>
       <td class="text-right">{{toCurrency($row->gjpokok)}}</td>
-      <td>Pot. Beras</td>
+      <td>Potongan Beras</td>
       <td class="text-right">{{toCurrency($row->potpfkbul)}}</td>
     </tr>
     <tr>
-      <td>T.Istri/Suami</td>
+      <td>Tunjangan Istri/Suami</td>
       <td class="text-right">{{toCurrency($row->tjistri)}}</td>
       <td>IWP</td>
       <td class="text-right">{{toCurrency($row->potpfk10)}}</td>
     </tr>
     <tr>
-      <td>T.Anak</td>
+      <td>Tunjangan Anak</td>
       <td class="text-right">{{toCurrency($row->tjanak)}}</td>
       <td>BPJS</td>
       <td class="text-right">{{toCurrency($row->bpjs)}}</td>
     </tr>
     <tr>
-      <td>T.Umum</td>
+      <td>Tunjangan Umum</td>
       <td class="text-right">{{toCurrency($row->tjupns)}}</td>
       <td>BPJS Lain</td>
       <td class="text-right">{{toCurrency($row->bpjs2)}}</td>
     </tr>
     <tr>
-      <td>T.Ta. Umum</td>
+      <td>Tunjangan Ta. Umum</td>
       <td class="text-right">{{toCurrency($row->tjlain)}}</td>
-      <td>Pot. PPH</td>
+      <td>Potongan PPH</td>
       <td class="text-right">{{toCurrency($row->potpph)}}</td>
     </tr>
     <tr>
-      <td>T.Papua</td>
+      <td>Tunjangan Papua</td>
       <td class="text-right">{{toCurrency($row->tjdaerah)}}</td>
       <td>Sewa Rumah</td>
       <td class="text-right">{{toCurrency($row->potswrum)}}</td>
     </tr>
     <tr>
-      <td>T.Terpencil</td>
+      <td>Tunjangan Terpencil</td>
       <td class="text-right">{{toCurrency($row->tjpencil)}}</td>
       <td>Tunggakan</td>
       <td class="text-right">{{toCurrency($row->potpfk2)}}</td>
     </tr>
     <tr>
-      <td>T.Struktur</td>
+      <td>Tunjangan Struktur</td>
       <td class="text-right">{{toCurrency($row->tjstruk)}}</td>
       <td>Utang</td>
       <td class="text-right">{{toCurrency($row->potkelbtj)}}</td>
     </tr>
     <tr>
-      <td>T.Fungsi</td>
+      <td>Tunjangan Fungsi</td>
       <td class="text-right">{{toCurrency($row->tjfungs)}}</td>
-      <td>Pot. Lain</td>
+      <td>Potongan Lain</td>
       <td class="text-right">{{toCurrency($row->potlain)}}</td>
     </tr>
     <tr>
-      <td>T.Lain</td>
+      <td>Tunjangan Lain</td>
       <td class="text-right">{{toCurrency($row->tjkompen)}}</td>
       <td>Taperum</td>
       <td class="text-right">{{toCurrency($row->pottabrum)}}</td>
     </tr>
     <tr>
-      <td>T.Bulat</td>
+      <td>Tunjangan Bulat</td>
       <td class="text-right">{{toCurrency($row->pembul)}}</td>
       <td colspan="2">
         <hr>
       </td>
     </tr>
     <tr>
-      <td>T. Beras</td>
+      <td>Tunjangan Beras</td>
       <td class="text-right">{{toCurrency($row->tjberas)}}</td>
-      <td>Jml. Potongan</td>
+      <td>Jumlah Potongan</td>
       <td class="text-right">{{toCurrency($row->totpot)}}</td>
     </tr>
     <tr>
-      <td>T.Pajak</td>
+      <td>Tunjangan Pajak</td>
       <td class="text-right">{{toCurrency($row->tjpph)}}</td>
       <td colspan="2">
         <hr>
@@ -151,12 +151,12 @@
       <<td colspan="2">
         <hr>
         </td>
-        <td>Jml. Bersih</td>
+        <td>Jumlah Bersih</td>
         <td class="text-right">{{toCurrency($row->bersih)}}</td>
     </tr>
     <tr>
       <td>
-        Jml.Kotor
+        Jumlah Kotor
       </td>
       <td class="text-right">{{toCurrency($row->kotor)}}</td>
       <td colspan="2">
