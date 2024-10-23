@@ -10,7 +10,6 @@ Slip Potongan
         function button_cancel() {
             location.replace("{{ asset('/') }}dibayarkanlist");
         }
-
     </script>
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -23,7 +22,8 @@ Slip Potongan
     </nav>
     <div class="card border-success">
         <h5 class="card-header text-bg-success"> Slip Potongan {{ $row->months->month }}
-            {{ $row->months->year }}</h5>
+            {{ $row->months->year }}
+        </h5>
         <div class="card-body">
             <div class="mb-3 row">
                 <label for="month_id" class="col-sm-3 control-label"><strong>Bulan </strong></label>
@@ -56,14 +56,14 @@ Slip Potongan
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="p1" class="col-sm-3 control-label"><strong>Simp. Wajib Koperasi
+                <label for="p1" class="col-sm-3 control-label"><strong>Simpanan Wajib Koperasi
                     </strong></label>
                 <div class="col-sm-9">
                     {{ toCurrency($row->p1) }}
                 </div>
             </div>
             <div class="mb-3 row">
-                <label for="p2" class="col-sm-3 control-label"><strong>Simp. Sukarela Koperasi
+                <label for="p2" class="col-sm-3 control-label"><strong>Simpanan Sukarela Koperasi
                     </strong></label>
                 <div class="col-sm-9">
                     {{ toCurrency($row->p2) }}

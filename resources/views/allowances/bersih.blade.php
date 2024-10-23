@@ -100,7 +100,7 @@ Slip Gaji
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="pembul" class="col-sm-3 control-label"><strong>Tunjangan Bulat</strong></label>
+        <label for="pembul" class="col-sm-3 control-label"><strong>Tunjangan Pembulatan</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->pembul) }}
         </div>
