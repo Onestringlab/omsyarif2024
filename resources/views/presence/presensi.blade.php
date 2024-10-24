@@ -278,7 +278,7 @@ Presensi Pegawai
           {{ $row->ptk }}
         </div>
       </div>
-      <div class="mb-3 row">
+      <!-- <div class="mb-3 row">
         <label for="kum" class="col-sm-2 control-label"><strong>{{ toFWU('KEHADIRAN UNTUK UANG MAKAN') }}</strong></label>
         <div class="col-sm-10">
           {{ $row->kum }}
@@ -289,7 +289,7 @@ Presensi Pegawai
         <div class="col-sm-10">
           {{ $row->kut }}
         </div>
-      </div>
+      </div> -->
       <div class="mb-3 row">
         <label for="status" class="col-sm-2 control-label"><strong>{{ toFWU('Status') }}</strong></label>
         <div class="col-sm-10">

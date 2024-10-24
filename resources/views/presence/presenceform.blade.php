@@ -282,7 +282,7 @@ Data Presensi
 						<input class="form-control" type="text" name="ptk" value="">
 					</div>
 				</div>
-				<div class="mb-3 row">
+				<!-- <div class="mb-3 row">
 					<label for="kum" class="col-sm-2 col-form-label"><strong>Kum</strong></label>
 					<div class="col-sm-10">
 						<input class="form-control" type="text" name="kum" value="">
@@ -293,7 +293,7 @@ Data Presensi
 					<div class="col-sm-10">
 						<input class="form-control" type="text" name="kut" value="">
 					</div>
-				</div>
+				</div> -->
 				<div class="mb-3 row">
 					<label for="status" class="col-sm-2 col-form-label"><strong>Status</strong></label>
 					<div class="col-sm-10">
@@ -579,7 +579,7 @@ Data Presensi
 						<input class="form-control" type="text" name="ptk" value="{{ $row->ptk }}">
 					</div>
 				</div>
-				<div class="mb-3 row">
+				<!-- <div class="mb-3 row">
 					<label for="kum" class="col-sm-2 col-form-label"><strong>Kum</strong></label>
 					<div class="col-sm-10">
 						<input class="form-control" type="text" name="kum" value="{{ $row->kum }}">
@@ -590,7 +590,7 @@ Data Presensi
 					<div class="col-sm-10">
 						<input class="form-control" type="text" name="kut" value="{{ $row->kut }}">
 					</div>
-				</div>
+				</div> -->
 				<div class="mb-3 row">
 					<label for="status" class="col-sm-2 col-form-label"><strong>Status</strong></label>
 					<div class="col-sm-10">
@@ -878,7 +878,7 @@ Data Presensi
 						{{ $row->ptk }}
 					</div>
 				</div>
-				<div class="mb-3 row">
+				<!-- <div class="mb-3 row">
 					<label for="kum" class="col-sm-2 control-label"><strong>Kum</strong></label>
 					<div class="col-sm-10">
 						{{ $row->kum }}
@@ -889,7 +889,7 @@ Data Presensi
 					<div class="col-sm-10">
 						{{ $row->kut }}
 					</div>
-				</div>
+				</div> -->
 				<div class="mb-3 row">
 					<label for="status" class="col-sm-2 control-label"><strong>Status</strong></label>
 					<div class="col-sm-10">
@@ -1197,7 +1197,7 @@ Data Presensi
 					{{ $row->ptk }}
 				</div>
 			</div>
-			<div class="mb-3 row">
+			<!-- <div class="mb-3 row">
 				<label for="kum" class="col-sm-2 control-label"><strong>Kum</strong></label>
 				<div class="col-sm-10">
 					{{ $row->kum }}
@@ -1208,7 +1208,7 @@ Data Presensi
 				<div class="col-sm-10">
 					{{ $row->kut }}
 				</div>
-			</div>
+			</div> -->
 			<div class="mb-3 row">
 				<label for="status" class="col-sm-2 control-label"><strong>Status</strong></label>
 				<div class="col-sm-10">

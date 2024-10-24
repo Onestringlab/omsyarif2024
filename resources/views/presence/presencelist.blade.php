@@ -23,16 +23,16 @@ Data Presence 
 				<table class="table table-striped table-hover ">
 					<thead class="thead-dark">
 						<tr class="table-primary">
-							<th width="30">No</th>
-							<th width="180">NIP</th>
-							<th width="300">Nama</th>
-							<th width="60">TK</th>
-							<th width="60">PTK</th>
-							<th width="60">KUM</th>
-							<th width="60">KUT</th>
-							<th width="120">Status</th>
-							<th>Alasan</th>
-							<th class="text-end" width="150">
+							<th width="30" class="text-center">No</th>
+							<th width="180" class="text-center">NIP</th>
+							<th class="text-center">Nama</th>
+							<th width="60" class="text-center">TK</th>
+							<th width="60" class="text-center">PTK</th>
+							<th width="60" class="text-center">KUM</th>
+							<th width="60" class="text-center">KUT</th>
+							<th width="120" class="text-center">Status</th>
+							<th width="180" class="text-center">Alasan</th>
+							<th width="180" class="text-end">
 								<a class="btn btn-primary" href="{{asset('/')}}presence/create/{{ $month->id }}">
 									<i class="fas fa-plus"></i></a>
 								<a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#uploadPresence">
