@@ -12,7 +12,7 @@
                     <!-- <p class="card-text">SLIP.web.id adalah aplikasi berbasis website yang berguna bagi ASN Pusat untuk
                         memonitor informasi dan mencetak slip penghasilan yang terdiri dari gaji, tunjangan dan uang
                         makan dengan mudah dan aman, di mana saja serta kapan saja.</p> -->
-                    <p class="card-text">Hak Cipta Pengadilan Tinggi Pontianak © 2024</p>
+                    <p class="card-text small text-center">Hak Cipta Pengadilan Tinggi Pontianak © 2024</p>
                 </div>
             </div>
         </div>
