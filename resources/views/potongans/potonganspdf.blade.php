@@ -62,10 +62,10 @@
     </table>
     <table class="table-bordered">
         <tr class="table-border-bottom">
-            <td colspan=" 2">
+            <td colspan="2">
                 <strong>Potongan</strong>
             </td>
-            <td></td>
+            <td width="120px"></td>
         </tr>
         <tr class="table-border-bottom">
             <td class="text-right" style="width:5%">
