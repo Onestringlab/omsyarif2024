@@ -17,6 +17,17 @@
       text-align: right;
     }
 
+    .table-bordered {
+      border-collapse: collapse;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+    }
+
+    .table-border-bottom {
+      border-bottom: 1px solid black;
+    }
+
     td {
       padding-left: 5px;
       padding-right: 5px;
@@ -29,7 +40,7 @@
   <h3>
     <center>SLIP GAJI</center>
   </h3>
-  <table style="width: 100%;">
+  <table class="table-bordered">
     <tr>
       <td colspan="3"> <strong>{{ strtoupper($satker->nama) }}</strong></td>
     </tr>
@@ -60,7 +71,7 @@
     </tr>
   </table>
 
-  <table style="width:100%">
+  <table class="table-bordered">
     <tr>
       <td colspan=2 style="width:50%">
         <strong>Penghasilan</strong>

@@ -17,9 +17,15 @@
             text-align: right;
         }
 
-        table {
-            margin-left: 20px;
-            width: 90%;
+        .table-bordered {
+            border-collapse: collapse;
+            margin-left: auto;
+            margin-right: auto;
+            width: 80%;
+        }
+
+        .table-border-bottom {
+            border-bottom: 1px solid black;
         }
 
         td {
@@ -34,9 +40,9 @@
     <h3>
         <center>SLIP TUNJANGAN KINERJA</center>
     </h3>
-    <table>
+    <table class="table-bordered">
         <tr>
-            <td colspan="3"><strong>{{ strtoupper($satker->nama) }}</strong></td>
+            <td colspan=" 3"><strong>{{ strtoupper($satker->nama) }}</strong></td>
         </tr>
         <tr>
             <td width="80px">Pembayaran</td>
@@ -60,7 +66,7 @@
         </tr>
     </table>
 
-    <table>
+    <table class="table-bordered">
         <tr>
             <td><strong>Tunjangan Kinerja</strong></td>
             <td class="text-right"><strong>{{ toCurrency($row->tunjangan) }}</strong></td>

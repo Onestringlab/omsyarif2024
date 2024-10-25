@@ -18,8 +18,11 @@
         }
 
         .table-bordered {
+
             border-collapse: collapse;
-            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%;
         }
 
         .table-border-bottom {
@@ -32,11 +35,13 @@
     <h3>
         <center>SLIP POTONGAN</center>
     </h3>
-    <strong>{{ strtoupper($satker->nama) }}</strong></br>
-    <table style="width: 100%;">
+    <table class="table-bordered">
         <tr>
-            <td>Pemotongan</td>
-            <td>:</td>
+            <td colspan="3"> <strong>{{ strtoupper($satker->nama) }}</strong></td>
+        </tr>
+        <tr>
+            <td width="100px">Pemotongan</td>
+            <td width="20px">:</td>
             <td>Penghasilan {{ $row->months->month }} {{ $row->months->year }}</td>
         </tr>
         <tr>
@@ -55,7 +60,7 @@
             </td>
         </tr>
     </table>
-    <table style="width:100%" class="table-bordered">
+    <table class="table-bordered">
         <tr class="table-border-bottom">
             <td colspan=" 2">
                 <strong>Potongan</strong>
