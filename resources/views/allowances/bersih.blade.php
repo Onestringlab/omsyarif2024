@@ -190,7 +190,7 @@ Slip Gaji
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="bersih" class="col-sm-3 control-label"><strong>Gaji</strong></label>
+        <label for="bersih" class="col-sm-3 control-label"><strong>Gaji Bersih</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->bersih) }}
         </div>
