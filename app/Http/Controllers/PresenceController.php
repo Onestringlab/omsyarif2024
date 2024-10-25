@@ -180,7 +180,7 @@ class PresenceController extends Controller
 		try {
 			Excel::import(new PresencesImport($request->month_id), $file);
 		} catch (\Exception $e) {
-			$message = $e; #'File yang diunggah tidak cocok!';
+			$message = 'File yang diunggah tidak cocok!';
 			return back()->with(['message' => $message]);
 		}
 		return redirect('/presence/data/' . $request->month_id);
