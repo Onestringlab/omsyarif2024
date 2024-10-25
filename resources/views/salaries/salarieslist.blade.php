@@ -27,7 +27,7 @@ Data Salaries 
               <th>NIP</th>
               <th>Nama</th>
               <th>Gol</th>
-              <th width="200">Rekening</th>
+              <!-- <th width="200">Rekening</th> -->
               <!-- <th>Bank</th> -->
               <th width="100">Bersih</th>
               <!-- <th>P1</th>
@@ -66,7 +66,7 @@ Data Salaries 
               <td>{{ $row['nip'] }}</td>
               <td>{{ $row['name'] }}</td>
               <td class="text-center">{{ $row['gol'] }}</td>
-              <td class="text-center">{{ $row['rekening'] }}</td>
+              <!-- <td class="text-center">{{ $row['rekening'] }}</td> -->
               <!-- <td>{{ $row['bank'] }}</td> -->
               <td class="text-end">{{ toCurrency($row['bersih']) }}</td>
               <!-- <td>{{ $row['p1'] }}</td>

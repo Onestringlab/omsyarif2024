@@ -28,7 +28,7 @@ Data Gaji
               <th>NIP</th>
               <th>Nama</th>
               <!-- <th>Npwp</th> -->
-              <th width="200">Rekening</th>
+              <!-- <th width="200">Rekening</th> -->
               <!-- <th>Nmbankspan</th> -->
               <th width="100">Pokok</th>
               <!-- <th>Tjistri</th>
@@ -77,7 +77,7 @@ Data Gaji
               <td>{{ $row['nip'] }}</td>
               <td>{{ $row['nmpeg'] }}</td>
               <!-- <td>{{ $row['npwp'] }}</td> -->
-              <td class="text-center">{{ $row['rekening'] }}</td>
+              <!-- <td class="text-center">{{ $row['rekening'] }}</td> -->
               <!-- <td>{{ $row['nmbankspan'] }}</td> -->
               <td class="text-end">{{ toCurrency($row['gjpokok']) }}</td>
               <!-- <td>{{ $row['tjistri'] }}</td>
