@@ -40,12 +40,6 @@ Tunjangan Kinerja
           </div>
         </div>
         <div class="mb-3 row">
-          <label for="npwp" class="col-sm-2 control-label"><strong>NPWP</strong></label>
-          <div class="col-sm-10">
-            {{ $row->npwp }}
-          </div>
-        </div>
-        <div class="mb-3 row">
           <label for="panggol" class="col-sm-2 control-label"><strong>Pangkat/Golongan</strong></label>
           <div class="col-sm-10">
             {{ $row->panggol }}
