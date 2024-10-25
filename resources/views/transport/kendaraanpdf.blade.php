@@ -60,7 +60,7 @@
         </tr>
     </table>
 
-    <table style="width:100%">
+    <table>
         <tr>
             <td>Jumlah Kehadiran</td>
             <td class="text-right">{{ toCurrency($row->total_kehadiran) }} Hari</td>
