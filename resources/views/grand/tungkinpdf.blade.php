@@ -72,7 +72,7 @@
             <td class="text-right"><strong>{{ toCurrency($row->tunjangan) }}</strong></td>
         </tr>
         <tr>
-            <td>Potongan</td>
+            <td>Potongan Absensi & Kinerja</td>
             <td class="text-right">(-) {{ toCurrency($row->jumlahpot) }}</td>
         </tr>
         <tr>

@@ -82,13 +82,13 @@ Slip Gaji
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjstruk" class="col-sm-3 control-label"><strong>Tunjangan Struktur</strong></label>
+        <label for="tjstruk" class="col-sm-3 control-label"><strong>Tunjangan Struktural</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjstruk) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="tjfungs" class="col-sm-3 control-label"><strong>Tunjangan Fungsi </strong></label>
+        <label for="tjfungs" class="col-sm-3 control-label"><strong>Tunjangan Fungsional </strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->tjfungs) }}
         </div>
@@ -172,7 +172,7 @@ Slip Gaji
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="potlain" class="col-sm-3 control-label"><strong>PotonganLain</strong></label>
+        <label for="potlain" class="col-sm-3 control-label"><strong>Potongan Lain</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->potlain) }}
         </div>

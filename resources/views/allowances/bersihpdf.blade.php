@@ -123,13 +123,13 @@
       <td class="text-right">{{toCurrency($row->potpfk2)}}</td>
     </tr>
     <tr>
-      <td>Tunjangan Struktur</td>
+      <td>Tunjangan Struktural</td>
       <td class="text-right">{{toCurrency($row->tjstruk)}}</td>
       <td>Utang</td>
       <td class="text-right">{{toCurrency($row->potkelbtj)}}</td>
     </tr>
     <tr>
-      <td>Tunjangan Fungsi</td>
+      <td>Tunjangan Fungsional</td>
       <td class="text-right">{{toCurrency($row->tjfungs)}}</td>
       <td>Potongan Lain</td>
       <td class="text-right">{{toCurrency($row->potlain)}}</td>
