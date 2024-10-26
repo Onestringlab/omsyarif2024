@@ -141,7 +141,7 @@
       <td class="text-right">{{toCurrency($row->pottabrum)}}</td>
     </tr>
     <tr>
-      <td>Tunjangan Bulat</td>
+      <td>Tunjangan Pembulatan</td>
       <td class="text-right">{{toCurrency($row->pembul)}}</td>
       <td colspan="2">
         <hr>
