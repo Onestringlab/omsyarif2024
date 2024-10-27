@@ -55,7 +55,7 @@ Data Gaji
               <th>BPJS</th>
               <th>BPJS2</th> -->
               <th width="100">Potongan</th>
-              <th width="100">Gaji</th>
+              <th width="100">Gaji Bersih</th>
               <!-- <th>Created_at</th>
               <th>Updated_at</th> -->
               <th class="text-center" width="150">

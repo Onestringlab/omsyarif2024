@@ -27,7 +27,7 @@ Data potongans 
               <th width="200">NIP</th>
               <th>Nama</th>
               <th width="100">Jumlah</th>
-              <th width="180">Waktu</th>
+              <!-- <th width="180">Waktu</th> -->
               <th class="text-end" width="150">
                 <a class="btn btn-primary" href="{{asset('/')}}potongans/create/{{ $month->id }}">
                   <i class="fas fa-plus"></i></a>
@@ -46,7 +46,7 @@ Data potongans 
               <td>{{ $row['nip'] }}</td>
               <td>{{ $row['nama'] }}</td>
               <td class="text-end">{{ toCurrency($row['jumlah']) }}</td>
-              <td>{{ $row['updated_at'] }}</td>
+              <!-- <td>{{ $row['updated_at'] }}</td> -->
               <td class="text-end">
                 <a class="btn btn-success" href="{{asset('/')}}potongans/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-file-invoice"></i></i></a>
                 <a class="btn btn-secondary" href="{{asset('/')}}potongans/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
