@@ -397,18 +397,6 @@ Data Gaji
             </form>
             @elseif($action == 'delete')
             <form class="form-horizontal" action="{{ asset('/') }}allowances/{{ $row->id }}" method="post">
-                <!-- <div class="mb-3 row">
-            <label for="id" class="col-sm-2 control-label"><strong>Id</strong></label>
-            <div class="col-sm-10">
-                {{ $row->id }}
-            </div>
-            </div> -->
-                <!-- <div class="mb-3 row">
-            <label for="month_id" class="col-sm-2 control-label"><strong>Month_id</strong></label>
-            <div class="col-sm-10">
-                {{ $row->month_id }}
-            </div>
-            </div> -->
                 <div class="mb-3 row">
                     <label for="nip" class="col-sm-2 control-label"><strong>NIM</strong></label>
                     <div class="col-sm-10">
