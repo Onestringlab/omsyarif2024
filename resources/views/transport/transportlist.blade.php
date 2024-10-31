@@ -22,7 +22,7 @@ Data Transport 
         </ol>
     </nav>
     <div class="card">
-        <h5 class="card-header text-bg-success"> Data Transport</h5>
+        <h5 class="card-header text-bg-success"> Data Uang Transportasi</h5>
         <div class="card-body">
             @if(Session::get('message') != '')
             <div class="alert alert-danger">{{ Session::get('message') }}</div>
