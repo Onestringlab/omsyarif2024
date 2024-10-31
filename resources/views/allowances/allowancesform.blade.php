@@ -24,7 +24,7 @@ Data Gaji
             @if($action == 'insert')
             <form class="form-horizontal" action="{{ asset('/') }}allowances" method="post">
                 <div class="mb-3 row">
-                    <label for="nip" class="col-sm-2 col-form-label"><strong>NIM</strong></label>
+                    <label for="nip" class="col-sm-2 col-form-label"><strong>NIP</strong></label>
                     <div class="col-sm-10">
                         <input class="form-control" type="text" name="nip" value="" required>
                     </div>
@@ -210,7 +210,7 @@ Data Gaji
             @elseif($action == 'update')
             <form class="form-horizontal" action="{{ asset('/') }}allowances/{{ $row->id }}" method="post">
                 <div class="mb-3 row">
-                    <label for="nip" class="col-sm-2 col-form-label"><strong>NIM</strong></label>
+                    <label for="nip" class="col-sm-2 col-form-label"><strong>NIP</strong></label>
                     <div class="col-sm-10">
                         <input class="form-control" type="text" name="nip" value="{{ $row->nip }}" required>
                     </div>
@@ -398,7 +398,7 @@ Data Gaji
             @elseif($action == 'delete')
             <form class="form-horizontal" action="{{ asset('/') }}allowances/{{ $row->id }}" method="post">
                 <div class="mb-3 row">
-                    <label for="nip" class="col-sm-2 control-label"><strong>NIM</strong></label>
+                    <label for="nip" class="col-sm-2 control-label"><strong>NIP</strong></label>
                     <div class="col-sm-10">
                         {{ $row->nip }}
                     </div>
@@ -584,7 +584,7 @@ Data Gaji
             </form>
             @elseif($action == 'detail')
             <div class="mb-3 row">
-                <label for="nip" class="col-sm-2 control-label"><strong>NIM</strong></label>
+                <label for="nip" class="col-sm-2 control-label"><strong>NIP</strong></label>
                 <div class="col-sm-10">
                     {{ $row->nip }}
                 </div>

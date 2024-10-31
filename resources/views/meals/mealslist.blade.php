@@ -7,13 +7,13 @@ Uang Makan 
 @section('content')
 <div class="container">
     @if($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
+    <div class="alert alert-danger">
+        <ul>
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
     @endif
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -22,10 +22,10 @@ Uang Makan 
         </ol>
     </nav>
     <div class="card">
-        <h5 class="card-header text-bg-success"> Uang Makan</h5>
+        <h5 class="card-header text-bg-success"> Data Uang Makan</h5>
         <div class="card-body">
             @if(Session::get('message') != '')
-                <div class="alert alert-danger">{{ Session::get('message') }}</div>
+            <div class="alert alert-danger">{{ Session::get('message') }}</div>
             @endif
             <h5 class="card-title">{{ $month->month }} {{ $month->year }}</h5>
             <div class="table-responsive">
@@ -55,28 +55,28 @@ Uang Makan 
                     <tbody>
                         @php($no = 1)
                         @foreach($rows as $row)
-                            <tr>
-                                <td>{{ $no++ }}.</td>
-                                <td>{{ $row['nip'] }}</td>
-                                <td>{{ $row['nmpeg'] }}</td>
-                                <td>{{ $row['jmlhari'] }}</td>
-                                <td>{{ toCurrency($row['tarif']) }}</td>
-                                <td>{{ $row['pph'] }}</td>
-                                <td>{{ toCurrency($row['kotor']) }}</td>
-                                <td>{{ toCurrency($row['potongan']) }}</td>
-                                <td>{{ toCurrency($row['bersih']) }}</td>
-                                <td align="center">
-                                    <a class="btn btn-success"
-                                        href="{{ asset('/') }}meals/show/{{ $month->id }}/{{ $row->id }}"><i
-                                            class="fas fa-info-circle"></i></a>
-                                    <a class="btn btn-secondary"
-                                        href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/edit"><i
-                                            class="far fa-edit"></i></a>
-                                    <a class="btn btn-danger"
-                                        href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/delete"><i
-                                            class="far fa-trash-alt"></i></a>
-                                </td>
-                            </tr>
+                        <tr>
+                            <td>{{ $no++ }}.</td>
+                            <td>{{ $row['nip'] }}</td>
+                            <td>{{ $row['nmpeg'] }}</td>
+                            <td>{{ $row['jmlhari'] }}</td>
+                            <td>{{ toCurrency($row['tarif']) }}</td>
+                            <td>{{ $row['pph'] }}</td>
+                            <td>{{ toCurrency($row['kotor']) }}</td>
+                            <td>{{ toCurrency($row['potongan']) }}</td>
+                            <td>{{ toCurrency($row['bersih']) }}</td>
+                            <td align="center">
+                                <a class="btn btn-success"
+                                    href="{{ asset('/') }}meals/show/{{ $month->id }}/{{ $row->id }}"><i
+                                        class="fas fa-info-circle"></i></a>
+                                <a class="btn btn-secondary"
+                                    href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/edit"><i
+                                        class="far fa-edit"></i></a>
+                                <a class="btn btn-danger"
+                                    href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/delete"><i
+                                        class="far fa-trash-alt"></i></a>
+                            </td>
+                        </tr>
                         @endforeach
                     </tbody>
                 </table>
