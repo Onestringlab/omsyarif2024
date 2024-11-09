@@ -7,7 +7,7 @@ Slip Potongan
 @section('content')
 <div class="container">
 	<div class="card border-success">
-		<h5 class="card-header text-bg-success"> Slip Potongan</h5>
+		<h5 class="card-header text-bg-success">Perhitungan Potongan</h5>
 		<div class="card-body">
 			<h5 class="card-title">
 				{{Auth::user()->name}}<br>
