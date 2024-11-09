@@ -26,12 +26,6 @@ Slip Potongan
         </h5>
         <div class="card-body">
             <div class="mb-3 row">
-                <label for="month_id" class="col-sm-3 control-label"><strong>Bulan </strong></label>
-                <div class="col-sm-9">
-                    {{ $row->months->month }} {{ $row->months->year }}
-                </div>
-            </div>
-            <div class="mb-3 row">
                 <label for="nip" class="col-sm-3 control-label"><strong>NIP</strong></label>
                 <div class="col-sm-9">
                     {{ $row->nip }}
