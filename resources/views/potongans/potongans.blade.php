@@ -13,7 +13,7 @@ Slip Potongan
     </script>
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ asset('/potongansslip') }}">Perhitungan Potongan</a></li>
+            <li class="breadcrumb-item"><a href="{{ asset('/potongansslip') }}">Slip Potongan</a></li>
             <li class="breadcrumb-item active" aria-current="page">
                 {{ $row->months->month }} {{ $row->months->year }}
             </li>
@@ -21,7 +21,7 @@ Slip Potongan
         </ol>
     </nav>
     <div class="card border-success">
-        <h5 class="card-header text-bg-success"> Slip Potongan {{ $row->months->month }}
+        <h5 class="card-header text-bg-success"> Perhitungan Potongan {{ $row->months->month }}
             {{ $row->months->year }}
         </h5>
         <div class="card-body">
