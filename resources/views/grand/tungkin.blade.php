@@ -22,7 +22,7 @@ Tunjangan Kinerja
     </ol>
   </nav>
   <div class="card border-success">
-    <h5 class="card-header text-bg-success"> Tunjangan Kinerja
+    <h5 class="card-header text-bg-success">Perhitungan Tunjangan Kinerja
       {{ $row->months->month }} {{ $row->months->year }}
     </h5>
     <div class="card-body">

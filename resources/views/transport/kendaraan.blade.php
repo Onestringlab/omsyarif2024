@@ -22,8 +22,7 @@ Slip Uang Transportasi
         </ol>
     </nav>
     <div class="card border-success">
-        <h5 class="card-header text-bg-success"> Slip Uang Transportasi
-            {{ $row->months->month }} {{ $row->months->year }}
+        <h5 class="card-header text-bg-success"> Perhitungan Uang Transportasi {{ $row->months->month }} {{ $row->months->year }}
         </h5>
         <div class="card-body">
             <div class="mb-3 row">

@@ -22,7 +22,7 @@ Slip Gaji
     </ol>
   </nav>
   <div class="card border-success">
-    <h5 class="card-header text-bg-success"> Slip Gaji
+    <h5 class="card-header text-bg-success">Perhitungan Gaji
       {{ $row->months->month }} {{ $row->months->year }}
     </h5>
     <div class="card-body">

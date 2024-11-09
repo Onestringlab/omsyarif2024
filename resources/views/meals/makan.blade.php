@@ -22,7 +22,7 @@ Slip Uang Makan
         </ol>
     </nav>
     <div class="card border-success">
-        <h5 class="card-header text-bg-success"> Slip Uang Makan
+        <h5 class="card-header text-bg-success">Perhitungan Uang Makan
             {{ $row->months->month }} {{ $row->months->year }}
         </h5>
         <div class="card-body">

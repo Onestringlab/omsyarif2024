@@ -7,7 +7,7 @@ Presensi
 @section('content')
 <div class="container">
   <div class="card border-success">
-    <h5 class="card-header text-bg-success"> Presensi </h5>
+    <h5 class="card-header text-bg-success">Rekapitulasi Kehadiran untuk Perhitungan Tunjangan Kinerja</h5>
     <div class="card-body">
       <h5 class="card-title">
         {{Auth::user()->name}}<br>
