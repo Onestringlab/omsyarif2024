@@ -45,14 +45,14 @@
             <td>Penghasilan {{ $row->months->month }} {{ $row->months->year }}</td>
         </tr>
         <tr>
-            <td>NIP</td>
-            <td>:</td>
-            <td>{{ $row->nip }}</td>
-        </tr>
-        <tr>
             <td>Nama</td>
             <td>:</td>
             <td>{{ Auth::user()->name }}</td>
+        </tr>
+        <tr>
+            <td>NIP/NIK</td>
+            <td>:</td>
+            <td>{{ $row->nip }}</td>
         </tr>
         <tr>
             <td colspan="3">

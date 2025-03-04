@@ -176,6 +176,12 @@ Presensi Pegawai
         </div>
       </div>
       <div class="mb-3 row">
+        <label for="ld" class="col-sm-2 control-label"><strong>{{ toFWU('BELUM MENJALANKAN TUGAS') }}</strong></label>
+        <div class="col-sm-10">
+          {{ $row->bmt }}
+        </div>
+      </div>
+      <div class="mb-3 row">
         <label for="ib" class="col-sm-2 control-label"><strong>{{ toFWU('IZIN BELAJAR') }}</strong></label>
         <div class="col-sm-10">
           {{ $row->ib }}
