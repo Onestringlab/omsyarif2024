@@ -118,7 +118,7 @@ Slip Gaji
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="kotor" class="col-sm-3 control-label"><strong>Kotor</strong></label>
+        <label for="kotor" class="col-sm-3 control-label"><strong>Jumlah Kotor</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->kotor) }}
         </div>
@@ -184,13 +184,13 @@ Slip Gaji
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="totpot" class="col-sm-3 control-label"><strong>Total Potongan</strong></label>
+        <label for="totpot" class="col-sm-3 control-label"><strong>Jumlah Potongan</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->totpot) }}
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="bersih" class="col-sm-3 control-label"><strong>Gaji Bersih</strong></label>
+        <label for="bersih" class="col-sm-3 control-label"><strong>Jumlah Bersih</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->bersih) }}
         </div>
