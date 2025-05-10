@@ -113,8 +113,8 @@ Data Gaji
 				<td class=" text-center">
 					<a class="btn btn-success" href="{{asset('/')}}allowances/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-info-circle"></i></a>
 					<a class="btn btn-secondary" href="{{asset('/')}}allowances/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
-					<input type="hidden" class="form-control" id="shareLink" value=" {{asset('/')}}bersihpdfshare/{{ trim($row->nmpeg) }}/{{ $encryptedParams }}" readonly>
-					<button class="btn btn-warning" onclick="copyToClipboard()"><i class="fa-solid fa-link"></i></button>
+					<input type="hidden" class="form-control shareLink" value=" {{asset('/')}}bersihpdfshare/{{ trim($row->nmpeg) }}/{{ $encryptedParams }}" readonly>
+					<button class="btn btn-warning" onclick="copyToClipboard(this)"><i class="fa-solid fa-link"></i></button>
 					<a class="btn btn-danger" href="{{asset('/')}}allowances/{{ $month->id }}/{{ $row->id }}/delete"><i class="far fa-trash-alt"></i></a>
 				</td>
 				</tr>
