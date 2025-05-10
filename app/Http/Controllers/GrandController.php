@@ -185,4 +185,13 @@ class GrandController extends Controller
         $pdf = PDF::loadview('grand/tungkinpdf', ['row' => $row, 'satker' => $satker])->setPaper('a5');
         return $pdf->stream('slip_tungkin_' . generate_uuid_4());
     }
+
+	public function tungkinpdfmonth($month_id)
+	{
+		$rows = Grand::where('month_id', $month_id)->orderBy('netto', 'desc')->get();
+		$satker = Satker::where('kode', Auth::user()->satker)->first();
+		// return view('grand/tungkinpdfmonth', ['rows' => $rows, 'satker' => $satker]);
+		$pdf = PDF::loadview('grand/tungkinpdfmonth', ['rows' => $rows, 'satker' => $satker])->setPaper('a4');
+		return $pdf->stream('slip_tungkin_month_' . generate_uuid_4());
+	}
 }

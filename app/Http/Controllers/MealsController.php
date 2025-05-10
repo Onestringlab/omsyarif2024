@@ -126,6 +126,14 @@ class MealsController extends Controller
         return $pdf->stream('slip_makan_' . generate_uuid_4());
     }
 
+    public function makanpdfmonth($month_id)
+    {
+        $rows = Meal::where('month_id', $month_id)->orderBy('bersih', 'desc')->get();
+        $satker = Satker::where('kode', Auth::user()->satker)->first();
+        $pdf = PDF::loadview('meals/makanpdfmonth', ['rows' => $rows, 'satker' => $satker])->setPaper('a4');
+        return $pdf->stream('slip_makan_month' . generate_uuid_4());
+    }
+
     // Admin Role 
     public function data($month_id)
     {

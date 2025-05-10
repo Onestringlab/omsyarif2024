@@ -86,8 +86,8 @@
             </td>
         </tr>
         <tr>
-            <td>Jumlah Kotor</td>
-            <td class="text-right">{{ toCurrency($row->kotor) }}</td>
+            <td><strong>Jumlah Kotor</strong></td>
+            <td class="text-right"><strong>{{ toCurrency($row->kotor) }}</strong></td>
         </tr>
         <tr>
             <td colspan=2>

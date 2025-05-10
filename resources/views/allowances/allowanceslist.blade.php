@@ -58,11 +58,13 @@ Data Gaji
               <th width="100">Gaji Bersih</th>
               <!-- <th>Created_at</th>
               <th>Updated_at</th> -->
-              <th class="text-center" width="150">
+              <th class="text-center" width="200">
                 <a class=" btn btn-primary" href="{{asset('/')}}allowances/create/{{ $month->id }}">
                   <i class="fas fa-plus"></i></a>
                 <a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#uploadAllowances">
                   <i class="fa-sharp fa-solid fa-upload"></i></a>
+                <a class="btn btn-warning" href="{{asset('/')}}allowances/pdf/{{ $month->id }}" target="_blank">
+                  <i class="fa-regular fa-file-pdf"></i></a>
                 <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeAllowances">
                   <i class="fas fa-trash"></i></a>
               </th>
@@ -71,11 +73,12 @@ Data Gaji
           <tbody>
             @php ($no = 1)
             @foreach ($rows as $row)
+            @php ($encryptedParams = encrypt(['id' => $row->id, 'nip' => $row->nip]))
             <tr class="align-middle">
               <td>{{ $no++ }}.</td>
               <!-- <td>{{ $row['month_id'] }}</td> -->
-              <td>{{ $row['nip'] }}</td>
-              <td>{{ $row['nmpeg'] }}</td>
+              <td>{{ $row->nip }}</td>
+              <td>{{ $row->nmpeg }}</td>
               <!-- <td>{{ $row['npwp'] }}</td> -->
               <!-- <td class="text-center">{{ $row['rekening'] }}</td> -->
               <!-- <td>{{ $row['nmbankspan'] }}</td> -->
@@ -110,6 +113,8 @@ Data Gaji
               <td class=" text-center">
                 <a class="btn btn-success" href="{{asset('/')}}allowances/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-info-circle"></i></a>
                 <a class="btn btn-secondary" href="{{asset('/')}}allowances/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
+                <input type="hidden" class="form-control" id="shareLink" value=" {{asset('/')}}bersihpdfshare/{{ trim($row->nmpeg) }}/{{ $encryptedParams }}" readonly>
+                <button class="btn btn-warning" onclick="copyToClipboard()"><i class="fa-solid fa-link"></i></button>
                 <a class="btn btn-danger" href="{{asset('/')}}allowances/{{ $month->id }}/{{ $row->id }}/delete"><i class="far fa-trash-alt"></i></a>
               </td>
             </tr>

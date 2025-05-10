@@ -124,6 +124,14 @@ class TransportController extends Controller
         return $pdf->stream('slip_transport_' . generate_uuid_4());
     }
 
+    public function kendaraanpdfmonth($month_id)
+    {
+        $rows = Transport::where('month_id', $month_id)->orderBy('jumlah_diterima','desc')->get();
+        $satker = Satker::where('kode', Auth::user()->satker)->first();
+        $pdf = PDF::loadview('transport/kendaraanpdfmonth', ['rows' => $rows, 'satker' => $satker])->setPaper('a4');
+        return $pdf->stream('slip_transport_month' . generate_uuid_4());
+    }
+
     // admin role
     public function data($month_id)
     {

@@ -12,6 +12,8 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Log;
 
 
 class PotonganController extends Controller
@@ -153,6 +155,34 @@ class PotonganController extends Controller
         $pdf = PDF::loadview('potongans/potonganspdf', ['row' => $row, 'satker' => $satker, 'nkt' => $nkt])->setPaper('a5');
         return $pdf->stream('potongan_potongan' . generate_uuid_4());
     }
+
+    public function potonganspdfmonth($month_id)
+    {
+        $rows = Potongan::where('month_id', $month_id)->orderBy('jumlah','desc')->get();
+        $satker = Satker::where('kode', Auth::user()->satker)->first();
+        $nkt = Nomenklatur::where('kode_satker', Auth::user()->satker)->first();
+        $pdf = PDF::loadview('potongans/potonganspdfmonth', ['rows' => $rows, 'satker' => $satker, 'nkt' => $nkt])->setPaper('a4');
+        return $pdf->stream('potongan_potongan_month' . generate_uuid_4());
+    }
+
+    // public function potonganspdfmonth($month_id)
+    // {
+    //     $start = microtime(true);
+    //     $rows = Cache::remember('potongan_rows_' . $month_id, 60, function () use ($month_id) {
+    //         return Potongan::where('month_id', $month_id)->get();
+    //     });
+    //     $satker = Cache::remember('satker_' . Auth::user()->satker, 60, function () {
+    //         return Satker::where('kode', Auth::user()->satker)->first();
+    //     });
+    //     $nkt = Cache::remember('nomenklatur_' . Auth::user()->satker, 60, function () {
+    //         return Nomenklatur::where('kode_satker', Auth::user()->satker)->first();
+    //     });
+    //     $time = microtime(true) - $start;
+    //     Log::info('Query time with cache: ' . $time . ' seconds');
+    //     $pdf = PDF::loadview('potongans/potonganspdfmonth', ['rows' => $rows, 'satker' => $satker, 'nkt' => $nkt])
+    //         ->setPaper('a4');
+    //     return $pdf->stream('potongan_potongan_month' . generate_uuid_4());
+    // }
 
     public function import(Request $request)
     {

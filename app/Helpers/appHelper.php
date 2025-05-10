@@ -134,3 +134,19 @@ function toFWU($string)
 {
   return ucwords((strtolower($string)));
 }
+
+function format_name($name)
+{
+  // Pisahkan nama berdasarkan koma
+  $parts = explode(',', $name);
+
+  // Ambil bagian nama (sebelum koma) dan ubah ke title case
+  $namePart = trim($parts[0]);
+  $namePart = ucwords(strtolower($namePart));
+
+  // Ambil bagian gelar (setelah koma) jika ada, tetap apa adanya
+  $titlePart = isset($parts[1]) ? trim($parts[1]) : '';
+
+  // Gabungkan kembali nama dan gelar
+  return $titlePart ? "$namePart, $titlePart" : $namePart;
+}

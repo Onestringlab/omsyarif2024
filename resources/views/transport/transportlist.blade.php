@@ -32,21 +32,23 @@ Data Transport 
                 <table class="table table-striped table-hover ">
                     <thead class="thead-dark">
                         <tr>
-                            <th>No</th>
-                            <th>NIP</th>
-                            <th>Nama</th>
+                            <th width="30" class="text-center">No</th>
+                            <th width="180" class="text-center">NIP</th>
+                            <th class="text-center">Nama</th>
                             <!-- <th>Pangkat/Gol.</th> -->
                             <!-- <th>Jabatan</th> -->
-                            <th>Standar Biaya</th>
+                            <th width="150" class="text-center">Standar Biaya</th>
                             <!-- <th>Total Kehadiran</th> -->
                             <!-- <th>Fasilitas Kendaraan Dinas</th> -->
-                            <th width="150">Fasilitas Uang Transportasi</th>
-                            <th>Jumlah</th>
-                            <th class="text-center" width="150">
+                            <th width="200" class="text-center">Fasilitas Uang Transportasi</th>
+                            <th width="100" class="text-center">Jumlah</th>
+                            <th class="text-center" width="200">
                                 <a class=" btn btn-primary" href="{{ asset('/') }}transport/create/{{ $month->id }}">
                                     <i class="fas fa-plus"></i></a>
                                 <a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#uploadTransport">
                                     <i class="fa-sharp fa-solid fa-upload"></i></a>
+                                <!-- <a class="btn btn-warning" href="{{asset('/')}}transport/pdf/{{ $month->id }}" target="_blank">
+                                    <i class="fa-regular fa-file-pdf"></i></a> -->
                                 <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeTransport">
                                     <i class="fas fa-trash"></i></a>
                             </th>
@@ -57,20 +59,20 @@ Data Transport 
                         @php ($no = 1)
                         @foreach ($rows as $row)
                         <tr>
-                            <td>{{ $no++ }}</td>
+                            <td class="text-center">{{ $no++ }}</td>
                             <td>{{ $row['nip_nik'] }}</td>
                             <td>{{ $row['nama'] }}</td>
                             <!-- <td>{{ $row['pangkat_gol'] }}</td> -->
                             <!-- <td>{{ $row['jabatan'] }}</td> -->
-                            <td>{{ toCurrency($row['standar_biaya']) }}</td>
+                            <td class="text-center">{{ toCurrency($row['standar_biaya']) }}</td>
                             <!-- <td>{{ $row['satker'] }}</td> -->
                             <!-- <td>{{ $row['total_kehadiran'] }}</td> -->
                             <!-- <td>{{ $row['fasilitas_kendaraan_dinas'] }}</td> -->
-                            <td>{{ $row['fasilitas_uang_transportasi'] }}</td>
-                            <td>{{ toCurrency($row['jumlah_diterima']) }}</td>
+                            <td class="text-center">{{ $row['fasilitas_uang_transportasi'] }}</td>
+                            <td class="text-center">{{ toCurrency($row['jumlah_diterima']) }}</td>
                             <!-- <td>{{ $row['created_at'] }}</td> -->
                             <!-- <td>{{ $row['updated_at'] }}</td> -->
-                            <td align="center">
+                            <td class="text-center">
                                 <a class="btn btn-success" href="{{ asset('/') }}transport/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-info-circle"></i></a>
                                 <a class="btn btn-secondary" href="{{ asset('/') }}transport/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
                                 <a class="btn btn-danger" href="{{ asset('/') }}transport/{{ $month->id }}/{{ $row->id }}/delete"><i class="far fa-trash-alt"></i></a>

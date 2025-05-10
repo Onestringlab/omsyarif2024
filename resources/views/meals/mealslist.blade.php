@@ -32,21 +32,23 @@ Uang Makan 
                 <table class="table table-striped table-hover ">
                     <thead class="thead-dark">
                         <tr>
-                            <th>No</th>
-                            <th>NIP</th>
-                            <th>Nama</th>
-                            <th>Hari</th>
-                            <th>Tarif</th>
-                            <th>PPH</th>
-                            <th>Kotor</th>
-                            <th>Potongan</th>
-                            <th>Bersih</th>
-                            <th class="text-center" width="150">
+                            <th width="30" class="text-center">No</th>
+                            <th width="180" class="text-center">NIP</th>
+                            <th width="250" class="text-center">Nama</th>
+                            <th width="100" class="text-center">Hari</th>
+                            <th width="100" class="text-center">Tarif</th>
+                            <th width="100" class="text-center">PPH</th>
+                            <th width="100" class="text-center">Kotor</th>
+                            <th width="100" class="text-center">Potongan</th>
+                            <th width="100" class="text-center">Bersih</th>
+                            <th class="text-center" width="200">
                                 <a class=" btn btn-primary"
                                     href="{{ asset('/') }}meals/create/{{ $month->id }}">
                                     <i class="fas fa-plus"></i></a>
                                 <a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#uploadMeals">
                                     <i class="fa-sharp fa-solid fa-upload"></i></a>
+                                <!-- <a class="btn btn-warning" href="{{asset('/')}}meals/pdf/{{ $month->id }}" target="_blank">
+                                    <i class="fa-regular fa-file-pdf"></i></a> -->
                                 <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeMeals">
                                     <i class="fas fa-trash"></i></a>
                             </th>
@@ -59,13 +61,13 @@ Uang Makan 
                             <td>{{ $no++ }}.</td>
                             <td>{{ $row['nip'] }}</td>
                             <td>{{ $row['nmpeg'] }}</td>
-                            <td>{{ $row['jmlhari'] }}</td>
-                            <td>{{ toCurrency($row['tarif']) }}</td>
-                            <td>{{ $row['pph'] }}</td>
-                            <td>{{ toCurrency($row['kotor']) }}</td>
-                            <td>{{ toCurrency($row['potongan']) }}</td>
-                            <td>{{ toCurrency($row['bersih']) }}</td>
-                            <td align="center">
+                            <td class="text-center">{{ $row['jmlhari'] }}</td>
+                            <td class="text-center">{{ toCurrency($row['tarif']) }}</td>
+                            <td class="text-center">{{ $row['pph'] }}</td>
+                            <td class="text-center">{{ toCurrency($row['kotor']) }}</td>
+                            <td class="text-center">{{ toCurrency($row['potongan']) }}</td>
+                            <td class="text-center">{{ toCurrency($row['bersih']) }}</td>
+                            <td class="text-center">
                                 <a class="btn btn-success"
                                     href="{{ asset('/') }}meals/show/{{ $month->id }}/{{ $row->id }}"><i
                                         class="fas fa-info-circle"></i></a>

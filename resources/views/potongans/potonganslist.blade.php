@@ -23,16 +23,18 @@ Data potongans 
         <table class="table table-striped table-hover">
           <thead>
             <tr class="align-middle table-primary">
-              <th width="50">No</th>
-              <th width="200">NIP</th>
-              <th>Nama</th>
-              <th width="100">Jumlah</th>
+              <th width="30" class="text-center">No</th>
+              <th width="180" class="text-center">NIP</th>
+              <th class="text-center">Nama</th>
+              <th class="text-center" width="100">Jumlah</th>
               <!-- <th width="180">Waktu</th> -->
-              <th class="text-end" width="150">
+              <th class="text-center" width="200">
                 <a class="btn btn-primary" href="{{asset('/')}}potongans/create/{{ $month->id }}">
                   <i class="fas fa-plus"></i></a>
                 <a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#uploadpotongans">
                   <i class="fa-sharp fa-solid fa-upload"></i></a>
+                <!-- <a class="btn btn-warning" href="{{asset('/')}}potongans/pdf/{{ $month->id }}" target="_blank">
+                  <i class="fa-regular fa-file-pdf"></i></a> -->
                 <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removepotongans">
                   <i class="fas fa-trash"></i></a>
               </th>
@@ -45,9 +47,9 @@ Data potongans 
               <td>{{ $no++ }}.</td>
               <td>{{ $row['nip'] }}</td>
               <td>{{ $row['nama'] }}</td>
-              <td class="text-end">{{ toCurrency($row['jumlah']) }}</td>
+              <td class="text-center">{{ toCurrency($row['jumlah']) }}</td>
               <!-- <td>{{ $row['updated_at'] }}</td> -->
-              <td class="text-end">
+              <td class="text-center">
                 <a class="btn btn-success" href="{{asset('/')}}potongans/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-file-invoice"></i></i></a>
                 <a class="btn btn-secondary" href="{{asset('/')}}potongans/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
                 <a class="btn btn-danger" href="{{asset('/')}}potongans/{{ $month->id }}/{{ $row->id }}/delete"><i class="far fa-trash-alt"></i></a>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Imports\AllowanceModel;
+use App\Models\Users;
 use App\Models\Months;
 use App\Models\Satker;
 use App\Models\Allowances;
@@ -22,7 +23,7 @@ class AllowancesController extends Controller
 
   public function create($month_id)
   {
-    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    $month = Months::where('id', $month_id)->where('satker', Auth::user()->satker)->first();
     return view('allowances/allowancesform', ['action' => 'insert', 'month_id' => $month->id]);
   }
 
@@ -70,14 +71,14 @@ class AllowancesController extends Controller
   public function show($month_id, $id)
   {
     $allowances = Allowances::find($id);
-    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    $month = Months::where('id', $month_id)->where('satker', Auth::user()->satker)->first();
     return view('allowances/allowancesform', ['row' => $allowances, 'action' => 'detail', 'month_id' => $month->id]);
   }
 
   public function edit($month_id, $id)
   {
     $allowances = Allowances::find($id);
-    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    $month = Months::where('id', $month_id)->where('satker', Auth::user()->satker)->first();
     return view('allowances/allowancesform', ['row' => $allowances, 'action' => 'update', 'month_id' => $month->id]);
   }
 
@@ -125,7 +126,7 @@ class AllowancesController extends Controller
   public function delete($month_id, $id)
   {
     $allowances = Allowances::find($id);
-    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    $month = Months::where('id', $month_id)->where('satker', Auth::user()->satker)->first();
     return view('allowances/allowancesform', ['row' => $allowances, 'action' => 'delete', 'month_id' => $month->id]);
   }
 
@@ -138,7 +139,7 @@ class AllowancesController extends Controller
 
   public function data($month_id)
   {
-    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    $month = Months::where('id', $month_id)->where('satker', Auth::user()->satker)->first();
     $rows = Allowances::where('month_id', $month_id)->orderBy('nmpeg', 'ASC')->get();
     return view('allowances/allowanceslist', ['rows' => $rows, 'month' => $month]);
   }
@@ -149,11 +150,11 @@ class AllowancesController extends Controller
     $nip = Auth::user()->nip;
     $satker = Auth::user()->satker;
     $rows = Allowances::select('allowances.*')
-              ->where('nip', $nip) 
-              ->join('months','months.id', '=', 'allowances.month_id')
-              ->where('months.satker',$satker)
-              ->orderBy('month_id', 'DESC')
-              ->get();
+      ->where('nip', $nip)
+      ->join('months', 'months.id', '=', 'allowances.month_id')
+      ->where('months.satker', $satker)
+      ->orderBy('month_id', 'DESC')
+      ->get();
     return view('allowances/bersihlist', ['rows' => $rows]);
   }
 
@@ -190,10 +191,30 @@ class AllowancesController extends Controller
   public function bersihpdf($id)
   {
     $row = Allowances::where('id', $id)
-            ->where('nip', Auth::user()->nip)
-            ->first();
-    $satker = Satker::where('kode',Auth::user()->satker)->first();
+      ->where('nip', Auth::user()->nip)
+      ->first();
+    $satker = Satker::where('kode', Auth::user()->satker)->first();
     $pdf = PDF::loadview('allowances/bersihpdf', ['row' => $row, 'satker' => $satker])->setPaper('a5');
     return $pdf->stream('slip_bersih_' . generate_uuid_4());
+  }
+
+  public function bersihpdfshare($nmpeg,$encryptedParams)
+  {
+    $params = decrypt($encryptedParams);
+    $row = Allowances::where('id', $params['id'])
+      ->where('nip', $params['nip'])
+      ->first();
+    $user = Users::where('nip', $params['nip'])->first();
+    $satker = Satker::where('kode', $user['satker'])->first();
+    $pdf = PDF::loadview('allowances/bersihpdfshare', ['row' => $row, 'satker' => $satker, 'nmpeg'=>$nmpeg])->setPaper('a5');
+    return $pdf->stream('slip_bersih_' . generate_uuid_4());
+  }
+
+  public function bersihpdfmonth($month_id)
+  {
+    $rows = Allowances::where('month_id', $month_id)->orderBy('gjpokok', 'desc')->get();
+    $satker = Satker::where('kode', Auth::user()->satker)->first();
+    $pdf = PDF::loadview('allowances/bersihpdfmonth', ['rows' => $rows, 'satker' => $satker])->setPaper('a4');
+    return $pdf->stream('slip_bersih_month' . generate_uuid_4());
   }
 }

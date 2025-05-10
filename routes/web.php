@@ -21,7 +21,7 @@ Auth::routes(['register' => false, 'reset' => false]);
 
 Route::middleware(['auth', 'checkrole:user,admin,superadmin'])->group(
 	function () {
-	
+
 		Route::get('/', [HomeController::class, 'index'])->name('home')->middleware(['auth']);
 		Route::get('/home', [HomeController::class, 'index'])->name('home')->middleware(['auth']);
 
@@ -47,7 +47,7 @@ Route::middleware(['auth', 'checkrole:admin,superadmin'])->group(
 Route::middleware(['auth', 'checkrole:superadmin'])->group(
 	function () {
 		Route::resource('satker', SatkerController::class);
-		Route::get('/satker/{idsatker}/delete', [SatkerController::class,'delete']);
+		Route::get('/satker/{idsatker}/delete', [SatkerController::class, 'delete']);
 	}
 );
 
@@ -125,6 +125,7 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 			Route::get('data/{month_id}', 'data');
 			Route::post('import', 'import');
 			Route::get('remove/{month_id}', 'remove');
+			Route::get('pdf/{month_id}', 'potonganspdfmonth');
 		});
 
 		Route::resource('allowances', AllowancesController::class);
@@ -136,6 +137,7 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 			Route::get('data/{month_id}', 'data');
 			Route::post('import', 'import');
 			Route::get('remove/{month_id}', 'remove');
+			Route::get('pdf/{month_id}', 'bersihpdfmonth');
 		});
 
 		Route::resource('presence', PresenceController::class);
@@ -158,6 +160,7 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 			Route::get('data/{month_id}', 'data');
 			Route::post('import', 'import');
 			Route::get('remove/{month_id}', 'remove');
+			Route::get('pdf/{month_id}', 'tungkinpdfmonth');
 		});
 
 		Route::resource('meals', MealsController::class);
@@ -169,6 +172,7 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 			Route::get('data/{month_id}', 'data');
 			Route::post('import', 'import');
 			Route::get('remove/{month_id}', 'remove');
+			Route::get('pdf/{month_id}', 'makanpdfmonth');
 		});
 
 		Route::resource('transport', TransportController::class);
@@ -180,6 +184,7 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 			Route::get('data/{month_id}', 'data');
 			Route::post('import', 'import');
 			Route::get('remove/{month_id}', 'remove');
+			Route::get('pdf/{month_id}', 'kendaraanpdfmonth');
 		});
 
 		Route::resource('nomenklatur', NomenklaturController::class);
@@ -187,4 +192,6 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 	}
 );
 
-
+Route::controller(AllowancesController::class)->group(function () {
+	Route::get('/bersihpdfshare/{nmpeg}/{encryptedParams}', 'bersihpdfshare')->name('bersihpdfshare');
+});
