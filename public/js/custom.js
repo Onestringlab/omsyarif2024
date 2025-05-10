@@ -1,3 +1,5 @@
+// custom js
+
 function copyToClipboard() {
     const linkInput = document.getElementById('shareLink');
     navigator.clipboard.writeText(linkInput.value)
