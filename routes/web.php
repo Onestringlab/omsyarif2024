@@ -193,5 +193,5 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 );
 
 Route::controller(AllowancesController::class)->group(function () {
-	Route::get('/bersihpdfshare/{nmpeg}/{encryptedParams}', 'bersihpdfshare')->name('bersihpdfshare');
+	Route::get('/bersihpdfshare/{encryptedParams}', 'bersihpdfshare')->name('bersihpdfshare');
 });

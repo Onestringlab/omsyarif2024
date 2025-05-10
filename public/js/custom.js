@@ -1,6 +1,4 @@
-// custom js
-
-function copyToClipboard(button) {
+function copyToClipboard(button, salam) {
     // Pastikan button tidak undefined
     if (!button) {
         Swal.fire({
@@ -11,11 +9,11 @@ function copyToClipboard(button) {
         console.error('Button is undefined');
         return;
     }
-
+    console.log(salam);
     // Cari input sebelum tombol (shareLink)
     const linkInput = button.previousElementSibling;
     if (linkInput && linkInput.classList.contains('shareLink')) {
-        navigator.clipboard.writeText(linkInput.value)
+        navigator.clipboard.writeText(salam + linkInput.value)
             .then(() => {
                 Swal.fire({
                     icon: 'success',
