@@ -198,7 +198,7 @@ class AllowancesController extends Controller
     return $pdf->stream('slip_bersih_' . generate_uuid_4());
   }
 
-  public function bersihpdfshare($nmpeg,$encryptedParams)
+  public function bersihpdfshare($encryptedParams)
   {
     $params = decrypt($encryptedParams);
     $row = Allowances::where('id', $params['id'])
@@ -206,7 +206,7 @@ class AllowancesController extends Controller
       ->first();
     $user = Users::where('nip', $params['nip'])->first();
     $satker = Satker::where('kode', $user['satker'])->first();
-    $pdf = PDF::loadview('allowances/bersihpdfshare', ['row' => $row, 'satker' => $satker, 'nmpeg'=>$nmpeg])->setPaper('a5');
+    $pdf = PDF::loadview('allowances/bersihpdfshare', ['row' => $row, 'satker' => $satker])->setPaper('a5');
     return $pdf->stream('slip_bersih_' . generate_uuid_4());
   }
 
