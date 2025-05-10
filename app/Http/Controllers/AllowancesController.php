@@ -212,7 +212,7 @@ class AllowancesController extends Controller
 
   public function bersihpdfmonth($month_id)
   {
-    $rows = Allowances::where('month_id', $month_id)->orderBy('nmpeg', 'desc')->get();
+    $rows = Allowances::where('month_id', $month_id)->orderBy('nmpeg', 'asc')->get();
     $satker = Satker::where('kode', Auth::user()->satker)->first();
     $pdf = PDF::loadview('allowances/bersihpdfmonth', ['rows' => $rows, 'satker' => $satker])->setPaper('a4');
     return $pdf->stream('slip_bersih_month' . generate_uuid_4());
