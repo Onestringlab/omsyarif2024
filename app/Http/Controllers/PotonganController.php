@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Users;
 use App\Models\Months;
 use App\Models\Potongan;
 use App\Models\Satker;
@@ -154,6 +155,19 @@ class PotonganController extends Controller
         $nkt = Nomenklatur::where('kode_satker', Auth::user()->satker)->first();
         $pdf = PDF::loadview('potongans/potonganspdf', ['row' => $row, 'satker' => $satker, 'nkt' => $nkt])->setPaper('a5');
         return $pdf->stream('potongan_potongan' . generate_uuid_4());
+    }
+
+    public function potonganspdfshare($encryptedParams)
+    {
+        $params = decrypt($encryptedParams);
+        $row = Potongan::where('id', $params['id'])
+            ->where('nip', $params['nip'])
+            ->first();
+        $user = Users::where('nip', $params['nip'])->first();
+        $satker = Satker::where('kode', $user['satker'])->first();
+        $nkt = Nomenklatur::where('kode_satker',$satker->kode)->first();
+        $pdf = PDF::loadview('potongans/potonganspdfshare', ['row' => $row, 'satker' => $satker, 'nkt' => $nkt])->setPaper('a5');
+        return $pdf->stream('slip_tungkin_' . generate_uuid_4());
     }
 
     public function potonganspdfmonth($month_id)

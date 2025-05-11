@@ -46,7 +46,6 @@ Data Gaji
 						@php ($no = 1)
 						@foreach ($rows as $row)
 						@php ($encryptedParams = encrypt(['id' => $row->id, 'nip' => $row->nip]))
-						@php ($row->nmpeg_clean = str_replace(' ', '', $row->nmpeg))
 						@php ($row->salam = "Yth. Bapak/Ibu ".$row->nmpeg." \\nBerikut kami bagikan slip gaji bulan " .$month->month." ".$month->year. ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n")
 						<tr class="align-middle">
 							<td>{{ $no++ }}.</td>

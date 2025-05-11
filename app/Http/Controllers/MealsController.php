@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Meal;
+use App\Models\Users;
 use App\Models\Months;
 use App\Models\Satker;
 use App\Imports\MealsImport;
@@ -126,9 +127,21 @@ class MealsController extends Controller
         return $pdf->stream('slip_makan_' . generate_uuid_4());
     }
 
+    public function makanpdfshare($encryptedParams)
+    {
+        $params = decrypt($encryptedParams);
+        $row = Meal::where('id', $params['id'])
+            ->where('nip', $params['nip'])
+            ->first();
+        $user = Users::where('nip', $params['nip'])->first();
+        $satker = Satker::where('kode', $user['satker'])->first();
+        $pdf = PDF::loadview('meals/makanpdfshare', ['row' => $row, 'satker' => $satker])->setPaper('a5');
+        return $pdf->stream('slip_makan_' . generate_uuid_4());
+    }
+
     public function makanpdfmonth($month_id)
     {
-        $rows = Meal::where('month_id', $month_id)->orderBy('bersih', 'desc')->get();
+        $rows = Meal::where('month_id', $month_id)->orderBy('nmpeg', 'asc')->get();
         $satker = Satker::where('kode', Auth::user()->satker)->first();
         $pdf = PDF::loadview('meals/makanpdfmonth', ['rows' => $rows, 'satker' => $satker])->setPaper('a4');
         return $pdf->stream('slip_makan_month' . generate_uuid_4());

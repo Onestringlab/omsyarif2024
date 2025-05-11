@@ -57,6 +57,8 @@ Uang Makan 
                     <tbody>
                         @php($no = 1)
                         @foreach($rows as $row)
+                        @php ($encryptedParams = encrypt(['id' => $row->id, 'nip' => $row->nip]))
+                        @php ($row->salam = "Yth. Bapak/Ibu ".$row->nama." \\nBerikut kami bagikan slip uang makan bulan " .$month->month." ".$month->year. ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n")
                         <tr>
                             <td>{{ $no++ }}.</td>
                             <td>{{ $row['nip'] }}</td>
@@ -68,15 +70,11 @@ Uang Makan 
                             <td class="text-center">{{ toCurrency($row['potongan']) }}</td>
                             <td class="text-center">{{ toCurrency($row['bersih']) }}</td>
                             <td class="text-center">
-                                <a class="btn btn-success"
-                                    href="{{ asset('/') }}meals/show/{{ $month->id }}/{{ $row->id }}"><i
-                                        class="fas fa-info-circle"></i></a>
-                                <a class="btn btn-secondary"
-                                    href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/edit"><i
-                                        class="far fa-edit"></i></a>
-                                <a class="btn btn-danger"
-                                    href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/delete"><i
-                                        class="far fa-trash-alt"></i></a>
+                                <a class="btn btn-success" href="{{ asset('/') }}meals/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-info-circle"></i></a>
+                                <a class="btn btn-secondary" href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
+                                <input type="hidden" class="form-control shareLink" value=" {{asset('/')}}makanpdfshare/{{ $encryptedParams }}" readonly>
+                                <!-- <button class="btn btn-warning" onclick="copyToClipboard(this, '{{ $row->salam }}')"><i class="fa-solid fa-link"></i></button> -->
+                                <a class="btn btn-danger" href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/delete"><i class="far fa-trash-alt"></i></a>
                             </td>
                         </tr>
                         @endforeach

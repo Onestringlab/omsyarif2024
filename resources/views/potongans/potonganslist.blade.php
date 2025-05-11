@@ -27,7 +27,6 @@ Data potongans 
               <th width="180" class="text-center">NIP</th>
               <th class="text-center">Nama</th>
               <th class="text-center" width="100">Jumlah</th>
-              <!-- <th width="180">Waktu</th> -->
               <th class="text-center" width="200">
                 <a class="btn btn-primary" href="{{asset('/')}}potongans/create/{{ $month->id }}">
                   <i class="fas fa-plus"></i></a>
@@ -43,15 +42,18 @@ Data potongans 
           <tbody>
             @php ($no = 1)
             @foreach ($rows as $row)
+            @php ($encryptedParams = encrypt(['id' => $row->id, 'nip' => $row->nip]))
+            @php ($row->salam = "Yth. Bapak/Ibu ".$row->nama." \\nBerikut kami bagikan slip potongan bulan " .$month->month." ".$month->year. ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n")
             <tr class="align-middle">
               <td>{{ $no++ }}.</td>
               <td>{{ $row['nip'] }}</td>
               <td>{{ $row['nama'] }}</td>
               <td class="text-center">{{ toCurrency($row['jumlah']) }}</td>
-              <!-- <td>{{ $row['updated_at'] }}</td> -->
               <td class="text-center">
                 <a class="btn btn-success" href="{{asset('/')}}potongans/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-file-invoice"></i></i></a>
                 <a class="btn btn-secondary" href="{{asset('/')}}potongans/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
+                <input type="hidden" class="form-control shareLink" value=" {{asset('/')}}potonganspdfshare/{{ $encryptedParams }}" readonly>
+                <!-- <button class="btn btn-warning" onclick="copyToClipboard(this, '{{ $row->salam }}')"><i class="fa-solid fa-link"></i></button> -->
                 <a class="btn btn-danger" href="{{asset('/')}}potongans/{{ $month->id }}/{{ $row->id }}/delete"><i class="far fa-trash-alt"></i></a>
               </td>
             </tr>

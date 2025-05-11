@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grand;
+use App\Models\Users;
 use App\Models\Months;
 use App\Models\Satker;
 use Illuminate\Http\Request;
@@ -100,7 +101,7 @@ class GrandController extends Controller
 	public function delete($month_id, $id)
 	{
 		$grand = Grand::find($id);
-    $month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
+    	$month = Months::where('id', $month_id)->where('satker',Auth::user()->satker)->first();
 		return view('grand/grandform', ['row' => $grand, 'action' => 'delete', 'month_id' => $month->id]);
 	}
 
@@ -186,9 +187,21 @@ class GrandController extends Controller
         return $pdf->stream('slip_tungkin_' . generate_uuid_4());
     }
 
+	public function tungkinpdfshare($encryptedParams)
+	{
+		$params = decrypt($encryptedParams);
+		$row = Grand::where('id', $params['id'])
+			->where('nip', $params['nip'])
+			->first();
+		$user = Users::where('nip', $params['nip'])->first();
+		$satker = Satker::where('kode', $user['satker'])->first();
+		$pdf = PDF::loadview('grand/tungkinpdfshare', ['row' => $row, 'satker' => $satker])->setPaper('a5');
+		return $pdf->stream('slip_tungkin_' . generate_uuid_4());
+	}
+
 	public function tungkinpdfmonth($month_id)
 	{
-		$rows = Grand::where('month_id', $month_id)->orderBy('netto', 'desc')->get();
+		$rows = Grand::where('month_id', $month_id)->orderBy('nama', 'asc')->get();
 		$satker = Satker::where('kode', Auth::user()->satker)->first();
 		// return view('grand/tungkinpdfmonth', ['rows' => $rows, 'satker' => $satker]);
 		$pdf = PDF::loadview('grand/tungkinpdfmonth', ['rows' => $rows, 'satker' => $satker])->setPaper('a4');

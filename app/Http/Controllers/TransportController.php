@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Users;
 use App\Models\Months;
 use App\Models\Satker;
 use App\Models\Transport;
@@ -124,9 +126,21 @@ class TransportController extends Controller
         return $pdf->stream('slip_transport_' . generate_uuid_4());
     }
 
+    public function kendaraanpdfshare($encryptedParams)
+    {
+        $params = decrypt($encryptedParams);
+        $row = Transport::where('id', $params['id'])
+            ->where('nip_nik', $params['nip'])
+            ->first();
+        $user = Users::where('nip', $params['nip'])->first();
+        $satker = Satker::where('kode', $user['satker'])->first();
+        $pdf = PDF::loadview('transport/kendaraanpdfshare', ['row' => $row, 'satker' => $satker])->setPaper('a5');
+        return $pdf->stream('slip_kendaraan_' . generate_uuid_4());
+    }
+
     public function kendaraanpdfmonth($month_id)
     {
-        $rows = Transport::where('month_id', $month_id)->orderBy('jumlah_diterima','desc')->get();
+        $rows = Transport::where('month_id', $month_id)->orderBy('nama','asc')->get();
         $satker = Satker::where('kode', Auth::user()->satker)->first();
         $pdf = PDF::loadview('transport/kendaraanpdfmonth', ['rows' => $rows, 'satker' => $satker])->setPaper('a4');
         return $pdf->stream('slip_transport_month' . generate_uuid_4());

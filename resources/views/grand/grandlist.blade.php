@@ -33,17 +33,18 @@ Data Grand 
                                     <i class="fas fa-plus"></i></a>
                                 <a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#uploadGrands">
                                     <i class="fa-sharp fa-solid fa-upload"></i></a>
-                                <!-- <a class="btn btn-warning" href="{{asset('/')}}grand/pdf/{{ $month->id }}" target="_blank">
-                                    <i class="fa-regular fa-file-pdf"></i>
-                                </a> -->
-                                <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeGrands">
-                                    <i class="fas fa-trash"></i></a>
+                                <a class="btn btn-warning" href="{{asset('/')}}grand/pdf/{{ $month->id }}" target="_blank">
+                                    <i class="fa-regular fa-file-pdf"></i </a>
+                                    <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeGrands">
+                                        <i class="fas fa-trash"></i></a>
                             </th>
                         </tr>
                     </thead>
                     <tbody>
                         @php ($no = 1)
                         @foreach ($rows as $row)
+                        @php ($encryptedParams = encrypt(['id' => $row->id, 'nip' => $row->nip]))
+                        @php ($row->salam = "Yth. Bapak/Ibu ".$row->nama." \\nBerikut kami bagikan slip tunjangan kinerja bulan " .$month->month." ".$month->year. ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n")
                         <tr>
                             <td>{{ $no++ }}.</td>
                             <td>{{ $row['nip'] }}</td>
@@ -56,6 +57,8 @@ Data Grand 
                             <td class=" text-center">
                                 <a class="btn btn-success" href="{{asset('/')}}grand/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-info-circle"></i></a>
                                 <a class="btn btn-secondary" href="{{asset('/')}}grand/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
+                                <input type="hidden" class="form-control shareLink" value=" {{asset('/')}}tungkinpdfshare/{{ $encryptedParams }}" readonly>
+                                <button class="btn btn-warning" onclick="copyToClipboard(this, '{{ $row->salam }}')"><i class="fa-solid fa-link"></i></button>
                                 <a class="btn btn-danger" href="{{asset('/')}}grand/{{ $month->id }}/{{ $row->id }}/delete"><i class="far fa-trash-alt"></i></a>
                             </td>
                         </tr>

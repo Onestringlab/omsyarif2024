@@ -192,6 +192,9 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 	}
 );
 
-Route::controller(AllowancesController::class)->group(function () {
-	Route::get('/bersihpdfshare/{encryptedParams}', 'bersihpdfshare')->name('bersihpdfshare');
-});
+
+Route::get('/bersihpdfshare/{encryptedParams}', [AllowancesController::class, 'bersihpdfshare'])->name('bersihpdfshare');
+Route::get('/tungkinpdfshare/{encryptedParams}', [GrandController::class, 'tungkinpdfshare'])->name('tungkinpdfshare');
+Route::get('/makanpdfshare/{encryptedParams}', [MealsController::class, 'makanpdfshare'])->name('makanpdfshare');
+Route::get('/kendaraanpdfshare/{encryptedParams}', [TransportController::class, 'kendaraanpdfshare'])->name('transportpdfshare');
+Route::get('/potonganspdfshare/{encryptedParams}', [PotonganController::class, 'potonganspdfshare'])->name('transportpdfshare');

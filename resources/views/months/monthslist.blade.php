@@ -13,16 +13,20 @@ Data Months 
 				<table class="table table-striped table-hover ">
 					<thead class="thead-dark">
 						<tr class="align-middle text-center">
-							<th width="30">No</th>
-							<th width="90">Tahun</th>
-							<th width="90">Bulan</th>
-							<th width="120">Gaji</th>
-							<th width="160">Tunjangan Kinerja</th>
-							<th width="140">Uang Makan</th>
-							<th width="160">Uang Transportasi</th>
-							<th width="120">Presensi</th>
-							<th width="120">Potongan</th>
-							<th class="text-center"><a class="btn btn-primary" href="{{asset('/')}}months/create"><i class="fas fa-plus"></i></a></th>
+							<th rowspan=2 width="30">No</th>
+							<th rowspan=2 width="90">Tahun</th>
+							<th rowspan=2 width="90">Bulan</th>
+							<th rowspan=2 width="120">Gaji</th>
+							<th rowspan=2 width="160">Tunjangan Kinerja</th>
+							<th rowspan=2 width="140">Uang Makan</th>
+							<th rowspan=2 width="160">Uang Transportasi</th>
+							<th colspan=2 width="120">Presensi</th>
+							<th rowspan=2 width="120">Potongan</th>
+							<th rowspan=2 class="text-center"><a class="btn btn-primary" href="{{asset('/')}}months/create"><i class="fas fa-plus"></i></a></th>
+						</tr>
+						<tr class="align-middle text-center">
+							<th>Tungkin</th>
+							<th>UM & TH</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -53,6 +57,7 @@ Data Months 
 								</a>
 							</td>
 							<td><a class="btn text-light btn-info" href="{{asset('/')}}presence/data/{{ $row->id }}"><i class="fa-solid fa-calendar-check"></i></a></td>
+							<td></td>
 							<td>
 								<a class="btn btn-success" href="{{asset('/')}}potongans/data/{{ $row->id }}">
 									<i class="fa-regular fa-file-lines"></i>

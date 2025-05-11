@@ -35,11 +35,7 @@ Data Transport 
                             <th width="30" class="text-center">No</th>
                             <th width="180" class="text-center">NIP</th>
                             <th class="text-center">Nama</th>
-                            <!-- <th>Pangkat/Gol.</th> -->
-                            <!-- <th>Jabatan</th> -->
                             <th width="150" class="text-center">Standar Biaya</th>
-                            <!-- <th>Total Kehadiran</th> -->
-                            <!-- <th>Fasilitas Kendaraan Dinas</th> -->
                             <th width="200" class="text-center">Fasilitas Uang Transportasi</th>
                             <th width="100" class="text-center">Jumlah</th>
                             <th class="text-center" width="200">
@@ -58,23 +54,20 @@ Data Transport 
                     <tbody>
                         @php ($no = 1)
                         @foreach ($rows as $row)
+                        @php ($encryptedParams = encrypt(['id' => $row->id, 'nip' => $row->nip_nik]))
+                        @php ($row->salam = "Yth. Bapak/Ibu ".$row->nama." \\nBerikut kami bagikan slip uang transport bulan " .$month->month." ".$month->year. ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n")
                         <tr>
                             <td class="text-center">{{ $no++ }}</td>
                             <td>{{ $row['nip_nik'] }}</td>
                             <td>{{ $row['nama'] }}</td>
-                            <!-- <td>{{ $row['pangkat_gol'] }}</td> -->
-                            <!-- <td>{{ $row['jabatan'] }}</td> -->
                             <td class="text-center">{{ toCurrency($row['standar_biaya']) }}</td>
-                            <!-- <td>{{ $row['satker'] }}</td> -->
-                            <!-- <td>{{ $row['total_kehadiran'] }}</td> -->
-                            <!-- <td>{{ $row['fasilitas_kendaraan_dinas'] }}</td> -->
                             <td class="text-center">{{ $row['fasilitas_uang_transportasi'] }}</td>
                             <td class="text-center">{{ toCurrency($row['jumlah_diterima']) }}</td>
-                            <!-- <td>{{ $row['created_at'] }}</td> -->
-                            <!-- <td>{{ $row['updated_at'] }}</td> -->
                             <td class="text-center">
                                 <a class="btn btn-success" href="{{ asset('/') }}transport/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-info-circle"></i></a>
                                 <a class="btn btn-secondary" href="{{ asset('/') }}transport/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
+                                <input type="hidden" class="form-control shareLink" value=" {{asset('/')}}kendaraanpdfshare/{{ $encryptedParams }}" readonly>
+                                <!-- <button class="btn btn-warning" onclick="copyToClipboard(this, '{{ $row->salam }}')"><i class="fa-solid fa-link"></i></button> -->
                                 <a class="btn btn-danger" href="{{ asset('/') }}transport/{{ $month->id }}/{{ $row->id }}/delete"><i class="far fa-trash-alt"></i></a>
                             </td>
                         </tr>
