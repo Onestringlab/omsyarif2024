@@ -32,8 +32,8 @@ Data potongans 
 					<i class="fas fa-plus"></i></a>
 					<a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#uploadpotongans">
 					<i class="fa-sharp fa-solid fa-upload"></i></a>
-					<!-- <a class="btn btn-warning" href="{{asset('/')}}potongans/pdf/{{ $month->id }}" target="_blank">
-					<i class="fa-regular fa-file-pdf"></i></a> -->
+					<a class="btn btn-warning" href="{{asset('/')}}potongans/pdf/{{ $month->id }}" target="_blank">
+					<i class="fa-regular fa-file-pdf"></i></a>
 					<a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removepotongans">
 					<i class="fas fa-trash"></i></a>
 				</th>
@@ -43,7 +43,7 @@ Data potongans 
 				@php ($no = 1)
 				@foreach ($rows as $row)
 				@php ($encryptedParams = encrypt(['id' => $row->id, 'nip' => $row->nip]))
-				@php ($row->salam = "Yth. Bapak/Ibu ".$row->nama." \\nBerikut kami bagikan slip potongan bulan " .$month->month." ".$month->year. ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n")
+				@php ($row->salam = "Yth. Bapak/Ibu ".addslashes($row->nama)." \\nBerikut kami bagikan slip potongan bulan " .$month->month." ".$month->year. ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n")
 				<tr class="align-middle">
 				<td>{{ $no++ }}.</td>
 				<td>{{ $row['nip'] }}</td>
@@ -53,7 +53,7 @@ Data potongans 
 					<a class="btn btn-success" href="{{asset('/')}}potongans/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-file-invoice"></i></i></a>
 					<a class="btn btn-secondary" href="{{asset('/')}}potongans/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
 					<input type="hidden" class="form-control shareLink" value=" {{asset('/')}}potonganspdfshare/{{ $encryptedParams }}" readonly>
-					<!-- <button class="btn btn-warning" onclick="copyToClipboard(this, '{{ $row->salam }}')"><i class="fa-solid fa-link"></i></button> -->
+					<button class="btn btn-warning" onclick="copyToClipboard(this, '{{ $row->salam }}')"><i class="fa-solid fa-link"></i></button>
 					<a class="btn btn-danger" href="{{asset('/')}}potongans/{{ $month->id }}/{{ $row->id }}/delete"><i class="far fa-trash-alt"></i></a>
 				</td>
 				</tr>
