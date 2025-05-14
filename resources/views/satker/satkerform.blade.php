@@ -19,7 +19,7 @@ Data Satker 
                 <div class="mb-3 row">
                     <label for="kode" class="col-sm-2 col-form-label">Kode</label>
                     <div class="col-sm-10">
-                        <input class="form-control @error('kode') is-invalid @enderror" type="text" name="kode" value="{{ old('kode') }}" required>ddd
+                        <input class="form-control @error('kode') is-invalid @enderror" type="text" name="kode" value="{{ old('kode') }}" required>
                         @error('kode')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
