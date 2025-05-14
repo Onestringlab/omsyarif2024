@@ -17,7 +17,7 @@ class SatkerController extends Controller {
 
 	public function store(Request $request){
 		$validatedData = $request->validate([
-		'kode' => 'required|numeric',
+		'kode' => 'required|numeric|unique:satker,kode',
 		'nama' => 'required|max:255',
 		'alamat' => 'required',
 		'keterangan' => 'required',

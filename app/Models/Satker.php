@@ -11,7 +11,7 @@ class Satker extends Model
     protected $table = 'satker';
 
     protected $fillable = [
-    'kode', 'nama', 'alamat'
+    'kode', 'nama', 'alamat','keterangan'
     ];
 
     public function users()

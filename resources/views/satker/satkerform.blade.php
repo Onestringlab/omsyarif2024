@@ -19,25 +19,37 @@ Data Satker 
                 <div class="mb-3 row">
                     <label for="kode" class="col-sm-2 col-form-label">Kode</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="kode" value="" required>
+                        <input class="form-control @error('kode') is-invalid @enderror" type="text" name="kode" value="{{ old('kode') }}" required>ddd
+                        @error('kode')
+                            <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="nama" value="" required>
+                        <input class="form-control" type="text" name="nama" value="{{ old('nama') }}" required>
+                        @error('nama')
+                            <div class="invalid-feedback">{{ $nama }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="alamat" class="col-sm-2 col-form-label">Alamat</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="alamat" value="" required>
+                        <input class="form-control" type="text" name="alamat" value="{{ old('alamat') }}" required>
+                        @error('alamat')
+                            <div class="invalid-feedback">{{ $alamat }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3 row">
                     <label for="keterangan" class="col-sm-2 col-form-label">Keterangan</label>
                     <div class="col-sm-10">
-                        <input class="form-control" type="text" name="keterangan" value="" required>
+                        <input class="form-control" type="text" name="keterangan" value="{{ old('keterangan') }}" required>
+                        @error('keterangan')
+                            <div class="invalid-feedback">{{ $keterangan }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="mb-3">
