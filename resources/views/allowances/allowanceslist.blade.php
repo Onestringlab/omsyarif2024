@@ -98,30 +98,31 @@ Data Gaji
 
 		</div>
 	</div>
+</div>
 
-	<!-- Modal -->
-	<div class="modal fade" id="removeAllowances" tabindex="-1" aria-labelledby="removeAllowancesLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="removeSalariesLabel">Menghapus Data Gaji</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<div class="mb-3 row">
-						<div class="col-sm-12">
-							PERINGATAN!!!<br>
-							SEMUA data gaji pada bulan ini akan DIHAPUS!!!
-						</div>
-					</div>
-					<div class="modal-footer">
-						<input type="hidden" name="month_id" value="{{ $month->id }}">
-						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-						<a class="btn btn-danger" href="{{asset('/')}}allowances/remove/{{ $month->id }}">Hapus</a>
-					</div>
-				</div>
-
+<!-- Modal -->
+<div class="modal fade" id="removeAllowances" tabindex="-1" aria-labelledby="removeAllowancesLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h1 class="modal-title fs-5" id="removeSalariesLabel">Menghapus Data Gaji</h1>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
+			<div class="modal-body">
+				<div class="mb-3 row">
+					<div class="col-sm-12">
+						PERINGATAN!!!<br>
+						SEMUA data gaji pada bulan ini akan DIHAPUS!!!
+					</div>
+				</div>
+				<div class="modal-footer">
+					<input type="hidden" name="month_id" value="{{ $month->id }}">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+					<a class="btn btn-danger" href="{{asset('/')}}allowances/remove/{{ $month->id }}">Hapus</a>
+				</div>
+			</div>
+
 		</div>
 	</div>
-	@endsection
+</div>
+@endsection
