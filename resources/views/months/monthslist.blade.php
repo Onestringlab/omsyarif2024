@@ -57,7 +57,7 @@ Data Months 
 								</a>
 							</td>
 							<td><a class="btn text-light btn-info" href="{{asset('/')}}presence/data/{{ $row->id }}"><i class="fa-solid fa-calendar-check"></i></a></td>
-							<td></td>
+							<td><a class="btn text-light btn-info" href="{{asset('/')}}presensium/data/{{ $row->id }}"><i class="fa-solid fa-calendar-days"></i></a></td>
 							<td>
 								<a class="btn btn-success" href="{{asset('/')}}potongans/data/{{ $row->id }}">
 									<i class="fa-regular fa-file-lines"></i>

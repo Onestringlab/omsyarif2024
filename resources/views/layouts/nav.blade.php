@@ -40,8 +40,12 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('kendaraanlist') }}"><i class="fas fa-car-side"></i> Uang Transportasi</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('presensilist') }}"><i class="fa-solid fa-calendar-check"></i> Presensi</a>
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> <i class="fa-solid fa-calendar-check"></i> Presensi</a>
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('presensilist') }}"></i> Tunjangan Kinerja</a>
+                        <a class="dropdown-item" href="{{ route('presensiumlist') }}"></i> Uang Makan & Transportasi Hakim</a>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('potongansslip') }}"><i class="fa-regular fa-file-lines"></i> {{ __('Potongan') }}</a>
@@ -82,13 +86,13 @@
                 @else
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <i class="fa-solid fa-user-tie"></i> {{ Auth::user()->name }}
+                        <i class="fa-solid fa-user-tie"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ asset('/password') }}/{{ Auth::user()->id }}">{{ __('Ubah Sandi') }}</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
+                            {{ __('Logout') }} ({{ Auth::user()->name }})
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                             @csrf

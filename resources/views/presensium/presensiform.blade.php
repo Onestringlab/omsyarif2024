@@ -8,13 +8,13 @@ Presensi Pegawai
 <div class="container">
 	<script>
 		function button_cancel() {
-			location.replace("{{ asset('/') }}presensilist");
+			location.replace("{{ asset('/') }}presensiumlist");
 		}
 	</script>
 	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item">
-				<a href="{{ asset('/presensilist') }}">Presensi Tunjangan Kinerja</a>
+				<a href="{{ asset('/presensiumlist') }}">Presensi Uang Makan dan Transportasi Hakim</a>
 			</li>
 			<li class="breadcrumb-item active" aria-current="page">
 				{{ $row->months->month }} {{ $row->months->year }}
@@ -25,7 +25,7 @@ Presensi Pegawai
 		<h5 class="card-header text-bg-success"> Rekapitulasi Kehadiran dari Tanggal 16 Bulan sebelum {{ $row->months->month }} s.d. 15 {{ $row->months->month }} {{ $row->months->year }}
 		</h5>
 		<div class="card-body">
-			<form class="form-horizontal" action="{{ asset('/') }}presensiedit" method="post">
+			<form class="form-horizontal" action="{{ asset('/') }}presensiumedit" method="post">
 				<div class="mb-3 row">
 					<label for="status" class="col-sm-2 col-form-label"><strong>Status</strong></label>
 					<div class="col-sm-10">

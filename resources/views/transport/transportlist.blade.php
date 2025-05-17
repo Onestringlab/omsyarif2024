@@ -43,8 +43,7 @@ Data Transport 
                                     <i class="fas fa-plus"></i></a>
                                 <a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#uploadTransport">
                                     <i class="fa-sharp fa-solid fa-upload"></i></a>
-                                <!-- <a class="btn btn-warning" href="{{asset('/')}}transport/pdf/{{ $month->id }}" target="_blank">
-                                    <i class="fa-regular fa-file-pdf"></i></a> -->
+                                <a class="btn btn-warning" href="{{asset('/')}}transport/pdf/{{ $month->id }}" target="_blank"><i class="fa-regular fa-file-pdf"></i></a>
                                 <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeTransport">
                                     <i class="fas fa-trash"></i></a>
                             </th>
@@ -67,7 +66,7 @@ Data Transport 
                                 <a class="btn btn-success" href="{{ asset('/') }}transport/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-info-circle"></i></a>
                                 <a class="btn btn-secondary" href="{{ asset('/') }}transport/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
                                 <input type="hidden" class="form-control shareLink" value=" {{asset('/')}}kendaraanpdfshare/{{ $encryptedParams }}" readonly>
-                                <!-- <button class="btn btn-warning" onclick="copyToClipboard(this, '{{ $row->salam }}')"><i class="fa-solid fa-link"></i></button> -->
+                                <button class="btn btn-warning" onclick="copyToClipboard(this, '{{ $row->salam }}')"><i class="fa-solid fa-link"></i></button>
                                 <a class="btn btn-danger" href="{{ asset('/') }}transport/{{ $month->id }}/{{ $row->id }}/delete"><i class="far fa-trash-alt"></i></a>
                             </td>
                         </tr>

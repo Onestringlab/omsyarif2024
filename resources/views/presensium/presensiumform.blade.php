@@ -8,21 +8,21 @@ Data Presensi
 <div class="container">
 	<script>
 		function button_cancel() {
-			location.replace("{{ asset('/') }}presence/data/{{ $month_id }}");
+			location.replace("{{ asset('/') }}presensium/data/{{ $month_id }}");
 		}
 	</script>
 	<nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
 		<ol class="breadcrumb">
 			<li class="breadcrumb-item"><a href="{{ asset('/months') }}">Data</a></li>
-			<li class="breadcrumb-item"><a href="{{asset('/')}}presence/data/{{ $month_id }}">Presensi Tunjangan Kinerja</a></li>
+			<li class="breadcrumb-item"><a href="{{asset('/')}}presensium/data/{{ $month_id }}">Presensi Uang Makan & Tunjangan Hakim</a></li>
 			<li class="breadcrumb-item active" aria-current="page">{{ ucfirst($action) }}</li>
 		</ol>
 	</nav>
 	<div class="card border-success">
-		<h5 class="card-header text-bg-success"> Data Presensi</h5>
+		<h5 class="card-header text-bg-success"> Data Presensi Uang Makan dan Transportasi Hakim</h5>
 		<div class="card-body">
 			@if($action == 'insert')
-			<form class="form-horizontal" action="{{ asset('/') }}presence" method="post">
+			<form class="form-horizontal" action="{{ asset('/') }}presensium" method="post">
 				<div class="mb-3 row">
 					<label for="nip" class="col-sm-2 col-form-label"><strong>NIP</strong></label>
 					<div class="col-sm-10">
@@ -320,7 +320,7 @@ Data Presensi
 				{{ csrf_field() }}
 			</form>
 			@elseif($action == 'update')
-			<form class="form-horizontal" action="{{ asset('/') }}presence/{{ $row->id }}" method="post">
+			<form class="form-horizontal" action="{{ asset('/') }}presensium/{{ $row->id }}" method="post">
 				<div class="mb-3 row">
 					<label for="nip" class="col-sm-2 col-form-label"><strong>NIP</strong></label>
 					<div class="col-sm-10">
@@ -619,7 +619,7 @@ Data Presensi
 				{{ csrf_field() }}
 			</form>
 			@elseif($action == 'delete')
-			<form class="form-horizontal" action="{{ asset('/') }}presence/{{ $row->id }}" method="post">
+			<form class="form-horizontal" action="{{ asset('/') }}presensium/{{ $row->id }}" method="post">
 				<div class="mb-3 row">
 					<label for="nip" class="col-sm-2 control-label"><strong>NIP</strong></label>
 					<div class="col-sm-10">

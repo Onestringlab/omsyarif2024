@@ -8,13 +8,13 @@ Presensi Pegawai
 <div class="container">
   <script>
     function button_cancel() {
-      location.replace("{{ asset('/') }}presensilist");
+      location.replace("{{ asset('/') }}presensiumlist");
     }
   </script>
   <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-        <a href="{{ asset('/presensilist') }}">Presensi Tunjangan Kinerja</a>
+        <a href="{{ asset('/presensiumlist') }}">Presensi Uang Makan dan Transportasi Hakim</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">
         {{ $row->months->month }} {{ $row->months->year }}

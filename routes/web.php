@@ -8,6 +8,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\MonthsController;
 use App\Http\Controllers\SatkerController;
 use App\Http\Controllers\PresenceController;
+use App\Http\Controllers\PresensiumController;
 use App\Http\Controllers\SalariesController;
 use App\Http\Controllers\PotonganController;
 use App\Http\Controllers\AllowancesController;
@@ -78,6 +79,13 @@ Route::middleware(['auth', 'checkrole:user'])->group(
 			Route::post('/presensiedit', 'presensiedit')->name('presensiedit');
 		});
 
+		Route::controller(PresensiumController::class)->group(function () {
+			Route::get('/presensiumlist', 'presensiumlist')->name('presensiumlist');
+			Route::get('/presensium/{id}', 'presensium')->name('presensium');
+			Route::get('/presensiumform/{id}', 'presensiumform')->name('presensiumform');
+			Route::post('/presensiumedit', 'presensiumedit')->name('presensiumedit');
+		});
+
 		Route::controller(GrandController::class)->group(function () {
 			Route::get('/tungkinlist', 'tungkinlist')->name('tungkinlist');
 			Route::get('/tungkin/{id}', 'tungkin')->name('tungkin');
@@ -142,6 +150,17 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 
 		Route::resource('presence', PresenceController::class);
 		Route::controller(PresenceController::class)->prefix('presence')->group(function () {
+			Route::get('create/{month_id}', 'create');
+			Route::get('show/{month_id}/{id}', 'show');
+			Route::get('{month_id}/{id}/edit', 'edit');
+			Route::get('{month_id}/{id}/delete', 'delete');
+			Route::get('data/{month_id}', 'data');
+			Route::post('import', 'import');
+			Route::get('remove/{month_id}', 'remove');
+		});
+
+		Route::resource('presensium', PresensiumController::class);
+		Route::controller(PresensiumController::class)->prefix('presensium')->group(function () {
 			Route::get('create/{month_id}', 'create');
 			Route::get('show/{month_id}/{id}', 'show');
 			Route::get('{month_id}/{id}/edit', 'edit');
