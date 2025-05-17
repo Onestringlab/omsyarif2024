@@ -26,8 +26,8 @@ Data Presence 
 							<th width="30" class="text-center">No</th>
 							<th width="180" class="text-center">NIP</th>
 							<th class="text-center">Nama</th>
-							<th width="60" class="text-center">TK</th>
-							<th width="60" class="text-center">PTK</th>
+							<!-- <th width="60" class="text-center">TK</th> -->
+							<!-- <th width="60" class="text-center">PTK</th> -->
 							<th width="60" class="text-center">KUM</th>
 							<th width="60" class="text-center">KUT</th>
 							<th width="120" class="text-center">Status</th>
@@ -49,8 +49,8 @@ Data Presence 
 							<td>{{ $no++ }}.</td>
 							<td>{{ $row['nip'] }}</td>
 							<td>{{ $row['nama'] }}</td>
-							<td class="text-center">{{ $row['tk'] }}</td>
-							<td class="text-center">{{ $row['ptk'] }}%</td>
+							<!-- <td class="text-center">{{ $row['tk'] }}</td> -->
+							<!-- <td class="text-center">{{ $row['ptk'] }}%</td> -->
 							<td class="text-center">{{ $row['kum'] }}</td>
 							<td class="text-center">{{ $row['kut'] }}</td>
 							<td class="text-center">{{ $row['status'] }}</td>

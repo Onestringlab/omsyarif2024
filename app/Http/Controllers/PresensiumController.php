@@ -181,7 +181,7 @@ class PresensiumController extends Controller
 			Excel::import(new PresensiumImport($request->month_id), $file);
 		} catch (\Exception $e) {
 			$message = 'File yang diunggah tidak cocok!';
-			return back()->with(['message' => $message]);
+			return back()->with(['message' => $e->getMessage()]);
 		}
 		return redirect('/presensium/data/' . $request->month_id);
 	}

@@ -18,7 +18,8 @@ Presensi
           <thead class="thead-dark">
             <tr class="table-primary">
               <th width="350">Bulan</th>
-              <th width="250">Hadir</th>
+              <th width="150">KUM</th>
+              <th width="150">KUT</th>
               <th width="150">Status</th>
               <th>Alasan</th>
               <th width="90"></th>
@@ -29,7 +30,8 @@ Presensi
             @foreach ($rows as $row)
             <tr>
               <td>{{ $row->months->month }} {{ $row->months->year }}</td>
-              <td>{{ $row['tk'] }} Hari</td>
+              <td>{{ $row['kum'] }} Hari</td>
+              <td>{{ $row['kut'] }} Hari</td>
               <td>{{ $row['status'] }}</td>
               <td>{{ $row['alasan'] }}</td>
               <td>

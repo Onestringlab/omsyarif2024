@@ -76,9 +76,9 @@ class PresensiumImport implements ToModel, WithStartRow
 				'cb2' => ($row[40] == '-') ? 0 : $row[40],
 				'cb3' => ($row[41] == '-') ? 0 : $row[41],
 				'tk' => ($row[42] == '-') ? 0 : $row[42],
-				'ptk' => ($row[43] == '-') ? 0 : $row[43],
-				'kum' => 0, #($row[44] == '-') ? 0 : $row[44],
-				'kut' => 0, #($row[45] == '-') ? 0 : $row[45]
+				'ptk' => 0, #($row[43] == '-') ? 0 : $row[43],
+				'kum' => ($row[43] == '-') ? 0 : $row[43],
+				'kut' => ($row[44] == '-') ? 0 : $row[44]
 			]);
 		}
 	}

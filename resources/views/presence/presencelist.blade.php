@@ -13,7 +13,7 @@ Data Presence 
 		</ol>
 	</nav>
 	<div class="card">
-		<h5 class="card-header text-bg-success"> Data Presensi </h5>
+		<h5 class="card-header text-bg-success"> Data Presensi Tunjangan Kinerja</h5>
 		<div class="card-body">
 			@if(Session::get('message') != '')
 			<div class="alert alert-danger">{{ Session::get('message') }}</div>
@@ -28,8 +28,8 @@ Data Presence 
 							<th class="text-center">Nama</th>
 							<th width="60" class="text-center">TK</th>
 							<th width="60" class="text-center">PTK</th>
-							<th width="60" class="text-center">KUM</th>
-							<th width="60" class="text-center">KUT</th>
+							<!-- <th width="60" class="text-center">KUM</th> -->
+							<!-- <th width="60" class="text-center">KUT</th> -->
 							<th width="120" class="text-center">Status</th>
 							<th width="180" class="text-center">Alasan</th>
 							<th width="180" class="text-end">
@@ -51,8 +51,8 @@ Data Presence 
 							<td>{{ $row['nama'] }}</td>
 							<td class="text-center">{{ $row['tk'] }}</td>
 							<td class="text-center">{{ $row['ptk'] }}%</td>
-							<td class="text-center">{{ $row['kum'] }}</td>
-							<td class="text-center">{{ $row['kut'] }}</td>
+							<!-- <td class="text-center">{{ $row['kum'] }}</td> -->
+							<!-- <td class="text-center">{{ $row['kut'] }}</td> -->
 							<td class="text-center">{{ $row['status'] }}</td>
 							<td>{{ $row['alasan'] }}</td>
 							<td class="text-end">

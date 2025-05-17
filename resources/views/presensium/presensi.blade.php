@@ -22,7 +22,7 @@ Presensi Pegawai
     </ol>
   </nav>
   <div class="card border-success">
-    <h5 class="card-header text-bg-success"> Rekapitulasi Kehadiran Untuk Perhitungan Uang Makan dan Transportasi Hakim Bulan {{ $row->months->month }} {{ $row->months->year }}
+    <h5 class="card-header text-bg-success"> Rekapitulasi Kehadiran Bulan {{ $row->months->month }} {{ $row->months->year }} untuk Perhitungan Uang Makan dan Transportasi Hakim
     </h5>
     <div class="card-body">
       <div class="mb-3 row">
@@ -271,7 +271,7 @@ Presensi Pegawai
           {{ $row->cb3 }}
         </div>
       </div>
-      <div class="mb-3 row">
+      <!-- <div class="mb-3 row">
         <label for="tk" class="col-sm-2 control-label"><strong>{{ toFWU('TOTAL KEHADIRAN') }}</strong></label>
         <div class="col-sm-10">
           {{ $row->tk }}
@@ -282,8 +282,8 @@ Presensi Pegawai
         <div class="col-sm-10">
           {{ $row->ptk }}
         </div>
-      </div>
-      <!-- <div class="mb-3 row">
+      </div> -->
+      <div class="mb-3 row">
         <label for="kum" class="col-sm-2 control-label"><strong>{{ toFWU('KEHADIRAN UNTUK UANG MAKAN') }}</strong></label>
         <div class="col-sm-10">
           {{ $row->kum }}
@@ -294,7 +294,7 @@ Presensi Pegawai
         <div class="col-sm-10">
           {{ $row->kut }}
         </div>
-      </div> -->
+      </div>
       <div class="mb-3 row">
         <label for="status" class="col-sm-2 control-label"><strong>{{ toFWU('Status') }}</strong></label>
         <div class="col-sm-10">

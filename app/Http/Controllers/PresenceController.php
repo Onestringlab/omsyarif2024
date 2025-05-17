@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Months;
 use App\Models\Presence;
 use App\Imports\PresencesImport;
@@ -212,7 +213,32 @@ class PresenceController extends Controller
 		$row = Presence::where("id", $id)
 			->where('nip', Auth::user()->nip)
 			->first();
-		return view('presence/presensi', ['row' => $row]);
+
+		$monthNames = [
+			'Januari' => 1,
+			'Februari' => 2,
+			'Maret' => 3,
+			'April' => 4,
+			'Mei' => 5,
+			'Juni' => 6,
+			'Juli' => 7,
+			'Agustus' => 8,
+			'September' => 9,
+			'Oktober' => 10,
+			'November' => 11,
+			'Desember' => 12
+		];
+		$monthNumber = $monthNames[$row->months->month] ?? date('m', strtotime($row->months->month));
+		$date = Carbon::create($row->months->year, $monthNumber, 1);
+		$data = [
+			'previousMonthName' => $date->copy()->subMonth()->translatedFormat('F'),
+			'previousMonthYear' => $date->copy()->subMonth()->year,
+			'currentMonthName' => $date->translatedFormat('F'),
+			'currentMonthYear' => $date->year,
+			'nextMonthName' => $date->copy()->addMonth()->translatedFormat('F'),
+			'nextMonthYear' => $date->copy()->addMonth()->year,
+		];
+		return view('presence/presensi', ['row' => $row, 'data' => $data]);
 	}
 
 	public function presensiform($id)

@@ -17,12 +17,12 @@ Presensi Pegawai
         <a href="{{ asset('/presensilist') }}">Presensi Tunjangan Kinerja</a>
       </li>
       <li class="breadcrumb-item active" aria-current="page">
-        {{ $row->months->month }} {{ $row->months->year }}
+        {{ $data['currentMonthName'] }} {{ $data['currentMonthYear'] }}
       </li>
     </ol>
   </nav>
   <div class="card border-success">
-    <h5 class="card-header text-bg-success"> Rekapitulasi Kehadiran Untuk Perhitungan Tunjangan Kinerja Bulan {{ $row->months->month }} {{ $row->months->year }}
+    <h5 class="card-header text-bg-success"> Rekapitulasi Kehadiran Periode Tanggal 16 {{ $data['previousMonthName'] }} {{ $data['previousMonthYear'] }} s.d. 15 {{ $data['currentMonthName'] }} {{ $data['currentMonthYear'] }} untuk Perhitungan Tunjangan Kinerja Bulan {{ $data['nextMonthName'] }} {{ $data['nextMonthYear'] }}
     </h5>
     <div class="card-body">
       <div class="mb-3 row">
@@ -278,7 +278,7 @@ Presensi Pegawai
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="ptk" class="col-sm-2 control-label"><strong>{{ toFWU('PENGURANGAN TUNJANGAN KINERJA') }}</strong></label>
+        <label for="ptk" class="col-sm-2 control-label"><strong>{{ toFWU('PENGURANGAN TUNJANGAN KINERJA (%)') }}</strong></label>
         <div class="col-sm-10">
           {{ $row->ptk }}
         </div>
