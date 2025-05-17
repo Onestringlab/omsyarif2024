@@ -22,7 +22,7 @@ Presensi Pegawai
     </ol>
   </nav>
   <div class="card border-success">
-    <h5 class="card-header text-bg-success"> Rekapitulasi Kehadiran dari Tanggal 16 Bulan sebelum {{ $row->months->month }} s.d. 15 {{ $row->months->month }} {{ $row->months->year }}
+    <h5 class="card-header text-bg-success"> Rekapitulasi Kehadiran Untuk Perhitungan Uang Makan dan Transportasi Hakim Bulan {{ $row->months->month }} {{ $row->months->year }}
     </h5>
     <div class="card-body">
       <div class="mb-3 row">
