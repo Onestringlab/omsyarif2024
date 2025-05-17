@@ -47,8 +47,8 @@ Uang Makan 
                                     <i class="fas fa-plus"></i></a>
                                 <a class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#uploadMeals">
                                     <i class="fa-sharp fa-solid fa-upload"></i></a>
-                                <!-- <a class="btn btn-warning" href="{{asset('/')}}meals/pdf/{{ $month->id }}" target="_blank">
-                                    <i class="fa-regular fa-file-pdf"></i></a> -->
+                                <a class="btn btn-warning" href="{{asset('/')}}meals/pdf/{{ $month->id }}" target="_blank">
+                                    <i class="fa-regular fa-file-pdf"></i></a>
                                 <a class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeMeals">
                                     <i class="fas fa-trash"></i></a>
                             </th>
@@ -73,7 +73,7 @@ Uang Makan 
                                 <a class="btn btn-success" href="{{ asset('/') }}meals/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-info-circle"></i></a>
                                 <a class="btn btn-secondary" href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
                                 <input type="hidden" class="form-control shareLink" value=" {{asset('/')}}makanpdfshare/{{ $encryptedParams }}" readonly>
-                                <!-- <button class="btn btn-warning" onclick="copyToClipboard(this, '{{ $row->salam }}')"><i class="fa-solid fa-link"></i></button> -->
+                                <button class="btn btn-warning" onclick="copyToClipboard(this, '{{ $row->salam }}')"><i class="fa-solid fa-link"></i></button>
                                 <a class="btn btn-danger" href="{{ asset('/') }}meals/{{ $month->id }}/{{ $row->id }}/delete"><i class="far fa-trash-alt"></i></a>
                             </td>
                         </tr>
