@@ -18,7 +18,8 @@ Presensi
           <thead class="thead-dark">
             <tr class="table-primary">
               <th width="350">Bulan</th>
-              <th width="250">Hadir</th>
+              <th width="150">Hadir</th>
+              <th width="150">Minus</th>
               <th width="150">Status</th>
               <th>Alasan</th>
               <th width="90"></th>
@@ -30,6 +31,7 @@ Presensi
             <tr>
               <td>{{ $row->months->month }} {{ $row->months->year }}</td>
               <td>{{ $row['tk'] }} Hari</td>
+              <td>{{ $row['ptk'] }}%</td>
               <td>{{ $row['status'] }}</td>
               <td>{{ $row['alasan'] }}</td>
               <td>
