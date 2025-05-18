@@ -10,6 +10,7 @@
 
 	<title>slip.web.id</title>
 
+	<link rel="icon" href="favicon.ico" type="image/x-icon">
 
 	<!-- Fonts -->
 	<link rel="dns-prefetch" href="//fonts.bunny.net">
