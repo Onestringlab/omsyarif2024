@@ -25,7 +25,7 @@ Data Months 
 							<th rowspan=2 class="text-center"><a class="btn btn-primary" href="{{asset('/')}}months/create"><i class="fas fa-plus"></i></a></th>
 						</tr>
 						<tr class="align-middle text-center">
-							<th>Tunkin</th>
+							<th>Tukin</th>
 							<th>UM & TH</th>
 						</tr>
 					</thead>
