@@ -54,7 +54,7 @@ Data Presence 
 							<td class="text-center">{{ $row['kum'] }}</td>
 							<td class="text-center">{{ $row['kut'] }}</td>
 							<td class="text-center">{{ $row['status'] }}</td>
-							<!-- <td>{{ $row['alasan'] }}</td> -->
+							<td>{{ $row['alasan'] }}</td>
 							<td class="text-end">
 								<a class="btn btn-success" href="{{asset('/')}}presensium/show/{{ $month->id }}/{{ $row->id }}"><i class="fas fa-info-circle"></i></i></a>
 								<a class="btn btn-secondary" href="{{asset('/')}}presensium/{{ $month->id }}/{{ $row->id }}/edit"><i class="far fa-edit"></i></a>
