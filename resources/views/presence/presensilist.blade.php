@@ -17,12 +17,12 @@ Presensi
         <table class="table table-striped table-hover ">
           <thead class="thead-dark">
             <tr class="table-primary">
-              <th width="350">Bulan</th>
+              <th>Bulan</th>
               <th width="150">Hadir</th>
               <th width="150">Minus</th>
               <th width="150">Status</th>
-              <th>Alasan</th>
-              <th width="90"></th>
+              <!-- <th>Alasan</th> -->
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -33,7 +33,7 @@ Presensi
               <td>{{ $row['tk'] }} Hari</td>
               <td>{{ $row['ptk'] }}%</td>
               <td>{{ $row['status'] }}</td>
-              <td>{{ $row['alasan'] }}</td>
+              <!-- <td>{{ $row['alasan'] }}</td> -->
               <td>
                 <a class="btn text-light btn-info btn-sm" href="{{asset('/')}}presensi/{{ $row->id }}">
                   <i class="fa-solid fa-calendar-check"></i>
