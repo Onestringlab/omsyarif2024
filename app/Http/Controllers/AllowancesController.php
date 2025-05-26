@@ -141,6 +141,18 @@ class AllowancesController extends Controller
   {
     $month = Months::where('id', $month_id)->where('satker', Auth::user()->satker)->first();
     $rows = Allowances::where('month_id', $month_id)->orderBy('nmpeg', 'ASC')->get();
+    
+    $userNips = \App\Models\Users::pluck('nip')->toArray();
+
+    foreach ($rows as $row) {
+        $row->user_exists = in_array($row->nip, $userNips);
+        if($row->user_exists) {
+            $row->salam ="Yth. Bapak/Ibu " . addslashes($row->nmpeg) . " \\nBerikut kami bagikan slip gaji bulan " . $month->month . " " . $month->year . ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n";
+        } else {
+            $row->salam = 'Pengguna tidak terdaftar';
+        }
+    }
+
     return view('allowances/allowanceslist', ['rows' => $rows, 'month' => $month]);
   }
 
