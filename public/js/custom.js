@@ -10,8 +10,9 @@ function copyToClipboard(button, salam) {
         return;
     }
     
-     // Jika salam adalah "Pengguna tidak terdaftar", tampilkan popup khusus
+    // Jika salam adalah "Pengguna tidak terdaftar", tampilkan popup khusus
     if (salam === 'Pengguna tidak terdaftar') {
+        navigator.clipboard.writeText('');
         Swal.fire({
             icon: 'warning',
             title: 'Tautan tidak dapat disalin',
