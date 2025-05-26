@@ -122,9 +122,22 @@ class PotonganController extends Controller
         $month = Months::where('id', $month_id)->where('satker', Auth::user()->satker)->first();
         $rows = Potongan::where('month_id', $month_id)->orderBy('nama', 'ASC')->get();
         $nkt = Nomenklatur::where('kode_satker', Auth::user()->satker)->first();
+
         if (is_null($nkt)) {
             return redirect('/nomenklatur');
         }
+
+        $userNips = Users::pluck('nip')->toArray();
+
+        foreach ($rows as $row) {
+            $row->user_exists = in_array($row->nip, $userNips);
+            if ($row->user_exists) {
+                $row->salam = "Yth. Bapak/Ibu " . addslashes($row->nama) . " \\nBerikut kami bagikan slip potongan bulan " . $month->month . " " . $month->year . ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n";
+            } else {
+                $row->salam = 'Pengguna tidak terdaftar';
+            }
+        }
+
         return view('potongans/potonganslist', ['rows' => $rows, 'month' => $month]);
     }
 

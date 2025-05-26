@@ -142,7 +142,7 @@ class AllowancesController extends Controller
     $month = Months::where('id', $month_id)->where('satker', Auth::user()->satker)->first();
     $rows = Allowances::where('month_id', $month_id)->orderBy('nmpeg', 'ASC')->get();
     
-    $userNips = \App\Models\Users::pluck('nip')->toArray();
+    $userNips = Users::pluck('nip')->toArray();
 
     foreach ($rows as $row) {
         $row->user_exists = in_array($row->nip, $userNips);

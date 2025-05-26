@@ -58,7 +58,6 @@ Uang Makan 
                         @php($no = 1)
                         @foreach($rows as $row)
                         @php ($encryptedParams = encrypt(['id' => $row->id, 'nip' => $row->nip]))
-                        @php ($row->salam = "Yth. Bapak/Ibu ".$row->nmpeg." \\nBerikut kami bagikan slip uang makan bulan " .$month->month." ".$month->year. ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n")
                         <tr>
                             <td>{{ $no++ }}.</td>
                             <td>{{ $row['nip'] }}</td>

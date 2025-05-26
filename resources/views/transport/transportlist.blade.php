@@ -54,7 +54,6 @@ Data Transport 
                         @php ($no = 1)
                         @foreach ($rows as $row)
                         @php ($encryptedParams = encrypt(['id' => $row->id, 'nip' => $row->nip_nik]))
-                        @php ($row->salam = "Yth. Bapak/Ibu ".$row->nama." \\nBerikut kami bagikan slip uang transport bulan " .$month->month." ".$month->year. ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n")
                         <tr>
                             <td class="text-center">{{ $no++ }}</td>
                             <td>{{ $row['nip_nik'] }}</td>

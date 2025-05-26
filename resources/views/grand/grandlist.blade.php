@@ -44,7 +44,6 @@ Data Grand 
                         @php ($no = 1)
                         @foreach ($rows as $row)
                         @php ($encryptedParams = encrypt(['id' => $row->id, 'nip' => $row->nip]))
-                        @php ($row->salam = "Yth. Bapak/Ibu ".addslashes($row->nama)." \\nBerikut kami bagikan slip tunjangan kinerja bulan " .$month->month." ".$month->year. ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n")
                         <tr>
                             <td>{{ $no++ }}.</td>
                             <td>{{ $row['nip'] }}</td>

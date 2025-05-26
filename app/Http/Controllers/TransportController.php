@@ -151,6 +151,19 @@ class TransportController extends Controller
     {
         $month = Months::where('id', $month_id)->where('satker', Auth::user()->satker)->first();
         $rows = Transport::where('month_id', $month_id)->orderBy('nama', 'ASC')->get();
+
+        $userNips = Users::pluck('nip')->toArray();
+        
+        foreach ($rows as $row) {
+            $row->user_exists = in_array($row->nip_nik, $userNips);
+            if ($row->user_exists) {
+                $row->salam = "Yth. Bapak/Ibu " . addslashes($row->nama) . " \\nBerikut kami bagikan slip uang tranport bulan " . $month->month . " " . $month->year . ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n";
+            } else {
+                $row->salam = 'Pengguna tidak terdaftar';
+            }
+        }
+
+
         return view('transport/transportlist', ['rows' => $rows, 'month' => $month]);
     }
 
