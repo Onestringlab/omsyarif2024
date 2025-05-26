@@ -9,12 +9,13 @@ function copyToClipboard(button, salam) {
         console.error('Button is undefined');
         return;
     }
+    
      // Jika salam adalah "Pengguna tidak terdaftar", tampilkan popup khusus
     if (salam === 'Pengguna tidak terdaftar') {
         Swal.fire({
             icon: 'warning',
-            title: 'Pengguna tidak terdaftar',
-            text: 'NIP ini belum terdaftar sebagai pengguna.',
+            title: 'Tautan tidak dapat disalin',
+            text: 'Pastikan NIP/NIK pengguna telah terdaftar dan tertulis dengan benar pada data.',
         });
         return;
     }
