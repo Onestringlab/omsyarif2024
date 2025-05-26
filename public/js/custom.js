@@ -9,7 +9,16 @@ function copyToClipboard(button, salam) {
         console.error('Button is undefined');
         return;
     }
-    console.log(salam);
+     // Jika salam adalah "Pengguna tidak terdaftar", tampilkan popup khusus
+    if (salam === 'Pengguna tidak terdaftar') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Pengguna tidak terdaftar',
+            text: 'NIP ini belum terdaftar sebagai pengguna.',
+        });
+        return;
+    }
+
     // Cari input sebelum tombol (shareLink)
     const linkInput = button.previousElementSibling;
     if (linkInput && linkInput.classList.contains('shareLink')) {
