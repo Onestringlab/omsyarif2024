@@ -7,7 +7,7 @@
     <style>
         @page {
             size: A4;
-            margin: 5mm 5mm;
+            margin: 5mm 0mm 5mm 5mm;
         }
 
         body {
@@ -25,7 +25,7 @@
 
         .table-bordered {
             border-collapse: collapse;
-            width: 100%;
+            width: 95%;
         }
 
         .table-border-bottom {
@@ -33,12 +33,12 @@
         }
 
         td {
-            padding-left: 5px;
+            padding-left: 10px;
             padding-right: 5px;
         }
 
         .wrapper-table {
-            width: 100%;
+            width:100%;
             margin-left: auto;
             margin-right: auto;
         }

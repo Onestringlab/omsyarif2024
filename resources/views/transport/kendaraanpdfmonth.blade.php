@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slip Uang Transportasi</title>
     <style>
+        @page {
+            size: A4;
+            margin: 15mm 5mm 5mm 0mm;
+        }
+
         body {
             font-size: small;
         }
@@ -27,8 +32,8 @@
         }
 
         td {
-            padding-left: 5px;
-            padding-right: 5px;
+            padding-left: 20px;
+            padding-right: 10px;
         }
 
         .wrapper-table {

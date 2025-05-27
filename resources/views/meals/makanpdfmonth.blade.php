@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Slip Uang Makan</title>
     <style>
+        @page {
+            size: A4;
+            margin: 15mm 5mm 5mm 5mm;
+        }
+
         body {
             font-size: small;
+            margin: 0;
         }
 
         .page-break {
@@ -19,7 +25,7 @@
 
         .table-bordered {
             border-collapse: collapse;
-            width: 100%;
+            width: 95%;
         }
 
         .table-border-bottom {
@@ -27,12 +33,12 @@
         }
 
         td {
-            padding-left: 5px;
+            padding-left: 15px;
             padding-right: 5px;
         }
 
         .wrapper-table {
-            width: 95%;
+            width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
