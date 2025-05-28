@@ -8,7 +8,7 @@
 	<!-- CSRF Token -->
 	<meta name="csrf-token" content="{{ csrf_token() }}">
 
-	<title>slip.web.id</title>
+	<title>SLIP.web.id</title>
 
 	<link rel="icon" href="favicon.ico" type="image/x-icon">
 
