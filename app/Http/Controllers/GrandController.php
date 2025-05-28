@@ -122,7 +122,7 @@ class GrandController extends Controller
 		foreach ($rows as $row) {
 			$row->user_exists = in_array($row->nip, $userNips);
 			if ($row->user_exists) {
-				$row->salam = "Yth. Bapak/Ibu " . addslashes($row->nmpeg) . " \\nBerikut kami bagikan slip tunjangan kinerja bulan " . $month->month . " " . $month->year . ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n";
+				$row->salam = "Yth. Bapak/Ibu " . addslashes($row->nama) . " \\nBerikut kami bagikan slip tunjangan kinerja bulan " . $month->month . " " . $month->year . ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n";
 			} else {
 				$row->salam = 'Pengguna tidak terdaftar';
 			}
