@@ -28,9 +28,14 @@
             width: 95%;
         }
 
+        .table-border-top {
+            border-top: 1px solid black;
+        }
+
         .table-border-bottom {
             border-bottom: 1px solid black;
         }
+
 
         td {
             padding-left: 10px;
@@ -69,13 +74,14 @@
                         <td>Nama</td>
                         <td>: {{$row->nama }}</td>
                     </tr>
-                    <tr class="table-border-bottom">
+                    <tr>
                         <td>NIP/NIK</td>
-                        <td>: {{ $row->nip }} <br><br></td>
+                        <td>: {{ $row->nip }}</td>
                     </tr>
                 </table>
+                <br>
                 <table class="table-bordered">
-                    <tr class="table-border-bottom">
+                    <tr class="table-border-bottom table-border-top">
                         <td colspan="2">
                             <strong>Potongan</strong>
                         </td>

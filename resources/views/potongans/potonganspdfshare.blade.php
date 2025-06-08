@@ -22,7 +22,11 @@
             border-collapse: collapse;
             margin-left: auto;
             margin-right: auto;
-            width: 75%;
+            width: 90%;
+        }
+
+        .table-border-top {
+            border-top: 1px solid black;
         }
 
         .table-border-bottom {
@@ -55,8 +59,9 @@
             <td>{{ $row->nip }}</td>
         </tr>
     </table>
+    <br>
     <table class="table-bordered">
-        <tr class="table-border-bottom">
+        <tr class="table-border-bottom table-border-top">
             <td colspan="2">
                 <strong>Potongan</strong>
             </td>
@@ -203,18 +208,13 @@
                 {{ toCurrency($row->p15) }}
             </td>
         </tr>
-        <tr>
+        <tr class="table-border-bottom">
             <td class="text-right"></td>
             <td>
                 <strong>Jumlah</strong>
             </td>
             <td class="text-right">
                 <strong>{{ toCurrency($row->jumlah) }}</strong>
-            </td>
-        </tr>
-        <tr>
-            <td class="text-right" colspan="3">
-                <hr>
             </td>
         </tr>
     </table>
