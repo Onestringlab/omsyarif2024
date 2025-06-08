@@ -54,11 +54,6 @@
             <td>:</td>
             <td>{{ $row->nip }}</td>
         </tr>
-        <tr>
-            <td colspan="3">
-                <hr>
-            </td>
-        </tr>
     </table>
     <table class="table-bordered">
         <tr class="table-border-bottom">

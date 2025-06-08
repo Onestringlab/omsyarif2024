@@ -38,7 +38,7 @@
         }
 
         .wrapper-table {
-            width:100%;
+            width: 100%;
             margin-left: auto;
             margin-right: auto;
         }
@@ -69,14 +69,9 @@
                         <td>Nama</td>
                         <td>: {{$row->nama }}</td>
                     </tr>
-                    <tr>
+                    <tr class="table-border-bottom">
                         <td>NIP/NIK</td>
-                        <td>: {{ $row->nip }}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">
-                            <hr>
-                        </td>
+                        <td>: {{ $row->nip }} <br><br></td>
                     </tr>
                 </table>
                 <table class="table-bordered">
@@ -227,18 +222,13 @@
                             {{ toCurrency($row->p15) }}
                         </td>
                     </tr>
-                    <tr>
+                    <tr class="table-border-bottom">
                         <td class="text-right"></td>
                         <td>
                             <strong>Jumlah</strong>
                         </td>
                         <td class="text-right">
                             <strong>{{ toCurrency($row->jumlah) }}</strong>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="text-right" colspan="3">
-                            <hr>
                         </td>
                     </tr>
                 </table>
