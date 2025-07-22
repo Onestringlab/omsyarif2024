@@ -15,7 +15,7 @@ Data Satker 
                         <tr>
                             <th class="text-center" width="50px">No</th>
                             <th class="text-center" width="100px">Kode</th>
-                            <th class="text-center" width="275px">Nama</th>
+                            <th class="text-center" width="275px">Nama Satuan Kerja</th>
                             <th class="text-center">Alamat</th>
                             <!-- <th class="text-center">Created_at</th> -->
                             <th class="text-center" width="180px">Waktu</th>

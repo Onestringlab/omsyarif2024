@@ -26,12 +26,12 @@ Data Presence 
 							<th width="30" class="text-center">No</th>
 							<th width="180" class="text-center">NIP</th>
 							<th class="text-center">Nama</th>
-							<th width="60" class="text-center">TK</th>
-							<th width="60" class="text-center">PTK</th>
+							<th width="140" class="text-center">Total Kehadiran</th>
+							<th width="140" class="text-center">Potongan Tukin</th>
 							<!-- <th width="60" class="text-center">KUM</th> -->
 							<!-- <th width="60" class="text-center">KUT</th> -->
 							<th width="120" class="text-center">Status</th>
-							<th width="180" class="text-center">Alasan</th>
+							<th width="120" class="text-center">Alasan</th>
 							<th width="180" class="text-end">
 								<a class="btn btn-primary" href="{{asset('/')}}presence/create/{{ $month->id }}">
 									<i class="fas fa-plus"></i></a>

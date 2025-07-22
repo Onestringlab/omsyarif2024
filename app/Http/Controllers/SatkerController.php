@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class SatkerController extends Controller {
 
 	public function index(){
-		$rows = Satker::orderBy('kode')->get();
+		$rows = Satker::orderBy('nama')->get();
 		return view('satker.satkerlist', compact('rows'));
 	}
 
