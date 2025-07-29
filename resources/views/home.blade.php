@@ -13,7 +13,7 @@
                         memonitor informasi dan mencetak slip penghasilan yang terdiri dari gaji, tunjangan dan uang
                         makan dengan mudah dan aman, di mana saja serta kapan saja.</p> -->
                     <p class="card-text small text-center">
-                        <a href=http://blog.slip.web.id/ target="_blank">SLIP.web.id</a>
+                        <a href=http://blog.slip.web.id/ target="_blank">blog.SLIP.web.id</a>
                     </p>
                 </div>
             </div>
