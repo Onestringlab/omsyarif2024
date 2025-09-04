@@ -7,10 +7,11 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStartRow;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 
 
-class MealsImport implements ToModel, WithStartRow, WithCalculatedFormulas
+class MealsImport implements ToModel, WithStartRow, WithCalculatedFormulas, WithMultipleSheets
 
 {
 	/**
@@ -59,5 +60,9 @@ class MealsImport implements ToModel, WithStartRow, WithCalculatedFormulas
 				'bersih' => $row[19]
 			]);
 		}
+	}
+	public function sheets(): array
+	{
+		return [0 => $this];
 	}
 }
