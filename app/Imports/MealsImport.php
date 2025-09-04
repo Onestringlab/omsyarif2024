@@ -7,9 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithStartRow;
+use Maatwebsite\Excel\Concerns\WithCalculatedFormulas;
 
 
-class MealsImport implements ToModel, WithStartRow
+class MealsImport implements ToModel, WithStartRow, WithCalculatedFormulas
 
 {
 	/**
