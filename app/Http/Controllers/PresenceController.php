@@ -244,7 +244,9 @@ class PresenceController extends Controller
 	public function presensiform($id)
 	{
 		$row = Presence::where("id", $id)->where('nip', Auth::user()->nip)->first();
-		return view('presence/presensiform', ['row' => $row]);
+		$tbt = addOneMonth($row->months->month, $row->months->year);
+		// dd($tbt);
+		return view('presence/presensiform', ['row' => $row, 'tbt' => $tbt]);
 	}
 
 	public function presensiedit(Request $request)

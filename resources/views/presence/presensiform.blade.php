@@ -18,11 +18,12 @@ Presensi Pegawai
 			</li>
 			<li class="breadcrumb-item active" aria-current="page">
 				{{ $row->months->month }} {{ $row->months->year }}
+
 			</li>
 		</ol>
 	</nav>
 	<div class="card border-success">
-		<h5 class="card-header text-bg-success"> Rekapitulasi Kehadiran Untuk Perhitungan Tunjangan Kinerja {{ $row->months->month }} {{ $row->months->year }}
+		<h5 class="card-header text-bg-success"> Rekapitulasi Kehadiran Untuk Perhitungan Tunjangan Kinerja {{ $tbt }}
 		</h5>
 		<div class="card-body">
 			<form class="form-horizontal" action="{{ asset('/') }}presensiedit" method="post">

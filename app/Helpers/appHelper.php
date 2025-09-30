@@ -150,3 +150,43 @@ function format_name($name)
   // Gabungkan kembali nama dan gelar
   return $titlePart ? "$namePart, $titlePart" : $namePart;
 }
+
+function addOneMonth($month, $year)
+{
+  // Daftar nama bulan dalam bahasa Indonesia
+  $bulanIndonesia = [
+    1 => 'Januari',
+    2 => 'Februari',
+    3 => 'Maret',
+    4 => 'April',
+    5 => 'Mei',
+    6 => 'Juni',
+    7 => 'Juli',
+    8 => 'Agustus',
+    9 => 'September',
+    10 => 'Oktober',
+    11 => 'November',
+    12 => 'Desember'
+  ];
+
+  // Konversi nama bulan ke angka
+  $monthNumber = array_search($month, $bulanIndonesia);
+
+  // Validasi input
+  if (!$monthNumber || !is_numeric($year)) {
+    return null; // Kembalikan null jika bulan atau tahun tidak valid
+  }
+
+  // Buat objek DateTime
+  $date = new DateTime("$year-$monthNumber-01");
+
+  // Tambah 1 bulan
+  $date->modify('+1 month');
+
+  // Ambil bulan dan tahun baru
+  $newMonthNumber = (int)$date->format('n');
+  $newYear = (int)$date->format('Y');
+  $newMonth = $bulanIndonesia[$newMonthNumber];
+
+  return  $newMonth . ' ' .$newYear;
+}
