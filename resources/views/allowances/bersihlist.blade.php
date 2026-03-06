@@ -18,7 +18,7 @@ Slip Gaji
 					<thead class="thead-dark">
 						<tr class="table-primary">
 							<th>Bulan</th>
-							<th>Gaji Bersih</th>
+							<th>Gaji Induk</th>
 							<th width="90"></th>
 						</tr>
 					</thead>

@@ -14,19 +14,21 @@ Data Months 
 					<thead class="thead-dark">
 						<tr class="align-middle text-center">
 							<th rowspan=2 width="30">No</th>
-							<th rowspan=2 width="90">Tahun</th>
-							<th rowspan=2 width="90">Bulan</th>
-							<th rowspan=2 width="120">Gaji</th>
-							<th rowspan=2 width="160">Tunjangan Kinerja</th>
-							<th rowspan=2 width="140">Uang Makan</th>
-							<th rowspan=2 width="160">Uang Transportasi</th>
-							<th colspan=2 width="120">Presensi</th>
-							<th rowspan=2 width="120">Potongan</th>
+							<th rowspan=2 width="100">Tahun</th>
+							<th rowspan=2 width="100">Bulan</th>
+							<th colspan=2 width="200">Gaji</th>
+							<th rowspan=2 width="100">Tunjangan<br> Kinerja</th>
+							<th rowspan=2 width="100">Uang Makan</th>
+							<th rowspan=2 width="100">Uang<br>Transportasi</th>
+							<th colspan=2 width="200">Presensi</th>
+							<th rowspan=2 width="100">Potongan</th>
 							<th rowspan=2 class="text-center"><a class="btn btn-primary" href="{{asset('/')}}months/create"><i class="fas fa-plus"></i></a></th>
 						</tr>
 						<tr class="align-middle text-center">
-							<th>Tukin</th>
-							<th>UM & TH</th>
+							<th width="100">Induk</th>
+							<th width="100">Kekurangan</th>
+							<th width="100">Tukin</th>
+							<th width="100">UM & TH</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,6 +41,11 @@ Data Months 
 							<td>
 								<a class="btn text-light btn-warning" href="{{asset('/')}}allowances/data/{{ $row->id }}">
 									<i class="fa-solid fa-money-check"></i>
+								</a>
+							</td>
+							<td>
+								<a class="btn text-light btn-warning" href="{{asset('/')}}salary-shortages/data/{{ $row->id }}">
+									<i class="fa-solid fa-money-bill-1-wave"></i>
 								</a>
 							</td>
 							<td>

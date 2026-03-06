@@ -5,7 +5,6 @@ namespace App\Imports;
 use App\Models\Allowances;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
-use Maatwebsite\Excel\Concerns\WithProgressBar;
 
 
 class AllowanceModel implements ToModel, WithHeadingRow
@@ -32,7 +31,7 @@ class AllowanceModel implements ToModel, WithHeadingRow
       'nmpeg' => $row['nmpeg'],
       'npwp' => '', // $row['npwp'],
       'rekening' => '', // $row['rekening'],
-      'nmbankspan' =>'', // $row['nmbankspan'],
+      'nmbankspan' => '', // $row['nmbankspan'],
       'gjpokok' => $row['gjpokok'],
       'tjistri' => $row['tjistri'],
       'tjanak' => $row['tjanak'],

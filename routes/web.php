@@ -15,6 +15,8 @@ use App\Http\Controllers\AllowancesController;
 use App\Http\Controllers\MealsController;
 use App\Http\Controllers\TransportController;
 use App\Http\Controllers\NomenklaturController;
+use App\Http\Controllers\SalaryShortagesController;
+use App\Imports\ShortStagesModel;
 
 Auth::routes(['register' => false, 'reset' => false]);
 // Auth::routes(['register' => true]);
@@ -70,6 +72,12 @@ Route::middleware(['auth', 'checkrole:user'])->group(
 			Route::get('/bersihlist', 'bersihlist')->name('bersihlist');
 			Route::get('/bersih/{id}', 'bersih')->name('bersih');
 			Route::get('/bersihpdf/{id}', 'bersihpdf')->name('bersihpdf');
+		});
+
+		Route::controller(SalaryShortagesController::class)->group(function () {
+			Route::get('/kekuranganlist', 'kekuranganlist')->name('kekuranganlist');
+			Route::get('/kekurangan/{id}', 'kekurangan')->name('kekurangan');
+			Route::get('/kekuranganpdf/{id}', 'kekuranganpdf')->name('kekuranganpdf');
 		});
 
 		Route::controller(PresenceController::class)->group(function () {
@@ -148,6 +156,18 @@ Route::middleware(['auth', 'checkrole:admin'])->group(
 			Route::get('pdf/{month_id}', 'bersihpdfmonth');
 		});
 
+		Route::resource('salary-shortages', SalaryShortagesController::class);
+		Route::controller(SalaryShortagesController::class)->prefix('salary-shortages')->group(function () {
+			Route::get('create/{month_id}', 'create');
+			Route::get('show/{month_id}/{id}', 'show');
+			Route::get('{month_id}/{id}/edit', 'edit');
+			Route::get('{month_id}/{id}/delete', 'delete');
+			Route::get('data/{month_id}', 'data');
+			Route::post('import', 'import');
+			Route::get('remove/{month_id}', 'remove');
+			Route::get('pdf/{month_id}', 'kekuranganpdfmonth');
+		});
+
 		Route::resource('presence', PresenceController::class);
 		Route::controller(PresenceController::class)->prefix('presence')->group(function () {
 			Route::get('create/{month_id}', 'create');
@@ -217,3 +237,4 @@ Route::get('/tungkinpdfshare/{encryptedParams}', [GrandController::class, 'tungk
 Route::get('/makanpdfshare/{encryptedParams}', [MealsController::class, 'makanpdfshare'])->name('makanpdfshare');
 Route::get('/kendaraanpdfshare/{encryptedParams}', [TransportController::class, 'kendaraanpdfshare'])->name('transportpdfshare');
 Route::get('/potonganspdfshare/{encryptedParams}', [PotonganController::class, 'potonganspdfshare'])->name('transportpdfshare');
+Route::get('/kekuranganpdfshare/{encryptedParams}', [SalaryShortagesController::class, 'kekuranganpdfshare'])->name('kekuranganpdfshare');

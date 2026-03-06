@@ -190,10 +190,12 @@ Slip Gaji
         </div>
       </div>
       <div class="mb-3 row">
-        <label for="bersih" class="col-sm-3 control-label"><strong>Jumlah Bersih</strong></label>
+        <label for="totpot" class="col-sm-3 control-label"><strong>Jumlah Bersih</strong></label>
         <div class="col-sm-9">
           {{ toCurrency($row->bersih) }}
         </div>
+      </div>
+      <div class="mb-3 row">
         <div class="offset-sm-2 col-sm-9">
           <button type="button" class="btn btn-secondary" onclick="button_cancel()">Kembali</button>
         </div>
