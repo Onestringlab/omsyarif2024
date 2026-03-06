@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Imports\AdhocImport;
 use App\Imports\AllowanceModel;
 use App\Models\Users;
 use App\Models\Months;
@@ -141,16 +142,16 @@ class AllowancesController extends Controller
   {
     $month = Months::where('id', $month_id)->where('satker', Auth::user()->satker)->first();
     $rows = Allowances::where('month_id', $month_id)->orderBy('nmpeg', 'ASC')->get();
-    
+
     $userNips = Users::pluck('nip')->toArray();
 
     foreach ($rows as $row) {
-        $row->user_exists = in_array($row->nip, $userNips);
-        if($row->user_exists) {
-            $row->salam ="Yth. Bapak/Ibu " . addslashes($row->nmpeg) . " \\nBerikut kami bagikan slip gaji bulan " . $month->month . " " . $month->year . ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n";
-        } else {
-            $row->salam = 'Pengguna tidak terdaftar';
-        }
+      $row->user_exists = in_array($row->nip, $userNips);
+      if ($row->user_exists) {
+        $row->salam = "Yth. Bapak/Ibu " . addslashes($row->nmpeg) . " \\nBerikut kami bagikan slip gaji bulan " . $month->month . " " . $month->year . ". Silakan klik tautan berikut untuk mengunduh/membuka file.\\nTerima kasih.\\n";
+      } else {
+        $row->salam = 'Pengguna tidak terdaftar';
+      }
     }
 
     return view('allowances/allowanceslist', ['rows' => $rows, 'month' => $month]);
@@ -178,15 +179,25 @@ class AllowancesController extends Controller
 
   public function import(Request $request)
   {
-
     $this->validate($request, [
-      'file' => 'required|file|max:204800|mimes:xlsx,xls'
+      'file' => 'required|file|max:204800|mimes:xlsx,xls',
+      'tipe' => 'required'
     ]);
 
     $file = $request->file('file');
+    $tipe = $request->tipe;
+
     try {
-      Excel::import(new AllowanceModel($request->month_id), $file);
+
+      if ($tipe == 'pegawai') {
+
+        Excel::import(new AllowanceModel($request->month_id), $file);
+      } elseif ($tipe == 'adhoc') {
+
+        Excel::import(new AdhocImport($request->month_id), $file);
+      }
     } catch (\Exception $e) {
+
       $message = 'File yang diunggah tidak cocok!';
       return back()->with(['message' => $message]);
     }

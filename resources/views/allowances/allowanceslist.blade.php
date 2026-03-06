@@ -82,6 +82,15 @@ Data Gaji
 				<form class="form-horizontal" action="{{ asset('/allowances/import') }}" method="post" enctype="multipart/form-data">
 					{{ csrf_field() }}
 					<div class="mb-3 row">
+						<label for="point" class="col-sm-2 col-form-label">Tipe</label>
+						<div class="col-sm-12">
+							<select name="tipe" class="form-control" required>
+								<option value="pegawai">ASN (Hakim, PNS dan PPPK)</option>
+								<option value="adhoc">Hakim Ad Hoc</option>
+							</select>
+						</div>
+					</div>
+					<div class="mb-3 row">
 						<label for="point" class="col-sm-2 col-form-label">File</label>
 						<div class="col-sm-12">
 							<input class="form-control" type="file" name="file" required>
