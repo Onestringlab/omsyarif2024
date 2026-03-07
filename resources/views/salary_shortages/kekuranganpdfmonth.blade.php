@@ -7,7 +7,7 @@
     <style>
         body {
             font-size: small;
-            margin: 20px;
+            margin: 10px;
         }
 
         .page-break {
@@ -185,6 +185,7 @@
             </tr>
             <tr>
                 <td colspan="4">
+                    <br>
                     Keterangan: {{ $row->keterangan }}
                 </td>
             </tr>

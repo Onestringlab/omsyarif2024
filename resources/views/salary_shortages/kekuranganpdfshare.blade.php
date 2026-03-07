@@ -178,6 +178,7 @@
         </tr>
         <tr>
             <td colspan="4">
+                <br>
                 Keterangan: {{ $row->keterangan }}
             </td>
         </tr>

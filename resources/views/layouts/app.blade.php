@@ -9,7 +9,7 @@
 
 <title>SLIP.web.id</title>
 
-<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
 <link rel="dns-prefetch" href="//fonts.bunny.net">
 <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
