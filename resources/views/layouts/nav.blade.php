@@ -30,8 +30,8 @@
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre> <i class="fa-solid fa-calendar-check"></i> Gaji</a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('bersihlist') }}"><i class="fa-solid fa-money-check"></i> {{ __('Induk') }}</a>
-                        <a class="dropdown-item" href="{{ route('kekuranganlist') }}"><i class="fa-solid fa-money-bill-1-wave"></i> {{ __('Kekurangan') }}</a>
+                        <a class="dropdown-item" href="{{ route('bersihlist') }}"></i> {{ __('Induk') }}</a>
+                        <a class="dropdown-item" href="{{ route('kekuranganlist') }}">{{ __('Kekurangan') }}</a>
                     </div>
                 </li>
                 <li class="nav-item">
