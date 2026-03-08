@@ -96,7 +96,7 @@
                         </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <div class="dropdown-item-text d-none d-md-block">
+                        <div class="dropdown-item-text d-none d-md-block dropdown-user-name">
                             {{ Auth::user()->name }}
                         </div>
                         <a class="dropdown-item" href="{{ asset('/password') }}/{{ Auth::user()->id }}">{{ __('Ubah Sandi') }}</a>

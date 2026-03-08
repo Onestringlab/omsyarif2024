@@ -7,3 +7,7 @@ is-invalid ~ .invalid-feedback {
 .navbar .nav-link span {
     white-space: nowrap;
 }
+
+.dropdown-user-name {
+    white-space: nowrap;
+}
