@@ -89,11 +89,16 @@
                 @endif
                 @else
                 <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        <i class="fa-solid fa-user-tie"></i> 
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle d-flex align-items-center gap-2" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span class="d-inline d-md-none">
+                            {{ Auth::user()->name }}
+                        </span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <div class="dropdown-item">{{ Auth::user()->name }}</div>
+                        <div class="dropdown-item-text d-none d-md-block">
+                            {{ Auth::user()->name }}
+                        </div>
                         <a class="dropdown-item" href="{{ asset('/password') }}/{{ Auth::user()->id }}">{{ __('Ubah Sandi') }}</a>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
