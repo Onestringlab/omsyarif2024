@@ -40,7 +40,7 @@ Data Months 
 							<td>{{ $row['month'] }}</td>
 							<td>
 								<a class="btn text-light btn-warning" href="{{asset('/')}}allowances/data/{{ $row->id }}">
-									<i class="fa-solid fa-money-bill"></i>
+									<i class="fa-solid fa-money-bill-1"></i>
 								</a>
 							</td>
 							<td>
