@@ -3,3 +3,7 @@
 is-invalid ~ .invalid-feedback {
     display: block;
 }
+
+.navbar .nav-link span {
+    white-space: nowrap;
+}
