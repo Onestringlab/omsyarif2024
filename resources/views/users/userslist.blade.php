@@ -18,7 +18,7 @@ Data Users 
               <th class="text-center">NIP</th>
               <th class="text-center">Email</th>
               <th class="text-center" width="180px">Waktu</th>
-              <th class="text-center" width="150px">
+              <th class="text-center" width="200px">
                 <a class="btn btn-primary" href="{{asset('/')}}users/create">
                   <i class="fas fa-plus"></i>
                 </a>
@@ -43,6 +43,9 @@ Data Users 
                 </a>
                 <a class="btn btn-danger" href="{{asset('/')}}users/{{ $row->id }}/delete">
                   <i class="far fa-trash-alt"></i>
+                </a>
+                <a class="btn btn-warning" href="{{asset('/')}}users/{{ $row->id }}/uploadkk">
+                    <i class="fa-solid fa-file-import"></i>
                 </a>
               </td>
             </tr>

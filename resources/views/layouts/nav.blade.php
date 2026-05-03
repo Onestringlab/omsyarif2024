@@ -14,7 +14,7 @@
                 @auth
                 @if(in_array(Auth::user()->role, ['superadmin']))
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('home') }}"><i class="fa-solid fa-house"></i>Beranda</a>
+                    <a class="nav-link" href="{{ route('home') }}"><i class="fa-solid fa-house"></i> Beranda</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ asset('satker') }}"><i class="fa-solid fa-building"></i> Satuan Kerja</a>
@@ -54,6 +54,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('potongansslip') }}"><i class="fa-regular fa-file-lines"></i> {{ __('Potongan') }}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('profil.profil-pegawai') }}"><i class="fa-regular fa-id-badge"></i> {{ __('Profil') }}</a>
+                </li>
                 @endif
                 @if(in_array(Auth::user()->role, ['admin']))
                 <li class="nav-item">
@@ -67,6 +70,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ asset('/users') }}"><i class="fa-solid fa-user"></i> Pengguna</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ asset('/pegawai') }}"><i class="fa-solid fa-building-user"></i> Pegawai</a>
                 </li>
                 @endif
                 @endauth

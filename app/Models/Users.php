@@ -13,4 +13,9 @@ class Users extends Model
   {
     return $this->belongsTo(Satker::class, 'satker', 'kode');
   }
+
+  public function pegawai()
+  {
+      return $this->hasOne(Pegawai::class, 'nip', 'nip');
+  }
 }

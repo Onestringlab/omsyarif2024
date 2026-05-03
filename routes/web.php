@@ -16,6 +16,9 @@ use App\Http\Controllers\MealsController;
 use App\Http\Controllers\TransportController;
 use App\Http\Controllers\NomenklaturController;
 use App\Http\Controllers\SalaryShortagesController;
+use App\Http\Controllers\PegawaiController;
+use App\Http\Controllers\PegawaiDokumenController;
+use App\Http\Controllers\DokumenPegawaiController;
 use App\Imports\ShortStagesModel;
 
 Auth::routes(['register' => false, 'reset' => false]);
@@ -44,8 +47,57 @@ Route::middleware(['auth', 'checkrole:admin,superadmin'])->group(
 	function () {
 		Route::resource('users', UsersController::class);
 		Route::get('/users/{idusers}/delete', [UsersController::class, 'delete']);
+		Route::get('/users/{idusers}/uploadkk', [UsersController::class, 'uploadFormKK'])->name('users.uploadkk');
+		Route::post('/users/uploadkk', [UsersController::class, 'processUploadKK'])->name('users.uploadkk.process');
+		Route::post('/kk/store', [UsersController::class, 'storeKK'])->name('kk.store');
+		Route::post('/users/uploadkk/save', [UsersController::class, 'saveKK'])->name('users.uploadkk.save');
+		Route::resource('pegawai', PegawaiController::class);
+		Route::post('/pegawai/import', [PegawaiController::class, 'import'])->name('pegawai.import');
+		Route::get(
+			'/pegawai/{pegawai}/konfirmasi-hapus',
+			[PegawaiController::class, 'confirmDelete']
+		)->name('pegawai.confirm-delete');
+
+		// Data Keluarga (bisa ke modul keluarga)
+		Route::get(
+			'/pegawai/{pegawai}/keluarga',
+			[PegawaiDokumenController::class, 'indexKeluarga']
+		)->name('pegawai.keluarga.index');
+
 	}
 );
+
+Route::middleware(['auth', 'checkrole:admin,superadmin'])->group(function () {
+    Route::get(
+        '/pegawai/{nip}/dokumen/{jenis}/upload',
+        [PegawaiDokumenController::class, 'createUpload']
+    )->name('pegawai.dokumen.upload');
+
+    Route::post(
+        '/pegawai/{nip}/dokumen/{jenis}/upload',
+        [PegawaiDokumenController::class, 'storeUpload']
+    )->name('pegawai.dokumen.store');
+
+    Route::get(
+        '/pegawai/dokumen/{id}/download',
+        [PegawaiDokumenController::class, 'download']
+    )->name('pegawai.dokumen.download');
+
+    Route::delete(
+        '/pegawai/dokumen/{id}',
+        [PegawaiDokumenController::class, 'destroy']
+    )->name('pegawai.dokumen.destroy');
+
+	Route::get(
+		'/pegawai/dokumen/{id}/edit-metadata',
+		[PegawaiDokumenController::class, 'editMetadata']
+	)->name('pegawai.dokumen.edit-metadata');
+
+	Route::put(
+		'/pegawai/dokumen/{id}/edit-metadata',
+		[PegawaiDokumenController::class, 'updateMetadata']
+	)->name('pegawai.dokumen.update-metadata');
+});
 
 Route::middleware(['auth', 'checkrole:superadmin'])->group(
 	function () {
@@ -112,6 +164,11 @@ Route::middleware(['auth', 'checkrole:user'])->group(
 			Route::get('/kendaraanlist', 'kendaraanlist')->name('kendaraanlist');
 			Route::get('/kendaraan/{id}', 'kendaraan')->name('kendaraan');
 			Route::get('/kendaraanpdf/{id}', 'kendaraanpdf')->name('kendaraanpdf');
+		});
+
+		Route::controller(PegawaiController::class)->group(function () {
+			Route::get('/profil-pegawai','profilSaya')->name('profil.profil-pegawai');
+			Route::get('/profil-pegawai/dokumen/{id}/download','downloadDokumenSaya')->name('pegawai.profil-saya.download-dokumen');
 		});
 	}
 );
