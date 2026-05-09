@@ -40,7 +40,7 @@ Edit Metadata Dokumen
                 @method('PUT')
 
                 <div class="mb-3">
-                    <label for="nomor_dokumen" class="form-label">Nomor Dokumen</label>
+                    <label for="nomor_dokumen" class="form-label fw-bold">Nomor</label>
                     <input type="text"
                             name="nomor_dokumen"
                             id="nomor_dokumen"
@@ -52,7 +52,7 @@ Edit Metadata Dokumen
                 </div>
 
                 <div class="mb-3">
-                    <label for="tanggal_dokumen" class="form-label">Tanggal Dokumen</label>
+                    <label for="tanggal_dokumen" class="form-label fw-bold">Tanggal Dokumen</label>
                     <input type="date"
                             name="tanggal_dokumen"
                             id="tanggal_dokumen"
@@ -64,7 +64,7 @@ Edit Metadata Dokumen
                 </div>
 
                 <div class="mb-3">
-                    <label for="keterangan" class="form-label">Keterangan</label>
+                    <label for="keterangan" class="form-label fw-bold">Keterangan</label>
                     <textarea name="keterangan"
                                 id="keterangan"
                                 rows="3"

@@ -203,7 +203,8 @@ class PotonganController extends Controller
             Excel::import(new PotongansImport($request->month_id), $file);
         } catch (\Exception $e) {
             $message = 'File yang diunggah tidak cocok!';
-            return back()->with(['message' => $message]);
+            return back()->with(['message' => $e->getMessage()]);
+            // return back()->with(['message' => $message]);
         }
         return redirect('/potongans/data/' . $request->month_id);
     }

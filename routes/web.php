@@ -18,7 +18,7 @@ use App\Http\Controllers\NomenklaturController;
 use App\Http\Controllers\SalaryShortagesController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PegawaiDokumenController;
-use App\Http\Controllers\DokumenPegawaiController;
+use App\Http\Controllers\PegawaiKKController;		
 use App\Imports\ShortStagesModel;
 
 Auth::routes(['register' => false, 'reset' => false]);
@@ -47,10 +47,6 @@ Route::middleware(['auth', 'checkrole:admin,superadmin'])->group(
 	function () {
 		Route::resource('users', UsersController::class);
 		Route::get('/users/{idusers}/delete', [UsersController::class, 'delete']);
-		Route::get('/users/{idusers}/uploadkk', [UsersController::class, 'uploadFormKK'])->name('users.uploadkk');
-		Route::post('/users/uploadkk', [UsersController::class, 'processUploadKK'])->name('users.uploadkk.process');
-		Route::post('/kk/store', [UsersController::class, 'storeKK'])->name('kk.store');
-		Route::post('/users/uploadkk/save', [UsersController::class, 'saveKK'])->name('users.uploadkk.save');
 		Route::resource('pegawai', PegawaiController::class);
 		Route::post('/pegawai/import', [PegawaiController::class, 'import'])->name('pegawai.import');
 		Route::get(
@@ -63,6 +59,14 @@ Route::middleware(['auth', 'checkrole:admin,superadmin'])->group(
 			'/pegawai/{pegawai}/keluarga',
 			[PegawaiDokumenController::class, 'indexKeluarga']
 		)->name('pegawai.keluarga.index');
+
+		Route::get('/pegawai/{id}/uploadkk', [PegawaiKKController::class, 'uploadFormKK'])
+			->name('pegawai.uploadkk');
+		Route::post('/pegawai/uploadkk', [PegawaiKKController::class, 'processUploadKK'])
+			->name('pegawai.uploadkk.process');
+		Route::post('/pegawai/uploadkk/save', [PegawaiKKController::class, 'saveKK'])->name('pegawai.uploadkk.save');
+		Route::get('/pegawai/{nip}/keluarga/edit', [PegawaiKKController::class, 'editKeluarga'])->name('pegawai.keluarga.edit');
+		Route::put('/pegawai/{nip}/keluarga', [PegawaiKKController::class, 'updateKeluarga'])->name('pegawai.keluarga.update');
 
 	}
 );

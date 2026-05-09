@@ -58,7 +58,7 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="nomor_dokumen" class="form-label">
+                            <label for="nomor_dokumen" class="form-label fw-bold">
                                 Nomor Dokumen
                             </label>
                             <input type="text" 
@@ -74,7 +74,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="tanggal_dokumen" class="form-label">Tanggal Dokumen</label>
+                            <label for="tanggal_dokumen" class="form-label fw-bold">Tanggal Dokumen</label>
                             <input type="date"
                                 name="tanggal_dokumen"
                                 id="tanggal_dokumen"
@@ -86,7 +86,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="keterangan" class="form-label">Keterangan</label>
+                            <label for="keterangan" class="form-label fw-bold">Keterangan</label>
                             <textarea name="keterangan"
                                     id="keterangan"
                                     rows="3"
@@ -99,7 +99,7 @@
                         </div>
 
                         <div class="mb-4">
-                            <label for="file_dokumen" class="form-label">
+                            <label for="file_dokumen" class="form-label fw-bold">
                                 File PDF <span class="text-danger">*</span>
                             </label>
                             <input type="file" 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Pegawai;
 use App\Models\DokumenPegawai;
+use App\Models\KeluargaPegawai;
 use Illuminate\Http\Request;
 use App\Imports\PegawaiImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -21,7 +22,7 @@ class PegawaiController extends Controller
             })
             ->orderBy('nama', 'asc')
             ->get();
-
+        
         return view('pegawai.index', compact('rows'));
     }
 
@@ -109,7 +110,18 @@ class PegawaiController extends Controller
             abort(403, 'Anda tidak berhak melihat data pegawai ini.');
         }
 
-        return view('pegawai.show', compact('pegawai'));
+        $keluarga = KeluargaPegawai::where('nip', $pegawai->nip)
+            ->orderByRaw("
+                CASE
+                    WHEN hubungan IN ('Suami', 'Istri') THEN 1
+                    WHEN hubungan IN ('Anak Kandung', 'Anak Angkat') THEN 2
+                    ELSE 3
+                END
+            ")
+            ->orderBy('tanggal_lahir', 'asc')
+            ->get();
+
+        return view('pegawai.show', compact('pegawai', 'keluarga'));
     }
 
     public function edit(Pegawai $pegawai)
@@ -251,9 +263,20 @@ class PegawaiController extends Controller
 
         $pegawai = Pegawai::with(['user', 'dokumen'])
             ->where('nip', $user->nip)
-            ->firstOrFail();
+            ->first();
 
-        return view('pegawai.profil_saya', compact('pegawai'));
+        $keluarga = KeluargaPegawai::where('nip', $pegawai->nip)
+            ->orderByRaw("
+                CASE
+                    WHEN hubungan IN ('Suami', 'Istri') THEN 1
+                    WHEN hubungan IN ('Anak Kandung', 'Anak Angkat') THEN 2
+                    ELSE 3
+                END
+            ")
+            ->orderBy('tanggal_lahir', 'asc')
+            ->get();
+
+        return view('pegawai.profil_saya', compact('pegawai', 'keluarga'));
     }
 
     public function downloadDokumenSaya($id)

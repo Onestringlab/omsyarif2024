@@ -44,9 +44,6 @@ Data Users 
                 <a class="btn btn-danger" href="{{asset('/')}}users/{{ $row->id }}/delete">
                   <i class="far fa-trash-alt"></i>
                 </a>
-                <a class="btn btn-warning" href="{{asset('/')}}users/{{ $row->id }}/uploadkk">
-                    <i class="fa-solid fa-file-import"></i>
-                </a>
               </td>
             </tr>
             @endforeach

@@ -34,7 +34,7 @@ Data Pegawai
                         <th class="text-center" width="90px">Jabatan</th>
                         <th class="text-center" width="90px">KP4</th>
                         <th class="text-center" width="90px">Rumah<br>Dinas</th>
-                        <!-- <th class="text-center" width="90px">Data<br>Keluarga</th> -->
+                        <th class="text-center" width="90px">Data<br>Keluarga</th>
                         <th class="text-center" width="180px">
                             <a class="btn btn-primary" href="{{ asset('/') }}pegawai/create">
                             <i class="fas fa-plus"></i>
@@ -94,12 +94,12 @@ Data Pegawai
                         </td>
 
                         {{-- Data Keluarga --}}
-                        <!-- <td class="text-center">
-                            <a href="{{ route('pegawai.keluarga.index', $row->id) }}"
+                        <td class="text-center">
+                            <a href="{{ route('pegawai.uploadkk', $row->nip) }}"
                             class="btn btn-dark">
                             <i class="fa-solid fa-people-group"></i>
                             </a>
-                        </td> -->
+                        </td>
                     
                         {{-- Aksi umum: detail / edit / hapus --}}
                         <td class="text-center">
