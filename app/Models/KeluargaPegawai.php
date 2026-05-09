@@ -16,4 +16,9 @@ class KeluargaPegawai extends Model
         'tanggungan',
         'sekolah',
     ];
+
+    public function skk()
+    {
+        return $this->hasOne(SKK::class, 'keluarga_pegawai_id');
+    }
 }

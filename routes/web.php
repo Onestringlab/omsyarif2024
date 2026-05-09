@@ -18,7 +18,8 @@ use App\Http\Controllers\NomenklaturController;
 use App\Http\Controllers\SalaryShortagesController;
 use App\Http\Controllers\PegawaiController;
 use App\Http\Controllers\PegawaiDokumenController;
-use App\Http\Controllers\PegawaiKKController;		
+use App\Http\Controllers\PegawaiKKController;
+use App\Http\Controllers\SKKController;		
 use App\Imports\ShortStagesModel;
 
 Auth::routes(['register' => false, 'reset' => false]);
@@ -54,19 +55,26 @@ Route::middleware(['auth', 'checkrole:admin,superadmin'])->group(
 			[PegawaiController::class, 'confirmDelete']
 		)->name('pegawai.confirm-delete');
 
-		// Data Keluarga (bisa ke modul keluarga)
 		Route::get(
 			'/pegawai/{pegawai}/keluarga',
 			[PegawaiDokumenController::class, 'indexKeluarga']
 		)->name('pegawai.keluarga.index');
 
-		Route::get('/pegawai/{id}/uploadkk', [PegawaiKKController::class, 'uploadFormKK'])
-			->name('pegawai.uploadkk');
-		Route::post('/pegawai/uploadkk', [PegawaiKKController::class, 'processUploadKK'])
-			->name('pegawai.uploadkk.process');
+		Route::get('/pegawai/{id}/uploadkk', [PegawaiKKController::class, 'uploadFormKK'])->name('pegawai.uploadkk');
+		Route::post('/pegawai/uploadkk', [PegawaiKKController::class, 'processUploadKK'])->name('pegawai.uploadkk.process');
 		Route::post('/pegawai/uploadkk/save', [PegawaiKKController::class, 'saveKK'])->name('pegawai.uploadkk.save');
 		Route::get('/pegawai/{nip}/keluarga/edit', [PegawaiKKController::class, 'editKeluarga'])->name('pegawai.keluarga.edit');
 		Route::put('/pegawai/{nip}/keluarga', [PegawaiKKController::class, 'updateKeluarga'])->name('pegawai.keluarga.update');
+
+		Route::prefix('skk')->name('skk.')->group(function () {
+			Route::get('/create/{keluargaPegawaiId}', [SKKController::class, 'create'])->name('create');
+			Route::post('/store/{keluargaPegawaiId}', [SKKController::class, 'store'])->name('store');
+			Route::get('/download/{id}', [SKKController::class, 'download'])->name('download');
+			Route::get('/edit/{id}', [SKKController::class, 'edit'])->name('edit');
+			Route::put('/update/{id}', [SKKController::class, 'update'])->name('update');
+			Route::delete('/destroy/{id}', [SKKController::class, 'destroy'])->name('destroy');
+			Route::get('/narasi/{id}', [SKKController::class, 'narasi'])->name('narasi');
+		});
 
 	}
 );

@@ -71,6 +71,7 @@ Edit Data Keluarga
                                 <tr>
                                     <td class="text-center nomor-row">{{ $i + 1 }}.</td>
                                     <td>
+                                        <input type="hidden" name="keluarga[{{ $i }}][id]" value="{{ $item->id }}">
                                         <input type="text"
                                                 name="keluarga[{{ $i }}][nama]"
                                                 class="form-control"
@@ -89,6 +90,7 @@ Edit Data Keluarga
                                             <option value="Suami" {{ old('keluarga.'.$i.'.hubungan', $item->hubungan) == 'Suami' ? 'selected' : '' }}>Suami</option>
                                             <option value="Anak Kandung" {{ old('keluarga.'.$i.'.hubungan', $item->hubungan) == 'Anak Kandung' ? 'selected' : '' }}>Anak Kandung</option>
                                             <option value="Anak Angkat" {{ old('keluarga.'.$i.'.hubungan', $item->hubungan) == 'Anak Angkat' ? 'selected' : '' }}>Anak Angkat</option>
+                                            <option value="Lainnya" {{ old('keluarga.'.$i.'.hubungan', $item->hubungan) == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
                                         </select>
                                     </td>
                                     <td>
@@ -175,13 +177,16 @@ document.addEventListener('DOMContentLoaded', function () {
         rows.forEach((row, index) => {
             const nomor = row.querySelector('.nomor-row');
             if (nomor) {
-                nomor.textContent = index + 1 + '.';
+                nomor.textContent = (index + 1) + '.';
             }
 
             row.querySelectorAll('input, select').forEach(el => {
                 const name = el.getAttribute('name');
                 if (name) {
-                    el.setAttribute('name', name.replace(/keluarga\[\d+\]/, 'keluarga[' + index + ']'));
+                    el.setAttribute(
+                        'name',
+                        name.replace(/keluarga\[\d+\]/, 'keluarga[' + index + ']')
+                    );
                 }
             });
         });
@@ -194,7 +199,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const tr = document.createElement('tr');
         tr.innerHTML = `
-            <td class="text-center nomor-row">${index + 1}</td>
+            <td class="text-center nomor-row">${index + 1}.</td>
             <td>
                 <input type="text" name="keluarga[${index}][nama]" class="form-control">
             </td>
@@ -207,6 +212,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <option value="Suami">Suami</option>
                     <option value="Anak Kandung" selected>Anak Kandung</option>
                     <option value="Anak Angkat">Anak Angkat</option>
+                    <option value="Lainnya">Lainnya</option>
                 </select>
             </td>
             <td>

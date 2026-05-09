@@ -6,6 +6,7 @@ use App\Models\Pegawai;
 use App\Models\KeluargaPegawai;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PegawaiKKController extends Controller
@@ -230,9 +231,10 @@ class PegawaiKKController extends Controller
         $request->validate([
             'nip' => 'required|string',
             'keluarga' => 'nullable|array',
+            'keluarga.*.id' => 'nullable|integer',
             'keluarga.*.nama' => 'nullable|string',
             'keluarga.*.tanggal_lahir' => 'nullable|string',
-            'keluarga.*.hubungan' => 'nullable|string|in:Istri,Suami,Anak Kandung,Anak Angkat',
+            'keluarga.*.hubungan' => 'nullable|string|in:Istri,Suami,Anak Kandung,Anak Angkat,Lainnya',
             'keluarga.*.tanggungan' => 'nullable|string|in:Ya,Tidak',
             'keluarga.*.sekolah' => 'nullable|string|in:-,Kuliah',
         ]);
@@ -243,39 +245,75 @@ class PegawaiKKController extends Controller
 
         $pegawai = Pegawai::where('nip', $nip)->firstOrFail();
 
-        $hubunganDisimpan = ['Suami', 'Istri', 'Anak Kandung', 'Anak Angkat'];
+        $hubunganDisimpan = ['Suami', 'Istri', 'Anak Kandung', 'Anak Angkat', 'Lainnya'];
+        $keluargaInput = $request->keluarga ?? [];
 
-        $keluarga = $request->keluarga ?? [];
+        DB::transaction(function () use ($nip, $pegawai, $keluargaInput, $hubunganDisimpan) {
+            $existingIds = KeluargaPegawai::where('nip', $nip)->pluck('id')->toArray();
+            $processedIds = [];
 
-        KeluargaPegawai::where('nip', $nip)->delete();
+            foreach ($keluargaInput as $item) {
+                $id = $item['id'] ?? null;
+                $nama = trim($item['nama'] ?? '');
+                $hubungan = $item['hubungan'] ?? null;
 
-        foreach ($keluarga as $item) {
-            $nama = trim($item['nama'] ?? '');
-            $hubungan = $item['hubungan'] ?? null;
+                if ($nama === '' || !in_array($hubungan, $hubunganDisimpan)) {
+                    continue;
+                }
 
-            if ($nama === '' || !in_array($hubungan, $hubunganDisimpan)) {
-                continue;
-            }
+                $tanggalLahir = null;
+                if (!empty($item['tanggal_lahir'])) {
+                    try {
+                        $tanggalLahir = Carbon::createFromFormat('d-m-Y', $item['tanggal_lahir'])->format('Y-m-d');
+                    } catch (\Exception $e) {
+                        $tanggalLahir = null;
+                    }
+                }
 
-            $tanggalLahir = null;
+                $data = [
+                    'nip' => $nip,
+                    'nama' => $nama,
+                    'tanggal_lahir' => $tanggalLahir,
+                    'hubungan' => $hubungan,
+                    'tanggungan' => $item['tanggungan'] ?? null,
+                    'sekolah' => $item['sekolah'] ?? null,
+                ];
 
-            if (!empty($item['tanggal_lahir'])) {
-                try {
-                    $tanggalLahir = Carbon::createFromFormat('d-m-Y', $item['tanggal_lahir'])->format('Y-m-d');
-                } catch (\Exception $e) {
-                    $tanggalLahir = null;
+                if ($id) {
+                    $keluarga = KeluargaPegawai::where('nip', $nip)->where('id', $id)->first();
+
+                    if ($keluarga) {
+                        $keluarga->update($data);
+                        $processedIds[] = $keluarga->id;
+                    }
+                } else {
+                    $keluargaBaru = KeluargaPegawai::create($data);
+                    $processedIds[] = $keluargaBaru->id;
                 }
             }
 
-            KeluargaPegawai::create([
-                'nip' => $nip,
-                'nama' => $nama,
-                'tanggal_lahir' => $tanggalLahir,
-                'hubungan' => $hubungan,
-                'tanggungan' => $item['tanggungan'] ?? null,
-                'sekolah' => $item['sekolah'] ?? null,
-            ]);
-        }
+            $idsToDelete = array_diff($existingIds, $processedIds);
+
+            if (!empty($idsToDelete)) {
+                $keluargaYangDihapus = KeluargaPegawai::with('skk')
+                    ->whereIn('id', $idsToDelete)
+                    ->get();
+
+                foreach ($keluargaYangDihapus as $kel) {
+                    if ($kel->skk) {
+                        $fullPath = storage_path('public/' . $kel->skk->file_skk);
+
+                        if (!empty($kel->skk->file_skk) && file_exists($fullPath)) {
+                            @unlink($fullPath);
+                        }
+
+                        $kel->skk->delete();
+                    }
+
+                    $kel->delete();
+                }
+            }
+        });
 
         return redirect()
             ->route('pegawai.show', ['pegawai' => $pegawai->id])

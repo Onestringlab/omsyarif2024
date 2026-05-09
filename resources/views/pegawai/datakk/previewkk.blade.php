@@ -89,6 +89,7 @@ Preview Data Keluarga
                                             <option value="Suami" {{ ($item['hubungan'] ?? '') == 'Suami' ? 'selected' : '' }}>Suami</option>
                                             <option value="Anak Kandung" {{ ($item['hubungan'] ?? '') == 'Anak Kandung' ? 'selected' : '' }}>Anak Kandung</option>
                                             <option value="Anak Angkat" {{ ($item['hubungan'] ?? '') == 'Anak Angkat' ? 'selected' : '' }}>Anak Angkat</option>
+                                            <option value="Lainnya" {{ ($item['hubungan'] ?? '') == 'Lainnya' ? 'selected' : '' }}>Lainnya</option>
                                         </select>
                                     </td>
                                     <td>
@@ -201,6 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
                     <option value="Suami">Suami</option>
                     <option value="Anak Kandung" selected>Anak Kandung</option>
                     <option value="Anak Angkat">Anak Angkat</option>
+                    <option value="Lainnya">Lainnya</option>
                 </select>
             </td>
             <td>

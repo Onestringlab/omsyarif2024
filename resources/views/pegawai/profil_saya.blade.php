@@ -18,12 +18,7 @@ Profil Pegawai Saya
 
                 <hr class="my-4">
 
-                <h5 class="mb-3">Data Keluarga
-                    <a href="{{ route('pegawai.uploadkk', $pegawai->nip) }}"
-                        class="btn btn-dark">
-                        <i class="fa-solid fa-people-group"></i>
-                    </a>
-                </h5>
+                <h5 class="mb-3">Data Keluarga</h5>
                 
                 <div class="table-responsive">
                     <table class="table table-striped table-hover align-middle">
@@ -35,24 +30,49 @@ Profil Pegawai Saya
                                 <th width="250">Hubungan</th>
                                 <th width="150">Tanggungan</th>
                                 <th width="150">Sekolah</th>
+                                <th width="100">Berlaku</th>
                             </tr>
                         </thead>
                         <tbody>
                             @forelse($keluarga as $i => $item)
-                                <tr>
-                                    <td class="text-center">{{ $i + 1 }}.</td>
-                                    <td>{{ $item->nama }}</td>
-                                    <td>
-                                        {{ $item->tanggal_lahir ? \Carbon\Carbon::parse($item->tanggal_lahir)->format('d-m-Y') : '-' }}
-                                        ({{ \Carbon\Carbon::parse($item->tanggal_lahir)->age }} th)
+                                @php
+                                $skk = $item->skk;
+                            @endphp
+                            <tr>
+                                <td class="text-center">{{ $i + 1 }}.</td>
+                                <td>{{ $item->nama }}</td>
+                                <td>
+                                    {{ $item->tanggal_lahir ? \Carbon\Carbon::parse($item->tanggal_lahir)->format('d-m-Y') : '-' }}
+                                    ({{ $item->tanggal_lahir ? \Carbon\Carbon::parse($item->tanggal_lahir)->age : '-' }} th)
+                                </td>
+                                <td>{{ $item->hubungan ?? '-' }}</td>
+                                <td>{{ $item->tanggungan ?? '-' }}</td>
+                                <td>{{ $item->sekolah ?? '-' }}</td>
+
+                                @if(strtolower(trim($item->sekolah ?? '')) === 'kuliah')
+                                    @php
+                                        $tglBerakhir = $skk && $skk->tanggal_berakhir
+                                            ? \Carbon\Carbon::parse($skk->tanggal_berakhir)
+                                            : null;
+
+                                        $isExpired = $tglBerakhir && $tglBerakhir->isPast();
+                                        $isWarning = $tglBerakhir && !$isExpired && now()->diffInDays($tglBerakhir, false) <= 30;
+                                    @endphp
+
+                                    <td class="{{ $isExpired ? 'bg-danger text-white' : ($isWarning ? 'bg-warning' : '') }}">
+                                        @if($tglBerakhir)
+                                            {{ $tglBerakhir->format('d-m-Y') }}
+                                        @else
+                                            -
+                                        @endif
                                     </td>
-                                    <td>{{ $item->hubungan ?? '-' }}</td>
-                                    <td class="text-center">{{ $item->tanggungan ?? '-' }}</td>
-                                    <td>{{ $item->sekolah ?? '-' }}</td>
-                                </tr>
+                                @else
+                                    <td>-</td>
+                                @endif
+                            </tr>
                             @empty
                                 <tr>
-                                    <td colspan="6" class="text-center text-muted">
+                                    <td colspan="7" class="text-muted">
                                         Data keluarga belum tersedia.
                                     </td>
                                 </tr>

@@ -120,6 +120,20 @@ class PegawaiController extends Controller
             ")
             ->orderBy('tanggal_lahir', 'asc')
             ->get();
+        
+        foreach ($keluarga as $item) {
+            if (
+                strtolower(trim($item->sekolah ?? '')) === 'kuliah' &&
+                $item->skk &&
+                $item->skk->tanggal_berakhir
+            ) {
+                $tanggalBerakhir = \Carbon\Carbon::parse($item->skk->tanggal_berakhir)->format('d-m-Y');
+
+                $item->narasi_skk = "Yth. Bapak/Ibu ". $pegawai->nama ."\\nMasa berlaku Surat Keterangan Kuliah atas nama ". $item->nama ." akan/perlu diperhatikan sampai tanggal ". $tanggalBerakhir .".\\nSilakan menyiapkan pembaruan dokumen apabila diperlukan.\\nTerima kasih.";
+            } else {
+                $item->narasi_skk = 'Narasi tidak tersedia';
+            }
+        }
 
         return view('pegawai.show', compact('pegawai', 'keluarga'));
     }
@@ -207,6 +221,7 @@ class PegawaiController extends Controller
         }
 
         DB::transaction(function () use ($pegawai) {
+            // 1. Hapus dokumen pegawai + file
             foreach ($pegawai->dokumen as $dokumen) {
                 if (!empty($dokumen->path_file) && Storage::disk('local')->exists($dokumen->path_file)) {
                     Storage::disk('local')->delete($dokumen->path_file);
@@ -215,17 +230,43 @@ class PegawaiController extends Controller
                 $dokumen->delete();
             }
 
+            // 2. Hapus folder dokumen pegawai
             $folderPath = 'dokumen_pegawai/' . $pegawai->nip;
             if (Storage::disk('local')->exists($folderPath)) {
                 Storage::disk('local')->deleteDirectory($folderPath);
             }
 
+            // 3. Ambil semua keluarga beserta SKK
+            $keluargaList = KeluargaPegawai::with('skk')
+                ->where('nip', $pegawai->nip)
+                ->get();
+
+            foreach ($keluargaList as $keluarga) {
+                // 4. Hapus file SKK + record SKK
+                if ($keluarga->skk && !empty($keluarga->skk->file_skk)) {
+                    if (Storage::disk('local')->exists($keluarga->skk->file_skk)) {
+                        Storage::disk('local')->delete($keluarga->skk->file_skk);
+                    }
+
+                    $keluarga->skk->delete();
+                }
+
+                // 5. Hapus data keluarga
+                $keluarga->delete();
+            }
+
+            // 6. Hapus folder SKK jika masih ada sisa
+            if (Storage::disk('local')->exists('skk')) {
+                // opsional, jangan dipakai jika folder skk dipakai global semua pegawai
+            }
+
+            // 7. Hapus data pegawai
             $pegawai->delete();
         });
 
         return redirect()
             ->route('pegawai.index')
-            ->with('success', 'Data pegawai beserta dokumen berhasil dihapus.');
+            ->with('success', 'Data pegawai beserta dokumen, keluarga, dan SKK berhasil dihapus.');
     }
 
     public function confirmDelete(Pegawai $pegawai)
@@ -234,7 +275,18 @@ class PegawaiController extends Controller
             abort(403, 'Anda tidak berhak menghapus data pegawai ini.');
         }
 
-        return view('pegawai.confirm_delete', compact('pegawai'));
+        $keluarga = KeluargaPegawai::where('nip', $pegawai->nip)
+            ->orderByRaw("
+                CASE
+                    WHEN hubungan IN ('Suami', 'Istri') THEN 1
+                    WHEN hubungan IN ('Anak Kandung', 'Anak Angkat') THEN 2
+                    ELSE 3
+                END
+            ")
+            ->orderBy('tanggal_lahir', 'asc')
+            ->get();
+
+        return view('pegawai.confirm_delete', compact('pegawai', 'keluarga'));
     }
 
     public function import(Request $request)
