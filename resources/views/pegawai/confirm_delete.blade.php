@@ -92,7 +92,7 @@ Konfirmasi Hapus Pegawai
                     <button type="submit" class="btn btn-danger">Hapus</button>
                 </form>
 
-                <a href="{{ route('pegawai.index') }}" class="btn btn-primary">Kembali</a>
+                <a href="{{ route('pegawai.index') }}" class="btn btn-secondary">Kembali</a>
             </div>
         </div>
     </div>
