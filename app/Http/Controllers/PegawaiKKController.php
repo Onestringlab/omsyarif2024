@@ -303,8 +303,8 @@ class PegawaiKKController extends Controller
                     if ($kel->skk) {
                         $fullPath = storage_path('public/' . $kel->skk->file_skk);
 
-                        if (!empty($kel->skk->file_skk) && file_exists($fullPath)) {
-                            @unlink($fullPath);
+                        if (!empty($kel->skk->file_skk) && Storage::disk('local')->exists($kel->skk->file_skk)) {
+                            Storage::disk('local')->delete($kel->skk->file_skk);
                         }
 
                         $kel->skk->delete();

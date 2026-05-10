@@ -63,7 +63,7 @@ Upload SKK - {{ $keluarga->nama }}
 
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <label for="nomor_surat" class="form-label">Nomor Surat (opsional)</label>
+                        <label for="nomor_surat" class="form-label">Nomor Surat</label>
                         <input type="text"
                                name="nomor_surat"
                                id="nomor_surat"
