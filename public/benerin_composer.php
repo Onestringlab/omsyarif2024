@@ -1,5 +1,6 @@
 <?php
-// Mencoba menjalankan dump-autoload via shell_exec
-$output = shell_exec('composer dump-autoload 2>&1');
-echo "<pre>$output</pre>";
-?>
+    require_once __DIR__ . '/vendor/autoload.php';
+
+    use Smalot\PdfParser\Parser;
+    
+    $parser = new Parser();
