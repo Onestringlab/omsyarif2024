@@ -78,4 +78,9 @@ class Pegawai extends Model
     {
         return $this->hasMany(DokumenPegawai::class, 'nip', 'nip');
     }
+
+    public function keluarga()
+    {
+        return $this->hasMany(KeluargaPegawai::class, 'nip', 'nip');
+    }
 }

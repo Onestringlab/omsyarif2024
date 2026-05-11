@@ -38,11 +38,13 @@ class SKKController extends Controller
         }
 
         $validated = $request->validate([
-            'nomor_surat'      => ['nullable', 'string', 'max:255'],
-            'tanggal_surat'    => ['nullable', 'date'],
-            'tanggal_berakhir' => ['required', 'date'],
-            'file_skk'         => ['required', 'file', 'mimes:pdf', 'max:2048'],
+            'nomor_surat'   => ['nullable', 'string', 'max:255'],
+            'tanggal_surat' => ['required', 'date'],
+            'file_skk'      => ['required', 'file', 'mimes:pdf', 'max:2048'],
         ]);
+
+        $tanggalSurat = Carbon::parse($validated['tanggal_surat'])->startOfDay();
+        $tanggalBerakhir = $tanggalSurat->copy()->addYear()->format('Y-m-d');
 
         $skkLama = SKK::where('keluarga_pegawai_id', $keluarga->id)->first();
 
@@ -58,8 +60,8 @@ class SKKController extends Controller
             ['keluarga_pegawai_id' => $keluarga->id],
             [
                 'nomor_surat'      => $validated['nomor_surat'] ?? null,
-                'tanggal_surat'    => $validated['tanggal_surat'] ?? null,
-                'tanggal_berakhir' => $validated['tanggal_berakhir'],
+                'tanggal_surat'    => $tanggalSurat->format('Y-m-d'),
+                'tanggal_berakhir' => $tanggalBerakhir,
                 'file_skk'         => $filePath,
             ]
         );
@@ -98,18 +100,25 @@ class SKKController extends Controller
         $skk = SKK::findOrFail($id);
         $keluarga = KeluargaPegawai::findOrFail($skk->keluarga_pegawai_id);
         $pegawai = Pegawai::where('nip', $keluarga->nip)->firstOrFail();
+
         $this->authorizeSatker($pegawai);
 
+        if (strtolower(trim($keluarga->sekolah ?? '')) !== 'kuliah') {
+            abort(403, 'SKK hanya untuk anggota keluarga dengan status Kuliah.');
+        }
+
         $validated = $request->validate([
-            'nomor_surat'      => ['nullable', 'string', 'max:255'],
-            'tanggal_surat'    => ['nullable', 'date'],
-            'tanggal_berakhir' => ['required', 'date'],
+            'nomor_surat'   => ['nullable', 'string', 'max:255'],
+            'tanggal_surat' => ['required', 'date'],
         ]);
+
+        $tanggalSurat = Carbon::parse($validated['tanggal_surat'])->startOfDay();
+        $tanggalBerakhir = $tanggalSurat->copy()->addYear()->format('Y-m-d');
 
         $skk->update([
             'nomor_surat'      => $validated['nomor_surat'] ?? null,
-            'tanggal_surat'    => $validated['tanggal_surat'] ?? null,
-            'tanggal_berakhir' => $validated['tanggal_berakhir'],
+            'tanggal_surat'    => $tanggalSurat->format('Y-m-d'),
+            'tanggal_berakhir' => $tanggalBerakhir,
         ]);
 
         return redirect()

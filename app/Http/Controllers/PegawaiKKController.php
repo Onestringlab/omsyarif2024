@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Smalot\PdfParser\Parser;
 
 class PegawaiKKController extends Controller
 {
@@ -29,122 +30,161 @@ class PegawaiKKController extends Controller
     }
 
     public function processUploadKK(Request $request)
-    {
-        $request->validate([
-            'nip' => 'required',
-            'pdf' => 'required|mimes:pdf|max:2048'
-        ]);
-        // dd($request->all());
-        $pegawai = Pegawai::with('user')->where('nip', $request->input('nip'))->firstOrFail();
+{
+    $request->validate([
+        'nip' => 'required',
+        'pdf' => 'required|mimes:pdf|max:2048'
+    ]);
 
-        $file = $request->file('pdf');
-        $path = $file->store('temp');
+    $pegawai = Pegawai::with('user')
+        ->where('nip', $request->input('nip'))
+        ->firstOrFail();
 
-        $text = \Spatie\PdfToText\Pdf::getText(storage_path('app/' . $path));
+    $file = $request->file('pdf');
+    $path = $file->store('temp');
+    $fullPath = storage_path('app/' . $path);
 
-        $nama = $this->getValue($text, 'NAMA');
-        $nip  = $this->getValue($text, 'NIP\/NRP');
-        $tgl  = $this->getValue($text, 'TGL\. LAHIR');
+    $parser = new Parser();
+    $pdf = $parser->parseFile($fullPath);
+    $text = $pdf->getText();
 
-        $section = strstr($text, 'C. DATA KELUARGA');
-        $section = $section ? strstr($section, 'halaman', true) : '';
+    $text = str_replace(["\r\n", "\r", "\t"], "\n", $text);
+    $text = preg_replace('/[ ]{2,}/', ' ', $text);
+    $text = preg_replace('/[ ]*\n[ ]*/', "\n", $text);
+    $text = trim($text);
 
-        $lines = array_values(array_filter(array_map('trim', explode("\n", $section))));
+    $normalize = function ($value) {
+        $value = trim($value);
+        $value = preg_replace('/\s+/', ' ', $value);
+        return $value;
+    };
 
-        $namaList = [];
+    $nama = null;
+    $nip = null;
+    $tgl = null;
 
-        for ($i = 0; $i < count($lines); $i++) {
-            if (preg_match('/^\d+$/', $lines[$i])) {
-                $next = $lines[$i + 1] ?? null;
-
-                if ($next && !in_array($next, ['-', 'Ya', 'Tidak'])) {
-                    $namaList[] = $next;
-                }
-            }
-        }
-
-        $tanggalIndex = [];
-        $tanggalList  = [];
-
-        for ($i = 0; $i < count($lines); $i++) {
-            if (preg_match('/\d{2}-\d{2}-\d{4}/', $lines[$i])) {
-                $tanggalList[]  = $lines[$i];
-                $tanggalIndex[] = $i;
-            }
-        }
-
-        $hubunganList = [];
-
-        foreach ($lines as $line) {
-            if (in_array($line, ['Istri', 'Suami', 'Anak Kandung', 'Anak Angkat'])) {
-                $hubunganList[] = $line;
-            }
-        }
-
-        $tanggunganList = [];
-
-        foreach ($lines as $line) {
-            if (in_array($line, ['Ya', 'Tidak'])) {
-                $tanggunganList[] = $line;
-            }
-        }
-
-        $sekolahList = [];
-
-        foreach ($tanggalIndex as $idx) {
-            $sekolah = null;
-
-            for ($j = $idx; $j < $idx + 10 && $j < count($lines); $j++) {
-                $val = strtolower($lines[$j]);
-
-                if (str_contains($val, 'kuliah')) {
-                    $sekolah = 'Kuliah';
-                    break;
-                } elseif (str_contains($val, 'sma')) {
-                    $sekolah = 'SMA';
-                    break;
-                } elseif (str_contains($val, 'smp')) {
-                    $sekolah = 'SMP';
-                    break;
-                } elseif (str_contains($val, 'sd')) {
-                    $sekolah = 'SD';
-                    break;
-                }
-            }
-
-            if (!$sekolah) {
-                $sekolah = '-';
-            }
-
-            $sekolahList[] = $sekolah;
-        }
-
-        $count = min(count($namaList), count($tanggalList));
-
-        $keluarga = [];
-
-        for ($i = 0; $i < $count; $i++) {
-            $keluarga[] = [
-                'nama' => $namaList[$i],
-                'tanggal_lahir' => $tanggalList[$i],
-                'hubungan' => $hubunganList[$i] ?? null,
-                'tanggungan' => $tanggunganList[$i] ?? null,
-                'sekolah' => $sekolahList[$i] ?? null,
-            ];
-        }
-
-        Storage::delete($path);
-
-        return view('pegawai.datakk.previewkk', [
-            'data' => [
-                'pegawai' => $pegawai,
-                'nama' => $nama,
-                'nip' => $nip,
-                'tanggal_lahir' => $tgl,
-                'keluarga' => $keluarga
-            ]
-        ]);
+    if (preg_match('/NAMA\s*:\s*(.+?)\s+GOLONGAN/s', $text, $m)) {
+        $nama = $normalize($m[1]);
     }
+
+    if (preg_match('/NIP\/NRP\s*:\s*([0-9]+)/', $text, $m)) {
+        $nip = trim($m[1]);
+    }
+
+    if (preg_match('/TGL\.\s*LAHIR\s*:\s*([0-9]{2}-[0-9]{2}-[0-9]{4})/', $text, $m)) {
+        $tgl = trim($m[1]);
+    }
+
+    $section = '';
+    if (preg_match('/C\.\s*DATA\s*KELUARGA(.*?)(?:halaman\s*\d+\s*dari\s*\d+|$)/si', $text, $m)) {
+        $section = trim($m[1]);
+    }
+
+    $section = str_replace(["\r\n", "\r", "\t"], "\n", $section);
+    $section = preg_replace('/[ ]{2,}/', ' ', $section);
+    $section = preg_replace('/[ ]*\n[ ]*/', "\n", $section);
+    $section = trim($section);
+
+    $lines = array_values(array_filter(array_map(function ($line) use ($normalize) {
+        return $normalize($line);
+    }, preg_split('/\n+/', $section))));
+
+    $lines = array_values(array_filter($lines, function ($line) {
+        return !in_array($line, [
+            'NO',
+            'NAMA',
+            'TANGGAL LAHIR HUBUNGAN KELUARGA',
+            'TANGGAL LAHIR',
+            'HUBUNGAN KELUARGA',
+            'AYAH',
+            'IBU',
+            'PEKERJAAN',
+            'SEKOLAH',
+            'NAMA KETERANGAN',
+            '[ ◀]()',
+            '[ ▶]()',
+        ]);
+    }));
+
+    $joined = implode(' | ', $lines);
+    $joined = preg_replace('/\s*\[\s*◀\s*\]\(\)\s*/u', ' ', $joined);
+    $joined = preg_replace('/\s*\[\s*▶\s*\]\(\)\s*/u', ' ', $joined);
+    $joined = preg_replace('/\s+/', ' ', $joined);
+    $joined = trim($joined);
+
+   $families = [];
+
+preg_match_all('/(?:^|\s)(\d+)\s+(.*?)(?=(?:\s\d+\s+)|$)/s', $joined, $matches, PREG_SET_ORDER);
+
+foreach ($matches as $match) {
+    $chunk = trim($match[2]);
+    $chunk = preg_replace('/\s+/', ' ', $chunk);
+    $chunk = trim($chunk);
+
+    $tanggal = null;
+    $namaKeluarga = null;
+    $sisa = $chunk;
+
+    if (preg_match('/^(.*?)\s+(\d{2}-\d{2}-\d{4})\s+(.*)$/s', $chunk, $parts)) {
+        $namaKeluarga = trim($parts[1]);
+        $tanggal = trim($parts[2]);
+        $sisa = trim($parts[3]);
+    } else {
+        continue;
+    }
+
+    $hubungan = null;
+    foreach (['Anak Kandung', 'Anak Angkat', 'Istri', 'Suami'] as $h) {
+        if (stripos($sisa, $h) !== false) {
+            $hubungan = $h;
+            $sisa = preg_replace('/' . preg_quote($h, '/') . '/i', '', $sisa, 1);
+            $sisa = trim($sisa);
+            break;
+        }
+    }
+
+    $tanggungan = null;
+    foreach (['Tidak', 'Ya'] as $t) {
+        if (preg_match('/\b' . preg_quote($t, '/') . '\b/i', $sisa)) {
+            $tanggungan = $t;
+            break;
+        }
+    }
+
+    $sekolah = '-';
+    if (preg_match('/\b(Kuliah|SMA|SMP|SD)\b/i', $sisa, $sm)) {
+        $sekolah = strtoupper($sm[1]) === 'KULIAH' ? 'Kuliah' : strtoupper($sm[1]);
+    }
+
+    if ($namaKeluarga === '' || !$tanggal) {
+        continue;
+    }
+
+    $namaKeluarga = str_replace('|', '', $namaKeluarga);
+    $namaKeluarga = preg_replace('/\s+/', ' ', $namaKeluarga);
+    $namaKeluarga = trim($namaKeluarga, " -");
+
+    $families[] = [
+        'nama' => $namaKeluarga,
+        'tanggal_lahir' => $tanggal,
+        'hubungan' => $hubungan,
+        'tanggungan' => $tanggungan,
+        'sekolah' => $sekolah,
+    ];
+}
+
+    Storage::delete($path);
+
+    return view('pegawai.datakk.previewkk', [
+        'data' => [
+            'pegawai' => $pegawai,
+            'nama' => $nama,
+            'nip' => $nip,
+            'tanggal_lahir' => $tgl,
+            'keluarga' => $families
+        ]
+    ]);
+}
 
     private function getValue($text, $field)
     {

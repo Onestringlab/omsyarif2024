@@ -29,11 +29,11 @@ Data Pegawai
                         <th width="50px">No</th>
                         <th width="150px">NIP</th>
                         <th> Nama</th>
-                        <th class="text-center" width="90px">Kenaikan<BR>Pangkat</th>
+                        <th class="text-center" width="120px">SK Kenaikan<BR>Pangkat</th>
                         <th class="text-center" width="90px">KGB</th>
-                        <th class="text-center" width="90px">Jabatan</th>
+                        <th class="text-center" width="90px">SK Jabatan</th>
                         <th class="text-center" width="90px">KP4</th>
-                        <th class="text-center" width="90px">Rumah<br>Dinas</th>
+                        <th class="text-center" width="120px">SK Rumah<br>Dinas</th>
                         <th class="text-center" width="90px">Data<br>Keluarga</th>
                         <th class="text-center" width="180px">
                             <a class="btn btn-primary" href="{{ asset('/') }}pegawai/create">
@@ -48,7 +48,7 @@ Data Pegawai
                 <tbody>
                     @php($no = 1)
                     @forelse($rows as $row)
-                    <tr>
+                    <tr class="{{ $row->skk_warning ? 'table-warning' : '' }}">
                         <td  class="text-center">{{ $no++ }}.</td>
                         <td>{{ $row->nip }}</td>
                         <td>{{ $row->nama }}</td>

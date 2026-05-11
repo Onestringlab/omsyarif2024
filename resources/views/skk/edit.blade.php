@@ -53,38 +53,38 @@ Edit Metadata SKK
                     <div class="col-md-4">
                         <label for="nomor_surat" class="form-label">Nomor Surat</label>
                         <input type="text"
-                                name="nomor_surat"
-                                id="nomor_surat"
-                                class="form-control @error('nomor_surat') is-invalid @enderror"
-                                value="{{ old('nomor_surat', $skk->nomor_surat) }}">
+                               name="nomor_surat"
+                               id="nomor_surat"
+                               class="form-control @error('nomor_surat') is-invalid @enderror"
+                               value="{{ old('nomor_surat', $skk->nomor_surat) }}">
                         @error('nomor_surat')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="col-md-4">
-                        <label for="tanggal_surat" class="form-label">Tanggal Surat</label>
+                        <label for="tanggal_surat" class="form-label">
+                            Tanggal Surat <span class="text-danger">*</span>
+                        </label>
                         <input type="date"
-                                name="tanggal_surat"
-                                id="tanggal_surat"
-                                class="form-control @error('tanggal_surat') is-invalid @enderror"
-                                value="{{ old('tanggal_surat', $skk->tanggal_surat ? \Carbon\Carbon::parse($skk->tanggal_surat)->format('Y-m-d') : '') }}">
+                               name="tanggal_surat"
+                               id="tanggal_surat"
+                               class="form-control @error('tanggal_surat') is-invalid @enderror"
+                               value="{{ old('tanggal_surat', $skk->tanggal_surat ? \Carbon\Carbon::parse($skk->tanggal_surat)->format('Y-m-d') : '') }}"
+                               required>
                         @error('tanggal_surat')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="col-md-4">
-                        <label for="tanggal_berakhir" class="form-label">Tanggal Berakhir</label>
+                        <label for="tanggal_berakhir_preview" class="form-label">Berlaku Sampai</label>
                         <input type="date"
-                                name="tanggal_berakhir"
-                                id="tanggal_berakhir"
-                                class="form-control @error('tanggal_berakhir') is-invalid @enderror"
-                                value="{{ old('tanggal_berakhir', $skk->tanggal_berakhir ? \Carbon\Carbon::parse($skk->tanggal_berakhir)->format('Y-m-d') : '') }}"
-                                required>
-                        @error('tanggal_berakhir')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                               id="tanggal_berakhir_preview"
+                               class="form-control"
+                               value="{{ old('tanggal_surat', $skk->tanggal_surat ? \Carbon\Carbon::parse($skk->tanggal_surat)->addYear()->format('Y-m-d') : '') }}"
+                               readonly>
+                        <small class="text-muted">Otomatis 1 tahun dari tanggal surat.</small>
                     </div>
                 </div>
 
@@ -97,4 +97,30 @@ Edit Metadata SKK
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const tanggalSurat = document.getElementById('tanggal_surat');
+    const tanggalBerakhirPreview = document.getElementById('tanggal_berakhir_preview');
+
+    function updateTanggalBerakhir() {
+        if (!tanggalSurat.value) {
+            tanggalBerakhirPreview.value = '';
+            return;
+        }
+
+        const tgl = new Date(tanggalSurat.value);
+        tgl.setFullYear(tgl.getFullYear() + 1);
+
+        const tahun = tgl.getFullYear();
+        const bulan = String(tgl.getMonth() + 1).padStart(2, '0');
+        const hari = String(tgl.getDate()).padStart(2, '0');
+
+        tanggalBerakhirPreview.value = `${tahun}-${bulan}-${hari}`;
+    }
+
+    tanggalSurat.addEventListener('change', updateTanggalBerakhir);
+    updateTanggalBerakhir();
+});
+</script>
 @endsection

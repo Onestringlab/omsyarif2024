@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Pegawai;
 use App\Models\DokumenPegawai;
 use App\Models\KeluargaPegawai;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Imports\PegawaiImport;
 use Maatwebsite\Excel\Facades\Excel;
@@ -16,13 +17,36 @@ class PegawaiController extends Controller
 {
     public function index()
     {
-        $rows = Pegawai::with('user')
+        $rows = Pegawai::with(['user', 'keluarga.skk'])
             ->whereHas('user', function ($q) {
                 $q->where('satker', auth()->user()->satker);
             })
             ->orderBy('nama', 'asc')
             ->get();
-        
+
+        $today = Carbon::today();
+
+        foreach ($rows as $row) {
+            $row->skk_warning = false;
+
+            foreach ($row->keluarga as $keluarga) {
+                if (strtolower(trim($keluarga->sekolah ?? '')) !== 'kuliah') {
+                    continue;
+                }
+
+                if (!$keluarga->skk || empty($keluarga->skk->tanggal_berakhir)) {
+                    continue;
+                }
+
+                $tanggalBerakhir = Carbon::parse($keluarga->skk->tanggal_berakhir);
+
+                if ($tanggalBerakhir->lt($today) || $today->diffInDays($tanggalBerakhir, false) <= 30) {
+                    $row->skk_warning = true;
+                    break;
+                }
+            }
+        }
+
         return view('pegawai.index', compact('rows'));
     }
 

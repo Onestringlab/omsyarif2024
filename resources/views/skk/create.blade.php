@@ -9,7 +9,9 @@ Upload SKK - {{ $keluarga->nama }}
     {{-- Breadcrumb --}}
     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="{{ route('pegawai.index') }}">Data Pegawai</a></li>
+            <li class="breadcrumb-item">
+                <a href="{{ route('pegawai.index') }}">Data Pegawai</a>
+            </li>
             <li class="breadcrumb-item">
                 <a href="{{ route('pegawai.show', $keluarga->pegawai_id ?? $pegawai->id ?? '') }}">
                     Detail Pegawai
@@ -75,33 +77,35 @@ Upload SKK - {{ $keluarga->nama }}
                     </div>
 
                     <div class="col-md-3">
-                        <label for="tanggal_surat" class="form-label">Tanggal Surat (opsional)</label>
+                        <label for="tanggal_surat" class="form-label">
+                            Tanggal Surat <span class="text-danger">*</span>
+                        </label>
                         <input type="date"
                                name="tanggal_surat"
                                id="tanggal_surat"
                                value="{{ old('tanggal_surat', isset($skk->tanggal_surat) ? $skk->tanggal_surat->format('Y-m-d') : '') }}"
-                               class="form-control @error('tanggal_surat') is-invalid @enderror">
+                               class="form-control @error('tanggal_surat') is-invalid @enderror"
+                               required>
                         @error('tanggal_surat')
                             <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
                     <div class="col-md-3">
-                        <label for="tanggal_berakhir" class="form-label">Tanggal Berakhir</label>
+                        <label for="tanggal_berakhir_preview" class="form-label">Berlaku Sampai</label>
                         <input type="date"
-                               name="tanggal_berakhir"
-                               id="tanggal_berakhir"
-                               value="{{ old('tanggal_berakhir', isset($skk->tanggal_berakhir) ? $skk->tanggal_berakhir->format('Y-m-d') : '') }}"
-                               class="form-control @error('tanggal_berakhir') is-invalid @enderror"
-                               required>
-                        @error('tanggal_berakhir')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                               id="tanggal_berakhir_preview"
+                               value="{{ old('tanggal_surat', isset($skk->tanggal_surat) ? $skk->tanggal_surat->copy()->addYear()->format('Y-m-d') : '') }}"
+                               class="form-control"
+                               readonly>
+                        <small class="text-muted">Otomatis 1 tahun dari tanggal surat.</small>
                     </div>
                 </div>
 
                 <div class="mb-3">
-                    <label for="file_skk" class="form-label">File SKK (PDF, max 2 MB)</label>
+                    <label for="file_skk" class="form-label">
+                        File SKK (PDF, max 2 MB) <span class="text-danger">*</span>
+                    </label>
                     <input type="file"
                            name="file_skk"
                            id="file_skk"
@@ -109,7 +113,7 @@ Upload SKK - {{ $keluarga->nama }}
                            accept=".pdf"
                            required>
                     @error('file_skk')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback d-block">{{ $message }}</div>
                     @enderror
                     <div class="form-text">
                         Unggah Surat Keterangan Kuliah dalam format PDF.
@@ -127,4 +131,30 @@ Upload SKK - {{ $keluarga->nama }}
         </div>
     </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const tanggalSurat = document.getElementById('tanggal_surat');
+    const tanggalBerakhirPreview = document.getElementById('tanggal_berakhir_preview');
+
+    function updateTanggalBerakhir() {
+        if (!tanggalSurat.value) {
+            tanggalBerakhirPreview.value = '';
+            return;
+        }
+
+        const tgl = new Date(tanggalSurat.value);
+        tgl.setFullYear(tgl.getFullYear() + 1);
+
+        const tahun = tgl.getFullYear();
+        const bulan = String(tgl.getMonth() + 1).padStart(2, '0');
+        const hari = String(tgl.getDate()).padStart(2, '0');
+
+        tanggalBerakhirPreview.value = `${tahun}-${bulan}-${hari}`;
+    }
+
+    tanggalSurat.addEventListener('change', updateTanggalBerakhir);
+    updateTanggalBerakhir();
+});
+</script>
 @endsection
