@@ -84,6 +84,8 @@ class SalaryShortagesController extends Controller
     public function show($month_id, $id)
     {
         $row = SalaryShortages::find($id);
+        $row['potongan_lain'] = $row['kotor'] - $row['bersih'] - $row['totpot'];
+        $row['totpot'] += $row['potongan_lain'];
 
         $month = Months::where('id', $month_id)
             ->where('satker', Auth::user()->satker)
@@ -161,6 +163,8 @@ class SalaryShortagesController extends Controller
     public function delete($month_id, $id)
     {
         $row = SalaryShortages::find($id);
+        $row['potongan_lain'] = $row['kotor'] - $row['bersih'] - $row['totpot'];
+        $row['totpot'] += $row['potongan_lain'];
 
         $month = Months::where('id', $month_id)
             ->where('satker', Auth::user()->satker)
@@ -248,6 +252,8 @@ class SalaryShortagesController extends Controller
     public function kekurangan($id)
     {
         $row = SalaryShortages::where("id", $id)->where('nip', Auth::user()->nip)->first();
+        $row['potongan_lain'] = $row['kotor'] - $row['bersih'] - $row['totpot'];
+        $row['totpot'] += $row['potongan_lain'];
         return view('salary_shortages/kekurangan', ['row' => $row]);
     }
 
@@ -256,6 +262,10 @@ class SalaryShortagesController extends Controller
         $row = SalaryShortages::where('id', $id)
             ->where('nip', Auth::user()->nip)
             ->first();
+        
+        $row['potongan_lain'] = $row['kotor'] - $row['bersih'] - $row['totpot'];
+        $row['totpot'] += $row['potongan_lain'];
+
         $satker = Satker::where('kode', Auth::user()->satker)->first();
         $pdf = PDF::loadview('salary_shortages/kekuranganpdf', ['row' => $row, 'satker' => $satker])->setPaper('a5');
         return $pdf->stream('slip_kekurangan_' . generate_uuid_4());
@@ -267,6 +277,9 @@ class SalaryShortagesController extends Controller
         $row = SalaryShortages::where('id', $params['id'])
             ->where('nip', $params['nip'])
             ->first();
+        $row['potongan_lain'] = $row['kotor'] - $row['bersih'] - $row['totpot'];
+        $row['totpot'] += $row['potongan_lain'];
+
         $user = Users::where('nip', $params['nip'])->first();
         $satker = Satker::where('kode', $user['satker'])->first();
         $pdf = PDF::loadview('salary_shortages/kekuranganpdfshare', ['row' => $row, 'satker' => $satker])->setPaper('a5');
@@ -276,6 +289,12 @@ class SalaryShortagesController extends Controller
     public function kekuranganpdfmonth($month_id)
     {
         $rows = SalaryShortages::where('month_id', $month_id)->orderBy('nmpeg', 'asc')->get();
+        
+        foreach ($rows as $row) {
+            $row['potongan_lain'] = $row['kotor'] - $row['bersih'] - $row['totpot'];
+            $row['totpot'] += $row['potongan_lain'];
+        }
+            
         $satker = Satker::where('kode', Auth::user()->satker)->first();
         $pdf = PDF::loadview('salary_shortages/kekuranganpdfmonth', ['rows' => $rows, 'satker' => $satker])->setPaper('a4');
         return $pdf->stream('slip_kekurangan_month' . generate_uuid_4());

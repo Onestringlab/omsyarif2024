@@ -196,6 +196,13 @@ Slip Kekurangan Gaji
             </div>
 
             <div class="mb-3 row">
+                <label class="col-sm-2 control-label"><strong>Potongan Lainnya</strong></label>
+                <div class="col-sm-10">
+                    {{ toCurrency($row->potongan_lain) }}
+                </div>
+            </div>
+
+            <div class="mb-3 row">
                 <label class="col-sm-2 control-label"><strong>Total Potongan</strong></label>
                 <div class="col-sm-10">
                     {{ toCurrency($row->totpot) }}
