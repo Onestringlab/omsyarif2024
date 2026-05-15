@@ -14,10 +14,14 @@ Upload PDF Data Keluarga
         </ol>
     </nav>
     <div class="card border-success">
-    <h5 class="card-header text-bg-success"> Unggah Data Keluarga - {{ $row->nama }}</h5>
+        <h5 class="card-header text-bg-success"> Unggah Data Keluarga - {{ $row->nama }}</h5>
         <div class="card-body">
         <form action="{{ route('pegawai.uploadkk.process', $row->nip) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            @if(session('error'))
+                <div class="alert alert-danger">{{ session('error') }}</div>
+            @endif
+
             <div class="mb-3">
                 <label class="fw-bold">File PDF</label>
                 <input type="file" name="pdf" class="form-control" accept=".pdf" required>

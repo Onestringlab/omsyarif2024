@@ -24,11 +24,12 @@ Profil Pegawai Saya
                             <tr>
                                 <th width="60">No</th>
                                 <th>Nama</th>
-                                <th width="200">Tanggal Lahir</th>
-                                <th width="250">Hubungan</th>
-                                <th width="150">Tanggungan</th>
+                                <th width="180">Tanggal Lahir</th>
+                                <th width="180">Hubungan</th>
+                                <th width="180">Tanggungan</th>
                                 <th width="150">Sekolah</th>
                                 <th width="100">Berlaku</th>
+                                <th width="100">Aksi SKK</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,13 +65,23 @@ Profil Pegawai Saya
                                             -
                                         @endif
                                     </td>
+                                    <td class="text-center">
+                                        @if($skk)
+                                            <a href="{{ route('skk.download', $skk->id) }}"
+                                            class="btn btn-sm btn-success"
+                                            title="Download SKK">
+                                                <i class="fa-solid fa-download"></i>
+                                            </a>
+                                        @endif
+                                    </td>
                                 @else
+                                    <td>-</td>
                                     <td>-</td>
                                 @endif
                             </tr>
                             @empty
                                 <tr>
-                                    <td colspan="7" class="text-muted">
+                                    <td colspan="8" class="text-muted">
                                         Data keluarga belum tersedia.
                                     </td>
                                 </tr>
@@ -81,11 +92,11 @@ Profil Pegawai Saya
 
                 @php
                     $jenisDokumen = [
-                        'naik_pangkat' => 'SK Kenaikan Pangkat',
-                        'kgb' => 'SK KGB',
-                        'jabatan' => 'SK Jabatan',
+                        'naik_pangkat' => 'Pangkat',
+                        'kgb' => 'KGB',
+                        'jabatan' => 'Jabatan',
                         'kp4' => 'KP4',
-                        'rumah_dinas' => 'SK Rumah Dinas',
+                        'rumah_dinas' => 'Sewa Rumah Dinas',
                     ];
 
                     $dokumenByJenis = $pegawai->dokumen->keyBy('jenis_dokumen');

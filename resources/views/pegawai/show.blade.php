@@ -88,9 +88,9 @@ Detail Pegawai
                         <tr>
                             <th width="60">No</th>
                             <th>Nama</th>
-                            <th width="150">Tanggal Lahir</th>
-                            <th width="150">Hubungan</th>
-                            <th width="150">Tanggungan</th>
+                            <th width="180">Tanggal Lahir</th>
+                            <th width="180">Hubungan</th>
+                            <th width="180">Tanggungan</th>
                             <th width="150">Sekolah</th>
                             <th width="100">Berlaku</th>
                             <th width="200">Aksi SKK</th>
@@ -191,11 +191,11 @@ Detail Pegawai
 
             @php
                 $jenisDokumen = [
-                    'naik_pangkat' => 'SK Kenaikan Pangkat',
-                    'kgb' => 'SK KGB',
-                    'jabatan' => 'SK Jabatan',
-                    'kp4' => 'SK KP4',
-                    'rumah_dinas' => 'SK Rumah Dinas',
+                    'naik_pangkat' => 'Pangkat',
+                    'kgb' => 'KGB',
+                    'jabatan' => 'Jabatan',
+                    'kp4' => 'KP4',
+                    'rumah_dinas' => 'Sewa Rumah Dinas',
                 ];
 
                 $dokumenByJenis = $pegawai->dokumen->keyBy('jenis_dokumen');

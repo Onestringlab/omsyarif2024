@@ -14,6 +14,7 @@
         '04' => 'Meninggal',
         '05' => 'Pindah',
         '06' => 'Hukuman Disiplin',
+        '11' => 'MPP/Cuti Besar',
         default => $kdduduk ? '••' . substr($kdduduk, -2) : '-',
     };
 

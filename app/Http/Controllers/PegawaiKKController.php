@@ -30,148 +30,162 @@ class PegawaiKKController extends Controller
     }
 
     public function processUploadKK(Request $request)
-{
-    $request->validate([
-        'nip' => 'required',
-        'pdf' => 'required|mimes:pdf|max:2048'
-    ]);
-
-    $pegawai = Pegawai::with('user')
-        ->where('nip', $request->input('nip'))
-        ->firstOrFail();
-
-    $file = $request->file('pdf');
-    $path = $file->store('temp');
-    $fullPath = storage_path('app/' . $path);
-
-    $parser = new Parser();
-    $pdf = $parser->parseFile($fullPath);
-    $text = $pdf->getText();
-
-    $text = str_replace(["\r\n", "\r", "\t"], "\n", $text);
-    $text = preg_replace('/[ ]{2,}/', ' ', $text);
-    $text = preg_replace('/[ ]*\n[ ]*/', "\n", $text);
-    $text = trim($text);
-
-    $normalize = function ($value) {
-        $value = trim($value);
-        $value = preg_replace('/\s+/', ' ', $value);
-        return $value;
-    };
-
-    $nama = null;
-    $nip = null;
-    $tgl = null;
-
-    if (preg_match('/NAMA\s*:\s*(.+?)\s+GOLONGAN/s', $text, $m)) {
-        $nama = $normalize($m[1]);
-    }
-
-    if (preg_match('/NIP\/NRP\s*:\s*([0-9]+)/', $text, $m)) {
-        $nip = trim($m[1]);
-    }
-
-    if (preg_match('/TGL\.\s*LAHIR\s*:\s*([0-9]{2}-[0-9]{2}-[0-9]{4})/', $text, $m)) {
-        $tgl = trim($m[1]);
-    }
-
-    $section = '';
-    if (preg_match('/C\.\s*DATA\s*KELUARGA(.*?)(?:halaman\s*\d+\s*dari\s*\d+|$)/si', $text, $m)) {
-        $section = trim($m[1]);
-    }
-
-    $section = str_replace(["\r\n", "\r", "\t"], "\n", $section);
-    $section = preg_replace('/[ ]{2,}/', ' ', $section);
-    $section = preg_replace('/[ ]*\n[ ]*/', "\n", $section);
-    $section = trim($section);
-
-    $lines = array_values(array_filter(array_map(function ($line) use ($normalize) {
-        return $normalize($line);
-    }, preg_split('/\n+/', $section))));
-
-    $lines = array_values(array_filter($lines, function ($line) {
-        return !in_array($line, [
-            'NO',
-            'NAMA',
-            'TANGGAL LAHIR HUBUNGAN KELUARGA',
-            'TANGGAL LAHIR',
-            'HUBUNGAN KELUARGA',
-            'AYAH',
-            'IBU',
-            'PEKERJAAN',
-            'SEKOLAH',
-            'NAMA KETERANGAN',
-            '[ ◀]()',
-            '[ ▶]()',
+    {
+        $request->validate([
+            'nip' => 'required',
+            'pdf' => 'required|mimes:pdf|max:2048'
         ]);
-    }));
 
-    $joined = implode(' | ', $lines);
-    $joined = preg_replace('/\s*\[\s*◀\s*\]\(\)\s*/u', ' ', $joined);
-    $joined = preg_replace('/\s*\[\s*▶\s*\]\(\)\s*/u', ' ', $joined);
-    $joined = preg_replace('/\s+/', ' ', $joined);
-    $joined = trim($joined);
+        $pegawai = Pegawai::with('user')
+            ->where('nip', $request->input('nip'))
+            ->firstOrFail();
 
-   $families = [];
+        $file = $request->file('pdf');
+        $path = $file->store('temp');
+        $fullPath = storage_path('app/' . $path);
 
-preg_match_all('/(?:^|\s)(\d+)\s+(.*?)(?=(?:\s\d+\s+)|$)/s', $joined, $matches, PREG_SET_ORDER);
+        $parser = new Parser();
+        $pdf = $parser->parseFile($fullPath);
+        $text = $pdf->getText();
 
-foreach ($matches as $match) {
-    $chunk = trim($match[2]);
-    $chunk = preg_replace('/\s+/', ' ', $chunk);
-    $chunk = trim($chunk);
+        $text = str_replace(["\r\n", "\r", "\t"], "\n", $text);
+        $text = preg_replace('/[ ]{2,}/', ' ', $text);
+        $text = preg_replace('/[ ]*\n[ ]*/', "\n", $text);
+        $text = trim($text);
 
-    $tanggal = null;
-    $namaKeluarga = null;
-    $sisa = $chunk;
+        $normalize = function ($value) {
+            $value = trim($value);
+            $value = preg_replace('/\s+/', ' ', $value);
+            return $value;
+        };
 
-    if (preg_match('/^(.*?)\s+(\d{2}-\d{2}-\d{4})\s+(.*)$/s', $chunk, $parts)) {
-        $namaKeluarga = trim($parts[1]);
-        $tanggal = trim($parts[2]);
-        $sisa = trim($parts[3]);
-    } else {
-        continue;
-    }
+        $nama = null;
+        $nip = null;
+        $tgl = null;
 
-    $hubungan = null;
-    foreach (['Anak Kandung', 'Anak Angkat', 'Istri', 'Suami'] as $h) {
-        if (stripos($sisa, $h) !== false) {
-            $hubungan = $h;
-            $sisa = preg_replace('/' . preg_quote($h, '/') . '/i', '', $sisa, 1);
-            $sisa = trim($sisa);
-            break;
+        if (preg_match('/NAMA\s*:\s*(.+?)\s+GOLONGAN/s', $text, $m)) {
+            $nama = $normalize($m[1]);
         }
-    }
 
-    $tanggungan = null;
-    foreach (['Tidak', 'Ya'] as $t) {
-        if (preg_match('/\b' . preg_quote($t, '/') . '\b/i', $sisa)) {
-            $tanggungan = $t;
-            break;
+        if (preg_match('/NIP\/NRP\s*:\s*([0-9]+)/', $text, $m)) {
+            $nip = trim($m[1]);
         }
+
+        // bandingkan NIP hasil parser dengan NIP yang dikirim lewat form
+        $submittedNip = $request->input('nip');
+        if (empty($nip) || $nip !== $submittedNip) {
+            // hapus file sementara yang sudah disimpan
+            if (!empty($path) && Storage::exists($path)) {
+                Storage::delete($path);
+            }
+
+            return redirect()
+                ->route('pegawai.uploadkk', $submittedNip)
+                ->withInput()
+                ->with('error', 'NIP pada file PDF tidak sesuai dengan NIP pegawai.');
+        }
+
+        if (preg_match('/TGL\.\s*LAHIR\s*:\s*([0-9]{2}-[0-9]{2}-[0-9]{4})/', $text, $m)) {
+            $tgl = trim($m[1]);
+        }
+
+        $section = '';
+        if (preg_match('/C\.\s*DATA\s*KELUARGA(.*?)(?:halaman\s*\d+\s*dari\s*\d+|$)/si', $text, $m)) {
+            $section = trim($m[1]);
+        }
+
+        $section = str_replace(["\r\n", "\r", "\t"], "\n", $section);
+        $section = preg_replace('/[ ]{2,}/', ' ', $section);
+        $section = preg_replace('/[ ]*\n[ ]*/', "\n", $section);
+        $section = trim($section);
+
+        $lines = array_values(array_filter(array_map(function ($line) use ($normalize) {
+            return $normalize($line);
+        }, preg_split('/\n+/', $section))));
+
+        $lines = array_values(array_filter($lines, function ($line) {
+            return !in_array($line, [
+                'NO',
+                'NAMA',
+                'TANGGAL LAHIR HUBUNGAN KELUARGA',
+                'TANGGAL LAHIR',
+                'HUBUNGAN KELUARGA',
+                'AYAH',
+                'IBU',
+                'PEKERJAAN',
+                'SEKOLAH',
+                'NAMA KETERANGAN',
+                '[ ◀]()',
+                '[ ▶]()',
+            ]);
+        }));
+
+        $joined = implode(' | ', $lines);
+        $joined = preg_replace('/\s*\[\s*◀\s*\]\(\)\s*/u', ' ', $joined);
+        $joined = preg_replace('/\s*\[\s*▶\s*\]\(\)\s*/u', ' ', $joined);
+        $joined = preg_replace('/\s+/', ' ', $joined);
+        $joined = trim($joined);
+
+    $families = [];
+
+    preg_match_all('/(?:^|\s)(\d+)\s+(.*?)(?=(?:\s\d+\s+)|$)/s', $joined, $matches, PREG_SET_ORDER);
+
+    foreach ($matches as $match) {
+        $chunk = trim($match[2]);
+        $chunk = preg_replace('/\s+/', ' ', $chunk);
+        $chunk = trim($chunk);
+
+        $tanggal = null;
+        $namaKeluarga = null;
+        $sisa = $chunk;
+
+        if (preg_match('/^(.*?)\s+(\d{2}-\d{2}-\d{4})\s+(.*)$/s', $chunk, $parts)) {
+            $namaKeluarga = trim($parts[1]);
+            $tanggal = trim($parts[2]);
+            $sisa = trim($parts[3]);
+        } else {
+            continue;
+        }
+
+        $hubungan = null;
+        foreach (['Anak Kandung', 'Anak Angkat', 'Istri', 'Suami'] as $h) {
+            if (stripos($sisa, $h) !== false) {
+                $hubungan = $h;
+                $sisa = preg_replace('/' . preg_quote($h, '/') . '/i', '', $sisa, 1);
+                $sisa = trim($sisa);
+                break;
+            }
+        }
+
+        $tanggungan = null;
+        foreach (['Tidak', 'Ya'] as $t) {
+            if (preg_match('/\b' . preg_quote($t, '/') . '\b/i', $sisa)) {
+                $tanggungan = $t;
+                break;
+            }
+        }
+
+        $sekolah = '-';
+        if (preg_match('/\b(Kuliah|SMA|SMP|SD)\b/i', $sisa, $sm)) {
+            $sekolah = strtoupper($sm[1]) === 'KULIAH' ? 'Kuliah' : strtoupper($sm[1]);
+        }
+
+        if ($namaKeluarga === '' || !$tanggal) {
+            continue;
+        }
+
+        $namaKeluarga = str_replace('|', '', $namaKeluarga);
+        $namaKeluarga = preg_replace('/\s+/', ' ', $namaKeluarga);
+        $namaKeluarga = trim($namaKeluarga, " -");
+
+        $families[] = [
+            'nama' => $namaKeluarga,
+            'tanggal_lahir' => $tanggal,
+            'hubungan' => $hubungan,
+            'tanggungan' => $tanggungan,
+            'sekolah' => $sekolah,
+        ];
     }
-
-    $sekolah = '-';
-    if (preg_match('/\b(Kuliah|SMA|SMP|SD)\b/i', $sisa, $sm)) {
-        $sekolah = strtoupper($sm[1]) === 'KULIAH' ? 'Kuliah' : strtoupper($sm[1]);
-    }
-
-    if ($namaKeluarga === '' || !$tanggal) {
-        continue;
-    }
-
-    $namaKeluarga = str_replace('|', '', $namaKeluarga);
-    $namaKeluarga = preg_replace('/\s+/', ' ', $namaKeluarga);
-    $namaKeluarga = trim($namaKeluarga, " -");
-
-    $families[] = [
-        'nama' => $namaKeluarga,
-        'tanggal_lahir' => $tanggal,
-        'hubungan' => $hubungan,
-        'tanggungan' => $tanggungan,
-        'sekolah' => $sekolah,
-    ];
-}
 
     Storage::delete($path);
 

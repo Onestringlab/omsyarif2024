@@ -182,6 +182,9 @@ Route::middleware(['auth', 'checkrole:user'])->group(
 			Route::get('/profil-pegawai','profilSaya')->name('profil.profil-pegawai');
 			Route::get('/profil-pegawai/dokumen/{id}/download','downloadDokumenSaya')->name('pegawai.profil-saya.download-dokumen');
 		});
+		Route::prefix('skk')->name('skk.')->group(function () {
+			Route::get('/download/{id}', [SKKController::class, 'download'])->name('download');
+		});
 	}
 );
 
