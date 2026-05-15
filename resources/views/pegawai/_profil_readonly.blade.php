@@ -93,6 +93,8 @@
         <table class="table table-borderless mb-0">
             <tr><th style="width:250px">NIP</th><td>{{ $pegawai->nip }}</td></tr>
             <tr><th>Nama</th><td>{{ $pegawai->nama }}</td></tr>
+            <tr><th>Tanggal Lahir</th><td>{{ $pegawai->tgl_lhr ? $pegawai->tgl_lhr->format('d-m-Y') : '' }}</td></tr>
+            <tr><th>Umur</th><td>{{ $pegawai->tgl_lhr ? $pegawai->tgl_lhr->age . ' th' : '' }}</td></tr>
             <tr><th>Jenis Kelamin</th><td>{{ $jenisKelaminLabel }}</td></tr>
             <tr><th>Golongan/Ruang</th><td>{{ $pegawai->golongan ?? '-' }}</td></tr>
             <tr><th>Pangkat</th><td>{{ $pegawai->nama_golongan ?? '-' }}</td></tr>

@@ -36,7 +36,7 @@ Preview Data Keluarga
             </div>
             <div class="row py-2">
                 <div class="col-md-3 fw-bold">Tanggal Lahir</div>
-                <div class="col-md-9">: {{ $data['tanggal_lahir'] }}</div>
+                <div class="col-md-9">: {{ $data['tanggal_lahir'] ? $data['tanggal_lahir']->format('d-m-Y') : '-' }}</div>
             </div>
         </div>
 
@@ -123,6 +123,7 @@ Preview Data Keluarga
 
                 <div class="mt-3 d-flex flex-wrap gap-2">
                     <input type="hidden" name="nip" value="{{ $data['pegawai']->nip }}">
+                    <input type="hidden" name="tanggal_lahir" value="{{ $data['tanggal_lahir'] ? $data['tanggal_lahir']->format('Y-m-d') : '' }}">
                     <button type="submit" class="btn btn-success">
                         Simpan
                     </button>

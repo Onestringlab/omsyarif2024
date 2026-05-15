@@ -31,6 +31,18 @@ class PegawaiDokumenController extends Controller
             'label' => 'SK Rumah Dinas',
             'view'  => 'pegawai.dokumen.upload',
         ],
+        'cuti' => [
+            'label' => 'SK Cuti',
+            'view'  => 'pegawai.dokumen.upload',
+        ],
+        'hukuman_disiplin' => [
+            'label' => 'SK Hukuman Disiplin',
+            'view'  => 'pegawai.dokumen.upload',
+        ],
+        'lain_lain' => [
+            'label' => 'Dokumen Lain-lain',
+            'view'  => 'pegawai.dokumen.upload',
+        ]
     ];
 
     public function createUpload(string $nip, string $jenis)

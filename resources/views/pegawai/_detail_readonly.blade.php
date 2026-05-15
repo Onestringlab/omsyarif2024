@@ -5,8 +5,10 @@
         <table class="table table-borderless mb-0">
             <tr><th style="width:160px">NIP</th><td>{{ $pegawai->nip }}</td></tr>
             <tr><th>Nama</th><td>{{ $pegawai->nama }}</td></tr>
+            <tr><th>Tanggal Lahir</th><td>{{ $pegawai->tgl_lhr ? $pegawai->tgl_lhr->format('d-m-Y') : '' }}</td></tr>
+            <tr><th>Umur</th><td>{{ $pegawai->tgl_lhr ? $pegawai->tgl_lhr->age . ' th' : '' }}</td></tr>
             <tr><th>Jenis Kelamin</th><td>{{ $pegawai->jenis_kelamin }}</td></tr>
-            <tr><th>Golongan/Ruang</th><td>{{ $pegawai->nama_golongan }}</td></tr>
+            <tr><th>Golongan/Ruang</th><td>{{ $pegawai->golongan }}</td></tr>
             <tr><th>Pangkat</th><td>{{ $pegawai->nama_golongan }}</td></tr>
             <tr><th>Jabatan</th><td>{{ $pegawai->jabatan }}</td></tr>
             <tr><th>Kd Satker Induk</th><td>{{ $pegawai->kdsatker_induk }}</td></tr>

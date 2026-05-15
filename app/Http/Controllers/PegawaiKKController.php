@@ -86,7 +86,11 @@ class PegawaiKKController extends Controller
         }
 
         if (preg_match('/TGL\.\s*LAHIR\s*:\s*([0-9]{2}-[0-9]{2}-[0-9]{4})/', $text, $m)) {
-            $tgl = trim($m[1]);
+            try {
+                $tgl = Carbon::createFromFormat('d-m-Y', trim($m[1]));
+            } catch (\Exception $e) {
+                $tgl = trim($m[1]);
+            }
         }
 
         $section = '';
@@ -126,90 +130,85 @@ class PegawaiKKController extends Controller
         $joined = preg_replace('/\s+/', ' ', $joined);
         $joined = trim($joined);
 
-    $families = [];
+        $families = [];
 
-    preg_match_all('/(?:^|\s)(\d+)\s+(.*?)(?=(?:\s\d+\s+)|$)/s', $joined, $matches, PREG_SET_ORDER);
+        preg_match_all('/(?:^|\s)(\d+)\s+(.*?)(?=(?:\s\d+\s+)|$)/s', $joined, $matches, PREG_SET_ORDER);
 
-    foreach ($matches as $match) {
-        $chunk = trim($match[2]);
-        $chunk = preg_replace('/\s+/', ' ', $chunk);
-        $chunk = trim($chunk);
+        foreach ($matches as $match) {
+            $chunk = trim($match[2]);
+            $chunk = preg_replace('/\s+/', ' ', $chunk);
+            $chunk = trim($chunk);
 
-        $tanggal = null;
-        $namaKeluarga = null;
-        $sisa = $chunk;
+            $tanggal = null;
+            $namaKeluarga = null;
+            $sisa = $chunk;
 
-        if (preg_match('/^(.*?)\s+(\d{2}-\d{2}-\d{4})\s+(.*)$/s', $chunk, $parts)) {
-            $namaKeluarga = trim($parts[1]);
-            $tanggal = trim($parts[2]);
-            $sisa = trim($parts[3]);
-        } else {
-            continue;
-        }
-
-        $hubungan = null;
-        foreach (['Anak Kandung', 'Anak Angkat', 'Istri', 'Suami'] as $h) {
-            if (stripos($sisa, $h) !== false) {
-                $hubungan = $h;
-                $sisa = preg_replace('/' . preg_quote($h, '/') . '/i', '', $sisa, 1);
-                $sisa = trim($sisa);
-                break;
+            if (preg_match('/^(.*?)\s+(\d{2}-\d{2}-\d{4})\s+(.*)$/s', $chunk, $parts)) {
+                $namaKeluarga = trim($parts[1]);
+                $tanggal = trim($parts[2]);
+                $sisa = trim($parts[3]);
+            } else {
+                continue;
             }
-        }
 
-        $tanggungan = null;
-        foreach (['Tidak', 'Ya'] as $t) {
-            if (preg_match('/\b' . preg_quote($t, '/') . '\b/i', $sisa)) {
-                $tanggungan = $t;
-                break;
+            $hubungan = null;
+            foreach (['Anak Kandung', 'Anak Angkat', 'Istri', 'Suami'] as $h) {
+                if (stripos($sisa, $h) !== false) {
+                    $hubungan = $h;
+                    $sisa = preg_replace('/' . preg_quote($h, '/') . '/i', '', $sisa, 1);
+                    $sisa = trim($sisa);
+                    break;
+                }
             }
+
+            $tanggungan = null;
+            foreach (['Tidak', 'Ya'] as $t) {
+                if (preg_match('/\b' . preg_quote($t, '/') . '\b/i', $sisa)) {
+                    $tanggungan = $t;
+                    break;
+                }
+            }
+
+            $sekolah = '-';
+            if (preg_match('/\b(Kuliah|SMA|SMP|SD)\b/i', $sisa, $sm)) {
+                $sekolah = strtoupper($sm[1]) === 'KULIAH' ? 'Kuliah' : strtoupper($sm[1]);
+            }
+
+            if ($namaKeluarga === '' || !$tanggal) {
+                continue;
+            }
+
+            $namaKeluarga = str_replace('|', '', $namaKeluarga);
+            $namaKeluarga = preg_replace('/\s+/', ' ', $namaKeluarga);
+            $namaKeluarga = trim($namaKeluarga, " -");
+
+            $families[] = [
+                'nama' => $namaKeluarga,
+                'tanggal_lahir' => $tanggal,
+                'hubungan' => $hubungan,
+                'tanggungan' => $tanggungan,
+                'sekolah' => $sekolah,
+            ];
         }
 
-        $sekolah = '-';
-        if (preg_match('/\b(Kuliah|SMA|SMP|SD)\b/i', $sisa, $sm)) {
-            $sekolah = strtoupper($sm[1]) === 'KULIAH' ? 'Kuliah' : strtoupper($sm[1]);
-        }
+        Storage::delete($path);
 
-        if ($namaKeluarga === '' || !$tanggal) {
-            continue;
-        }
-
-        $namaKeluarga = str_replace('|', '', $namaKeluarga);
-        $namaKeluarga = preg_replace('/\s+/', ' ', $namaKeluarga);
-        $namaKeluarga = trim($namaKeluarga, " -");
-
-        $families[] = [
-            'nama' => $namaKeluarga,
-            'tanggal_lahir' => $tanggal,
-            'hubungan' => $hubungan,
-            'tanggungan' => $tanggungan,
-            'sekolah' => $sekolah,
-        ];
-    }
-
-    Storage::delete($path);
-
-    return view('pegawai.datakk.previewkk', [
-        'data' => [
-            'pegawai' => $pegawai,
-            'nama' => $nama,
-            'nip' => $nip,
-            'tanggal_lahir' => $tgl,
-            'keluarga' => $families
-        ]
-    ]);
-}
-
-    private function getValue($text, $field)
-    {
-        preg_match('/' . $field . '\s*:\s*(.*)/', $text, $match);
-        return trim($match[1] ?? '');
+        return view('pegawai.datakk.previewkk', [
+            'data' => [
+                'pegawai' => $pegawai,
+                'nama' => $nama,
+                'nip' => $nip,
+                'tanggal_lahir' => $tgl,
+                'keluarga' => $families
+            ]
+        ]);
     }
 
     public function saveKK(Request $request)
     {
         $request->validate([
             'nip' => 'required|string',
+            'tanggal_lahir' => 'nullable|date',
             'keluarga' => 'required|array',
             'keluarga.*.nama' => 'required|string',
             'keluarga.*.tanggal_lahir' => 'nullable|string',
@@ -220,6 +219,14 @@ class PegawaiKKController extends Controller
 
         $nip = $request->nip;
         $keluarga = $request->keluarga;
+
+        $pegawai = Pegawai::where('nip', $nip)->firstOrFail();
+
+        if ($request->filled('tanggal_lahir')) {
+            $pegawai->update([
+                'tgl_lhr' => $request->input('tanggal_lahir'),
+            ]);
+        }
 
         $hubunganDisimpan = ['Suami', 'Istri', 'Anak Kandung', 'Anak Angkat'];
 

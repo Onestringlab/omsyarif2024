@@ -196,6 +196,9 @@ Detail Pegawai
                     'jabatan' => 'Jabatan',
                     'kp4' => 'KP4',
                     'rumah_dinas' => 'Sewa Rumah Dinas',
+                    'cuti' => 'Cuti',
+                    'hukuman_disiplin' => 'Hukuman Disiplin',
+                    'lain_lain' => 'Lain-lain',
                 ];
 
                 $dokumenByJenis = $pegawai->dokumen->keyBy('jenis_dokumen');

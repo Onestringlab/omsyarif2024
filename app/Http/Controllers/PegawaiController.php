@@ -83,6 +83,7 @@ class PegawaiController extends Controller
             'jablain' => 'nullable|string|max:20',
             'tumum' => 'nullable|numeric',
             'sewarumah' => 'nullable|numeric',
+            'tgl_lhr' => 'nullable|date',
         ]);
 
         $userPegawai = User::where('nip', $request->nip)
@@ -121,6 +122,7 @@ class PegawaiController extends Controller
             'jablain',
             'tumum',
             'sewarumah',
+            'tgl_lhr',
         ]));
 
         return redirect()
@@ -202,6 +204,7 @@ class PegawaiController extends Controller
             'jablain' => 'nullable|string|max:20',
             'tumum' => 'nullable|numeric',
             'sewarumah' => 'nullable|numeric',
+            'tgl_lhr' => 'nullable|date',
         ]);
 
         $pegawai->update($request->only([
@@ -229,6 +232,7 @@ class PegawaiController extends Controller
             'jablain',
             'tumum',
             'sewarumah',
+            'tgl_lhr',
         ]));
 
         return redirect()

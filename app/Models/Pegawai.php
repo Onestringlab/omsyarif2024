@@ -35,6 +35,7 @@ class Pegawai extends Model
         'jablain',
         'tumum',
         'sewarumah',
+        'tgl_lhr',
     ];
 
     protected $casts = [
@@ -44,6 +45,7 @@ class Pegawai extends Model
         'kdpencil' => 'integer',
         'tumum' => 'decimal:2',
         'sewarumah' => 'decimal:2',
+        'tgl_lhr' => 'date',
     ];
 
     /**

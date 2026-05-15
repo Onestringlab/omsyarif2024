@@ -66,6 +66,19 @@ Tambah Pegawai
                 @enderror
             </div>
             <div class="col-md-6">
+                <label for="tgl_lhr" class="form-label fw-bold">Tanggal Lahir</label>
+                <input type="date" name="tgl_lhr" id="tgl_lhr"
+                    class="form-control @error('tgl_lhr') is-invalid @enderror"
+                    value="{{ old('tgl_lhr') }}">
+                @error('tgl_lhr')
+                <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+            </div>
+
+            {{-- Baris 3 --}}
+            <div class="row mb-3">
+            <div class="col-md-3">
                 <label for="golongan" class="form-label">Golongan/Ruang</label>
                 <input type="text" name="golongan" id="golongan"
                     class="form-control @error('golongan') is-invalid @enderror"
@@ -74,11 +87,7 @@ Tambah Pegawai
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
-            </div>
-
-            {{-- Baris 3 --}}
-            <div class="row mb-3">
-            <div class="col-md-6">
+            <div class="col-md-3">
                 <label for="nama_golongan" class="form-label">Pangkat</label>
                 <input type="text" name="nama_golongan" id="nama_golongan"
                     class="form-control @error('nama_golongan') is-invalid @enderror"

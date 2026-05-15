@@ -29,6 +29,9 @@ class DokumenPegawai extends Model
         'jabatan' => 'SK Jabatan',
         'kp4' => 'SK KP4',
         'rumah_dinas' => 'SK Rumah Dinas',
+        'cuti' => 'Cuti',
+        'hukuman_disiplin' => 'Hukuman Disiplin',
+        'lain_lain' => 'Dokumen Lain-lain',
     ];
 
     public function user()
