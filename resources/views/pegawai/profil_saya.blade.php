@@ -12,7 +12,7 @@ Profil Pegawai Saya
         <div class="card-body">
             @if($pegawai)
 
-                @include('pegawai._detail_readonly', ['pegawai' => $pegawai])
+                @include('pegawai._profil_readonly', ['pegawai' => $pegawai])
 
                 <hr class="my-4">
 

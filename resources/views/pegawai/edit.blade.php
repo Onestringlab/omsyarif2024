@@ -97,7 +97,7 @@ Edit Pegawai
 
                 {{-- Baris 4: kode satker --}}
                 <div class="row mb-3">
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="kdsatker_induk" class="form-label fw-bold">Kd Satker Induk</label>
                     <input type="text" name="kdsatker_induk" id="kdsatker_induk"
                         class="form-control @error('kdsatker_induk') is-invalid @enderror"
@@ -106,7 +106,7 @@ Edit Pegawai
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="kdsatker_bekerja" class="form-label fw-bold">Kd Satker Bekerja</label>
                     <input type="text" name="kdsatker_bekerja" id="kdsatker_bekerja"
                         class="form-control @error('kdsatker_bekerja') is-invalid @enderror"
@@ -115,7 +115,7 @@ Edit Pegawai
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-3">
                     <label for="kdsatker_bayar" class="form-label fw-bold">Kd Satker Bayar</label>
                     <input type="text" name="kdsatker_bayar" id="kdsatker_bayar"
                         class="form-control @error('kdsatker_bayar') is-invalid @enderror"
@@ -124,10 +124,6 @@ Edit Pegawai
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                </div>
-
-                {{-- Baris 5: status & gapok --}}
-                <div class="row mb-3">
                 <div class="col-md-3">
                     <label for="kdanak" class="form-label fw-bold">Kd Anak</label>
                     <input type="text" name="kdanak" id="kdanak"
@@ -137,7 +133,11 @@ Edit Pegawai
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="col-md-3">
+                </div>
+
+                {{-- Baris 5: status & gapok --}}
+                <div class="row mb-3">
+                <div class="col-md-4">
                     <label for="kdkawin" class="form-label fw-bold">Kd Kawin</label>
                     <input type="text" name="kdkawin" id="kdkawin"
                         class="form-control @error('kdkawin') is-invalid @enderror"
@@ -146,7 +146,7 @@ Edit Pegawai
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label for="kdduduk" class="form-label fw-bold">Kd Duduk</label>
                     <input type="text" name="kdduduk" id="kdduduk"
                         class="form-control @error('kdduduk') is-invalid @enderror"
@@ -155,7 +155,7 @@ Edit Pegawai
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <label for="kdgapok" class="form-label fw-bold">Kd Gapok</label>
                     <input type="text" name="kdgapok" id="kdgapok"
                         class="form-control @error('kdgapok') is-invalid @enderror"
@@ -268,7 +268,7 @@ Edit Pegawai
                 </div>
                 <div class="col-md-3">
                     <label for="tumum" class="form-label fw-bold">Tunjangan Umum</label>
-                    <input type="number" step="0.01" name="tumum" id="tumum"
+                    <input type="number" step="1" name="tumum" id="tumum"
                         class="form-control @error('tumum') is-invalid @enderror"
                         value="{{ old('tumum', $pegawai->tumum) }}">
                     @error('tumum')
@@ -277,7 +277,7 @@ Edit Pegawai
                 </div>
                 <div class="col-md-3">
                     <label for="sewarumah" class="form-label fw-bold">Sewa Rumah</label>
-                    <input type="number" step="0.01" name="sewarumah" id="sewarumah"
+                    <input type="number" step="1" name="sewarumah" id="sewarumah"
                         class="form-control @error('sewarumah') is-invalid @enderror"
                         value="{{ old('sewarumah', $pegawai->sewarumah) }}">
                     @error('sewarumah')
