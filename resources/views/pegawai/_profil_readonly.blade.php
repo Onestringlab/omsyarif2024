@@ -75,7 +75,15 @@
         '31102' => '31102 - Tunjangan Kemahalan Hakim Zona 2',
         '31103' => '31103 - Tunjangan Kemahalan Hakim Zona 3',
         '31104' => '31104 - Tunjangan Kemahalan Hakim Zona 3 Khusus',
-        default => '-'
+        default => $jablain !== '' ? $jablain : '-',
+    };
+
+    $tumum = trim((string) ($pegawai->tumum ?? ''));
+    $tumum = $tumum !== '' ? substr($tumum, 0, 1) : '';
+    $tumumLabel = match ($tumum) {
+        '1' => 'Ya',
+        '2' => 'Tidak',
+        default => $tumum !== '' ? $tumum : '-',
     };
 @endphp
 
@@ -107,7 +115,7 @@
             <tr><th>BPJS Keluarga Lain</th><td>{{ $pegawai->kdbpjs2 }}</td></tr>
             <tr><th>Tunjangan Jabatan</th><td>{{ $pegawai->kdjab }}</td></tr>
             <tr><th>Tunjangan Lain</th><td>{{ $jablainLabel }}</td></tr>
-            <tr><th>Tunjangan Umum</th><td>{{ number_format($pegawai->tumum, 0, ',', '.') }}</td></tr>
+            <tr><th>Tunjangan Umum</th><td>{{ $tumumLabel }}</td></tr>
             <tr><th>Tarif Sewa Rumah Dinas</th><td>{{ number_format($pegawai->sewarumah, 0, ',', '.') }}</td></tr>
 
         </table>
