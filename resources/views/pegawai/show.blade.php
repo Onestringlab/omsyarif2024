@@ -43,7 +43,7 @@ Detail Pegawai
                     <td>{{ $pegawai->jenis_kelamin }}</td>
                     </tr>
                     <tr>
-                    <th>Golongan</th>
+                    <th>Golongan/Ruang</th>
                     <td>{{ $pegawai->golongan }} {{ $pegawai->nama_golongan }}</td>
                     </tr>
                     <tr>

@@ -11,9 +11,7 @@ Profil Pegawai Saya
         
         <div class="card-body">
             @if($pegawai)
-                <div class="alert alert-warning mt-0 mb-3">
-                    Jika terdapat data atau dokumen yang belum sesuai, silakan hubungi admin satker.
-                </div>
+
                 @include('pegawai._detail_readonly', ['pegawai' => $pegawai])
 
                 <hr class="my-4">
@@ -136,6 +134,9 @@ Profil Pegawai Saya
                             </tbody>
                         </table>
                     </div>
+                </div>
+                <div class="alert alert-warning mt-0 mb-3">
+                    Jika terdapat data atau dokumen yang belum sesuai, silakan menghubungi admin satker.
                 </div>
             @else
                 <div class="alert alert-warning mb-0">

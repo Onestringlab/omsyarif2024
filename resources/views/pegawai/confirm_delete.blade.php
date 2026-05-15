@@ -19,9 +19,6 @@ Konfirmasi Hapus Pegawai
         </h5>
 
         <div class="card-body">
-            <div class="alert alert-warning">
-                <strong>Peringatan!</strong>  Jika pegawai ini dihapus, maka seluruh metadata dokumen dan file fisik dokumen yang terkait juga akan ikut terhapus permanen.
-            </div>
 
             @include('pegawai._detail_readonly', ['pegawai' => $pegawai])
 
@@ -149,7 +146,9 @@ Konfirmasi Hapus Pegawai
                     </table>
                 </div>
             </div>
-
+            <div class="alert alert-warning">
+                <strong>Peringatan!</strong>  Jika pegawai ini dihapus, maka seluruh metadata dokumen dan file fisik dokumen yang terkait juga akan ikut terhapus permanen.
+            </div>    
             <div class="mt-4 d-flex gap-2">
                 <form action="{{ route('pegawai.destroy', $pegawai->id) }}" method="POST" class="me-2 form-delete-pegawai">
                     @csrf

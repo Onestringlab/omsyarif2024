@@ -69,10 +69,10 @@
                     <a class="nav-link" href="{{ asset('/nomenklatur') }}"><i class="fa-solid fa-table-list"></i> Nomenklatur</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ asset('/users') }}"><i class="fa-solid fa-user"></i> Pengguna</a>
+                    <a class="nav-link" href="{{ asset('/pegawai') }}"><i class="fa-solid fa-building-user"></i> Pegawai</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ asset('/pegawai') }}"><i class="fa-solid fa-building-user"></i> Pegawai</a>
+                    <a class="nav-link" href="{{ asset('/users') }}"><i class="fa-solid fa-user"></i> Pengguna</a>
                 </li>
                 @endif
                 @endauth

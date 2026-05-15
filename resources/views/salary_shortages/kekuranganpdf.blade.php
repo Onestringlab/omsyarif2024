@@ -125,8 +125,8 @@
         <tr>
             <td>Tunjangan Struktural</td>
             <td class="text-right">{{toCurrency($row->tjstruk)}}</td>
-            <!-- <td>Utang</td>
-            <td class="text-right">{{toCurrency($row->potkelbtj)}}</td> -->
+            <td>Potongan Lain</td>
+            <td class="text-right">{{toCurrency($row->potongan_lain)}}</td>
         </tr>
         <tr>
             <td>Tunjangan Fungsional</td>

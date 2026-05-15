@@ -341,16 +341,19 @@ class PegawaiController extends Controller
             ->where('nip', $user->nip)
             ->first();
 
-        $keluarga = KeluargaPegawai::where('nip', $pegawai->nip)
-            ->orderByRaw("
-                CASE
-                    WHEN hubungan IN ('Suami', 'Istri') THEN 1
-                    WHEN hubungan IN ('Anak Kandung', 'Anak Angkat') THEN 2
-                    ELSE 3
-                END
-            ")
-            ->orderBy('tanggal_lahir', 'asc')
-            ->get();
+        $keluarga = collect();
+        if ($pegawai) {
+            $keluarga = KeluargaPegawai::where('nip', $pegawai->nip)
+                ->orderByRaw("
+                    CASE
+                        WHEN hubungan IN ('Suami', 'Istri') THEN 1
+                        WHEN hubungan IN ('Anak Kandung', 'Anak Angkat') THEN 2
+                        ELSE 3
+                    END
+                ")
+                ->orderBy('tanggal_lahir', 'asc')
+                ->get();
+        }
 
         return view('pegawai.profil_saya', compact('pegawai', 'keluarga'));
     }

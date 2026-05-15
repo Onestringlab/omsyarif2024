@@ -66,7 +66,7 @@ Tambah Pegawai
                 @enderror
             </div>
             <div class="col-md-6">
-                <label for="golongan" class="form-label">Golongan</label>
+                <label for="golongan" class="form-label">Golongan/Ruang</label>
                 <input type="text" name="golongan" id="golongan"
                     class="form-control @error('golongan') is-invalid @enderror"
                     value="{{ old('golongan') }}">
@@ -79,7 +79,7 @@ Tambah Pegawai
             {{-- Baris 3 --}}
             <div class="row mb-3">
             <div class="col-md-6">
-                <label for="nama_golongan" class="form-label">Nama Golongan</label>
+                <label for="nama_golongan" class="form-label">Pangkat</label>
                 <input type="text" name="nama_golongan" id="nama_golongan"
                     class="form-control @error('nama_golongan') is-invalid @enderror"
                     value="{{ old('nama_golongan') }}">
