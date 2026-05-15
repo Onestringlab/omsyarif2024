@@ -8,12 +8,12 @@
     };
     $kdduduk = trim($pegawai->kdduduk ?? '');
     $kddudukLabel = match ($kdduduk) {
-        '01' => '01 - Aktif',
-        '02' => '02 - Belajar DN (Bujang-Keluarga)',
-        '03' => '03 - Pensiun/Berhenti',
-        '04' => '04 - Meninggal',
-        '05' => '05 - Pindah',
-        '06' => '06 - Hukuman Disiplin',
+        '01' => 'Aktif',
+        '02' => 'Belajar DN (Bujang-Keluarga)',
+        '03' => 'Pensiun/Berhenti',
+        '04' => 'Meninggal',
+        '05' => 'Pindah',
+        '06' => 'Hukuman Disiplin',
         default => $kdduduk ? '••' . substr($kdduduk, -2) : '-',
     };
 
