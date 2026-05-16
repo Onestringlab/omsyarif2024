@@ -98,6 +98,8 @@ Detail Pegawai
                                     <td class="{{ $bgClass }}">
                                         @if($tglBerakhir)
                                             {{ $tglBerakhir->format('d-m-Y') }}
+                                        @elseif(!$skk || empty($skk->tanggal_berakhir))
+                                            <span class="badge bg-primary text-white">Belum Unggah</span>
                                         @else
                                             -
                                         @endif
@@ -160,18 +162,24 @@ Detail Pegawai
 
             @php
                 $hasSkkNotification = false;
+                $hasBelumUnggah = false;
                 foreach ($keluarga as $item) {
                     if (
                         strtolower(trim($item->sekolah ?? '')) === 'kuliah' &&
-                        strtolower(trim($item->tanggungan ?? '')) === 'ya' &&
-                        $item->skk &&
-                        !empty($item->skk->tanggal_berakhir)
+                        strtolower(trim($item->tanggungan ?? '')) === 'ya'
                     ) {
-                        $tanggalBerakhir = \Carbon\Carbon::parse($item->skk->tanggal_berakhir);
-                        $daysUntilExpiry = now()->diffInDays($tanggalBerakhir, false);
+                        if ($item->skk && !empty($item->skk->tanggal_berakhir)) {
+                            $tanggalBerakhir = \Carbon\Carbon::parse($item->skk->tanggal_berakhir);
+                            $daysUntilExpiry = now()->diffInDays($tanggalBerakhir, false);
 
-                        if ($daysUntilExpiry < 0 || $daysUntilExpiry <= 60) {
-                            $hasSkkNotification = true;
+                            if ($daysUntilExpiry < 0 || $daysUntilExpiry <= 60) {
+                                $hasSkkNotification = true;
+                            }
+                        } else {
+                            $hasBelumUnggah = true;
+                        }
+
+                        if ($hasSkkNotification && $hasBelumUnggah) {
                             break;
                         }
                     }
@@ -180,11 +188,14 @@ Detail Pegawai
 
             @if($hasSkkNotification)
                 <div class="alert alert-info">
-                    <strong>Keterangan:</strong>
+                    <strong>Status Surat Keterangan Kuliah (SKK):</strong>
                     <ul class="mb-0">
                         <li>Hijau = SKK akan berakhir dalam waktu kurang dari 2 bulan.</li>
                         <li>Kuning = SKK akan berakhir dalam waktu kurang dari 1 bulan.</li>
                         <li>Merah = SKK telah berakhir.</li>
+                        @if($hasBelumUnggah)
+                            <li><span class="badge bg-primary text-white">Belum Unggah</span> = SKK belum diupload untuk beberapa keluarga dengan status 'Ya' dan 'Kuliah'.</li>
+                        @endif
                     </ul>
                 </div>
             @endif
