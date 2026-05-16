@@ -22,6 +22,10 @@ Data Pegawai
             </div>
         @endif
 
+        <div class="alert alert-warning" role="alert">
+            <strong>Perhatian:</strong> Mohon memeriksa data keluarga terkait Surat Keterangan Kuliah (SKK) anak untuk nama pegawai yang di-highlight.
+        </div>
+
         <div class="table-responsive">
             <table class="table table-striped table-hover align-middle">
                 <thead class="thead-dark">
