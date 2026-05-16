@@ -48,17 +48,30 @@ Profil Pegawai Saya
                                 <td>{{ $item->tanggungan ?? '-' }}</td>
                                 <td>{{ $item->sekolah ?? '-' }}</td>
 
-                                @if(strtolower(trim($item->sekolah ?? '')) === 'kuliah')
+                                @if(
+                                    strtolower(trim($item->sekolah ?? '')) === 'kuliah' &&
+                                    strtolower(trim($item->tanggungan ?? '')) === 'ya'
+                                )
                                     @php
                                         $tglBerakhir = $skk && $skk->tanggal_berakhir
                                             ? \Carbon\Carbon::parse($skk->tanggal_berakhir)
                                             : null;
 
-                                        $isExpired = $tglBerakhir && $tglBerakhir->isPast();
-                                        $isWarning = $tglBerakhir && !$isExpired && now()->diffInDays($tglBerakhir, false) <= 30;
+                                        $bgClass = '';
+                                        if ($tglBerakhir) {
+                                            $daysUntilExpiry = now()->diffInDays($tglBerakhir, false);
+
+                                            if ($daysUntilExpiry < 0) {
+                                                $bgClass = 'bg-danger text-white';
+                                            } elseif ($daysUntilExpiry <= 30) {
+                                                $bgClass = 'bg-warning';
+                                            } elseif ($daysUntilExpiry <= 60) {
+                                                $bgClass = 'bg-success text-white';
+                                            }
+                                        }
                                     @endphp
 
-                                    <td class="{{ $isExpired ? 'bg-danger text-white' : ($isWarning ? 'bg-warning' : '') }}">
+                                    <td class="{{ $bgClass }}">
                                         @if($tglBerakhir)
                                             {{ $tglBerakhir->format('d-m-Y') }}
                                         @else
@@ -89,6 +102,37 @@ Profil Pegawai Saya
                         </tbody>
                     </table>
                 </div>
+
+                @php
+                $hasSkkNotification = false;
+                foreach ($keluarga as $item) {
+                    if (
+                        strtolower(trim($item->sekolah ?? '')) === 'kuliah' &&
+                        strtolower(trim($item->tanggungan ?? '')) === 'ya' &&
+                        $item->skk &&
+                        !empty($item->skk->tanggal_berakhir)
+                    ) {
+                        $tanggalBerakhir = \Carbon\Carbon::parse($item->skk->tanggal_berakhir);
+                        $daysUntilExpiry = now()->diffInDays($tanggalBerakhir, false);
+
+                        if ($daysUntilExpiry < 0 || $daysUntilExpiry <= 60) {
+                            $hasSkkNotification = true;
+                            break;
+                        }
+                    }
+                }
+                @endphp
+
+                @if($hasSkkNotification)
+                    <div class="alert alert-info">
+                        <strong>Keterangan:</strong>
+                        <ul class="mb-0">
+                            <li>Hijau = SKK akan berakhir dalam waktu kurang dari 2 bulan.</li>
+                            <li>Kuning = SKK akan berakhir dalam waktu kurang dari 1 bulan.</li>
+                            <li>Merah = SKK telah berakhir.</li>
+                        </ul>
+                    </div>
+                @endif
 
                 @php
                     $jenisDokumen = [
