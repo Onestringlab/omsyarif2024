@@ -28,7 +28,7 @@
             <tr><th>Kd Pencil</th><td>{{ $pegawai->kdpencil }}</td></tr>
             <tr><th>Tahun Gapok</th><td>{{ $pegawai->tahungapok }}</td></tr>
             <tr><th>Kd BPJS2</th><td>{{ $pegawai->kdbpjs2 }}</td></tr>
-            <tr><th style="width:160px">Kd Jabatan</th><td>{{ $pegawai->kdjab }}</td></tr>
+            <tr><th>Kd Jabatan</th><td>{{ $pegawai->kdjab }}</td></tr>
             <tr><th>Jab Lain</th><td>{{ $pegawai->jablain }}</td></tr>
             <tr><th>Tunjangan Umum</th><td>{{ number_format($pegawai->tumum, 0, ',', '.') }}</td></tr>
             <tr><th>Sewa Rumah</th><td>{{ number_format($pegawai->sewarumah, 0, ',', '.') }}</td></tr>

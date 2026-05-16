@@ -109,7 +109,7 @@
     <div class="col-md-6">
         <table class="table table-borderless mb-0">
             <tr><th style="width:250px">Perhitungan Masa Kerja</th><td>{{ $kdgapokLabel }}</td></tr>
-            <tr><th>Status Keluarga</th><td>{{ $kdkawinLabel }}</td></tr>
+            <tr><th>Status Tunjangan Keluarga</th><td>{{ $kdkawinLabel }}</td></tr>
             <tr><th>Tunjangan Beras</th><td>{{ $pberasLabel }}</td></tr>
             <tr><th>Sebagai Hakim</th><td>{{ $kdhakimLabel }}</td></tr>
             <tr><th>Tunjangan Papua</th><td>{{ $kdpapuaLabel }}</td></tr>
