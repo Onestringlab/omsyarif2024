@@ -128,7 +128,7 @@ Detail Pegawai
                                                 class="btn btn-sm btn-info text-white"
                                                 title="Salin Narasi"
                                                 onclick="copyToClipboardSKK(this, '{{ $item->narasi_skk }}')">
-                                                    <i class="fa-solid fa-link"></i>
+                                                    <i class="fa-solid fa-copy"></i>
                                             </a>
                                             
                                             <form action="{{ route('skk.destroy', $skk->id) }}"
@@ -258,8 +258,22 @@ Detail Pegawai
                                         <i class="fa-sharp fa-solid fa-upload"></i>                                    
                                     </a>
                                     @if($dok)
+                                        @php
+                                            $tanggalDokumen = $dok->tanggal_dokumen ? \Carbon\Carbon::parse($dok->tanggal_dokumen)->format('d-m-Y') : '-';
+                                        @endphp
                                         <a href="{{ route('pegawai.dokumen.edit-metadata', $dok->id) }}"
                                             class="btn btn-sm btn-secondary text-white"><i class="fa-solid fa-pen"></i>
+                                        </a>
+                                        <a href="javascript:void(0)"
+                                            class="btn btn-sm btn-info text-white"
+                                            title="Salin Narasi Dokumen"
+                                            onclick="copyDocumentNarrative(this,
+                                                '{{ addslashes($pegawai->nama) }}',
+                                                '{{ addslashes($label) }}',
+                                                '{{ addslashes($dok->keterangan ?? '-') }}',
+                                                '{{ addslashes($dok->nomor_dokumen ?? '-') }}',
+                                                '{{ addslashes($tanggalDokumen) }}')">
+                                                <i class="fa-solid fa-copy"></i>
                                         </a>
                                         <form action="{{ route('pegawai.dokumen.destroy', $dok->id) }}"
                                             method="POST"
@@ -363,21 +377,23 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <script>
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.btn-copy-narasi').forEach(button => {
-        button.addEventListener('click', function () {
-            const narasi = JSON.parse(this.dataset.narasi);
-            copyToClipboard(this, narasi);
-        });
-    });
-});
+function copyDocumentNarrative(button, namaPegawai, dokumen, keterangan, nomor, tanggal) {
+    const narasi = `Kepada Yth. Bapak/Ibu ${namaPegawai},
 
-function copyToClipboardSKK(button, narasi) {
-    if (!narasi || narasi === 'Narasi tidak tersedia') {
+Dokumen ${dokumen} atas nama Bapak/Ibu dengan keterangan ${keterangan}, Nomor ${nomor}, tanggal ${tanggal}, telah diperbarui pada sistem penggajian Kementerian Keuangan.
+
+Silakan melihat pembaruan tersebut di SLIP.web.id pada menu Profil. 
+
+Terima kasih.`;
+    copyToClipboardText(narasi);
+}
+
+function copyToClipboardText(text) {
+    if (!text || text.trim() === '') {
         Swal.fire({
             icon: 'warning',
             title: 'Narasi tidak tersedia',
-            text: 'Data SKK belum lengkap atau belum tersedia untuk disalin.',
+            text: 'Data narasi belum lengkap atau tidak dapat disalin.',
         });
         return;
     }
@@ -391,7 +407,7 @@ function copyToClipboardSKK(button, narasi) {
         return;
     }
 
-    navigator.clipboard.writeText(narasi)
+    navigator.clipboard.writeText(text)
         .then(() => {
             Swal.fire({
                 icon: 'success',
@@ -408,6 +424,19 @@ function copyToClipboardSKK(button, narasi) {
                 text: 'Gagal menyalin narasi: ' + err,
             });
         });
+}
+
+function copyToClipboardSKK(button, narasi) {
+    if (!narasi || narasi === 'Narasi tidak tersedia') {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Narasi tidak tersedia',
+            text: 'Data SKK belum lengkap atau belum tersedia untuk disalin.',
+        });
+        return;
+    }
+
+    copyToClipboardText(narasi);
 }
 </script>
 @endsection

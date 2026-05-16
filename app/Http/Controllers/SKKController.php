@@ -139,28 +139,6 @@ class SKKController extends Controller
         return back()->with('success', 'Data SKK berhasil dihapus.');
     }
 
-    public function narasi($id)
-    {
-        $skk = SKK::with('keluargaPegawai')->findOrFail($id);
-        $keluarga = $skk->keluargaPegawai;
-
-        $pegawai = \App\Models\Pegawai::where('nip', $keluarga->nip)->first();
-
-        if (!$pegawai) {
-            return back()->with('error', 'Data pegawai tidak ditemukan.');
-        }
-
-        $tanggalBerakhir = Carbon::parse($skk->tanggal_berakhir)->translatedFormat('d F Y');
-
-        $narasi = "Yth. Bapak/Ibu {$pegawai->nama},\n"
-            . "Sehubungan dengan Surat Keterangan Kuliah atas nama anak Bapak/Ibu, {$keluarga->nama}, "
-            . "yang masa berlakunya akan berakhir pada tanggal {$tanggalBerakhir}, kami sampaikan bahwa apabila "
-            . "yang bersangkutan belum berusia 26 tahun dan masih menjadi tanggungan karena sedang menempuh pendidikan, "
-            . "mohon kiranya Bapak/Ibu dapat mengirimkan Surat Keterangan Kuliah yang terbaru kepada kami.\n\n"
-            . "Demikian disampaikan. Atas perhatian dan kerja samanya, kami ucapkan terima kasih.";
-
-        return view('skk.narasi', compact('skk', 'keluarga', 'pegawai', 'narasi'));
-    }
 
     private function authorizeSatker($pegawai)
     {

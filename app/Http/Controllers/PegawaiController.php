@@ -166,7 +166,7 @@ class PegawaiController extends Controller
             ) {
                 $tanggalBerakhir = \Carbon\Carbon::parse($item->skk->tanggal_berakhir)->format('d-m-Y');
 
-                $item->narasi_skk = "Yth. Bapak/Ibu ". $pegawai->nama ."\\nMasa berlaku Surat Keterangan Kuliah atas nama ". $item->nama ." akan berakhir pada tanggal ". $tanggalBerakhir .".\\nSilakan melakukan pembaruan apabila masih diperlukan.\\nTerima kasih.";
+                $item->narasi_skk = "Yth. Bapak/Ibu ". $pegawai->nama ."\\n\\nMasa berlaku Surat Keterangan Kuliah atas nama ". $item->nama ." akan berakhir pada tanggal ". $tanggalBerakhir .".\\n\\nSilakan melakukan pembaruan apabila masih diperlukan.\\n\\nTerima kasih.";
             } else {
                 $item->narasi_skk = 'Narasi tidak tersedia';
             }

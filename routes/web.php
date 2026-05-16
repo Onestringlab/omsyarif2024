@@ -73,7 +73,6 @@ Route::middleware(['auth', 'checkrole:admin,superadmin'])->group(
 			Route::get('/edit/{id}', [SKKController::class, 'edit'])->name('edit');
 			Route::put('/update/{id}', [SKKController::class, 'update'])->name('update');
 			Route::delete('/destroy/{id}', [SKKController::class, 'destroy'])->name('destroy');
-			Route::get('/narasi/{id}', [SKKController::class, 'narasi'])->name('narasi');
 		});
 
 	}
