@@ -39,12 +39,18 @@ class PegawaiController extends Controller
                 }
 
                 if (!$keluarga->skk || empty($keluarga->skk->tanggal_berakhir)) {
-                    continue;
+                    // Belum unggah SKK -> beri peringatan
+                    $row->skk_warning = true;
+                    break;
                 }
 
                 $tanggalBerakhir = Carbon::parse($keluarga->skk->tanggal_berakhir);
+                $daysUntilExpiry = $today->diffInDays($tanggalBerakhir, false);
 
-                if ($tanggalBerakhir->lt($today) || $today->diffInDays($tanggalBerakhir, false) <= 30) {
+                // Merah: sudah expired (days < 0)
+                // Kuning: <= 30 hari
+                // Hijau: <= 60 hari (1-2 bulan)
+                if ($daysUntilExpiry < 0 || $daysUntilExpiry <= 60) {
                     $row->skk_warning = true;
                     break;
                 }
