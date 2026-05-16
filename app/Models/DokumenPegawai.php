@@ -13,6 +13,7 @@ class DokumenPegawai extends Model
         'jenis_dokumen',
         'nomor_dokumen',
         'tanggal_dokumen',
+        'uraian',
         'keterangan',
         'nama_file',
         'path_file',

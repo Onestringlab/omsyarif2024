@@ -86,17 +86,33 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="uraian" class="form-label fw-bold">Uraian</label>
+                            <input type="text"
+                                    name="uraian"
+                                    id="uraian"
+                                    class="form-control @error('uraian') is-invalid @enderror"
+                                    placeholder="Contoh: Uraian terbaru hasil revisi"
+                                    value="{{ old('uraian', $dokumen->uraian ?? '') }}">
+                            @error('uraian')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
+                            <small class="text-muted">Opsional</small>
+                        </div>
+
+                        <div class="mb-3">
                             <label for="keterangan" class="form-label fw-bold">Keterangan</label>
-                            <textarea name="keterangan"
+                            <input type="text"
+                                    name="keterangan"
                                     id="keterangan"
-                                    rows="3"
                                     class="form-control @error('keterangan') is-invalid @enderror"
-                                    placeholder="Contoh: SK terbaru hasil revisi">{{ old('keterangan', $dokumen->keterangan ?? '') }}</textarea>
+                                    placeholder="Contoh: Keterangan terbaru hasil revisi"
+                                    value="{{ old('keterangan', $dokumen->keterangan ?? '') }}">
                             @error('keterangan')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                             <small class="text-muted">Opsional</small>
                         </div>
+
 
                         <div class="mb-4">
                             <label for="file_dokumen" class="form-label fw-bold">

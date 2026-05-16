@@ -125,7 +125,7 @@ Profil Pegawai Saya
 
                 @if($hasSkkNotification)
                     <div class="alert alert-info">
-                        <strong>Keterangan:</strong>
+                        <strong>Status Surat Keterangan Kuliah (SKK):</strong>
                         <ul class="mb-0">
                             <li>Hijau = SKK akan berakhir dalam waktu kurang dari 2 bulan.</li>
                             <li>Kuning = SKK akan berakhir dalam waktu kurang dari 1 bulan.</li>
@@ -154,14 +154,15 @@ Profil Pegawai Saya
                     <div class="table-responsive">
                         <table class="table table-striped table-hover align-middle">
                             <thead class="table-success">
-                                <tr>
-                                    <th style="width: 60px;">No</th>
-                                    <th style="width: 160px;">Tanggal</th>
-                                    <th style="width: 250px;">Nomor</th>
-                                    <th style="width: 250px;">Jenis Dokumen</th>
-                                    <th>Keterangan</th>
-                                    <th style="width: 120px;">Status</th>
-                                </tr>
+                            <tr>
+                                <th style="width:60px">No</th>
+                                <th style="width:120px">Tanggal</th>
+                                <th style="width:250px">Nomor</th>
+                                <th style="width:180px">Dokumen</th>
+                                <th>Uraian</th>
+                                <th style="width:220px">Keterangan</th>
+                                <th style="width:120px">Aksi</th>
+                            </tr>
                             </thead>
                             <tbody>
                                 @foreach($jenisDokumen as $key => $label)
@@ -175,6 +176,7 @@ Profil Pegawai Saya
                                         </td>
                                         <td>{{ $dok?->nomor_dokumen ?? '-' }}</td>
                                         <td>{{ $label }}</td>
+                                        <td>{{ !empty($dok?->uraian) ? $dok->uraian : '-' }}</td>
                                         <td>{{ !empty($dok?->keterangan) ? $dok->keterangan : '-' }}</td>
                                         <td>
                                             @if($dok)

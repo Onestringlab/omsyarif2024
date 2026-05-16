@@ -64,15 +64,29 @@ Edit Metadata Dokumen
                 </div>
 
                 <div class="mb-3">
+                    <label for="uraian" class="form-label fw-bold">Uraian</label>
+                    <input type="text"
+                            name="uraian"
+                            id="uraian"
+                            class="form-control @error('uraian') is-invalid @enderror"
+                            value="{{ old('uraian', $dokumen->uraian) }}">
+                    @error('uraian')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
                     <label for="keterangan" class="form-label fw-bold">Keterangan</label>
-                    <textarea name="keterangan"
-                                id="keterangan"
-                                rows="3"
-                                class="form-control @error('keterangan') is-invalid @enderror">{{ old('keterangan', $dokumen->keterangan) }}</textarea>
+                    <input type="text"
+                            name="keterangan"
+                            id="keterangan"
+                            class="form-control @error('keterangan') is-invalid @enderror"
+                            value="{{ old('keterangan', $dokumen->keterangan) }}">
                     @error('keterangan')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
+
 
                 <div class="d-flex gap-2">
                     <button type="submit" class="btn btn-success">

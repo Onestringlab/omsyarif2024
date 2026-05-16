@@ -111,7 +111,7 @@ Konfirmasi Hapus Pegawai
                                 <th style="width: 160px;">Tanggal</th>
                                 <th style="width:250px">Nomor</th>
                                 <th style="width: 250px;">Dokumen</th>
-                                <th>Keterangan</th>
+                                <th>Uraian</th>
                             </tr>
                         </thead>
                         <tbody>

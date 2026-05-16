@@ -77,6 +77,7 @@ class PegawaiDokumenController extends Controller
         $request->validate([
             'nomor_dokumen'   => 'nullable|string|max:100',
             'tanggal_dokumen' => 'nullable|date',
+            'uraian'          => 'nullable|string|max:1000',
             'keterangan'      => 'nullable|string|max:1000',
             'file_dokumen'    => 'required|file|mimes:pdf|max:5120',
         ]);
@@ -103,6 +104,7 @@ class PegawaiDokumenController extends Controller
             [
                 'nomor_dokumen'   => $request->nomor_dokumen,
                 'tanggal_dokumen' => $request->tanggal_dokumen,
+                'uraian'          => $request->uraian,
                 'keterangan'      => $request->keterangan,
                 'nama_file'       => $originalName,
                 'path_file'       => $path,
@@ -181,12 +183,14 @@ class PegawaiDokumenController extends Controller
         $request->validate([
             'nomor_dokumen'   => 'nullable|string|max:100',
             'tanggal_dokumen' => 'nullable|date',
+            'uraian'      => 'nullable|string|max:1000',
             'keterangan'      => 'nullable|string|max:1000',
         ]);
 
         $dokumen->update([
             'nomor_dokumen'   => $request->nomor_dokumen,
             'tanggal_dokumen' => $request->tanggal_dokumen,
+            'uraian'      => $request->uraian,
             'keterangan'      => $request->keterangan,
         ]);
 

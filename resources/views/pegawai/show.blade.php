@@ -193,9 +193,6 @@ Detail Pegawai
                         <li>Hijau = SKK akan berakhir dalam waktu kurang dari 2 bulan.</li>
                         <li>Kuning = SKK akan berakhir dalam waktu kurang dari 1 bulan.</li>
                         <li>Merah = SKK telah berakhir.</li>
-                        @if($hasBelumUnggah)
-                            <li><span class="badge bg-primary text-white">Belum Unggah</span> = SKK belum diupload untuk beberapa keluarga dengan status 'Ya' dan 'Kuliah'.</li>
-                        @endif
                     </ul>
                 </div>
             @endif
@@ -226,9 +223,10 @@ Detail Pegawai
                             <th style="width:60px">No</th>
                             <th style="width:120px">Tanggal</th>
                             <th style="width:250px">Nomor</th>
-                            <th style="width:250px">Dokumen</th>
-                            <th>Keterangan</th>
-                            <th style="width:220px">Aksi</th>
+                            <th style="width:180px">Dokumen</th>
+                            <th>Uraian</th>
+                            <th style="width:220px">Keterangan</th>
+                            <th style="width:200px">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -243,7 +241,7 @@ Detail Pegawai
                                 </td>
                                 <td>{{ $dok?->nomor_dokumen ?? '-' }}</td>
                                 <td>{{ $label }}</td>
-                                <!-- <td>{{ $dok?->nama_file ?? '-' }}</td> -->
+                                <td>{{ $dok?->uraian ?? '-' }}</td>
                                 <td>{{ !empty($dok?->keterangan) ? $dok->keterangan : '-' }}</td>
                                 <td>
                                     @if($dok)
@@ -270,7 +268,7 @@ Detail Pegawai
                                             onclick="copyDocumentNarrative(this,
                                                 '{{ addslashes($pegawai->nama) }}',
                                                 '{{ addslashes($label) }}',
-                                                '{{ addslashes($dok->keterangan ?? '-') }}',
+                                                '{{ addslashes($dok->uraian ?? '-') }}',
                                                 '{{ addslashes($dok->nomor_dokumen ?? '-') }}',
                                                 '{{ addslashes($tanggalDokumen) }}')">
                                                 <i class="fa-solid fa-copy"></i>
@@ -377,10 +375,10 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <script>
-function copyDocumentNarrative(button, namaPegawai, dokumen, keterangan, nomor, tanggal) {
+function copyDocumentNarrative(button, namaPegawai, dokumen, uraian, nomor, tanggal) {
     const narasi = `Kepada Yth. Bapak/Ibu ${namaPegawai},
 
-Dokumen ${dokumen} atas nama Bapak/Ibu dengan keterangan ${keterangan}, Nomor ${nomor}, tanggal ${tanggal}, telah diperbarui pada sistem penggajian Kementerian Keuangan.
+Dokumen ${dokumen} atas nama Bapak/Ibu dengan uraian ${uraian}, Nomor ${nomor}, tanggal ${tanggal}, telah diperbarui pada sistem penggajian Kementerian Keuangan.
 
 Silakan melihat pembaruan tersebut di SLIP.web.id pada menu Profil. 
 
