@@ -34,6 +34,10 @@ class PegawaiController extends Controller
                     continue;
                 }
 
+                if (strtolower(trim($keluarga->tanggungan ?? '')) !== 'ya') {
+                    continue;
+                }
+
                 if (!$keluarga->skk || empty($keluarga->skk->tanggal_berakhir)) {
                     continue;
                 }
@@ -150,12 +154,13 @@ class PegawaiController extends Controller
         foreach ($keluarga as $item) {
             if (
                 strtolower(trim($item->sekolah ?? '')) === 'kuliah' &&
+                strtolower(trim($item->tanggungan ?? '')) === 'ya' &&
                 $item->skk &&
                 $item->skk->tanggal_berakhir
             ) {
                 $tanggalBerakhir = \Carbon\Carbon::parse($item->skk->tanggal_berakhir)->format('d-m-Y');
 
-                $item->narasi_skk = "Yth. Bapak/Ibu ". $pegawai->nama ."\\nMasa berlaku Surat Keterangan Kuliah atas nama ". $item->nama ." akan/perlu diperhatikan sampai tanggal ". $tanggalBerakhir .".\\nSilakan menyiapkan pembaruan dokumen apabila diperlukan.\\nTerima kasih.";
+                $item->narasi_skk = "Yth. Bapak/Ibu ". $pegawai->nama ."\\nMasa berlaku Surat Keterangan Kuliah atas nama ". $item->nama ." akan berakhir pada tanggal ". $tanggalBerakhir .".\\nSilakan melakukan pembaruan apabila masih diperlukan.\\nTerima kasih.";
             } else {
                 $item->narasi_skk = 'Narasi tidak tersedia';
             }

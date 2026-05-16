@@ -29,50 +29,6 @@ Detail Pegawai
 
             @include('pegawai._detail_readonly', ['pegawai' => $pegawai])
 
-            <div class="row mb-4">
-                <div class="col-md-6">
-                <table class="table table-borderless mb-0">
-                    <tr>
-                    <th style="width:160px">Tahun Gapok</th>
-                    <td>{{ $pegawai->tahungapok }}</td>
-                    </tr>
-                    <tr>
-                    <th>Kd BPJS2</th>
-                    <td>{{ $pegawai->kdbpjs2 }}</td>
-                    </tr>
-                    <tr>
-                    <th>Bulan Akhir</th>
-                    <td>{{ $pegawai->bulanakhir }}</td>
-                    </tr>
-                    <tr>
-                    <th>Tahun Akhir</th>
-                    <td>{{ $pegawai->tahunakhir }}</td>
-                    </tr>
-                </table>
-                </div>
-
-                <div class="col-md-6">
-                <table class="table table-borderless mb-0">
-                    <tr>
-                    <th style="width:160px">Kd Jabatan</th>
-                    <td>{{ $pegawai->kdjab }}</td>
-                    </tr>
-                    <tr>
-                    <th>Jab Lain</th>
-                    <td>{{ $pegawai->jablain }}</td>
-                    </tr>
-                    <tr>
-                    <th>Tunjangan Umum</th>
-                    <td>{{ number_format($pegawai->tumum, 0, ',', '.') }}</td>
-                    </tr>
-                    <tr>
-                    <th>Sewa Rumah</th>
-                    <td>{{ number_format($pegawai->sewarumah, 0, ',', '.') }}</td>
-                    </tr>
-                </table>
-                </div>
-            </div>
-
             <hr class="my-4">
 
             <h5 class="mb-3">Data Keluarga
@@ -90,7 +46,7 @@ Detail Pegawai
                             <th>Nama</th>
                             <th width="180">Tanggal Lahir</th>
                             <th width="180">Hubungan</th>
-                            <th width="180">Tanggungan</th>
+                            <th width="120">Tanggungan</th>
                             <th width="150">Sekolah</th>
                             <th width="100">Berlaku</th>
                             <th width="200">Aksi SKK</th>
@@ -112,17 +68,34 @@ Detail Pegawai
                                 <td>{{ $item->tanggungan ?? '-' }}</td>
                                 <td>{{ $item->sekolah ?? '-' }}</td>
 
-                                @if(strtolower(trim($item->sekolah ?? '')) === 'kuliah')
+                                @if(
+                                    strtolower(trim($item->sekolah ?? '')) === 'kuliah' &&
+                                    strtolower(trim($item->tanggungan ?? '')) === 'ya'
+                                )
                                     @php
                                         $tglBerakhir = $skk && $skk->tanggal_berakhir
                                             ? \Carbon\Carbon::parse($skk->tanggal_berakhir)
                                             : null;
 
-                                        $isExpired = $tglBerakhir && $tglBerakhir->isPast();
-                                        $isWarning = $tglBerakhir && !$isExpired && now()->diffInDays($tglBerakhir, false) <= 30;
+                                        $bgClass = '';
+                                        if ($tglBerakhir) {
+                                            $daysUntilExpiry = now()->diffInDays($tglBerakhir, false);
+                                            
+                                            if ($daysUntilExpiry < 0) {
+                                                // Sudah expired - merah
+                                                $bgClass = 'bg-danger text-white';
+                                            } elseif ($daysUntilExpiry <= 30) {
+                                                // 1 bulan atau kurang - kuning
+                                                $bgClass = 'bg-warning';
+                                            } elseif ($daysUntilExpiry <= 60) {
+                                                // 1-2 bulan - hijau
+                                                $bgClass = 'bg-success text-white';
+                                            }
+                                            // Lebih dari 2 bulan - tanpa background
+                                        }
                                     @endphp
 
-                                    <td class="{{ $isExpired ? 'bg-danger text-white' : ($isWarning ? 'bg-warning' : '') }}">
+                                    <td class="{{ $bgClass }}">
                                         @if($tglBerakhir)
                                             {{ $tglBerakhir->format('d-m-Y') }}
                                         @else
@@ -184,6 +157,37 @@ Detail Pegawai
                     </tbody>
                 </table>
             </div>
+
+            @php
+                $hasSkkNotification = false;
+                foreach ($keluarga as $item) {
+                    if (
+                        strtolower(trim($item->sekolah ?? '')) === 'kuliah' &&
+                        strtolower(trim($item->tanggungan ?? '')) === 'ya' &&
+                        $item->skk &&
+                        !empty($item->skk->tanggal_berakhir)
+                    ) {
+                        $tanggalBerakhir = \Carbon\Carbon::parse($item->skk->tanggal_berakhir);
+                        $daysUntilExpiry = now()->diffInDays($tanggalBerakhir, false);
+
+                        if ($daysUntilExpiry < 0 || $daysUntilExpiry <= 60) {
+                            $hasSkkNotification = true;
+                            break;
+                        }
+                    }
+                }
+            @endphp
+
+            @if($hasSkkNotification)
+                <div class="alert alert-info">
+                    <strong>Keterangan:</strong>
+                    <ul class="mb-0">
+                        <li>Hijau = SKK akan berakhir dalam waktu kurang dari 2 bulan.</li>
+                        <li>Kuning = SKK akan berakhir dalam waktu kurang dari 1 bulan.</li>
+                        <li>Merah = SKK telah berakhir.</li>
+                    </ul>
+                </div>
+            @endif
 
             <hr class="my-4">
 
