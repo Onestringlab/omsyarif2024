@@ -26,9 +26,9 @@ Profil Pegawai Saya
                                 <th>Nama</th>
                                 <th width="180">Tanggal Lahir</th>
                                 <th width="180">Hubungan</th>
-                                <th width="180">Tanggungan</th>
-                                <th width="150">Sekolah</th>
-                                <th width="100">Berlaku</th>
+                                <th width="120">Tanggungan</th>
+                                <th width="120">Sekolah</th>
+                                <th width="150">Berakhirnya SKK</th>
                                 <th width="100">Aksi SKK</th>
                             </tr>
                         </thead>
