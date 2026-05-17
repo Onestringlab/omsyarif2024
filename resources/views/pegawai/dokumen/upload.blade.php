@@ -105,12 +105,12 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="keterangan" class="form-label fw-bold">Keterangan <span class="text-danger">*</span></label>
+                            <label for="keterangan" class="form-label fw-bold">Keterangan</label>
                             <input type="text"
                                     name="keterangan"
                                     id="keterangan"
                                     class="form-control @error('keterangan') is-invalid @enderror"
-                                    placeholder="Contoh: Keterangan terbaru hasil revisi"
+                                    placeholder="Keterangan SK boleh diisi, misalnya TMT SK"
                                     value="{{ old('keterangan', $dokumen->keterangan ?? '') }}">
                             @error('keterangan')
                                 <div class="invalid-feedback">{{ $message }}</div>
