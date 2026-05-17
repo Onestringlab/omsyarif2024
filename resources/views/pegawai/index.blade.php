@@ -33,11 +33,11 @@ Data Pegawai
                         <th width="50px">No</th>
                         <th width="150px">NIP</th>
                         <th> Nama</th>
-                        <th class="text-center" width="120px">SK Kenaikan<BR>Pangkat</th>
+                        <th class="text-center" width="120px">Pangkat</th>
                         <th class="text-center" width="90px">KGB</th>
-                        <th class="text-center" width="90px">SK Jabatan</th>
+                        <th class="text-center" width="90px">Jabatan</th>
                         <th class="text-center" width="90px">KP4</th>
-                        <th class="text-center" width="120px">SK Rumah<br>Dinas</th>
+                        <th class="text-center" width="120px">Rumah Dinas</th>
                         <th class="text-center" width="90px">Data<br>Keluarga</th>
                         <th class="text-center" width="180px">
                             <a class="btn btn-primary" href="{{ asset('/') }}pegawai/create">
@@ -61,7 +61,7 @@ Data Pegawai
                         <td class="text-center">
                             <a href="{{ route('pegawai.dokumen.upload', [$row->nip, 'naik_pangkat']) }}"
                             class="btn btn-success">
-                            <i class="fa-solid fa-turn-up"></i>
+                            <i class="fa-solid fa-briefcase"></i>
                             </a>
                         </td>
 

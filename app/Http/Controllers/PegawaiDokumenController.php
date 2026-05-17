@@ -12,7 +12,7 @@ class PegawaiDokumenController extends Controller
 {
     protected array $jenisDokumen = [
         'naik_pangkat' => [
-            'label' => 'SK Kenaikan Pangkat',
+            'label' => 'SK Pangkat',
             'view'  => 'pegawai.dokumen.upload',
         ],
         'kgb' => [
@@ -75,9 +75,9 @@ class PegawaiDokumenController extends Controller
         abort_if(!$user, 403, 'NIP tidak valid untuk satker ini.');
 
         $request->validate([
-            'nomor_dokumen'   => 'nullable|string|max:100',
-            'tanggal_dokumen' => 'nullable|date',
-            'uraian'          => 'nullable|string|max:1000',
+            'nomor_dokumen'   => 'required|string|max:100',
+            'tanggal_dokumen' => 'required|date',
+            'uraian'          => 'required|string|max:1000',
             'keterangan'      => 'nullable|string|max:1000',
             'file_dokumen'    => 'required|file|mimes:pdf|max:5120',
         ]);

@@ -7,7 +7,7 @@ Edit Metadata Dokumen
 @section('content')
 <div class="container">
     <div class="card border-success">
-        <h5 class="card-header text-bg-success">Edit Metadata {{ $label }}</h5>
+        <h5 class="card-header text-bg-success">Edit {{ $label }}</h5>
 
         <div class="card-body">
             @if ($errors->any())
@@ -40,36 +40,36 @@ Edit Metadata Dokumen
                 @method('PUT')
 
                 <div class="mb-3">
-                    <label for="nomor_dokumen" class="form-label fw-bold">Nomor</label>
+                    <label for="nomor_dokumen" class="form-label fw-bold">Nomor <span class="text-danger">*</span></label>
                     <input type="text"
                             name="nomor_dokumen"
                             id="nomor_dokumen"
                             class="form-control @error('nomor_dokumen') is-invalid @enderror"
-                            value="{{ old('nomor_dokumen', $dokumen->nomor_dokumen) }}">
+                            value="{{ old('nomor_dokumen', $dokumen->nomor_dokumen) }}" required>
                     @error('nomor_dokumen')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label for="tanggal_dokumen" class="form-label fw-bold">Tanggal Dokumen</label>
+                    <label for="tanggal_dokumen" class="form-label fw-bold">Tanggal Dokumen <span class="text-danger">*</span></label>
                     <input type="date"
                             name="tanggal_dokumen"
                             id="tanggal_dokumen"
                             class="form-control @error('tanggal_dokumen') is-invalid @enderror"
-                            value="{{ old('tanggal_dokumen', !empty($dokumen->tanggal_dokumen) ? \Carbon\Carbon::parse($dokumen->tanggal_dokumen)->format('Y-m-d') : '') }}">
+                            value="{{ old('tanggal_dokumen', !empty($dokumen->tanggal_dokumen) ? \Carbon\Carbon::parse($dokumen->tanggal_dokumen)->format('Y-m-d') : '') }}" required>
                     @error('tanggal_dokumen')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
 
                 <div class="mb-3">
-                    <label for="uraian" class="form-label fw-bold">Uraian</label>
+                    <label for="uraian" class="form-label fw-bold">Uraian <span class="text-danger">*</span></label>
                     <input type="text"
                             name="uraian"
                             id="uraian"
                             class="form-control @error('uraian') is-invalid @enderror"
-                            value="{{ old('uraian', $dokumen->uraian) }}">
+                            value="{{ old('uraian', $dokumen->uraian) }}" required>
                     @error('uraian')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror

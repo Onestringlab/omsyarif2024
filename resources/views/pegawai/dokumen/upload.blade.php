@@ -59,40 +59,46 @@
 
                         <div class="mb-3">
                             <label for="nomor_dokumen" class="form-label fw-bold">
-                                Nomor Dokumen
+                                Nomor Dokumen <span class="text-danger">*</span>
                             </label>
                             <input type="text" 
                                     class="form-control @error('nomor_dokumen') is-invalid @enderror" 
                                     id="nomor_dokumen"
                                     name="nomor_dokumen" 
                                     value="{{ old('nomor_dokumen', $dokumen->nomor_dokumen ?? '') }}"
-                                    placeholder="Contoh: 800/123/SK/2026">
+                                    placeholder="Contoh: 800/123/SK/2026"
+                                    required>
+
                             @error('nomor_dokumen')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                            <small class="form-text text-muted">Opsional</small>
                         </div>
 
+
                         <div class="mb-3">
-                            <label for="tanggal_dokumen" class="form-label fw-bold">Tanggal Dokumen</label>
+                            <label for="tanggal_dokumen" class="form-label fw-bold">Tanggal Dokumen <span class="text-danger">*</span></label>
                             <input type="date"
                                 name="tanggal_dokumen"
                                 id="tanggal_dokumen"
                                 class="form-control @error('tanggal_dokumen') is-invalid @enderror"
-                                value="{{ old('tanggal_dokumen', !empty($dokumen?->tanggal_dokumen) ? \Carbon\Carbon::parse($dokumen->tanggal_dokumen)->format('Y-m-d') : '') }}">
+                                value="{{ old('tanggal_dokumen', !empty($dokumen?->tanggal_dokumen) ? \Carbon\Carbon::parse($dokumen->tanggal_dokumen)->format('Y-m-d') : '') }}"
+                                required>
+
                             @error('tanggal_dokumen')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
 
                         <div class="mb-3">
-                            <label for="uraian" class="form-label fw-bold">Uraian</label>
+                            <label for="uraian" class="form-label fw-bold">Uraian <span class="text-danger">*</span></label>
                             <input type="text"
                                     name="uraian"
                                     id="uraian"
                                     class="form-control @error('uraian') is-invalid @enderror"
                                     placeholder="Contoh: Uraian terbaru hasil revisi"
-                                    value="{{ old('uraian', $dokumen->uraian ?? '') }}">
+                                    value="{{ old('uraian', $dokumen->uraian ?? '') }}"
+                                    required>
+                                    
                             @error('uraian')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -100,19 +106,19 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="keterangan" class="form-label fw-bold">Keterangan</label>
+                            <label for="keterangan" class="form-label fw-bold">Keterangan <span class="text-danger">*</span></label>
                             <input type="text"
                                     name="keterangan"
                                     id="keterangan"
                                     class="form-control @error('keterangan') is-invalid @enderror"
                                     placeholder="Contoh: Keterangan terbaru hasil revisi"
-                                    value="{{ old('keterangan', $dokumen->keterangan ?? '') }}">
+                                    value="{{ old('keterangan', $dokumen->keterangan ?? '') }}"
+                                    required>
                             @error('keterangan')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                             <small class="text-muted">Opsional</small>
                         </div>
-
 
                         <div class="mb-4">
                             <label for="file_dokumen" class="form-label fw-bold">
