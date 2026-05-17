@@ -102,7 +102,6 @@
                             @error('uraian')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
-                            <small class="text-muted">Opsional</small>
                         </div>
 
                         <div class="mb-3">
