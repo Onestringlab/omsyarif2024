@@ -66,7 +66,7 @@
                                     id="nomor_dokumen"
                                     name="nomor_dokumen" 
                                     value="{{ old('nomor_dokumen', $dokumen->nomor_dokumen ?? '') }}"
-                                    placeholder="Contoh: 800/123/SK/2026"
+                                    placeholder="Nomor SK harus diisi"
                                     required>
 
                             @error('nomor_dokumen')
@@ -95,7 +95,7 @@
                                     name="uraian"
                                     id="uraian"
                                     class="form-control @error('uraian') is-invalid @enderror"
-                                    placeholder="Contoh: Uraian terbaru hasil revisi"
+                                    placeholder="Uraian SK harus diisi"
                                     value="{{ old('uraian', $dokumen->uraian ?? '') }}"
                                     required>
                                     
@@ -111,8 +111,7 @@
                                     id="keterangan"
                                     class="form-control @error('keterangan') is-invalid @enderror"
                                     placeholder="Contoh: Keterangan terbaru hasil revisi"
-                                    value="{{ old('keterangan', $dokumen->keterangan ?? '') }}"
-                                    required>
+                                    value="{{ old('keterangan', $dokumen->keterangan ?? '') }}">
                             @error('keterangan')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
