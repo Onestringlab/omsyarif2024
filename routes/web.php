@@ -69,7 +69,7 @@ Route::middleware(['auth', 'checkrole:admin,superadmin'])->group(
 		Route::prefix('skk')->name('skk.')->group(function () {
 			Route::get('/create/{keluargaPegawaiId}', [SKKController::class, 'create'])->name('create');
 			Route::post('/store/{keluargaPegawaiId}', [SKKController::class, 'store'])->name('store');
-			Route::get('/download/{id}', [SKKController::class, 'download'])->name('download');
+			Route::get('/download-file/{id}', [SKKController::class, 'download'])->name('download-file');
 			Route::get('/edit/{id}', [SKKController::class, 'edit'])->name('edit');
 			Route::put('/update/{id}', [SKKController::class, 'update'])->name('update');
 			Route::delete('/destroy/{id}', [SKKController::class, 'destroy'])->name('destroy');

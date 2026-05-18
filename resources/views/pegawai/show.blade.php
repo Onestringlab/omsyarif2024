@@ -112,7 +112,7 @@ Detail Pegawai
                                         </a>
 
                                         @if($skk)
-                                            <a href="{{ route('skk.download', $skk->id) }}"
+                                            <a href="{{ route('skk.download-file', $skk->id) }}"
                                             class="btn btn-sm btn-success"
                                             title="Download SKK">
                                                 <i class="fa-solid fa-download"></i>
